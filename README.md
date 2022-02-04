@@ -52,6 +52,9 @@ _mv main lngcnv_
 
 _sudo cp lngcnv /usr/bin/_
 
-# CHECK OUT THE LNGCNV WIKI:
+# CHECK OUT THE LNGCNV WIKI
 
 https://github.com/piotrbajdek/lngcnv/wiki
+
+# LNGCNV ON CRATES.IO
+https://crates.io/crates/lngcnv
