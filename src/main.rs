@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.0.0-ALPHA / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.0.0-ALPHA.1 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
 
 use std::env;
 use std::process::exit;
@@ -18,7 +18,7 @@ fn main() {
 
       if argument == "--about" {
       println!("Program:  lngcnv");
-      println!("Version:  1.0.0-alpha");
+      println!("Version:  1.0.0-alpha.1");
       println!("Date:     February 04, 2022");
       println!("Author:   Piotr Bajdek, Poland");
       println!("Contact:  piotr.bajdek@protonmail.com");
@@ -111,7 +111,7 @@ fn main() {
 // VERSION
 
       if argument == "--version" {
-      println!("Version: 1.0.0-alpha");
+      println!("Version: 1.0.0-alpha.1");
       println!("February 04, 2022");
       let exit_code = fake_main();
       exit(exit_code);

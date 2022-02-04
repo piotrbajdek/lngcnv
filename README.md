@@ -24,7 +24,7 @@ Support for more languages (including **Polish**, **Spanish**) is under active d
 
 Install from crates.io by the use of cargo:
 
-_sudo cargo install lngcnv_
+_cargo install lngcnv --version 1.0.0-alpha.1_
 
 **METHOD 2**
 
