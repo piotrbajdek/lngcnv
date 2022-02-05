@@ -20,13 +20,15 @@ Support for more languages (including **Polish**, **Spanish**) is under active d
 
 # INSTALLATION ON LINUX
 
-**METHOD 1**
+### METHOD 1
 
 Install from crates.io by the use of cargo:
 
 _cargo install lngcnv --version 1.0.0-alpha.1_
 
-**METHOD 2**
+By default, the file will be downloaded to .cargo/bin/, a hidden folder in your home directory. For convenience, you will probably want to copy lngcnv to /usr/bin/ as in Method 2 (3a, 3b).
+
+### METHOD 2
 
 **1.** Download the binary "lngcnv" for Linux x86_64 from GitHub.
 
@@ -42,7 +44,7 @@ _sudo cp lngcnv /usr/bin/_
 
 _sudo cp lngcnv /var/usrlocal/bin/_
 
-**METHOD 3**
+### METHOD 3
 
 Download the lngcnv source from GitHub, build, rename and install the program:
 
