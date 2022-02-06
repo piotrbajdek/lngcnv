@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.0.0-ALPHA.1 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.0.0-BETA / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
 
 use std::env;
 use std::process::exit;
@@ -16,11 +16,11 @@ fn main() {
 
 // ABOUT
 
-      if argument == "--about" {
+      if argument == "-a" || argument == "--about" {
       println!("Program:  lngcnv");
-      println!("Version:  1.0.0-alpha.1");
-      println!("Date:     February 04, 2022");
-      println!("Author:   Piotr Bajdek, Poland");
+      println!("Version:  1.0.0-beta");
+      println!("Date:     February 06, 2022");
+      println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  piotr.bajdek@protonmail.com");
       println!("Source:   https://github.com/piotrbajdek/lngcnv");
       println!("License:  The MIT License (MIT) © 2022 Piotr Bajdek");
@@ -30,43 +30,39 @@ fn main() {
 
 // HELP
 
-      if argument == "--help" {
+      if argument == "-h" || argument == "--help" {
       print!("{}", bright_yellow);
       println!("Usage:    lngcnv [OPTION 1/2] [OPTION 2/1] [STRING]");
       print!("{}", clear);
       println!("");
-      println!("OPTION 1:");
-      println!("          --ipa  Transcribe [STRING] into the International Phonetic Alphabet");
+      println!("OPTION 1: --ipa  Transcribe [STRING] into the International Phonetic Alphabet");
       println!("          --ort  Convert [STRING] between regional norms of orthography");
       println!("");
-      println!("OPTION 2:");
-      println!("          --eng  English | available for:        --ort");
+      println!("OPTION 2: --eng  English | available for:        --ort");
       println!("          --lat  Latin   | available for: --ipa, --ort");
       println!("          --qwe  Quechua | available for:        --ort");
       println!("          --tca  Tikuna  | available for: --ipa, --ort");
       println!("");
       print!("{}", bright_yellow);
-      println!("Example:  lngcnv --ipa --lat 'Vēnī, vīdī, vīcī.'");
+      println!("Examples: lngcnv --ipa --lat 'Vēnī, vīdī, vīcī.'");
       println!("          lngcnv --lat --ipa 'Vēnī, vīdī, vīcī.'");
       print!("{}", clear);
       println!("");
-      println!("          Note: For multi-word queries always use quotation marks!");
+      println!("          For multi-word queries always use single or double quotation marks!");
+      println!("          For word strings including apostrophes, use double quotation.");
       println!("");
-      print!("{}", bright_yellow);
-      println!("Other options:");
-      print!("{}", clear);
-      println!("                 --about     Show contact and program info");
-      println!("                 --help      Show this help");
-      println!("                 --languages Show notes on the languages supported");
-      println!("                 --license   Show licesing information");
-      println!("                 --version   Show the program version");
+      println!("See also: -a, --about     Show contact and program info");
+      println!("          -h, --help      Show this help");
+      println!("          -l, --languages Show notes on the languages supported");
+      println!("          -L, --license   Show licesing information");
+      println!("          -v, --version   Show the program version");
       let exit_code = fake_main();
       exit(exit_code);
       }
 
 // LANGUAGES
 
-      if argument == "--languages" {
+      if argument == "-l" || argument == "--languages" {
       print!("{}", bright_yellow);
       println!("English:");
       print!("{}", clear);
@@ -85,14 +81,14 @@ fn main() {
       print!("{}", bright_yellow);
       println!("Tikuna:");
       print!("{}", clear);
-      println!("          Two variants of pronunciation (Nazareth, CO; Umariaçu, BR) (--ipa) and four distinct orthographic conventions (--ort) are supported. There is no support for tones at this stage of program development, as it would require building a large dialectal dictionary. Even so, in the --ipa mode tonal letters can be displayed if inserted manually as numbers beginning from 1 (the lowest) to 5 (the highest tone).");
+      println!("          Two variants of pronunciation (Nazareth, CO; Umariaçu, BR) (--ipa) and four distinct orthographic conventions (--ort) are supported. There is no support for tones at this stage of program development. Even so, in the --ipa mode tonal letters can be displayed if inserted manually as numbers beginning from 1 (the lowest) to 5 (the highest tone). Abbreviations: ILV - Instituto Lingüístico de Verano; FORMABIAP - Formación de Maestros Bilingües de la Amazonía Peruana");
       let exit_code = fake_main();
       exit(exit_code);
       }
 
 // LICENSE
 
-      if argument == "--license" {
+      if argument == "-L" || argument == "--license" {
       print!("{}", bright_yellow);
       println!("The MIT License (MIT)");
       print!("{}", clear);
@@ -110,9 +106,9 @@ fn main() {
 
 // VERSION
 
-      if argument == "--version" {
-      println!("Version: 1.0.0-alpha.1");
-      println!("February 04, 2022");
+      if argument == "-v" || argument == "--version" {
+      println!("Version: 1.0.0-beta");
+      println!("February 06, 2022");
       let exit_code = fake_main();
       exit(exit_code);
       }
@@ -123,14 +119,14 @@ fn main() {
 
    let args: Vec<String> = env::args().collect();
 
-   let input1 = args.get(1).expect("The first argument is missing! See: --help");
-   let input2 = args.get(2).expect("The second argument is missing! See: --help");
+   let input1 = args.get(1).expect("Invalid or missing arguments! See: --help");
+   let input2 = args.get(2).expect("Invalid or missing arguments! See: --help");
 
 // ENGLISH: ORTHOGRAPHY
 
    if input1 == "--ort" && input2 == "--eng" || input1 == "--eng" && input2 == "--ort" {
 
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("celling", "celing");
    let str3 = &str2.replace("delling", "deling");
    let str4 = &str3.replace("velling", "veling");
@@ -224,7 +220,7 @@ fn main() {
 
    if input1 == "--ipa" && input2 == "--lat" || input1 == "--lat" && input2 == "--ipa" {
 
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("A", "a");
    let str3 = &str2.replace("Ā", "ā");
    let str4 = &str3.replace("Á", "ā");
@@ -403,7 +399,7 @@ fn main() {
 
    if input1 == "--ort" && input2 == "--lat" || input1 == "--lat" && input2 == "--ort" {
 
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("a", "A");
    let str3 = &str2.replace("á", "Á");
    let str4 = &str3.replace("ă", "A");
@@ -494,7 +490,7 @@ fn main() {
 
    if input1 == "--ort" && input2 == "--qwe" || input1 == "--qwe" && input2 == "--ort" {
 // TRIVOCALIC
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("o", "u");
    let str3 = &str2.replace("O", "U");
    let str4 = &str3.replace("e", "i");
@@ -506,7 +502,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
 // PENTAVOCALIC
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("qu", "qo");
    let str3 = &str2.replace("Qu", "Qo");
    let str4 = &str3.replace("QU", "QO");
@@ -564,7 +560,7 @@ fn main() {
 
    if input1 == "--ipa" && input2 == "--tca" || input1 == "--tca" && input2 == "--ipa" {
 // IPA: NAZARETH
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("1", "˩");
    let str3 = &str2.replace("2", "˨");
    let str4 = &str3.replace("3", "˧");
@@ -719,7 +715,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
 // IPA: UMARIAÇU
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("1", "˩");
    let str3 = &str2.replace("2", "˨");
    let str4 = &str3.replace("3", "˧");
@@ -883,7 +879,7 @@ fn main() {
 
    if input1 == "--ort" && input2 == "--tca" || input1 == "--tca" && input2 == "--ort" {
 // TIKUNA: BRAZIL
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("y", "j");
    let str3 = &str2.replace("Y", "J");
    let str4 = &str3.replace("ch", "tch");
@@ -1037,7 +1033,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
 // TIKUNA: COLOMBIA
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("j", "y");
    let str3 = &str2.replace("J", "Y");
    let str4 = &str3.replace("tch", "ch");
@@ -1070,7 +1066,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
 // TIKUNA: ILV
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("j", "y");
    let str3 = &str2.replace("J", "Y");
    let str4 = &str3.replace("tch", "ch");
@@ -1176,7 +1172,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
 // TIKUNA: FORMABIAP
-   let str1 = args.get(3).expect("No string inserted!");
+   let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("j", "y");
    let str3 = &str2.replace("J", "Y");
    let str4 = &str3.replace("tch", "ch");
@@ -1295,7 +1291,7 @@ fn main() {
    exit(exit_code);
    }
 
-// INVALID &ARGS[1] AND &ARGS[2]
+// INVALID &ARGS[1] AND/OR &ARGS[2]
 
    println!("Error: Invalid arguments provided! See: --help");
 

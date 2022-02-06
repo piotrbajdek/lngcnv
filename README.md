@@ -24,7 +24,7 @@ Support for more languages (including **Polish**, **Spanish**) is under active d
 
 Install from crates.io by the use of cargo:
 
-_cargo install lngcnv --version 1.0.0-alpha.1_
+_cargo install lngcnv --version 1.0.0-beta_
 
 By default, the file will be downloaded to .cargo/bin/, a hidden folder in your home directory. For convenience, you will probably want to copy lngcnv to /usr/bin/ as in Method 2 (3a, 3b).
 

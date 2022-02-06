@@ -1,9 +1,10 @@
 [package]
 name = "lngcnv"
-version = "1.0.0-alpha.1"
+version = "1.0.0-beta"
 authors = ["Piotr Bajdek <piotr.bajdek@protonmail.com>"]
 edition = "2021"
 description = "command line linguistic tools: display pronunciation, convert between regional norms of orthography; support for multiple modern and ancient languages: English, Latin, Quechua, Tikuna"
+documentation = "https://github.com/piotrbajdek/lngcnv/wiki"
 readme = "README.md"
 repository = "https://github.com/piotrbajdek/lngcnv"
 license = "MIT"
