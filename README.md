@@ -1,6 +1,6 @@
 # WHAT IS LNGCNV
 
-lngcnv may stand for _'language converter'_, _'linguistic converter'_, _'lenguaje convertido'_, and the like.
+'lngcnv' may stand for _'language converter'_, _'linguistic converter'_, _'lenguaje convertido'_, and the like.
 
 lngcnv constitutes a set of linguistic tools which allow **(a)** displaying pronunciation of a phrase and **(b)** converting between different (e.g., regional) norms of orthography when a word or some piece of text is provided as an argument directly from the command line.
 
@@ -32,15 +32,19 @@ Support for more languages, including the pronunciation of **English**, **Polish
 
 # INSTALLATION ON LINUX
 
-### METHOD 1
+## METHOD 1
 
-Install from crates.io by the use of cargo:
+**1.** Install from crates.io by the use of cargo:
 
 _cargo install lngcnv --version 1.0.0_
 
-By default, the file will be downloaded to .cargo/bin/, a hidden folder in your home directory. For convenience, you will probably want to copy lngcnv to /usr/bin/ as in Method 2 (3a, 3b).
+By default, the file will be downloaded to .cargo/bin/, a hidden folder in your home directory.
 
-### METHOD 2
+**2a.** For convenience, you will probably want to copy lngcnv to /usr/bin/ as in Method 2 (3a, 3b).
+
+**2b.** Alternatively, add ~/.cargo/bin directory to your PATH variable (see documentation of your shell).
+
+## METHOD 2
 
 **1.** Download the binary 'lngcnv' for Linux x86_64 from GitHub:
 
@@ -58,7 +62,7 @@ _sudo cp lngcnv /usr/bin/_
 
 _sudo cp lngcnv /var/usrlocal/bin/_
 
-### METHOD 3
+## METHOD 3
 
 Download the lngcnv source from GitHub, build, rename and install the program:
 
@@ -68,9 +72,18 @@ _mv main lngcnv_
 
 _sudo cp lngcnv /usr/bin/_
 
+# THE OFFICIAL LNGCNV FORUM
+
+The best place to ask questions or share ideas on lngcnv:
+
+https://github.com/piotrbajdek/lngcnv/discussions
+
 # CHECK OUT THE LNGCNV WIKI
 
 https://github.com/piotrbajdek/lngcnv/wiki
 
 # LNGCNV ON CRATES.IO
+
+The Rust community’s crate registry
+
 https://crates.io/crates/lngcnv
