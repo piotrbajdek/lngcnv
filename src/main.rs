@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.0.0-BETA / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.0.0 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
 
 use std::env;
 use std::process::exit;
@@ -18,12 +18,20 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  lngcnv");
-      println!("Version:  1.0.0-beta");
-      println!("Date:     February 06, 2022");
+      println!("Version:  1.0.0");
+      println!("Date:     February 07, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  piotr.bajdek@protonmail.com");
       println!("Source:   https://github.com/piotrbajdek/lngcnv");
       println!("License:  The MIT License (MIT) © 2022 Piotr Bajdek");
+      let exit_code = fake_main();
+      exit(exit_code);
+      }
+
+// CHANGES
+
+      if argument == "-c" || argument == "--changes" {
+      println!("07.02.2022 v1.0.0 – The first release of lngcnv");
       let exit_code = fake_main();
       exit(exit_code);
       }
@@ -40,7 +48,7 @@ fn main() {
       println!("");
       println!("OPTION 2: --eng  English | available for:        --ort");
       println!("          --lat  Latin   | available for: --ipa, --ort");
-      println!("          --qwe  Quechua | available for:        --ort");
+      println!("          --que  Quechua | available for:        --ort");
       println!("          --tca  Tikuna  | available for: --ipa, --ort");
       println!("");
       print!("{}", bright_yellow);
@@ -52,6 +60,7 @@ fn main() {
       println!("          For word strings including apostrophes, use double quotation.");
       println!("");
       println!("See also: -a, --about     Show contact and program info");
+      println!("          -c, --changes   Show change notes");
       println!("          -h, --help      Show this help");
       println!("          -l, --languages Show notes on the languages supported");
       println!("          -L, --license   Show licesing information");
@@ -76,12 +85,12 @@ fn main() {
       print!("{}", bright_yellow);
       println!("Quechua:");
       print!("{}", clear);
-      println!("          In the --ort mode, it is possible to transcribe some text between the trivocalic and the pentavocalic orthographic conventions.");
+      println!("          The --ort mode allows transcribing between the trivocalic and the pentavocalic orthographies.");
       println!("");
       print!("{}", bright_yellow);
       println!("Tikuna:");
       print!("{}", clear);
-      println!("          Two variants of pronunciation (Nazareth, CO; Umariaçu, BR) (--ipa) and four distinct orthographic conventions (--ort) are supported. There is no support for tones at this stage of program development. Even so, in the --ipa mode tonal letters can be displayed if inserted manually as numbers beginning from 1 (the lowest) to 5 (the highest tone). Abbreviations: ILV - Instituto Lingüístico de Verano; FORMABIAP - Formación de Maestros Bilingües de la Amazonía Peruana");
+      println!("          Two variants of pronunciation (Nazareth, CO; Umariaçu, BR) (--ipa) and four distinct orthographies (--ort) are supported. There is no support for tones at this stage of program development. Even so, in the --ipa mode tonal letters can be displayed if inserted manually as numbers beginning from 1 (the lowest) to 5 (the highest tone). Abbreviations: ILV - Instituto Lingüístico de Verano; FORMABIAP - Formación de Maestros Bilingües de la Amazonía Peruana");
       let exit_code = fake_main();
       exit(exit_code);
       }
@@ -107,8 +116,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: 1.0.0-beta");
-      println!("February 06, 2022");
+      println!("Version: 1.0.0");
+      println!("February 07, 2022");
       let exit_code = fake_main();
       exit(exit_code);
       }
@@ -488,7 +497,7 @@ fn main() {
 
 // QUECHUA: ORTHOGRAPHY
 
-   if input1 == "--ort" && input2 == "--qwe" || input1 == "--qwe" && input2 == "--ort" {
+   if input1 == "--ort" && input2 == "--que" || input1 == "--que" && input2 == "--ort" {
 // TRIVOCALIC
    let str1 = args.get(3).expect("No string inserted! See: --help");
    let str2 = &str1.replace("o", "u");

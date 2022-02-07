@@ -1,6 +1,6 @@
 # WHAT IS LNGCNV
 
-lngcnv may stand for _"language converter"_, _"linguistic converter"_, _"lenguaje convertido"_, and the like.
+lngcnv may stand for _'language converter'_, _'linguistic converter'_, _'lenguaje convertido'_, and the like.
 
 lngcnv constitutes a set of linguistic tools which allow **(a)** displaying pronunciation of a phrase and **(b)** converting between different (e.g., regional) norms of orthography when a word or some piece of text is provided as an argument directly from the command line.
 
@@ -10,13 +10,25 @@ Multiple modern and ancient languages are (projected to be) supported.
 
 **1. English:** orthography
 
+– Transcribe into American English
+
 **2. Latin:** pronunciation & orthography
+
+– Reconstructed pronunciation of Classical Latin
+
+– Transcribe into the ancient orthographic convention
 
 **3. Quechua:** orthography
 
+– Transcribe between the trivocalic and the pentavocalic orthographies
+
 **4. Tikuna:** pronunciation & orthography
 
-Support for more languages (including **Polish**, **Spanish**) is under active development.
+– Two variants of pronunciation (Nazareth, CO; Umariaçu, BR)
+
+– Four distinct orthographies (Brazil; Colombia; Peru–ILV; Peru–FORMABIAP)
+
+Support for more languages, including the pronunciation of **English**, **Polish**, **Spanish**, **Ayacucho Quechua**, is under development.
 
 # INSTALLATION ON LINUX
 
@@ -24,13 +36,15 @@ Support for more languages (including **Polish**, **Spanish**) is under active d
 
 Install from crates.io by the use of cargo:
 
-_cargo install lngcnv --version 1.0.0-beta_
+_cargo install lngcnv --version 1.0.0_
 
 By default, the file will be downloaded to .cargo/bin/, a hidden folder in your home directory. For convenience, you will probably want to copy lngcnv to /usr/bin/ as in Method 2 (3a, 3b).
 
 ### METHOD 2
 
-**1.** Download the binary "lngcnv" for Linux x86_64 from GitHub.
+**1.** Download the binary 'lngcnv' for Linux x86_64 from GitHub:
+
+https://github.com/piotrbajdek/lngcnv
 
 **2.** Make the file executable:
 
