@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.0.0 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.1.0 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
 
 use std::env;
 use std::process::exit;
@@ -18,8 +18,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  lngcnv");
-      println!("Version:  1.0.0");
-      println!("Date:     February 07, 2022");
+      println!("Version:  1.1.0");
+      println!("Date:     February 09, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  piotr.bajdek@protonmail.com");
       println!("Source:   https://github.com/piotrbajdek/lngcnv");
@@ -31,6 +31,7 @@ fn main() {
 // CHANGES
 
       if argument == "-c" || argument == "--changes" {
+      println!("09.02.2022 v1.1.0 – Added --ipa --pol");
       println!("07.02.2022 v1.0.0 – The first release of lngcnv");
       let exit_code = fake_main();
       exit(exit_code);
@@ -48,6 +49,7 @@ fn main() {
       println!("");
       println!("OPTION 2: --eng  English | available for:        --ort");
       println!("          --lat  Latin   | available for: --ipa, --ort");
+      println!("          --pol  Polish  | available for: --ipa");
       println!("          --que  Quechua | available for:        --ort");
       println!("          --tca  Tikuna  | available for: --ipa, --ort");
       println!("");
@@ -83,6 +85,11 @@ fn main() {
       println!("          The modern spelling of Latin and the ancient convention can be used indifferently. To mark the duration of vowels, type either apices or macrons. In the --ort mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
       println!("");
       print!("{}", bright_yellow);
+      println!("Polish:");
+      print!("{}", clear);
+      println!("          Częstochowa (south-central Poland) is characterised by a fairly 'neutral-sounding' accent.");
+      println!("");
+      print!("{}", bright_yellow);
       println!("Quechua:");
       print!("{}", clear);
       println!("          The --ort mode allows transcribing between the trivocalic and the pentavocalic orthographies.");
@@ -116,8 +123,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: 1.0.0");
-      println!("February 07, 2022");
+      println!("Version: 1.1.0");
+      println!("February 09, 2022");
       let exit_code = fake_main();
       exit(exit_code);
       }
@@ -486,6 +493,144 @@ fn main() {
    let result = &str75.replace(" ", "·");
    println!("");
    println!("Classical Latin:");
+   println!("");
+   print!("{}", bright_yellow);
+   println!("{}", result);
+   print!("{}", clear);
+   println!("");
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+
+// POLISH: IPA
+
+   if input1 == "--ipa" && input2 == "--pol" || input1 == "--pol" && input2 == "--ipa" {
+
+   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str2 = &str1.to_lowercase();
+   let str3 = &str2.replace("dż", "ɖ͡ʐ");
+   let str4 = &str3.replace("dzi", "d͡ʑi");
+   let str5 = &str4.replace("dź", "d͡ʑ");
+   let str6 = &str5.replace("rdz", "ɾd̪͡z̪");
+   let str7 = &str6.replace("rd", "ɾd̪");
+   let str8 = &str7.replace("dz", "d͡z");
+   let str9 = &str8.replace("ód", "ód̥");
+   let str10 = &str9.replace("dcz", "d̥cz");
+   let str11 = &str10.replace("dt", "d̥t");
+   let str12 = &str11.replace("dk", "d̥k");
+   let str13 = &str12.replace("t", "t̪");
+   let str14 = &str13.replace("st̪rz", "ʂʈ͡ʂ");
+   let str15 = &str14.replace("t̪rz", "ṯʃ");
+   let str16 = &str15.replace("prz", "pʂ");
+   let str17 = &str16.replace("t̪r", "ṯɾ̥");
+   let str18 = &str17.replace("rt̪", "ɾ̥ṯ");
+   let str19 = &str18.replace("t̪m", "ṯm̥");
+   let str20 = &str19.replace("izn", "is̬n̥");
+   let str21 = &str20.replace("zn", "zn̥");
+   let str22 = &str21.replace("ans", "an̥s");
+   let str23 = &str22.replace("ącz", "ąṉcz");
+   let str24 = &str23.replace("sz", "ʃ");
+   let str25 = &str24.replace("śln", "śl̥n");
+   let str26 = &str25.replace("ślm", "śl̥m");
+   let str27 = &str26.replace("śń", "śɲ̥");
+   let str28 = &str27.replace("ń", "ɲ");
+   let str29 = &str28.replace("ni", "ɲi");
+   let str30 = &str29.replace("mc", "m̥c");
+   let str31 = &str30.replace("nc", "n̥c");
+   let str32 = &str31.replace("ch", "χ");
+   let str33 = &str32.replace("h", "x");
+   let str34 = &str33.replace("ś", "ɕ");
+   let str35 = &str34.replace("s", "s̻");
+   let str36 = &str35.replace("cz", "ʈ͡ʂ");
+   let str37 = &str36.replace("ci", "t͡ɕi");
+   let str38 = &str37.replace("c", "t͡s");
+   let str39 = &str38.replace("ć", "t͡ɕ");
+   let str40 = &str39.replace("χrz", "χʂ");   
+   let str41 = &str40.replace("rz", "ʒ");
+   let str42 = &str41.replace("r", "ɾ");
+   let str43 = &str42.replace("ż", "ʒ");
+   let str44 = &str43.replace("ź", "ʑ");
+   let str45 = &str44.replace("ng", "ŋɡ");
+   let str46 = &str45.replace("nk", "ŋk");
+   let str47 = &str46.replace("g", "ɡ");
+   let str48 = &str47.replace("wk", "v̥k");
+   let str49 = &str48.replace("w", "v");
+   let str50 = &str49.replace("bł", "b̥w̥");
+   let str51 = &str50.replace("ł", "w");
+   let str52 = &str51.replace("im", "i̞ɱ");
+   let str53 = &str52.replace("in", "i̞ŋ");
+   let str54 = &str53.replace("ia", "i̞a");
+   let str55 = &str54.replace("io", "i̞o");
+   let str56 = &str55.replace("ie", "i̞e");
+   let str57 = &str56.replace("iu", "i̞ü");
+   let str58 = &str57.replace("ju", "jü");
+   let str59 = &str58.replace("i", "i̞");
+   let str60 = &str59.replace("aʈ͡ʂ", "ɐʈ͡ʂ");
+   let str61 = &str60.replace("ʈ͡ʂa", "ʈ͡ʂɐ");
+   let str62 = &str61.replace("at͡s", "ɐt͡s");
+   let str63 = &str62.replace("t͡sa", "t͡sɐ");
+   let str64 = &str63.replace("aʃ", "ɐʃ");
+   let str65 = &str64.replace("ʃa", "ʃɐ");
+   let str66 = &str65.replace("s̻a", "s̻ɐ");
+   let str67 = &str66.replace("as̻", "ɐs̻");
+   let str68 = &str67.replace("am", "aɱ");
+   let str69 = &str68.replace("an", "aŋ");
+   let str70 = &str69.replace("a", "ä");
+   let str71 = &str70.replace("eʈ͡ʂ", "ɛ̝̈ʈ͡ʂ");
+   let str72 = &str71.replace("ʈ͡ʂe", "ʈ͡ʂɛ̝̈");
+   let str73 = &str72.replace("et͡s", "ɛ̝̈t͡s");
+   let str74 = &str73.replace("t͡se", "t͡sɛ̝̈");
+   let str75 = &str74.replace("eʃ", "ɛ̝̈ʃ");
+   let str76 = &str75.replace("ʃe", "ʃɛ̝̈");
+   let str77 = &str76.replace("s̻e", "s̻ɛ̝̈");
+   let str78 = &str77.replace("es̻", "ɛ̝̈s̻");
+   let str79 = &str78.replace("em", "ɛ̝ɱ");
+   let str80 = &str79.replace("en", "ɛ̝ŋ");
+   let str81 = &str80.replace("e", "ɛ̝");
+   let str82 = &str81.replace("ę", "ɛ̝̃");
+   let str83 = &str82.replace("oʈ͡ʂ", "ɔ̝̈ʈ͡ʂ");
+   let str84 = &str83.replace("ʈ͡ʂo", "ʈ͡ʂɔ̝̈");
+   let str85 = &str84.replace("ot͡s", "ɔ̝̈t͡s");
+   let str86 = &str85.replace("t͡so", "t͡sɔ̝̈");
+   let str87 = &str86.replace("oʃ", "ɔ̝̈ʃ");
+   let str88 = &str87.replace("ʃo", "ʃɔ̝̈");
+   let str89 = &str88.replace("s̻o", "s̻ɔ̝̈");
+   let str90 = &str89.replace("os̻", "ɔ̝̈s̻");
+   let str91 = &str90.replace("om", "ɔ̝ɱ");
+   let str92 = &str91.replace("on", "ɔ̝ŋ");
+   let str93 = &str92.replace("o", "ɔ̝");
+   let str94 = &str93.replace("ą", "ɔ̝̃");
+   let str95 = &str94.replace("ó", "u");
+   let str96 = &str95.replace("um", "u̞ɱ");
+   let str97 = &str96.replace("un", "u̞ŋ");
+   let str98 = &str97.replace("u", "u̞");
+   let str99 = &str98.replace("yʈ͡ʂ", "ɘʈ͡ʂ");
+   let str100 = &str99.replace("ʈ͡ʂy", "ʈ͡ʂɘ");
+   let str101 = &str100.replace("yt͡s", "ɘt͡s");
+   let str102 = &str101.replace("t͡sy", "t͡sɘ");
+   let str103 = &str102.replace("yʃ", "ɘʃ");
+   let str104 = &str103.replace("ʃy", "ʃɘ");
+   let str105 = &str104.replace("s̻y", "s̻ɘ");
+   let str106 = &str105.replace("ys̻", "ɘs̻");
+   let str107 = &str106.replace("ym", "ɘ̟ɱ");
+   let str108 = &str107.replace("yn", "ɘ̟ŋ");
+   let str109 = &str108.replace("y", "ɘ̟");
+   let str110 = &str109.replace(",", " ∣");
+   let str111 = &str110.replace(";", " ∥");
+   let str112 = &str111.replace(":", " ∣");
+   let str113 = &str112.replace(". ", " ∥ ");
+   let str114 = &str113.replace(".", "");
+   let str115 = &str114.replace("! ", " ∥ ");
+   let str116 = &str115.replace("!", "");
+   let str117 = &str116.replace("? ", " ∥ ");
+   let str118 = &str117.replace("?", "");
+   let str119 = &str118.replace("(", "∣ ");
+   let str120 = &str119.replace(")", " ∣");
+   let str121 = &str120.replace(" - ", " ∣ ");
+   let str122 = &str121.replace(" – ", " ∣ ");
+   let result = &str122.replace("--", " ∣ ");
+   println!("");
+   println!("Polish (Częstochowa):");
    println!("");
    print!("{}", bright_yellow);
    println!("{}", result);
