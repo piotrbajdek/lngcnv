@@ -22,7 +22,9 @@ Multiple modern and ancient languages are (projected to be) supported.
 
 – Pronunciation of the Polish Language (Częstochowa)
 
-**4. Quechua:** orthography
+**4. Quechua:** pronunciation & orthography
+
+– Pronunciation of Ayacucho Quechua (Wanta)
 
 – Transcribe between the trivocalic and the pentavocalic orthographies
 
@@ -32,7 +34,7 @@ Multiple modern and ancient languages are (projected to be) supported.
 
 – Four distinct orthographies (Brazil; Colombia; Peru–ILV; Peru–FORMABIAP)
 
-Support for more languages, including the pronunciation of **English**, **Spanish**, **Ayacucho Quechua**, is under development.
+Support for more languages, including the pronunciation of **English** and **Spanish**, is under development.
 
 # INSTALLATION ON LINUX
 
@@ -40,7 +42,7 @@ Support for more languages, including the pronunciation of **English**, **Spanis
 
 **1.** Install from crates.io by the use of cargo:
 
-_cargo install lngcnv --version 1.1.0_
+_cargo install lngcnv --version 1.2.0_
 
 By default, the file will be downloaded to .cargo/bin/, a hidden folder in your home directory.
 

@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.1.0 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.2.0 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
 
 use std::env;
 use std::process::exit;
@@ -18,8 +18,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  lngcnv");
-      println!("Version:  1.1.0");
-      println!("Date:     February 09, 2022");
+      println!("Version:  1.2.0");
+      println!("Date:     February 11, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  piotr.bajdek@protonmail.com");
       println!("Source:   https://github.com/piotrbajdek/lngcnv");
@@ -31,8 +31,9 @@ fn main() {
 // CHANGES
 
       if argument == "-c" || argument == "--changes" {
+      println!("11.02.2022 v1.2.0 – Added --ipa --que");
       println!("09.02.2022 v1.1.0 – Added --ipa --pol");
-      println!("07.02.2022 v1.0.0 – The first release of lngcnv");
+      println!("07.02.2022 v1.0.0 – The first release of lngcnv (--ipa --lat; --ipa --tca; --ort --eng; --ort --lat; --ort --que; --ort --tca)");
       let exit_code = fake_main();
       exit(exit_code);
       }
@@ -50,7 +51,7 @@ fn main() {
       println!("OPTION 2: --eng  English | available for:        --ort");
       println!("          --lat  Latin   | available for: --ipa, --ort");
       println!("          --pol  Polish  | available for: --ipa");
-      println!("          --que  Quechua | available for:        --ort");
+      println!("          --que  Quechua | available for: --ipa, --ort");
       println!("          --tca  Tikuna  | available for: --ipa, --ort");
       println!("");
       print!("{}", bright_yellow);
@@ -92,7 +93,7 @@ fn main() {
       print!("{}", bright_yellow);
       println!("Quechua:");
       print!("{}", clear);
-      println!("          The --ort mode allows transcribing between the trivocalic and the pentavocalic orthographies.");
+      println!("          In the --ipa mode, Ayacucho Quechua is implemented and the input must be spelled accordingly (although the algorithm is able to partially convert from Cusco Quechua). The --ort mode allows transcribing between the trivocalic and the pentavocalic orthographies and works fine with any language of the Quechuan Family.");
       println!("");
       print!("{}", bright_yellow);
       println!("Tikuna:");
@@ -123,8 +124,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: 1.1.0");
-      println!("February 09, 2022");
+      println!("Version: 1.2.0");
+      println!("February 11, 2022");
       let exit_code = fake_main();
       exit(exit_code);
       }
@@ -631,6 +632,83 @@ fn main() {
    let result = &str122.replace("--", " ∣ ");
    println!("");
    println!("Polish (Częstochowa):");
+   println!("");
+   print!("{}", bright_yellow);
+   println!("{}", result);
+   print!("{}", clear);
+   println!("");
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+
+// AYACUCHO QUECHUA: IPA
+
+   if input1 == "--ipa" && input2 == "--que" || input1 == "--que" && input2 == "--ipa" {
+
+   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str2 = &str1.to_lowercase();
+   let str3 = &str2.replace("sh", "ch");
+   let str4 = &str3.replace("chh", "ch");
+   let str5 = &str4.replace("kh", "k");
+   let str6 = &str5.replace("th", "t");
+   let str7 = &str6.replace("ph", "p");
+   let str8 = &str7.replace("qh", "q");
+   let str9 = &str8.replace("j", "q");
+   let str10 = &str9.replace("'", "");
+   let str11 = &str10.replace("’", "");
+   let str12 = &str11.replace("qu", "qo");
+   let str13 = &str12.replace("uq", "oq");
+   let str14 = &str13.replace("qi", "qe");
+   let str15 = &str14.replace("iq", "eq");
+   let str16 = &str15.replace("an", "aŋ");
+   let str17 = &str16.replace("ma", "mæ");
+   let str18 = &str17.replace("mis", "mɪ̝s̻");
+   let str19 = &str18.replace("mich", "mɪ̝ch");
+   let str20 = &str19.replace("cha", "chä");
+   let str21 = &str20.replace("ch", "ʧ");
+   let str22 = &str21.replace("g", "ɡ");
+   let str23 = &str22.replace("ka", "kæ̞");
+   let str24 = &str23.replace("da", "dæ");
+   let str25 = &str24.replace("d", "d̥");
+   let str26 = &str25.replace("lla", "llæ");
+   let str27 = &str26.replace("ll", "ʎ");
+   let str28 = &str27.replace("ñ", "ɲ");
+   let str29 = &str28.replace("pa", "pä");
+   let str30 = &str29.replace("f", "f̟");
+   let str31 = &str30.replace("q", "χ");
+   let str32 = &str31.replace("r", "ɾ");
+   let str33 = &str32.replace("ɾχ", "ɾ̥χ");
+   let str34 = &str33.replace("sa", "s̻ä");
+   let str35 = &str34.replace("s", "s̻");
+   let str36 = &str35.replace("ci", "s̻i");
+   let str37 = &str36.replace("ce", "s̻e");
+   let str38 = &str37.replace("z", "s̻");
+   let str39 = &str38.replace("t", "t̪");
+   let str40 = &str39.replace("wa", "wæ");   
+   let str41 = &str40.replace("ya", "yæ");
+   let str42 = &str41.replace("y", "j");
+   let str43 = &str42.replace("o", "ʊ̞");
+   let str44 = &str43.replace("e", "ɪ̞");
+   let str45 = &str44.replace("u", "u̞");
+   let str46 = &str45.replace("i", "i̞");
+   let str47 = &str46.replace(",", " ∣");
+   let str48 = &str47.replace(";", " ∥");
+   let str49 = &str48.replace(":", " ∣");
+   let str50 = &str49.replace(". ", " ∥ ");
+   let str51 = &str50.replace(".", "");
+   let str52 = &str51.replace("! ", " ∥ ");
+   let str53 = &str52.replace("!", "");
+   let str54 = &str53.replace("¡", "");
+   let str55 = &str54.replace("? ", " ∥ ");
+   let str56 = &str55.replace("?", "");
+   let str57 = &str56.replace("¿", "");
+   let str58 = &str57.replace("(", "∣ ");
+   let str59 = &str58.replace(")", " ∣");
+   let str60 = &str59.replace(" - ", " ∣ ");
+   let str61 = &str60.replace(" – ", " ∣ ");
+   let result = &str61.replace("--", " ∣ ");
+   println!("");
+   println!("Ayacucho Quechua (Wanta):");
    println!("");
    print!("{}", bright_yellow);
    println!("{}", result);
