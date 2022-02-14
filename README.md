@@ -2,7 +2,7 @@
 
 'lngcnv' may stand for _'language converter'_, _'linguistic converter'_, _'lenguaje convertido'_, and the like.
 
-lngcnv constitutes a set of linguistic tools which allow **(a)** displaying pronunciation of a phrase and **(b)** converting between different (e.g., regional) norms of orthography when a word or some piece of text is provided as an argument directly from the command line.
+lngcnv constitutes a set of linguistic tools which allow **(1)** displaying pronunciation of a phrase in the International Phonetic Alphabet, **(2)** translating between different (e.g., dialectal) varieties of a language, and **(3)** converting between different (e.g., regional) norms of orthography when a word or some piece of text is provided either **(a)** as an argument directly from the command line or **(b)** in a file (such like a hundreds of pages long book).
 
 Multiple modern and ancient languages are (projected to be) supported.
 
@@ -22,9 +22,11 @@ Multiple modern and ancient languages are (projected to be) supported.
 
 – Pronunciation of the Polish Language (Częstochowa)
 
-**4. Quechua:** pronunciation & orthography
+**4. Quechua:** pronunciation & dialect translation & orthography
 
 – Pronunciation of Ayacucho Quechua (Wanta)
+
+– Translate into Ayacucho Quechua from other varieties of Southern Quechua
 
 – Transcribe between the trivocalic and the pentavocalic orthographies
 
@@ -42,7 +44,7 @@ Support for more languages, including the pronunciation of **English** and **Spa
 
 **1.** Install from crates.io by the use of cargo:
 
-_cargo install lngcnv --version 1.2.0_
+_cargo install lngcnv_
 
 By default, the file will be downloaded to .cargo/bin/, a hidden folder in your home directory.
 
@@ -70,13 +72,9 @@ _sudo cp lngcnv /var/usrlocal/bin/_
 
 ## METHOD 3
 
-Download the lngcnv source from GitHub, build, rename and install the program:
+Download the lngcnv source from GitHub. Then, build and install the program:
 
-_rustc ./main.rs_
-
-_mv main lngcnv_
-
-_sudo cp lngcnv /usr/bin/_
+_cargo build && sudo cp target/debug/lngcnv /usr/bin/_
 
 # THE OFFICIAL LNGCNV FORUM
 
