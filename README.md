@@ -8,7 +8,9 @@ Multiple modern and ancient languages are (projected to be) supported.
 
 # SUPPORTED LANGUAGES
 
-**1. English:** orthography
+**1. English:** pronunciation & orthography
+
+– Pronunciation of Australian English [experimental, still in alpha stage]
 
 – Transcribe into American English
 
@@ -36,7 +38,7 @@ Multiple modern and ancient languages are (projected to be) supported.
 
 – Four distinct orthographies (Brazil; Colombia; Peru–ILV; Peru–FORMABIAP)
 
-Support for more languages, including the pronunciation of **English** and **Spanish**, is under development.
+Support for more languages including the pronunciation of **Spanish** is under development.
 
 # INSTALLATION ON LINUX
 
