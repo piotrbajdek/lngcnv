@@ -2,9 +2,11 @@
 
 'lngcnv' may stand for _'language converter'_, _'linguistic converter'_, _'lenguaje convertido'_, and the like.
 
-lngcnv constitutes a set of linguistic tools which allow **(1)** displaying pronunciation of a phrase in the International Phonetic Alphabet, **(2)** translating between different (e.g., dialectal) varieties of a language, and **(3)** converting between different (e.g., regional) norms of orthography when a word or some piece of text is provided either **(a)** as an argument directly from the command line or **(b)** in a file (such like a hundreds of pages long book).
+lngcnv constitutes a set of linguistic tools which allow **(1)** displaying pronunciation of a phrase in the International Phonetic Alphabet (IPA), **(2)** translating between different (e.g., dialectal) varieties of a language, and **(3)** converting between different (e.g., regional) norms of orthography when a word or some piece of text is provided either **(a)** as an argument directly from the command line or **(b)** in a file (such like a hundreds of pages long book).
 
 Multiple modern and ancient languages are (projected to be) supported.
+
+Use Charis SIL, Doulos SIL, or Gentium Plus font for good rendering of characters of the International Phonetic Alphabet.
 
 # SUPPORTED LANGUAGES
 
@@ -26,13 +28,13 @@ Multiple modern and ancient languages are (projected to be) supported.
 
 **4. Quechua:** pronunciation & dialect translation & orthography
 
-– Pronunciation of Ayacucho Quechua (Wanta)
+– Pronunciation of Chanka/ Ayacucho Quechua (Wanta)
 
 – Translate into Ayacucho Quechua from other varieties of Southern Quechua
 
 – Transcribe between the trivocalic and the pentavocalic orthographies
 
-**5. Tikuna:** pronunciation & orthography
+**5. Tikuna/ Ticuna:** pronunciation & orthography
 
 – Two variants of pronunciation (Nazareth, CO; Umariaçu, BR)
 
@@ -46,7 +48,7 @@ Support for more languages including the pronunciation of **Spanish** is under d
 
 **1.** Install from crates.io by the use of cargo:
 
-_cargo install lngcnv_
+_cargo install lngcnv \--version 1.4.0-beta_
 
 By default, the file will be downloaded to .cargo/bin/, a hidden folder in your home directory.
 
