@@ -1,6 +1,6 @@
 [package]
 name = "lngcnv"
-version = "1.4.0-beta"
+version = "1.4.0"
 authors = ["Piotr Bajdek <piotr.bajdek@protonmail.com>"]
 edition = "2021"
 description = "command line linguistic tools: display pronunciation, translate between dialects, convert between orthographies; support for multiple modern and ancient languages: English, Latin, Polish, Quechua, Tikuna"
