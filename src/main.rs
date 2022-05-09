@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.4.0 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.4.1 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
 
 use std::env;
 use std::fs;
@@ -20,8 +20,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  lngcnv");
-      println!("Version:  1.4.0");
-      println!("Date:     May 03, 2022");
+      println!("Version:  1.4.1");
+      println!("Date:     May 09, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  piotr.bajdek@protonmail.com");
       println!("Source:   https://github.com/piotrbajdek/lngcnv");
@@ -33,6 +33,7 @@ fn main() {
 // CHANGES
 
       if argument == "-c" || argument == "--changes" {
+      println!("09.05.2022 v1.4.1 – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
       println!("03.05.2022 v1.4.0 – Added --ipa --eng; Enhanced --ipa --tca, --ort --eng; Improved --ipa --lat");
       println!("14.02.2022 v1.3.0 – Added --lct --que; Added --input --output");
       println!("11.02.2022 v1.2.0 – Added --ipa --que");
@@ -138,8 +139,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: 1.4.0");
-      println!("May 03, 2022");
+      println!("Version: 1.4.1");
+      println!("May 09, 2022");
       let exit_code = fake_main();
       exit(exit_code);
       }
@@ -940,7 +941,8 @@ fn main() {
    }
    }
 // FROM THE COMMAND LINE: ENGLISH IPA
-   let str2 = &str1.to_lowercase();
+   let str1dot = str1.to_owned() + "."; // mark word ending
+   let str2 = &str1dot.to_lowercase();
    let str3 = &str2.replace("i'd", "ɐːd");
    let str4 = &str3.replace("i’d", "ɐːd");
    let str5 = &str4.replace("i'll", "ɑːl");
@@ -1821,7 +1823,8 @@ fn main() {
    }
    }
 // FROM THE COMMAND LINE: ENGLISH ORTHOGRAPHY
-   let str2 = &str1.replace("celling", "celing");
+   let str1space = str1.to_owned() + " "; // mark word ending
+   let str2 = &str1space.replace("celling", "celing");
    let str3 = &str2.replace("delling", "deling");
    let str4 = &str3.replace("velling", "veling");
    let str5 = &str4.replace("bour", "bor");
@@ -2069,7 +2072,8 @@ fn main() {
    }
    }
 // FROM THE COMMAND LINE: LATIN IPA
-   let str2 = &str1.to_lowercase();
+   let str1dot = str1.to_owned() + "."; // mark word ending
+   let str2 = &str1dot.to_lowercase();
    let str3 = &str2.replace("ꟾ", "ī");
    let str4 = &str3.replace("g", "ɡ");
    let str5 = &str4.replace("v", "u");
@@ -3053,7 +3057,8 @@ fn main() {
    }
    }
 // FROM THE COMMAND LINE: AYACUCHO QUECHUA DIALECT
-   let str2 = &str1.replace("o", "e");
+   let str1space = str1.to_owned() + " "; // mark word ending
+   let str2 = &str1space.replace("o", "e");
    let str3 = &str2.replace("e", "i");
    let str4 = &str3.replace("chh", "ch");
    let str5 = &str4.replace("kh", "k");
