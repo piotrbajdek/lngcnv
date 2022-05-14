@@ -1,11 +1,8 @@
-// LNGCNV VERSION 1.5.0 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.5.1 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
 
 use std::env;
 use std::fs;
 use std::io::Write;
-use std::process::exit;
-
-fn fake_main() -> i32 {1} // exit
 
 fn main() {
 
@@ -23,28 +20,27 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  lngcnv");
-      println!("Version:  1.5.0");
-      println!("Date:     May 14, 2022");
+      println!("Version:  1.5.1");
+      println!("Date:     May 15, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@protonmail.com" + clear);
       println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + clear);
       println!("License:  The MIT License (MIT) © 2022 Piotr Bajdek");
-      let exit_code = fake_main();
-      exit(exit_code);
+      return;
       }
 
 // CHANGES
 
       if argument == "-c" || argument == "--changes" {
-      println!("{}", bright_green.to_owned() + "14.05.2022 v1.5.0 – Enhanced --ipa --tca; Enhanced source code" + clear);
+      println!("{}", bright_green.to_owned() + "15.05.2022 v1.5.1 – Improved source code" + clear);
+      println!("14.05.2022 v1.5.0 – Enhanced --ipa --tca; Enhanced source code");
       println!("09.05.2022 v1.4.1 – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
       println!("03.05.2022 v1.4.0 – Added --ipa --eng; Enhanced --ipa --tca, --ort --eng; Improved --ipa --lat");
       println!("14.02.2022 v1.3.0 – Added --lct --que; Added --input --output");
       println!("11.02.2022 v1.2.0 – Added --ipa --que");
       println!("09.02.2022 v1.1.0 – Added --ipa --pol");
       println!("07.02.2022 v1.0.0 – Implemented --ipa --lat, --ipa --tca, --ort --eng, --ort --lat, --ort --que, --ort --tca");
-      let exit_code = fake_main();
-      exit(exit_code);
+      return;
       }
 
 // HELP
@@ -87,8 +83,7 @@ fn main() {
       println!("          -l, --languages Show additional info");
       println!("          -L, --license   Show licesing information");
       println!("          -v, --version   Show the program version");
-      let exit_code = fake_main();
-      exit(exit_code);
+      return;
       }
 
 // LANGUAGES
@@ -109,8 +104,7 @@ fn main() {
       print!("{}", bright_yellow);
       println!("Tikuna:{}", clear.to_owned() + "   Three variants of pronunciation (Río Cotuhé, CO; Nazareth, CO; Umariaçu, BR) (" + bright_green + "--ipa" + clear + ") and four distinct orthographies (" + bright_green + "--ort" + clear + ") are supported. There is no support for tones at this stage of program development. Even so, in the " + bright_green + "--ipa" + clear + " mode tonal annotations can be displayed in subscript if inserted manually as numbers beginning from 1 (the lowest) to 6 (the highest tone).");
       println!("          Abbreviations: ILV - Instituto Lingüístico de Verano; FORMABIAP - Formación de Maestros Bilingües de la Amazonía Peruana");
-      let exit_code = fake_main();
-      exit(exit_code);
+      return;
       }
 
 // LICENSE
@@ -125,17 +119,15 @@ fn main() {
       println!("The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.");
       println!("");
       println!("THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.");
-      let exit_code = fake_main();
-      exit(exit_code);
+      return;
       }
 
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: 1.5.0");
-      println!("May 14, 2022");
-      let exit_code = fake_main();
-      exit(exit_code);
+      println!("Version: 1.5.1");
+      println!("May 15, 2022");
+      return;
       }
 
    }
@@ -924,14 +916,7 @@ fn main() {
    file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: ENGLISH IPA
@@ -1700,8 +1685,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // ENGLISH: ORTHOGRAPHY
@@ -1807,14 +1791,7 @@ fn main() {
    file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: ENGLISH ORTHOGRAPHY
@@ -1910,8 +1887,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // LATIN: IPA
@@ -2057,14 +2033,7 @@ fn main() {
    file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: LATIN IPA
@@ -2199,8 +2168,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // LATIN: ORTHOGRAPHY
@@ -2298,14 +2266,7 @@ fn main() {
    file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: LATIN ORTHOGRAPHY
@@ -2391,8 +2352,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // POLISH: IPA
@@ -2537,14 +2497,7 @@ fn main() {
    file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: POLISH IPA
@@ -2677,8 +2630,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // AYACUCHO QUECHUA: IPA
@@ -2762,14 +2714,7 @@ fn main() {
    file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: AYACUCHO QUECHUA IPA
@@ -2841,8 +2786,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // AYACUCHO QUECHUA: DIALECT
@@ -3046,14 +2990,7 @@ fn main() {
    file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: AYACUCHO QUECHUA DIALECT
@@ -3247,8 +3184,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // QUECHUA: ORTHOGRAPHY
@@ -3323,14 +3259,7 @@ fn main() {
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: QUECHUA ORTHOGRAPHY
@@ -3395,8 +3324,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // TIKUNA: IPA
@@ -3726,14 +3654,7 @@ fn main() {
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: TIKUNA IPA
@@ -4054,8 +3975,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // TIKUNA: IPA --tca.co-rio_cotuhe
@@ -4180,14 +4100,7 @@ fn main() {
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: COTUHÉ IPA
@@ -4300,8 +4213,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // TIKUNA: IPA --tca.co-nazareth
@@ -4417,14 +4329,7 @@ fn main() {
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: NAZARETH IPA
@@ -4528,8 +4433,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // TIKUNA: IPA --tca.br-umariacu
@@ -4653,14 +4557,7 @@ fn main() {
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: UMARIAÇU IPA
@@ -4771,8 +4668,7 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // TIKUNA: ORTHOGRAPHY
@@ -5189,14 +5085,7 @@ fn main() {
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 
    println!("Data written to the file {}", outputfile);
-   let exit_code = fake_main();
-   exit(exit_code);
-   }
-   else {
-   print!("{}", red);
-   println!("Invalid arguments! Use option: --output See: --help");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
    }
 // FROM THE COMMAND LINE: TIKUNA ORTHOGRAPHY
@@ -5606,13 +5495,11 @@ fn main() {
    println!("{}", result);
    print!("{}", clear);
    println!("");
-   let exit_code = fake_main();
-   exit(exit_code);
+   return;
    }
 
 // INVALID ARGUMENT [1] AND/OR [2]
 
-   print!("{}", red);
-   println!("Error: Invalid arguments provided! See: --help");
+   panic!("{}", red.to_owned() + "Invalid arguments provided! See: --help" + clear);
 
 }
