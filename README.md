@@ -4,7 +4,7 @@
 
 [lngcnv](https://github.com/piotrbajdek/lngcnv) allows **(1)** displaying pronunciation of a phrase in the International Phonetic Alphabet (IPA), **(2)** translating between different (e.g., dialectal) varieties of a language, and **(3)** converting between different (e.g., regional) norms of orthography when a word or some piece of text is provided either **(a)** as an argument directly from the command line or **(b)** in a file, such as a hundreds of pages long book.
 
-Multiple modern and ancient languages are (projected to be) supported. The program is written in Rust for high performance, code correctness, and ease of long-term development.
+Multiple modern and ancient languages are supported, often including several dialects. All linguistic algorithms and the program source code are created by the author entirely from scratch, and distributed under the MIT license. The program is written in Rust for high performance, code correctness, and ease of long-term development.
 
 Use Charis SIL, Doulos SIL, or Gentium Plus font for good rendering of characters of the International Phonetic Alphabet.
 
@@ -36,7 +36,7 @@ Use Charis SIL, Doulos SIL, or Gentium Plus font for good rendering of character
 
 **5. Tikuna/ Ticuna:** pronunciation & orthography
 
-– Two variants of pronunciation (Nazareth, CO; Umariaçu, BR)
+– Three variants of pronunciation (Río Cotuhé, CO; Nazareth, CO; Umariaçu, BR)
 
 – Four distinct orthographies (Brazil; Colombia; Peru–ILV; Peru–FORMABIAP)
 
@@ -60,7 +60,7 @@ By default, the file will be downloaded to .cargo/bin/, a hidden folder in your 
 
 **1.** Download the binary 'lngcnv' for Linux x86_64 from GitHub:
 
-https://github.com/piotrbajdek/lngcnv/releases/tag/v1.4.1
+https://github.com/piotrbajdek/lngcnv/releases/tag/v1.5.0
 
 **2.** Make the file executable:
 
@@ -78,7 +78,7 @@ _sudo cp lngcnv /var/usrlocal/bin/_
 
 Download the lngcnv source from GitHub. Then, build and install the program:
 
-https://github.com/piotrbajdek/lngcnv/releases/tag/v1.4.1
+https://github.com/piotrbajdek/lngcnv/releases/tag/v1.5.0
 
 _cargo build && sudo cp target/debug/lngcnv /usr/bin/_
 

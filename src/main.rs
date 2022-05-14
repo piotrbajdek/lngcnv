@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.4.1 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.5.0 / THE MIT LICENSE (MIT) © 2022 PIOTR BAJDEK
 
 use std::env;
 use std::fs;
@@ -10,7 +10,10 @@ fn fake_main() -> i32 {1} // exit
 fn main() {
 
    let clear = "\x1b[0m"; // reset the font color
-   let bright_yellow = "\x1b[93m"; //  font color
+   let red = "\x1b[31m";
+   let bright_green = "\x1b[92m";
+   let bright_yellow = "\x1b[93m";
+   let blue_underlined = "\x1b[34;4m";
 
 // ARGUMENTS ANYWHERE WITHIN THE STRING
 
@@ -20,11 +23,11 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  lngcnv");
-      println!("Version:  1.4.1");
-      println!("Date:     May 09, 2022");
+      println!("Version:  1.5.0");
+      println!("Date:     May 14, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
-      println!("Contact:  piotr.bajdek@protonmail.com");
-      println!("Source:   https://github.com/piotrbajdek/lngcnv");
+      println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@protonmail.com" + clear);
+      println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + clear);
       println!("License:  The MIT License (MIT) © 2022 Piotr Bajdek");
       let exit_code = fake_main();
       exit(exit_code);
@@ -33,6 +36,7 @@ fn main() {
 // CHANGES
 
       if argument == "-c" || argument == "--changes" {
+      println!("{}", bright_green.to_owned() + "14.05.2022 v1.5.0 – Enhanced --ipa --tca; Enhanced source code" + clear);
       println!("09.05.2022 v1.4.1 – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
       println!("03.05.2022 v1.4.0 – Added --ipa --eng; Enhanced --ipa --tca, --ort --eng; Improved --ipa --lat");
       println!("14.02.2022 v1.3.0 – Added --lct --que; Added --input --output");
@@ -49,8 +53,7 @@ fn main() {
       print!("{}", bright_yellow);
       println!("Usage:    lngcnv [OPTION 1/2] [OPTION 2/1] [STRING]");
       println!("          lngcnv [OPTION 1/2] [OPTION 2/1] [OPTION 3] [FILE] [OPTION 4] [FILE]");
-      print!("{}", clear);
-      println!("");
+      println!("{}", clear);
       println!("OPTION 1: --ipa  Transcribe [STRING/ FILE] into the Intern. Phonetic Alphabet");
       println!("          --lct  Translate [STRING/ FILE] between dialects or lang. varieties");
       println!("          --ort  Convert [STRING/ FILE] between regional norms of orthography");
@@ -60,23 +63,24 @@ fn main() {
       println!("          --pol  Polish  | available for: --ipa");
       println!("          --que  Quechua | available for: --ipa, --lct, --ort");
       println!("          --tca  Tikuna  | available for: --ipa,        --ort");
-      println!("");
-      print!("{}", bright_yellow);
-      println!("Examples: lngcnv --ipa --lat 'Vēnī, vīdī, vīcī.'");
+      println!("{}", bright_yellow);
+      println!(r#"Examples: lngcnv --ipa --lat "Vēnī, vīdī, vīcī.""#);
       println!("          lngcnv --lat --ipa 'Vēnī, vīdī, vīcī.'");
-      print!("{}", clear);
-      println!("");
+      println!("{}", clear);
       println!("          For multi-word queries always use single or double quotation marks!");
       println!("          For word strings including apostrophes, use double quotation.");
       println!("");
+      println!("          In the --ipa mode, the output can be limited to a selected variant");
+      println!("          of pronunciation if two or more are available (see --languages):");
+      println!("");
+      println!("          --tca.br-umariacu || --tca.co-nazareth || --tca.co-rio_cotuhe");
+      println!("");
       println!("OPTION 3: -i, --input     Choose a file to be opened for analysis");
       println!("OPTION 4: -o, --output    Choose a name for the file to be created");
-      println!("");
-      print!("{}", bright_yellow);
+      println!("{}", bright_yellow);
       println!("Examples: lngcnv --ipa --lat --input latin_book.txt --output output_file.txt");
       println!("          lngcnv --lat --ipa --input latin_book.txt --output output_file.txt");
-      print!("{}", clear);
-      println!("");
+      println!("{}", clear);
       println!("See also: -a, --about     Show contact and program info");
       println!("          -c, --changes   Show change notes");
       println!("          -h, --help      Show this help");
@@ -91,29 +95,20 @@ fn main() {
 
       if argument == "-l" || argument == "--languages" {
       print!("{}", bright_yellow);
-      println!("English:");
-      print!("{}", clear);
-      println!("          The --ipa mode of operation displays the pronunciation of Australian English [experimental, still in alpha stage]. In the --ort mode, the text is transcribed into American English.");
+      println!("English:{}", clear.to_owned() + "  The " + bright_green + "--ipa" + clear + " mode of operation displays the pronunciation of Australian English " + red + "[experimental, still in alpha stage]" + clear + ". In the " + bright_green + "--ort" + clear + " mode, the text is transcribed into American English.");
       println!("");
       print!("{}", bright_yellow);
-      println!("Latin:");
-      print!("{}", clear);
-      println!("          The modern spelling of Latin and the ancient convention can be used indifferently. To mark the duration of vowels, type either apices or macrons. In the --ort mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
+      println!("Latin:{}", clear.to_owned() + "    The modern spelling of Latin and the ancient convention can be used indifferently in the " + bright_green + "--ipa" + clear + " mode. To mark the duration of vowels, type either apices or macrons. In the " + bright_green + "--ort" + clear + " mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
       println!("");
       print!("{}", bright_yellow);
-      println!("Polish:");
-      print!("{}", clear);
-      println!("          Częstochowa (south-central Poland) is characterised by a fairly 'neutral-sounding' accent.");
+      println!("Polish:{}", clear.to_owned() + "   Częstochowa (south-central Poland) is characterised by a fairly 'neutral-sounding' accent (" + bright_green + "--ipa" + clear + ").");
       println!("");
       print!("{}", bright_yellow);
-      println!("Quechua:");
-      print!("{}", clear);
-      println!("          In the --ipa mode, Ayacucho Quechua is implemented and the input must be spelled accordingly. The --lct mode of operation translates into Ayacucho Quechua from other varieties of Southen Quechua. Manual adjustments are necessary despite most dialectal features are converted by the algorithm. The --ort mode allows transcribing between the trivocalic and the pentavocalic orthographies and works fine with any language of the Quechuan Family.");
+      println!("Quechua:{}", clear.to_owned() + "  In the " + bright_green + "--ipa" + clear + " mode, Ayacucho Quechua is implemented and the input must be spelled accordingly. The " + bright_green + "--lct" + clear + " mode of operation translates into Ayacucho Quechua from other varieties of Southen Quechua. Manual adjustments are necessary despite dialectal features are mostly converted by the algorithm. The " + bright_green + "--ort" + clear + " mode allows transcribing between the trivocalic and the pentavocalic orthographies and works fine with any language of the Quechuan Family.");
       println!("");
       print!("{}", bright_yellow);
-      println!("Tikuna:");
-      print!("{}", clear);
-      println!("          Two variants of pronunciation (Nazareth, CO; Umariaçu, BR) (--ipa) and four distinct orthographies (--ort) are supported. There is no support for tones at this stage of program development. Even so, in the --ipa mode tonal annotations can be displayed in subscript if inserted manually as numbers beginning from 1 (the lowest) to 6 (the highest tone). Abbreviations: ILV - Instituto Lingüístico de Verano; FORMABIAP - Formación de Maestros Bilingües de la Amazonía Peruana");
+      println!("Tikuna:{}", clear.to_owned() + "   Three variants of pronunciation (Río Cotuhé, CO; Nazareth, CO; Umariaçu, BR) (" + bright_green + "--ipa" + clear + ") and four distinct orthographies (" + bright_green + "--ort" + clear + ") are supported. There is no support for tones at this stage of program development. Even so, in the " + bright_green + "--ipa" + clear + " mode tonal annotations can be displayed in subscript if inserted manually as numbers beginning from 1 (the lowest) to 6 (the highest tone).");
+      println!("          Abbreviations: ILV - Instituto Lingüístico de Verano; FORMABIAP - Formación de Maestros Bilingües de la Amazonía Peruana");
       let exit_code = fake_main();
       exit(exit_code);
       }
@@ -121,9 +116,7 @@ fn main() {
 // LICENSE
 
       if argument == "-L" || argument == "--license" {
-      print!("{}", bright_yellow);
-      println!("The MIT License (MIT)");
-      print!("{}", clear);
+      println!("{}", bright_yellow.to_owned() + "The MIT License (MIT)" + clear);
       println!("");
       println!("Copyright © 2022 Piotr Bajdek");
       println!("");
@@ -139,8 +132,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: 1.4.1");
-      println!("May 09, 2022");
+      println!("Version: 1.5.0");
+      println!("May 14, 2022");
       let exit_code = fake_main();
       exit(exit_code);
       }
@@ -151,22 +144,22 @@ fn main() {
 
    let args: Vec<String> = env::args().collect();
 
-   let input1 = args.get(1).expect("Invalid or missing arguments! See: --help");
-   let input2 = args.get(2).expect("Invalid or missing arguments! See: --help");
+   let input1 = args.get(1).expect(&(red.to_owned() + "Invalid or missing arguments! See: --help" + clear));
+   let input2 = args.get(2).expect(&(red.to_owned() + "Invalid or missing arguments! See: --help" + clear));
 
 // ENGLISH: IPA
 
    if input1 == "--ipa" && input2 == "--eng" || input1 == "--eng" && input2 == "--ipa" {
 
-   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
 // FROM A FILE: ENGLISH IPA
    if str1 == "-i" || str1 == "--input" {
-   let inputfile = args.get(4).expect("No file to read! See: --help");      
-   let output = args.get(5).expect("Invalid arguments! Use option: --output See: --help");      
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));      
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));      
    if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect("No output file specified! See: --help");
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
 
-   let str1 = fs::read_to_string(inputfile).expect("Something went wrong reading the file!");
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
    let str2 = &str1.to_lowercase();
    let str3 = &str2.replace("i'd", "ɐːd");
    let str4 = &str3.replace("i’d", "ɐːd");
@@ -925,16 +918,17 @@ fn main() {
    let str757 = &str756.replace(" – ", " ∣ ");
    let result = &str757.replace("--", " ∣ ");
 
-   let mut file = std::fs::File::create(outputfile).expect("The output file could not be created!");
-   file.write_all("AUSTRALIAN ENGLISH: [EXPERIMENTAL, STILL IN ALPHA STAGE]".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("AUSTRALIAN ENGLISH: [EXPERIMENTAL, STILL IN ALPHA STAGE]".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
    let exit_code = fake_main();
    exit(exit_code);
    }
    else {
+   print!("{}", red);
    println!("Invalid arguments! Use option: --output See: --help");
    let exit_code = fake_main();
    exit(exit_code);
@@ -1700,7 +1694,7 @@ fn main() {
    let str757 = &str756.replace(" – ", " ∣ ");
    let result = &str757.replace("--", " ∣ ");
    println!("");
-   println!("Australian English: [experimental, still in alpha stage]");
+   println!("Australian English: {}", red.to_owned() + "[experimental, still in alpha stage]");
    println!("");
    print!("{}", bright_yellow);
    println!("{}", result);
@@ -1713,15 +1707,15 @@ fn main() {
 // ENGLISH: ORTHOGRAPHY
 
    if input1 == "--ort" && input2 == "--eng" || input1 == "--eng" && input2 == "--ort" {
-   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
 // FROM A FILE: ENGLISH ORTHOGRAPHY
    if str1 == "-i" || str1 == "--input" {
-   let inputfile = args.get(4).expect("No file to read! See: --help");      
-   let output = args.get(5).expect("Invalid arguments! Use option: --output See: --help");      
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));      
    if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect("No output file specified! See: --help");
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
 
-   let str1 = fs::read_to_string(inputfile).expect("Something went wrong reading the file!");
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
    let str2 = &str1.replace("celling", "celing");
    let str3 = &str2.replace("delling", "deling");
    let str4 = &str3.replace("velling", "veling");
@@ -1807,16 +1801,17 @@ fn main() {
    let str84 = &str83.replace("wellery", "welry");
    let result = &str84.replace("WELLERY", "WELRY");
 
-   let mut file = std::fs::File::create(outputfile).expect("The output file could not be created!");
-   file.write_all("AMERICAN ENGLISH:".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("AMERICAN ENGLISH:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
    let exit_code = fake_main();
    exit(exit_code);
    }
    else {
+   print!("{}", red);
    println!("Invalid arguments! Use option: --output See: --help");
    let exit_code = fake_main();
    exit(exit_code);
@@ -1923,15 +1918,15 @@ fn main() {
 
    if input1 == "--ipa" && input2 == "--lat" || input1 == "--lat" && input2 == "--ipa" {
 
-   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
 // FROM A FILE: LATIN IPA
    if str1 == "-i" || str1 == "--input" {
-   let inputfile = args.get(4).expect("No file to read! See: --help");      
-   let output = args.get(5).expect("Invalid arguments! Use option: --output See: --help");      
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
    if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect("No output file specified! See: --help");
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
 
-   let str1 = fs::read_to_string(inputfile).expect("Something went wrong reading the file!");
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
    let str2 = &str1.to_lowercase();
    let str3 = &str2.replace("ꟾ", "ī");
    let str4 = &str3.replace("g", "ɡ");
@@ -2056,16 +2051,17 @@ fn main() {
    let str123 = &str122.replace(" – ", " ∣ ");
    let result = &str123.replace("--", " ∣ ");
 
-   let mut file = std::fs::File::create(outputfile).expect("The output file could not be created!");
-   file.write_all("CLASSICAL LATIN:".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("CLASSICAL LATIN:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
    let exit_code = fake_main();
    exit(exit_code);
    }
    else {
+   print!("{}", red);
    println!("Invalid arguments! Use option: --output See: --help");
    let exit_code = fake_main();
    exit(exit_code);
@@ -2211,15 +2207,15 @@ fn main() {
 
    if input1 == "--ort" && input2 == "--lat" || input1 == "--lat" && input2 == "--ort" {
 
-   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
 // FROM A FILE: LATIN ORTHOGRAPHY
    if str1 == "-i" || str1 == "--input" {
-   let inputfile = args.get(4).expect("No file to read! See: --help");      
-   let output = args.get(5).expect("Invalid arguments! Use option: --output See: --help");      
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
    if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect("No output file specified! See: --help");
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
 
-   let str1 = fs::read_to_string(inputfile).expect("Something went wrong reading the file!");
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
    let str2 = &str1.replace("a", "A");
    let str3 = &str2.replace("á", "Á");
    let str4 = &str3.replace("ă", "A");
@@ -2296,16 +2292,17 @@ fn main() {
    let str75 = &str74.replace("?", "");
    let result = &str75.replace(" ", "·");
 
-   let mut file = std::fs::File::create(outputfile).expect("The output file could not be created!");
-   file.write_all("CLASSICAL LATIN:".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("CLASSICAL LATIN:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
    let exit_code = fake_main();
    exit(exit_code);
    }
    else {
+   print!("{}", red);
    println!("Invalid arguments! Use option: --output See: --help");
    let exit_code = fake_main();
    exit(exit_code);
@@ -2402,15 +2399,15 @@ fn main() {
 
    if input1 == "--ipa" && input2 == "--pol" || input1 == "--pol" && input2 == "--ipa" {
 
-   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
 // FROM A FILE: POLISH IPA
    if str1 == "-i" || str1 == "--input" {
-   let inputfile = args.get(4).expect("No file to read! See: --help");      
-   let output = args.get(5).expect("Invalid arguments! Use option: --output See: --help");      
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
    if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect("No output file specified! See: --help");
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
 
-   let str1 = fs::read_to_string(inputfile).expect("Something went wrong reading the file!");
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
    let str2 = &str1.to_lowercase();
    let str3 = &str2.replace("dż", "ɖ͡ʐ");
    let str4 = &str3.replace("dzi", "d͡ʑi");
@@ -2534,16 +2531,17 @@ fn main() {
    let str122 = &str121.replace(" – ", " ∣ ");
    let result = &str122.replace("--", " ∣ ");
 
-   let mut file = std::fs::File::create(outputfile).expect("The output file could not be created!");
-   file.write_all("POLISH (CZĘSTOCHOWA):".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("POLISH (CZĘSTOCHOWA):".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
    let exit_code = fake_main();
    exit(exit_code);
    }
    else {
+   print!("{}", red);
    println!("Invalid arguments! Use option: --output See: --help");
    let exit_code = fake_main();
    exit(exit_code);
@@ -2687,15 +2685,15 @@ fn main() {
 
    if input1 == "--ipa" && input2 == "--que" || input1 == "--que" && input2 == "--ipa" {
 
-   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
 // FROM A FILE: AYACUCHO QUECHUA IPA
    if str1 == "-i" || str1 == "--input" {
-   let inputfile = args.get(4).expect("No file to read! See: --help");      
-   let output = args.get(5).expect("Invalid arguments! Use option: --output See: --help");      
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
    if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect("No output file specified! See: --help");
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
 
-   let str1 = fs::read_to_string(inputfile).expect("Something went wrong reading the file!");
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
    let str2 = &str1.to_lowercase();
    let str3 = &str2.replace("sh", "ch");
    let str4 = &str3.replace("chh", "ch");
@@ -2758,16 +2756,17 @@ fn main() {
    let str61 = &str60.replace(" – ", " ∣ ");
    let result = &str61.replace("--", " ∣ ");
 
-   let mut file = std::fs::File::create(outputfile).expect("The output file could not be created!");
-   file.write_all("AYACUCHO QUECHUA (WANTA):".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("AYACUCHO QUECHUA (WANTA):".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
    let exit_code = fake_main();
    exit(exit_code);
    }
    else {
+   print!("{}", red);
    println!("Invalid arguments! Use option: --output See: --help");
    let exit_code = fake_main();
    exit(exit_code);
@@ -2850,15 +2849,15 @@ fn main() {
 
    if input1 == "--lct" && input2 == "--que" || input1 == "--que" && input2 == "--lct" {
 
-   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
 // FROM A FILE: AYACUCHO QUECHUA DIALECT
    if str1 == "-i" || str1 == "--input" {
-   let inputfile = args.get(4).expect("No file to read! See: --help");      
-   let output = args.get(5).expect("Invalid arguments! Use option: --output See: --help");      
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
    if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect("No output file specified! See: --help");
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
 
-   let str1 = fs::read_to_string(inputfile).expect("Something went wrong reading the file!");
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
    let str2 = &str1.replace("o", "e");
    let str3 = &str2.replace("e", "i");
    let str4 = &str3.replace("chh", "ch");
@@ -3041,16 +3040,17 @@ fn main() {
    let str181 = &str180.replace("q rima", "pa rima");
    let result = &str181.replace("q simi", "pa simi");
 
-   let mut file = std::fs::File::create(outputfile).expect("The output file could not be created!");
-   file.write_all("AYACUCHO QUECHUA:".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("AYACUCHO QUECHUA:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
    println!("Data written to the file {}", outputfile);
    let exit_code = fake_main();
    exit(exit_code);
    }
    else {
+   print!("{}", red);
    println!("Invalid arguments! Use option: --output See: --help");
    let exit_code = fake_main();
    exit(exit_code);
@@ -3255,24 +3255,24 @@ fn main() {
 
    if input1 == "--ort" && input2 == "--que" || input1 == "--que" && input2 == "--ort" {
 
-   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
 // FROM A FILE: QUECHUA ORTHOGRAPHY
    if str1 == "-i" || str1 == "--input" {
-   let inputfile = args.get(4).expect("No file to read! See: --help");      
-   let output = args.get(5).expect("Invalid arguments! Use option: --output See: --help");      
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
    if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect("No output file specified! See: --help");
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
 // TRIVOCALIC
-   let str1 = fs::read_to_string(inputfile).expect("Something went wrong reading the file!");
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
    let str2 = &str1.replace("o", "u");
    let str3 = &str2.replace("O", "U");
    let str4 = &str3.replace("e", "i");
    let result = &str4.replace("E", "I");
-   let mut file = std::fs::File::create(outputfile).expect("The output file could not be created!");
-   file.write_all("TRIVOCALIC:".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("TRIVOCALIC:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 // PENTAVOCALIC
    let str2 = &str1.replace("qu", "qo");
    let str3 = &str2.replace("Qu", "Qo");
@@ -3316,17 +3316,18 @@ fn main() {
    let str41 = &str40.replace("iq", "eq");
    let str42 = &str41.replace("Iq", "Eq");
    let result = &str42.replace("IQ", "EQ");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("PENTAVOCALIC:".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("PENTAVOCALIC:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 
    println!("Data written to the file {}", outputfile);
    let exit_code = fake_main();
    exit(exit_code);
    }
    else {
+   print!("{}", red);
    println!("Invalid arguments! Use option: --output See: --help");
    let exit_code = fake_main();
    exit(exit_code);
@@ -3402,15 +3403,123 @@ fn main() {
 
    if input1 == "--ipa" && input2 == "--tca" || input1 == "--tca" && input2 == "--ipa" {
 
-   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
 // FROM A FILE: TIKUNA IPA
    if str1 == "-i" || str1 == "--input" {
-   let inputfile = args.get(4).expect("No file to read! See: --help");      
-   let output = args.get(5).expect("Invalid arguments! Use option: --output See: --help");      
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
    if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect("No output file specified! See: --help");
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
+// IPA: COTUHÉ
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
+   let str2 = &str1.to_lowercase();
+   let str3 = &str2.replace("1", "₁");
+   let str4 = &str3.replace("2", "₂");
+   let str5 = &str4.replace("3", "₃");
+   let str6 = &str5.replace("4", "₄");
+   let str7 = &str6.replace("5", "₅");
+   let str8 = &str7.replace("6", "₆");
+   let str9 = &str8.replace("x", "ʔ");
+   let str10 = &str9.replace("'", "ʔ");
+   let str11 = &str10.replace("’", "ʔ");
+   let str12 = &str11.replace("b", "β");
+   let str13 = &str12.replace("cue", "kue");
+   let str14 = &str13.replace("cui", "kui");
+   let str15 = &str14.replace("c", "k");
+   let str16 = &str15.replace("tkh", "ch");
+   let str17 = &str16.replace("kh", "ch");
+   let str18 = &str17.replace("ch", "ʧ");
+   let str19 = &str18.replace("d", "d");
+   let str20 = &str19.replace("ng", "ŋ");
+   let str21 = &str20.replace("g", "ɡ");
+   let str22 = &str21.replace("n", "n̪");
+   let str23 = &str22.replace("nh", "ñ");
+   let str24 = &str23.replace("ñ", "ɲ");
+   let str25 = &str24.replace("que", "ke");
+   let str26 = &str25.replace("qui", "ki");
+   let str27 = &str26.replace("q", "k");
+   let str28 = &str27.replace("r", "ɾ");
+   let str29 = &str28.replace("t", "t̪");
+   let str30 = &str29.replace("y", "d͡ʒ");
+   let str31 = &str30.replace("j", "d͡ʒ");
+   let str32 = &str31.replace("f", "ɸ");
+   let str33 = &str32.replace("z", "s");
+   let str34 = &str33.replace("ç", "s");
+   let str35 = &str34.replace("s", "s̺");
+   let str36 = &str35.replace("v", "ɰ");
+   let str37 = &str36.replace("k", "k̬");
+   let str38 = &str37.replace("ã", "ɐ̃");
+   let str39 = &str38.replace("ã", "ɐ̃");
+   let str40 = &str39.replace("õ", "ɒ̃");
+   let str41 = &str40.replace("õ", "ɒ̃");
+   let str42 = &str41.replace("ẽ", "ɶ̃");
+   let str43 = &str42.replace("ẽ", "ɶ̃");
+   let str44 = &str43.replace("ũ", "ʊ̞̃");
+   let str45 = &str44.replace("ũ", "ʊ̞̃");
+   let str46 = &str45.replace("ü̃", "ə̃");
+   let str47 = &str46.replace("a̰", "ʌ̰");
+   let str48 = &str47.replace("a̱", "ʌ̰");
+   let str49 = &str48.replace("a̠", "ʌ̰");
+   let str50 = &str49.replace("o̰", "ɒ̰");
+   let str51 = &str50.replace("o̱", "ɒ̰");
+   let str52 = &str51.replace("o̠", "ɒ̰");
+   let str53 = &str52.replace("ḛ", "ɶ̰");
+   let str54 = &str53.replace("e̱", "ɶ̰");
+   let str55 = &str54.replace("e̠", "ɶ̰");
+   let str56 = &str55.replace("ḭ", "ɪ̰");
+   let str57 = &str56.replace("i̱", "ɪ̰");
+   let str58 = &str57.replace("i̠", "ɪ̰");
+   let str59 = &str58.replace("ṵ̈", "ɘ̰");
+   let str60 = &str59.replace("ü̱", "ɘ̰");
+   let str61 = &str60.replace("ü̠", "ɘ̰");
+   let str62 = &str61.replace("á", "a");
+   let str63 = &str62.replace("é", "é");
+   let str64 = &str63.replace("í", "i");
+   let str65 = &str64.replace("ó", "o");
+   let str66 = &str65.replace("ú", "u");
+   let str67 = &str66.replace("ǘ", "ü");
+   let str68 = &str67.replace("à", "a");
+   let str69 = &str68.replace("è", "e");
+   let str70 = &str69.replace("ì", "i");
+   let str71 = &str70.replace("ò", "o");
+   let str72 = &str71.replace("ù", "u");
+   let str73 = &str72.replace("ǜ", "ü");
+   let str74 = &str73.replace("w", "ɰ");
+   let str75 = &str74.replace("ɡü", "ɡüː");
+   let str76 = &str75.replace("k̬ü", "k̬üː");
+   let str77 = &str76.replace("ɾü", "ɾüː");
+   let str78 = &str77.replace("a", "ɐ̝");
+   let str79 = &str78.replace("e", "ɶ");
+   let str80 = &str79.replace("i", "i̞");
+   let str81 = &str80.replace("o", "ɒ");
+   let str82 = &str81.replace("ṵ", "o̰");
+   let str83 = &str82.replace("u̱", "o̰");
+   let str84 = &str83.replace("u̠", "o̰");
+   let str85 = &str84.replace("u", "ö");
+   let str86 = &str85.replace("ü", "ɘ");
+   let str87 = &str86.replace("ɐ̝ɐ̝", "ɐ̝ː");
+   let str88 = &str87.replace(". ", " ∥ ");
+   let str89 = &str88.replace(".", "");
+   let str90 = &str89.replace(",", " ∣");
+   let str91 = &str90.replace(";", " ∥");
+   let str92 = &str91.replace(":", " ∣");
+   let str93 = &str92.replace("? ", " ∥ ");
+   let str94 = &str93.replace("?", "");   
+   let str95 = &str94.replace("¿", "");
+   let str96 = &str95.replace("! ", " ∥ ");
+   let str97 = &str96.replace("!", "");
+   let str98 = &str97.replace("¡", "");
+   let str99 = &str98.replace(" - ", " ∣ ");
+   let str100 = &str99.replace(" – ", " ∣ ");
+   let str101 = &str100.replace("--", " ∣ ");
+   let str102 = &str101.replace("(", "∣ ");
+   let result = &str102.replace(")", " ∣");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("RÍO COTUHÉ, CO:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 // IPA: NAZARETH
-   let str1 = fs::read_to_string(inputfile).expect("Something went wrong reading the file!");
    let str2 = &str1.to_lowercase();
    let str3 = &str2.replace("1", "₁");
    let str4 = &str3.replace("2", "₂");
@@ -3455,12 +3564,12 @@ fn main() {
    let str43 = &str42.replace("a̰", "ʌ̰");
    let str44 = &str43.replace("a̱", "ʌ̰");
    let str45 = &str44.replace("a̠", "ʌ̰");
-   let str46 = &str45.replace("o̰", "ö̰");
-   let str47 = &str46.replace("o̱", "ö̰");
-   let str48 = &str47.replace("o̠", "ö̰");
-   let str49 = &str48.replace("ḛ", "ḛ̈");
-   let str50 = &str49.replace("e̱", "ḛ̈");
-   let str51 = &str50.replace("e̠", "ḛ̈");
+   let str46 = &str45.replace("o̰", "o̰");
+   let str47 = &str46.replace("o̱", "o̰");
+   let str48 = &str47.replace("o̠", "o̰");
+   let str49 = &str48.replace("ḛ", "ḛ");
+   let str50 = &str49.replace("e̱", "ḛ");
+   let str51 = &str50.replace("e̠", "ḛ");
    let str52 = &str51.replace("ḭ", "ɪ̰");
    let str53 = &str52.replace("i̱", "ɪ̰");
    let str54 = &str53.replace("i̠", "ɪ̰");
@@ -3486,30 +3595,29 @@ fn main() {
    let str74 = &str73.replace("u", "ʉ̱");
    let str75 = &str74.replace("ü", "ɨ");
    let str76 = &str75.replace("ʉ̱̰", "ṵ");
-   let str77 = &str76.replace("n̪̪ɡ", "ŋ");
-   let str78 = &str77.replace("ɐɐ̃", "ɐ.ɐ̃");
-   let str79 = &str78.replace("ɐɐ", "ɐː");
-   let str80 = &str79.replace(". ", " ∥ ");
-   let str81 = &str80.replace(".", "");
-   let str82 = &str81.replace(",", " ∣");
-   let str83 = &str82.replace(";", " ∥");
-   let str84 = &str83.replace(":", " ∣");
-   let str85 = &str84.replace("? ", " ∥ ");
-   let str86 = &str85.replace("?", "");   
-   let str87 = &str86.replace("¿", "");
-   let str88 = &str87.replace("! ", " ∥ ");
-   let str89 = &str88.replace("!", "");
-   let str90 = &str89.replace("¡", "");
-   let str91 = &str90.replace(" - ", " ∣ ");
-   let str92 = &str91.replace(" – ", " ∣ ");
-   let str93 = &str92.replace("--", " ∣ ");
-   let str94 = &str93.replace("(", "∣ ");
-   let result = &str94.replace(")", " ∣");
-   let mut file = std::fs::File::create(outputfile).expect("The output file could not be created!");
-   file.write_all("NAZARETH, CO:".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   let str77 = &str76.replace("ɐɐ̃", "ɐ̃ː");
+   let str78 = &str77.replace("ɐɐ", "ɐː");
+   let str79 = &str78.replace(". ", " ∥ ");
+   let str80 = &str79.replace(".", "");
+   let str81 = &str80.replace(",", " ∣");
+   let str82 = &str81.replace(";", " ∥");
+   let str83 = &str82.replace(":", " ∣");
+   let str84 = &str83.replace("? ", " ∥ ");
+   let str85 = &str84.replace("?", "");   
+   let str86 = &str85.replace("¿", "");
+   let str87 = &str86.replace("! ", " ∥ ");
+   let str88 = &str87.replace("!", "");
+   let str89 = &str88.replace("¡", "");
+   let str90 = &str89.replace(" - ", " ∣ ");
+   let str91 = &str90.replace(" – ", " ∣ ");
+   let str92 = &str91.replace("--", " ∣ ");
+   let str93 = &str92.replace("(", "∣ ");
+   let result = &str93.replace(")", " ∣");
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("NAZARETH, CO:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 // IPA: UMARIAÇU
    let str2 = &str1.to_lowercase();
    let str3 = &str2.replace("1", "₁");
@@ -3559,12 +3667,12 @@ fn main() {
    let str47 = &str46.replace("a̰", "ʌ̰");
    let str48 = &str47.replace("a̱", "ʌ̰");
    let str49 = &str48.replace("a̠", "ʌ̰");
-   let str50 = &str49.replace("o̰", "ɔ̰̃");
-   let str51 = &str50.replace("o̱", "ɔ̰̃");
-   let str52 = &str51.replace("o̠", "ɔ̰̃");
-   let str53 = &str52.replace("ḛ", "ɛ̰̈");
-   let str54 = &str53.replace("e̱", "ɛ̰̈");
-   let str55 = &str54.replace("e̠", "ɛ̰̈");
+   let str50 = &str49.replace("o̰", "ɔ̰");
+   let str51 = &str50.replace("o̱", "ɔ̰");
+   let str52 = &str51.replace("o̠", "ɔ̰");
+   let str53 = &str52.replace("ḛ", "ɛ̰");
+   let str54 = &str53.replace("e̱", "ɛ̰");
+   let str55 = &str54.replace("e̠", "ɛ̰");
    let str56 = &str55.replace("ḭ", "ɪ̰");
    let str57 = &str56.replace("i̱", "ɪ̰");
    let str58 = &str57.replace("i̠", "ɪ̰");
@@ -3593,8 +3701,8 @@ fn main() {
    let str81 = &str80.replace("o", "ɔ̝");
    let str82 = &str81.replace("u", "ʊ");
    let str83 = &str82.replace("ü", "ɯ̈");
-   let str84 = &str83.replace("ɑ̈ɑ̈", "ɑ̈ː");
-   let str85 = &str84.replace("n̪̪ɣ", "ŋ");
+   let str84 = &str83.replace("ɑ̈ɑ̃", "ɑ̃ː");
+   let str85 = &str84.replace("ɑ̈ɑ̈", "ɑ̈ː");
    let str86 = &str85.replace(". ", " ∥ ");
    let str87 = &str86.replace(".", "");
    let str88 = &str87.replace(",", " ∣");
@@ -3611,23 +3719,133 @@ fn main() {
    let str99 = &str98.replace("--", " ∣ ");
    let str100 = &str99.replace("(", "∣ ");
    let result = &str100.replace(")", " ∣");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("UMARIAÇU, BR:".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("UMARIAÇU, BR:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 
    println!("Data written to the file {}", outputfile);
    let exit_code = fake_main();
    exit(exit_code);
    }
    else {
+   print!("{}", red);
    println!("Invalid arguments! Use option: --output See: --help");
    let exit_code = fake_main();
    exit(exit_code);
    }
    }
 // FROM THE COMMAND LINE: TIKUNA IPA
+// IPA: COTUHÉ
+   let str2 = &str1.to_lowercase();
+   let str3 = &str2.replace("1", "₁");
+   let str4 = &str3.replace("2", "₂");
+   let str5 = &str4.replace("3", "₃");
+   let str6 = &str5.replace("4", "₄");
+   let str7 = &str6.replace("5", "₅");
+   let str8 = &str7.replace("6", "₆");
+   let str9 = &str8.replace("x", "ʔ");
+   let str10 = &str9.replace("'", "ʔ");
+   let str11 = &str10.replace("’", "ʔ");
+   let str12 = &str11.replace("b", "β");
+   let str13 = &str12.replace("cue", "kue");
+   let str14 = &str13.replace("cui", "kui");
+   let str15 = &str14.replace("c", "k");
+   let str16 = &str15.replace("tkh", "ch");
+   let str17 = &str16.replace("kh", "ch");
+   let str18 = &str17.replace("ch", "ʧ");
+   let str19 = &str18.replace("d", "d");
+   let str20 = &str19.replace("ng", "ŋ");
+   let str21 = &str20.replace("g", "ɡ");
+   let str22 = &str21.replace("n", "n̪");
+   let str23 = &str22.replace("nh", "ñ");
+   let str24 = &str23.replace("ñ", "ɲ");
+   let str25 = &str24.replace("que", "ke");
+   let str26 = &str25.replace("qui", "ki");
+   let str27 = &str26.replace("q", "k");
+   let str28 = &str27.replace("r", "ɾ");
+   let str29 = &str28.replace("t", "t̪");
+   let str30 = &str29.replace("y", "d͡ʒ");
+   let str31 = &str30.replace("j", "d͡ʒ");
+   let str32 = &str31.replace("f", "ɸ");
+   let str33 = &str32.replace("z", "s");
+   let str34 = &str33.replace("ç", "s");
+   let str35 = &str34.replace("s", "s̺");
+   let str36 = &str35.replace("v", "ɰ");
+   let str37 = &str36.replace("k", "k̬");
+   let str38 = &str37.replace("ã", "ɐ̃");
+   let str39 = &str38.replace("ã", "ɐ̃");
+   let str40 = &str39.replace("õ", "ɒ̃");
+   let str41 = &str40.replace("õ", "ɒ̃");
+   let str42 = &str41.replace("ẽ", "ɶ̃");
+   let str43 = &str42.replace("ẽ", "ɶ̃");
+   let str44 = &str43.replace("ũ", "ʊ̞̃");
+   let str45 = &str44.replace("ũ", "ʊ̞̃");
+   let str46 = &str45.replace("ü̃", "ə̃");
+   let str47 = &str46.replace("a̰", "ʌ̰");
+   let str48 = &str47.replace("a̱", "ʌ̰");
+   let str49 = &str48.replace("a̠", "ʌ̰");
+   let str50 = &str49.replace("o̰", "ɒ̰");
+   let str51 = &str50.replace("o̱", "ɒ̰");
+   let str52 = &str51.replace("o̠", "ɒ̰");
+   let str53 = &str52.replace("ḛ", "ɶ̰");
+   let str54 = &str53.replace("e̱", "ɶ̰");
+   let str55 = &str54.replace("e̠", "ɶ̰");
+   let str56 = &str55.replace("ḭ", "ɪ̰");
+   let str57 = &str56.replace("i̱", "ɪ̰");
+   let str58 = &str57.replace("i̠", "ɪ̰");
+   let str59 = &str58.replace("ṵ̈", "ɘ̰");
+   let str60 = &str59.replace("ü̱", "ɘ̰");
+   let str61 = &str60.replace("ü̠", "ɘ̰");
+   let str62 = &str61.replace("á", "a");
+   let str63 = &str62.replace("é", "é");
+   let str64 = &str63.replace("í", "i");
+   let str65 = &str64.replace("ó", "o");
+   let str66 = &str65.replace("ú", "u");
+   let str67 = &str66.replace("ǘ", "ü");
+   let str68 = &str67.replace("à", "a");
+   let str69 = &str68.replace("è", "e");
+   let str70 = &str69.replace("ì", "i");
+   let str71 = &str70.replace("ò", "o");
+   let str72 = &str71.replace("ù", "u");
+   let str73 = &str72.replace("ǜ", "ü");
+   let str74 = &str73.replace("w", "ɰ");
+   let str75 = &str74.replace("ɡü", "ɡüː");
+   let str76 = &str75.replace("k̬ü", "k̬üː");
+   let str77 = &str76.replace("ɾü", "ɾüː");
+   let str78 = &str77.replace("a", "ɐ̝");
+   let str79 = &str78.replace("e", "ɶ");
+   let str80 = &str79.replace("i", "i̞");
+   let str81 = &str80.replace("o", "ɒ");
+   let str82 = &str81.replace("ṵ", "o̰");
+   let str83 = &str82.replace("u̱", "o̰");
+   let str84 = &str83.replace("u̠", "o̰");
+   let str85 = &str84.replace("u", "ö");
+   let str86 = &str85.replace("ü", "ɘ");
+   let str87 = &str86.replace("ɐ̝ɐ̝", "ɐ̝ː");
+   let str88 = &str87.replace(". ", " ∥ ");
+   let str89 = &str88.replace(".", "");
+   let str90 = &str89.replace(",", " ∣");
+   let str91 = &str90.replace(";", " ∥");
+   let str92 = &str91.replace(":", " ∣");
+   let str93 = &str92.replace("? ", " ∥ ");
+   let str94 = &str93.replace("?", "");   
+   let str95 = &str94.replace("¿", "");
+   let str96 = &str95.replace("! ", " ∥ ");
+   let str97 = &str96.replace("!", "");
+   let str98 = &str97.replace("¡", "");
+   let str99 = &str98.replace(" - ", " ∣ ");
+   let str100 = &str99.replace(" – ", " ∣ ");
+   let str101 = &str100.replace("--", " ∣ ");
+   let str102 = &str101.replace("(", "∣ ");
+   let result = &str102.replace(")", " ∣");
+   println!("");
+   println!("Río Cotuhé, CO:");
+   println!("");
+   print!("{}", bright_yellow);
+   println!("{}", result);
+   print!("{}", clear);
 // IPA: NAZARETH
    let str2 = &str1.to_lowercase();
    let str3 = &str2.replace("1", "₁");
@@ -3673,12 +3891,12 @@ fn main() {
    let str43 = &str42.replace("a̰", "ʌ̰");
    let str44 = &str43.replace("a̱", "ʌ̰");
    let str45 = &str44.replace("a̠", "ʌ̰");
-   let str46 = &str45.replace("o̰", "ö̰");
-   let str47 = &str46.replace("o̱", "ö̰");
-   let str48 = &str47.replace("o̠", "ö̰");
-   let str49 = &str48.replace("ḛ", "ḛ̈");
-   let str50 = &str49.replace("e̱", "ḛ̈");
-   let str51 = &str50.replace("e̠", "ḛ̈");
+   let str46 = &str45.replace("o̰", "o̰");
+   let str47 = &str46.replace("o̱", "o̰");
+   let str48 = &str47.replace("o̠", "o̰");
+   let str49 = &str48.replace("ḛ", "ḛ");
+   let str50 = &str49.replace("e̱", "ḛ");
+   let str51 = &str50.replace("e̠", "ḛ");
    let str52 = &str51.replace("ḭ", "ɪ̰");
    let str53 = &str52.replace("i̱", "ɪ̰");
    let str54 = &str53.replace("i̠", "ɪ̰");
@@ -3704,25 +3922,24 @@ fn main() {
    let str74 = &str73.replace("u", "ʉ̱");
    let str75 = &str74.replace("ü", "ɨ");
    let str76 = &str75.replace("ʉ̱̰", "ṵ");
-   let str77 = &str76.replace("n̪̪ɡ", "ŋ");
-   let str78 = &str77.replace("ɐɐ̃", "ɐ.ɐ̃");
-   let str79 = &str78.replace("ɐɐ", "ɐː");
-   let str80 = &str79.replace(". ", " ∥ ");
-   let str81 = &str80.replace(".", "");
-   let str82 = &str81.replace(",", " ∣");
-   let str83 = &str82.replace(";", " ∥");
-   let str84 = &str83.replace(":", " ∣");
-   let str85 = &str84.replace("? ", " ∥ ");
-   let str86 = &str85.replace("?", "");   
-   let str87 = &str86.replace("¿", "");
-   let str88 = &str87.replace("! ", " ∥ ");
-   let str89 = &str88.replace("!", "");
-   let str90 = &str89.replace("¡", "");
-   let str91 = &str90.replace(" - ", " ∣ ");
-   let str92 = &str91.replace(" – ", " ∣ ");
-   let str93 = &str92.replace("--", " ∣ ");
-   let str94 = &str93.replace("(", "∣ ");
-   let result = &str94.replace(")", " ∣");
+   let str77 = &str76.replace("ɐɐ̃", "ɐ̃ː");
+   let str78 = &str77.replace("ɐɐ", "ɐː");
+   let str79 = &str78.replace(". ", " ∥ ");
+   let str80 = &str79.replace(".", "");
+   let str81 = &str80.replace(",", " ∣");
+   let str82 = &str81.replace(";", " ∥");
+   let str83 = &str82.replace(":", " ∣");
+   let str84 = &str83.replace("? ", " ∥ ");
+   let str85 = &str84.replace("?", "");   
+   let str86 = &str85.replace("¿", "");
+   let str87 = &str86.replace("! ", " ∥ ");
+   let str88 = &str87.replace("!", "");
+   let str89 = &str88.replace("¡", "");
+   let str90 = &str89.replace(" - ", " ∣ ");
+   let str91 = &str90.replace(" – ", " ∣ ");
+   let str92 = &str91.replace("--", " ∣ ");
+   let str93 = &str92.replace("(", "∣ ");
+   let result = &str93.replace(")", " ∣");
    println!("");
    println!("Nazareth, CO:");
    println!("");
@@ -3778,12 +3995,12 @@ fn main() {
    let str47 = &str46.replace("a̰", "ʌ̰");
    let str48 = &str47.replace("a̱", "ʌ̰");
    let str49 = &str48.replace("a̠", "ʌ̰");
-   let str50 = &str49.replace("o̰", "ɔ̰̃");
-   let str51 = &str50.replace("o̱", "ɔ̰̃");
-   let str52 = &str51.replace("o̠", "ɔ̰̃");
-   let str53 = &str52.replace("ḛ", "ɛ̰̈");
-   let str54 = &str53.replace("e̱", "ɛ̰̈");
-   let str55 = &str54.replace("e̠", "ɛ̰̈");
+   let str50 = &str49.replace("o̰", "ɔ̰");
+   let str51 = &str50.replace("o̱", "ɔ̰");
+   let str52 = &str51.replace("o̠", "ɔ̰");
+   let str53 = &str52.replace("ḛ", "ɛ̰");
+   let str54 = &str53.replace("e̱", "ɛ̰");
+   let str55 = &str54.replace("e̠", "ɛ̰");
    let str56 = &str55.replace("ḭ", "ɪ̰");
    let str57 = &str56.replace("i̱", "ɪ̰");
    let str58 = &str57.replace("i̠", "ɪ̰");
@@ -3812,8 +4029,725 @@ fn main() {
    let str81 = &str80.replace("o", "ɔ̝");
    let str82 = &str81.replace("u", "ʊ");
    let str83 = &str82.replace("ü", "ɯ̈");
-   let str84 = &str83.replace("ɑ̈ɑ̈", "ɑ̈ː");
-   let str85 = &str84.replace("n̪̪ɣ", "ŋ");
+   let str84 = &str83.replace("ɑ̈ɑ̃", "ɑ̃ː");
+   let str85 = &str84.replace("ɑ̈ɑ̈", "ɑ̈ː");
+   let str86 = &str85.replace(". ", " ∥ ");
+   let str87 = &str86.replace(".", "");
+   let str88 = &str87.replace(",", " ∣");
+   let str89 = &str88.replace(";", " ∥");
+   let str90 = &str89.replace(":", " ∣");
+   let str91 = &str90.replace("? ", " ∥ ");
+   let str92 = &str91.replace("?", "");   
+   let str93 = &str92.replace("¿", "");
+   let str94 = &str93.replace("! ", " ∥ ");
+   let str95 = &str94.replace("!", "");
+   let str96 = &str95.replace("¡", "");
+   let str97 = &str96.replace(" - ", " ∣ ");
+   let str98 = &str97.replace(" – ", " ∣ ");
+   let str99 = &str98.replace("--", " ∣ ");
+   let str100 = &str99.replace("(", "∣ ");
+   let result = &str100.replace(")", " ∣");
+   println!("");
+   println!("Umariaçu, BR:");
+   println!("");
+   print!("{}", bright_yellow);
+   println!("{}", result);
+   print!("{}", clear);
+   println!("");
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+
+// TIKUNA: IPA --tca.co-rio_cotuhe
+
+   if input1 == "--ipa" && input2 == "--tca.co-rio_cotuhe" || input1 == "--tca.co-rio_cotuhe" && input2 == "--ipa" {
+
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
+// FROM A FILE: COTUHÉ IPA
+   if str1 == "-i" || str1 == "--input" {
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
+   if output == "-o" || output == "--output" {
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
+
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
+   let str2 = &str1.to_lowercase();
+   let str3 = &str2.replace("1", "₁");
+   let str4 = &str3.replace("2", "₂");
+   let str5 = &str4.replace("3", "₃");
+   let str6 = &str5.replace("4", "₄");
+   let str7 = &str6.replace("5", "₅");
+   let str8 = &str7.replace("6", "₆");
+   let str9 = &str8.replace("x", "ʔ");
+   let str10 = &str9.replace("'", "ʔ");
+   let str11 = &str10.replace("’", "ʔ");
+   let str12 = &str11.replace("b", "β");
+   let str13 = &str12.replace("cue", "kue");
+   let str14 = &str13.replace("cui", "kui");
+   let str15 = &str14.replace("c", "k");
+   let str16 = &str15.replace("tkh", "ch");
+   let str17 = &str16.replace("kh", "ch");
+   let str18 = &str17.replace("ch", "ʧ");
+   let str19 = &str18.replace("d", "d");
+   let str20 = &str19.replace("ng", "ŋ");
+   let str21 = &str20.replace("g", "ɡ");
+   let str22 = &str21.replace("n", "n̪");
+   let str23 = &str22.replace("nh", "ñ");
+   let str24 = &str23.replace("ñ", "ɲ");
+   let str25 = &str24.replace("que", "ke");
+   let str26 = &str25.replace("qui", "ki");
+   let str27 = &str26.replace("q", "k");
+   let str28 = &str27.replace("r", "ɾ");
+   let str29 = &str28.replace("t", "t̪");
+   let str30 = &str29.replace("y", "d͡ʒ");
+   let str31 = &str30.replace("j", "d͡ʒ");
+   let str32 = &str31.replace("f", "ɸ");
+   let str33 = &str32.replace("z", "s");
+   let str34 = &str33.replace("ç", "s");
+   let str35 = &str34.replace("s", "s̺");
+   let str36 = &str35.replace("v", "ɰ");
+   let str37 = &str36.replace("k", "k̬");
+   let str38 = &str37.replace("ã", "ɐ̃");
+   let str39 = &str38.replace("ã", "ɐ̃");
+   let str40 = &str39.replace("õ", "ɒ̃");
+   let str41 = &str40.replace("õ", "ɒ̃");
+   let str42 = &str41.replace("ẽ", "ɶ̃");
+   let str43 = &str42.replace("ẽ", "ɶ̃");
+   let str44 = &str43.replace("ũ", "ʊ̞̃");
+   let str45 = &str44.replace("ũ", "ʊ̞̃");
+   let str46 = &str45.replace("ü̃", "ə̃");
+   let str47 = &str46.replace("a̰", "ʌ̰");
+   let str48 = &str47.replace("a̱", "ʌ̰");
+   let str49 = &str48.replace("a̠", "ʌ̰");
+   let str50 = &str49.replace("o̰", "ɒ̰");
+   let str51 = &str50.replace("o̱", "ɒ̰");
+   let str52 = &str51.replace("o̠", "ɒ̰");
+   let str53 = &str52.replace("ḛ", "ɶ̰");
+   let str54 = &str53.replace("e̱", "ɶ̰");
+   let str55 = &str54.replace("e̠", "ɶ̰");
+   let str56 = &str55.replace("ḭ", "ɪ̰");
+   let str57 = &str56.replace("i̱", "ɪ̰");
+   let str58 = &str57.replace("i̠", "ɪ̰");
+   let str59 = &str58.replace("ṵ̈", "ɘ̰");
+   let str60 = &str59.replace("ü̱", "ɘ̰");
+   let str61 = &str60.replace("ü̠", "ɘ̰");
+   let str62 = &str61.replace("á", "a");
+   let str63 = &str62.replace("é", "é");
+   let str64 = &str63.replace("í", "i");
+   let str65 = &str64.replace("ó", "o");
+   let str66 = &str65.replace("ú", "u");
+   let str67 = &str66.replace("ǘ", "ü");
+   let str68 = &str67.replace("à", "a");
+   let str69 = &str68.replace("è", "e");
+   let str70 = &str69.replace("ì", "i");
+   let str71 = &str70.replace("ò", "o");
+   let str72 = &str71.replace("ù", "u");
+   let str73 = &str72.replace("ǜ", "ü");
+   let str74 = &str73.replace("w", "ɰ");
+   let str75 = &str74.replace("ɡü", "ɡüː");
+   let str76 = &str75.replace("k̬ü", "k̬üː");
+   let str77 = &str76.replace("ɾü", "ɾüː");
+   let str78 = &str77.replace("a", "ɐ̝");
+   let str79 = &str78.replace("e", "ɶ");
+   let str80 = &str79.replace("i", "i̞");
+   let str81 = &str80.replace("o", "ɒ");
+   let str82 = &str81.replace("ṵ", "o̰");
+   let str83 = &str82.replace("u̱", "o̰");
+   let str84 = &str83.replace("u̠", "o̰");
+   let str85 = &str84.replace("u", "ö");
+   let str86 = &str85.replace("ü", "ɘ");
+   let str87 = &str86.replace("ɐ̝ɐ̝", "ɐ̝ː");
+   let str88 = &str87.replace(". ", " ∥ ");
+   let str89 = &str88.replace(".", "");
+   let str90 = &str89.replace(",", " ∣");
+   let str91 = &str90.replace(";", " ∥");
+   let str92 = &str91.replace(":", " ∣");
+   let str93 = &str92.replace("? ", " ∥ ");
+   let str94 = &str93.replace("?", "");   
+   let str95 = &str94.replace("¿", "");
+   let str96 = &str95.replace("! ", " ∥ ");
+   let str97 = &str96.replace("!", "");
+   let str98 = &str97.replace("¡", "");
+   let str99 = &str98.replace(" - ", " ∣ ");
+   let str100 = &str99.replace(" – ", " ∣ ");
+   let str101 = &str100.replace("--", " ∣ ");
+   let str102 = &str101.replace("(", "∣ ");
+   let result = &str102.replace(")", " ∣");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("RÍO COTUHÉ, CO:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+
+   println!("Data written to the file {}", outputfile);
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+   else {
+   print!("{}", red);
+   println!("Invalid arguments! Use option: --output See: --help");
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+   }
+// FROM THE COMMAND LINE: COTUHÉ IPA
+   let str2 = &str1.to_lowercase();
+   let str3 = &str2.replace("1", "₁");
+   let str4 = &str3.replace("2", "₂");
+   let str5 = &str4.replace("3", "₃");
+   let str6 = &str5.replace("4", "₄");
+   let str7 = &str6.replace("5", "₅");
+   let str8 = &str7.replace("6", "₆");
+   let str9 = &str8.replace("x", "ʔ");
+   let str10 = &str9.replace("'", "ʔ");
+   let str11 = &str10.replace("’", "ʔ");
+   let str12 = &str11.replace("b", "β");
+   let str13 = &str12.replace("cue", "kue");
+   let str14 = &str13.replace("cui", "kui");
+   let str15 = &str14.replace("c", "k");
+   let str16 = &str15.replace("tkh", "ch");
+   let str17 = &str16.replace("kh", "ch");
+   let str18 = &str17.replace("ch", "ʧ");
+   let str19 = &str18.replace("d", "d");
+   let str20 = &str19.replace("ng", "ŋ");
+   let str21 = &str20.replace("g", "ɡ");
+   let str22 = &str21.replace("n", "n̪");
+   let str23 = &str22.replace("nh", "ñ");
+   let str24 = &str23.replace("ñ", "ɲ");
+   let str25 = &str24.replace("que", "ke");
+   let str26 = &str25.replace("qui", "ki");
+   let str27 = &str26.replace("q", "k");
+   let str28 = &str27.replace("r", "ɾ");
+   let str29 = &str28.replace("t", "t̪");
+   let str30 = &str29.replace("y", "d͡ʒ");
+   let str31 = &str30.replace("j", "d͡ʒ");
+   let str32 = &str31.replace("f", "ɸ");
+   let str33 = &str32.replace("z", "s");
+   let str34 = &str33.replace("ç", "s");
+   let str35 = &str34.replace("s", "s̺");
+   let str36 = &str35.replace("v", "ɰ");
+   let str37 = &str36.replace("k", "k̬");
+   let str38 = &str37.replace("ã", "ɐ̃");
+   let str39 = &str38.replace("ã", "ɐ̃");
+   let str40 = &str39.replace("õ", "ɒ̃");
+   let str41 = &str40.replace("õ", "ɒ̃");
+   let str42 = &str41.replace("ẽ", "ɶ̃");
+   let str43 = &str42.replace("ẽ", "ɶ̃");
+   let str44 = &str43.replace("ũ", "ʊ̞̃");
+   let str45 = &str44.replace("ũ", "ʊ̞̃");
+   let str46 = &str45.replace("ü̃", "ə̃");
+   let str47 = &str46.replace("a̰", "ʌ̰");
+   let str48 = &str47.replace("a̱", "ʌ̰");
+   let str49 = &str48.replace("a̠", "ʌ̰");
+   let str50 = &str49.replace("o̰", "ɒ̰");
+   let str51 = &str50.replace("o̱", "ɒ̰");
+   let str52 = &str51.replace("o̠", "ɒ̰");
+   let str53 = &str52.replace("ḛ", "ɶ̰");
+   let str54 = &str53.replace("e̱", "ɶ̰");
+   let str55 = &str54.replace("e̠", "ɶ̰");
+   let str56 = &str55.replace("ḭ", "ɪ̰");
+   let str57 = &str56.replace("i̱", "ɪ̰");
+   let str58 = &str57.replace("i̠", "ɪ̰");
+   let str59 = &str58.replace("ṵ̈", "ɘ̰");
+   let str60 = &str59.replace("ü̱", "ɘ̰");
+   let str61 = &str60.replace("ü̠", "ɘ̰");
+   let str62 = &str61.replace("á", "a");
+   let str63 = &str62.replace("é", "é");
+   let str64 = &str63.replace("í", "i");
+   let str65 = &str64.replace("ó", "o");
+   let str66 = &str65.replace("ú", "u");
+   let str67 = &str66.replace("ǘ", "ü");
+   let str68 = &str67.replace("à", "a");
+   let str69 = &str68.replace("è", "e");
+   let str70 = &str69.replace("ì", "i");
+   let str71 = &str70.replace("ò", "o");
+   let str72 = &str71.replace("ù", "u");
+   let str73 = &str72.replace("ǜ", "ü");
+   let str74 = &str73.replace("w", "ɰ");
+   let str75 = &str74.replace("ɡü", "ɡüː");
+   let str76 = &str75.replace("k̬ü", "k̬üː");
+   let str77 = &str76.replace("ɾü", "ɾüː");
+   let str78 = &str77.replace("a", "ɐ̝");
+   let str79 = &str78.replace("e", "ɶ");
+   let str80 = &str79.replace("i", "i̞");
+   let str81 = &str80.replace("o", "ɒ");
+   let str82 = &str81.replace("ṵ", "o̰");
+   let str83 = &str82.replace("u̱", "o̰");
+   let str84 = &str83.replace("u̠", "o̰");
+   let str85 = &str84.replace("u", "ö");
+   let str86 = &str85.replace("ü", "ɘ");
+   let str87 = &str86.replace("ɐ̝ɐ̝", "ɐ̝ː");
+   let str88 = &str87.replace(". ", " ∥ ");
+   let str89 = &str88.replace(".", "");
+   let str90 = &str89.replace(",", " ∣");
+   let str91 = &str90.replace(";", " ∥");
+   let str92 = &str91.replace(":", " ∣");
+   let str93 = &str92.replace("? ", " ∥ ");
+   let str94 = &str93.replace("?", "");   
+   let str95 = &str94.replace("¿", "");
+   let str96 = &str95.replace("! ", " ∥ ");
+   let str97 = &str96.replace("!", "");
+   let str98 = &str97.replace("¡", "");
+   let str99 = &str98.replace(" - ", " ∣ ");
+   let str100 = &str99.replace(" – ", " ∣ ");
+   let str101 = &str100.replace("--", " ∣ ");
+   let str102 = &str101.replace("(", "∣ ");
+   let result = &str102.replace(")", " ∣");
+   println!("");
+   println!("Río Cotuhé, CO:");
+   println!("");
+   print!("{}", bright_yellow);
+   println!("{}", result);
+   print!("{}", clear);
+   println!("");
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+
+// TIKUNA: IPA --tca.co-nazareth
+
+   if input1 == "--ipa" && input2 == "--tca.co-nazareth" || input1 == "--tca.co-nazareth" && input2 == "--ipa" {
+
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
+// FROM A FILE: NAZARETH IPA
+   if str1 == "-i" || str1 == "--input" {
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
+   if output == "-o" || output == "--output" {
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
+
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
+   let str2 = &str1.to_lowercase();
+   let str3 = &str2.replace("1", "₁");
+   let str4 = &str3.replace("2", "₂");
+   let str5 = &str4.replace("3", "₃");
+   let str6 = &str5.replace("4", "₄");
+   let str7 = &str6.replace("5", "₅");
+   let str8 = &str7.replace("6", "₆");
+   let str9 = &str8.replace("x", "ʔ");
+   let str10 = &str9.replace("'", "ʔ");
+   let str11 = &str10.replace("’", "ʔ");
+   let str12 = &str11.replace("b", "β");
+   let str13 = &str12.replace("w", "ɰ");
+   let str14 = &str13.replace("v", "ɰ");
+   let str15 = &str14.replace("cue", "kue");
+   let str16 = &str15.replace("cui", "kui");
+   let str17 = &str16.replace("c", "k");
+   let str18 = &str17.replace("tkh", "ch");
+   let str19 = &str18.replace("kh", "ch");
+   let str20 = &str19.replace("ch", "ʧ");
+   let str21 = &str20.replace("d", "d");
+   let str22 = &str21.replace("ng", "ŋ");
+   let str23 = &str22.replace("g", "ɡ");
+   let str24 = &str23.replace("n", "n̪");
+   let str25 = &str24.replace("nh", "ñ");
+   let str26 = &str25.replace("ñ", "ɲ");
+   let str27 = &str26.replace("que", "ke");
+   let str28 = &str27.replace("qui", "ki");
+   let str29 = &str28.replace("q", "k");
+   let str30 = &str29.replace("r", "ɾ");
+   let str31 = &str30.replace("t", "t̪");
+   let str32 = &str31.replace("y", "d͡ʒ");
+   let str33 = &str32.replace("j", "d͡ʒ");
+   let str34 = &str33.replace("f", "ɸ");
+   let str35 = &str34.replace("z", "s");
+   let str36 = &str35.replace("ç", "s");
+   let str37 = &str36.replace("s", "s̺");
+   let str38 = &str37.replace("ã", "ɐ̃");
+   let str39 = &str38.replace("ã", "ɐ̃");
+   let str40 = &str39.replace("ũ", "ʉ̃");
+   let str41 = &str40.replace("ũ", "ʉ̃");
+   let str42 = &str41.replace("ü̃", "ɨ̃");
+   let str43 = &str42.replace("a̰", "ʌ̰");
+   let str44 = &str43.replace("a̱", "ʌ̰");
+   let str45 = &str44.replace("a̠", "ʌ̰");
+   let str46 = &str45.replace("o̰", "o̰");
+   let str47 = &str46.replace("o̱", "o̰");
+   let str48 = &str47.replace("o̠", "o̰");
+   let str49 = &str48.replace("ḛ", "ḛ");
+   let str50 = &str49.replace("e̱", "ḛ");
+   let str51 = &str50.replace("e̠", "ḛ");
+   let str52 = &str51.replace("ḭ", "ɪ̰");
+   let str53 = &str52.replace("i̱", "ɪ̰");
+   let str54 = &str53.replace("i̠", "ɪ̰");
+   let str55 = &str54.replace("u̱", "ṵ");
+   let str56 = &str55.replace("u̠", "ṵ");
+   let str57 = &str56.replace("ṵ̈", "ɨ̰");
+   let str58 = &str57.replace("ü̱", "ɨ̰");
+   let str59 = &str58.replace("ü̠", "ɨ̰");
+   let str60 = &str59.replace("á", "a");
+   let str61 = &str60.replace("é", "e");
+   let str62 = &str61.replace("í", "i");
+   let str63 = &str62.replace("ó", "o");
+   let str64 = &str63.replace("ú", "ʉ̱");
+   let str65 = &str64.replace("ǘ", "ü");
+   let str66 = &str65.replace("à", "a");
+   let str67 = &str66.replace("è", "e");
+   let str68 = &str67.replace("ì", "i");
+   let str69 = &str68.replace("ò", "o");
+   let str70 = &str69.replace("ù", "ʉ̱");
+   let str71 = &str70.replace("ǜ", "ü");
+   let str72 = &str71.replace("d͡ʒae", "d͡ʒæː");
+   let str73 = &str72.replace("a", "ɐ");
+   let str74 = &str73.replace("u", "ʉ̱");
+   let str75 = &str74.replace("ü", "ɨ");
+   let str76 = &str75.replace("ʉ̱̰", "ṵ");
+   let str77 = &str76.replace("ɐɐ̃", "ɐ̃ː");
+   let str78 = &str77.replace("ɐɐ", "ɐː");
+   let str79 = &str78.replace(". ", " ∥ ");
+   let str80 = &str79.replace(".", "");
+   let str81 = &str80.replace(",", " ∣");
+   let str82 = &str81.replace(";", " ∥");
+   let str83 = &str82.replace(":", " ∣");
+   let str84 = &str83.replace("? ", " ∥ ");
+   let str85 = &str84.replace("?", "");   
+   let str86 = &str85.replace("¿", "");
+   let str87 = &str86.replace("! ", " ∥ ");
+   let str88 = &str87.replace("!", "");
+   let str89 = &str88.replace("¡", "");
+   let str90 = &str89.replace(" - ", " ∣ ");
+   let str91 = &str90.replace(" – ", " ∣ ");
+   let str92 = &str91.replace("--", " ∣ ");
+   let str93 = &str92.replace("(", "∣ ");
+   let result = &str93.replace(")", " ∣");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("NAZARETH, CO:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+
+   println!("Data written to the file {}", outputfile);
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+   else {
+   print!("{}", red);
+   println!("Invalid arguments! Use option: --output See: --help");
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+   }
+// FROM THE COMMAND LINE: NAZARETH IPA
+   let str2 = &str1.to_lowercase();
+   let str3 = &str2.replace("1", "₁");
+   let str4 = &str3.replace("2", "₂");
+   let str5 = &str4.replace("3", "₃");
+   let str6 = &str5.replace("4", "₄");
+   let str7 = &str6.replace("5", "₅");
+   let str8 = &str7.replace("6", "₆");
+   let str9 = &str8.replace("x", "ʔ");
+   let str10 = &str9.replace("'", "ʔ");
+   let str11 = &str10.replace("’", "ʔ");
+   let str12 = &str11.replace("b", "β");
+   let str13 = &str12.replace("w", "ɰ");
+   let str14 = &str13.replace("v", "ɰ");
+   let str15 = &str14.replace("cue", "kue");
+   let str16 = &str15.replace("cui", "kui");
+   let str17 = &str16.replace("c", "k");
+   let str18 = &str17.replace("tkh", "ch");
+   let str19 = &str18.replace("kh", "ch");
+   let str20 = &str19.replace("ch", "ʧ");
+   let str21 = &str20.replace("d", "d");
+   let str22 = &str21.replace("ng", "ŋ");
+   let str23 = &str22.replace("g", "ɡ");
+   let str24 = &str23.replace("n", "n̪");
+   let str25 = &str24.replace("nh", "ñ");
+   let str26 = &str25.replace("ñ", "ɲ");
+   let str27 = &str26.replace("que", "ke");
+   let str28 = &str27.replace("qui", "ki");
+   let str29 = &str28.replace("q", "k");
+   let str30 = &str29.replace("r", "ɾ");
+   let str31 = &str30.replace("t", "t̪");
+   let str32 = &str31.replace("y", "d͡ʒ");
+   let str33 = &str32.replace("j", "d͡ʒ");
+   let str34 = &str33.replace("f", "ɸ");
+   let str35 = &str34.replace("z", "s");
+   let str36 = &str35.replace("ç", "s");
+   let str37 = &str36.replace("s", "s̺");
+   let str38 = &str37.replace("ã", "ɐ̃");
+   let str39 = &str38.replace("ã", "ɐ̃");
+   let str40 = &str39.replace("ũ", "ʉ̃");
+   let str41 = &str40.replace("ũ", "ʉ̃");
+   let str42 = &str41.replace("ü̃", "ɨ̃");
+   let str43 = &str42.replace("a̰", "ʌ̰");
+   let str44 = &str43.replace("a̱", "ʌ̰");
+   let str45 = &str44.replace("a̠", "ʌ̰");
+   let str46 = &str45.replace("o̰", "o̰");
+   let str47 = &str46.replace("o̱", "o̰");
+   let str48 = &str47.replace("o̠", "o̰");
+   let str49 = &str48.replace("ḛ", "ḛ");
+   let str50 = &str49.replace("e̱", "ḛ");
+   let str51 = &str50.replace("e̠", "ḛ");
+   let str52 = &str51.replace("ḭ", "ɪ̰");
+   let str53 = &str52.replace("i̱", "ɪ̰");
+   let str54 = &str53.replace("i̠", "ɪ̰");
+   let str55 = &str54.replace("u̱", "ṵ");
+   let str56 = &str55.replace("u̠", "ṵ");
+   let str57 = &str56.replace("ṵ̈", "ɨ̰");
+   let str58 = &str57.replace("ü̱", "ɨ̰");
+   let str59 = &str58.replace("ü̠", "ɨ̰");
+   let str60 = &str59.replace("á", "a");
+   let str61 = &str60.replace("é", "e");
+   let str62 = &str61.replace("í", "i");
+   let str63 = &str62.replace("ó", "o");
+   let str64 = &str63.replace("ú", "ʉ̱");
+   let str65 = &str64.replace("ǘ", "ü");
+   let str66 = &str65.replace("à", "a");
+   let str67 = &str66.replace("è", "e");
+   let str68 = &str67.replace("ì", "i");
+   let str69 = &str68.replace("ò", "o");
+   let str70 = &str69.replace("ù", "ʉ̱");
+   let str71 = &str70.replace("ǜ", "ü");
+   let str72 = &str71.replace("d͡ʒae", "d͡ʒæː");
+   let str73 = &str72.replace("a", "ɐ");
+   let str74 = &str73.replace("u", "ʉ̱");
+   let str75 = &str74.replace("ü", "ɨ");
+   let str76 = &str75.replace("ʉ̱̰", "ṵ");
+   let str77 = &str76.replace("ɐɐ̃", "ɐ̃ː");
+   let str78 = &str77.replace("ɐɐ", "ɐː");
+   let str79 = &str78.replace(". ", " ∥ ");
+   let str80 = &str79.replace(".", "");
+   let str81 = &str80.replace(",", " ∣");
+   let str82 = &str81.replace(";", " ∥");
+   let str83 = &str82.replace(":", " ∣");
+   let str84 = &str83.replace("? ", " ∥ ");
+   let str85 = &str84.replace("?", "");   
+   let str86 = &str85.replace("¿", "");
+   let str87 = &str86.replace("! ", " ∥ ");
+   let str88 = &str87.replace("!", "");
+   let str89 = &str88.replace("¡", "");
+   let str90 = &str89.replace(" - ", " ∣ ");
+   let str91 = &str90.replace(" – ", " ∣ ");
+   let str92 = &str91.replace("--", " ∣ ");
+   let str93 = &str92.replace("(", "∣ ");
+   let result = &str93.replace(")", " ∣");
+   println!("");
+   println!("Nazareth, CO:");
+   println!("");
+   print!("{}", bright_yellow);
+   println!("{}", result);
+   print!("{}", clear);
+   println!("");
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+
+// TIKUNA: IPA --tca.br-umariacu
+
+   if input1 == "--ipa" && input2 == "--tca.br-umariacu" || input1 == "--tca.br-umariacu" && input2 == "--ipa" {
+
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
+// FROM A FILE: UMARIAÇU IPA
+   if str1 == "-i" || str1 == "--input" {
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
+   if output == "-o" || output == "--output" {
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
+
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
+   let str2 = &str1.to_lowercase();
+   let str3 = &str2.replace("1", "₁");
+   let str4 = &str3.replace("2", "₂");
+   let str5 = &str4.replace("3", "₃");
+   let str6 = &str5.replace("4", "₄");
+   let str7 = &str6.replace("5", "₅");
+   let str8 = &str7.replace("6", "₆");
+   let str9 = &str8.replace("x", "ʔ");
+   let str10 = &str9.replace("'", "ʔ");
+   let str11 = &str10.replace("’", "ʔ");
+   let str12 = &str11.replace("b", "β");
+   let str13 = &str12.replace("cue", "kue");
+   let str14 = &str13.replace("cui", "kui");
+   let str15 = &str14.replace("c", "k");
+   let str16 = &str15.replace("tkh", "ch");
+   let str17 = &str16.replace("kh", "ch");
+   let str18 = &str17.replace("ch", "ʧ");
+   let str19 = &str18.replace("d", "d");
+   let str20 = &str19.replace("ng", "ŋ");
+   let str21 = &str20.replace("g", "ɡ̥");
+   let str22 = &str21.replace("n", "n̪");
+   let str23 = &str22.replace("nh", "ñ");
+   let str24 = &str23.replace("ñ", "ɲ");
+   let str25 = &str24.replace("que", "ke");
+   let str26 = &str25.replace("qui", "ki");
+   let str27 = &str26.replace("q", "k");
+   let str28 = &str27.replace("r", "ɾ");
+   let str29 = &str28.replace("t", "t̪");
+   let str30 = &str29.replace("y", "d͡ʒ");
+   let str31 = &str30.replace("j", "d͡ʒ");
+   let str32 = &str31.replace("f", "ɸ");
+   let str33 = &str32.replace("z", "s");
+   let str34 = &str33.replace("ç", "s");
+   let str35 = &str34.replace("s", "s̺");
+   let str36 = &str35.replace("v", "ɰ");
+   let str37 = &str36.replace("ɡ", "ɡ̥");
+   let str38 = &str37.replace("ã", "ɑ̃");
+   let str39 = &str38.replace("ã", "ɑ̃");
+   let str40 = &str39.replace("õ", "ɔ̝̃");
+   let str41 = &str40.replace("õ", "ɔ̝̃");
+   let str42 = &str41.replace("ẽ", "ɛ̝̃");
+   let str43 = &str42.replace("ẽ", "ɛ̝̃");
+   let str44 = &str43.replace("ũ", "ʊ̃");
+   let str45 = &str44.replace("ũ", "ʊ̃");
+   let str46 = &str45.replace("ü̃", "ɯ̃");
+   let str47 = &str46.replace("a̰", "ʌ̰");
+   let str48 = &str47.replace("a̱", "ʌ̰");
+   let str49 = &str48.replace("a̠", "ʌ̰");
+   let str50 = &str49.replace("o̰", "ɔ̰");
+   let str51 = &str50.replace("o̱", "ɔ̰");
+   let str52 = &str51.replace("o̠", "ɔ̰");
+   let str53 = &str52.replace("ḛ", "ɛ̰");
+   let str54 = &str53.replace("e̱", "ɛ̰");
+   let str55 = &str54.replace("e̠", "ɛ̰");
+   let str56 = &str55.replace("ḭ", "ɪ̰");
+   let str57 = &str56.replace("i̱", "ɪ̰");
+   let str58 = &str57.replace("i̠", "ɪ̰");
+   let str59 = &str58.replace("ṵ", "ʊ̰");
+   let str60 = &str59.replace("u̱", "ʊ̰");
+   let str61 = &str60.replace("u̠", "ʊ̰");
+   let str62 = &str61.replace("ṵ̈", "ɯ̰");
+   let str63 = &str62.replace("ü̱", "ɯ̰");
+   let str64 = &str63.replace("ü̠", "ɯ̰");
+   let str65 = &str64.replace("á", "a");
+   let str66 = &str65.replace("é", "ɛ̝");
+   let str67 = &str66.replace("í", "i");
+   let str68 = &str67.replace("ó", "o");
+   let str69 = &str68.replace("ú", "ʊ");
+   let str70 = &str69.replace("ǘ", "ü");
+   let str71 = &str70.replace("à", "a");
+   let str72 = &str71.replace("è", "ɛ̝");
+   let str73 = &str72.replace("ì", "i");
+   let str74 = &str73.replace("ò", "o");
+   let str75 = &str74.replace("ù", "ʊ");
+   let str76 = &str75.replace("ǜ", "ü");
+   let str77 = &str76.replace("w", "ɰ");
+   let str78 = &str77.replace("d͡ʒae", "d͡ʒæi");
+   let str79 = &str78.replace("a", "ɑ̈");
+   let str80 = &str79.replace("e", "ɛ̝");
+   let str81 = &str80.replace("o", "ɔ̝");
+   let str82 = &str81.replace("u", "ʊ");
+   let str83 = &str82.replace("ü", "ɯ̈");
+   let str84 = &str83.replace("ɑ̈ɑ̃", "ɑ̃ː");
+   let str85 = &str84.replace("ɑ̈ɑ̈", "ɑ̈ː");
+   let str86 = &str85.replace(". ", " ∥ ");
+   let str87 = &str86.replace(".", "");
+   let str88 = &str87.replace(",", " ∣");
+   let str89 = &str88.replace(";", " ∥");
+   let str90 = &str89.replace(":", " ∣");
+   let str91 = &str90.replace("? ", " ∥ ");
+   let str92 = &str91.replace("?", "");   
+   let str93 = &str92.replace("¿", "");
+   let str94 = &str93.replace("! ", " ∥ ");
+   let str95 = &str94.replace("!", "");
+   let str96 = &str95.replace("¡", "");
+   let str97 = &str96.replace(" - ", " ∣ ");
+   let str98 = &str97.replace(" – ", " ∣ ");
+   let str99 = &str98.replace("--", " ∣ ");
+   let str100 = &str99.replace("(", "∣ ");
+   let result = &str100.replace(")", " ∣");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("UMARIAÇU, BR:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+
+   println!("Data written to the file {}", outputfile);
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+   else {
+   print!("{}", red);
+   println!("Invalid arguments! Use option: --output See: --help");
+   let exit_code = fake_main();
+   exit(exit_code);
+   }
+   }
+// FROM THE COMMAND LINE: UMARIAÇU IPA
+   let str2 = &str1.to_lowercase();
+   let str3 = &str2.replace("1", "₁");
+   let str4 = &str3.replace("2", "₂");
+   let str5 = &str4.replace("3", "₃");
+   let str6 = &str5.replace("4", "₄");
+   let str7 = &str6.replace("5", "₅");
+   let str8 = &str7.replace("6", "₆");
+   let str9 = &str8.replace("x", "ʔ");
+   let str10 = &str9.replace("'", "ʔ");
+   let str11 = &str10.replace("’", "ʔ");
+   let str12 = &str11.replace("b", "β");
+   let str13 = &str12.replace("cue", "kue");
+   let str14 = &str13.replace("cui", "kui");
+   let str15 = &str14.replace("c", "k");
+   let str16 = &str15.replace("tkh", "ch");
+   let str17 = &str16.replace("kh", "ch");
+   let str18 = &str17.replace("ch", "ʧ");
+   let str19 = &str18.replace("d", "d");
+   let str20 = &str19.replace("ng", "ŋ");
+   let str21 = &str20.replace("g", "ɡ̥");
+   let str22 = &str21.replace("n", "n̪");
+   let str23 = &str22.replace("nh", "ñ");
+   let str24 = &str23.replace("ñ", "ɲ");
+   let str25 = &str24.replace("que", "ke");
+   let str26 = &str25.replace("qui", "ki");
+   let str27 = &str26.replace("q", "k");
+   let str28 = &str27.replace("r", "ɾ");
+   let str29 = &str28.replace("t", "t̪");
+   let str30 = &str29.replace("y", "d͡ʒ");
+   let str31 = &str30.replace("j", "d͡ʒ");
+   let str32 = &str31.replace("f", "ɸ");
+   let str33 = &str32.replace("z", "s");
+   let str34 = &str33.replace("ç", "s");
+   let str35 = &str34.replace("s", "s̺");
+   let str36 = &str35.replace("v", "ɰ");
+   let str37 = &str36.replace("ɡ", "ɡ̥");
+   let str38 = &str37.replace("ã", "ɑ̃");
+   let str39 = &str38.replace("ã", "ɑ̃");
+   let str40 = &str39.replace("õ", "ɔ̝̃");
+   let str41 = &str40.replace("õ", "ɔ̝̃");
+   let str42 = &str41.replace("ẽ", "ɛ̝̃");
+   let str43 = &str42.replace("ẽ", "ɛ̝̃");
+   let str44 = &str43.replace("ũ", "ʊ̃");
+   let str45 = &str44.replace("ũ", "ʊ̃");
+   let str46 = &str45.replace("ü̃", "ɯ̃");
+   let str47 = &str46.replace("a̰", "ʌ̰");
+   let str48 = &str47.replace("a̱", "ʌ̰");
+   let str49 = &str48.replace("a̠", "ʌ̰");
+   let str50 = &str49.replace("o̰", "ɔ̰");
+   let str51 = &str50.replace("o̱", "ɔ̰");
+   let str52 = &str51.replace("o̠", "ɔ̰");
+   let str53 = &str52.replace("ḛ", "ɛ̰");
+   let str54 = &str53.replace("e̱", "ɛ̰");
+   let str55 = &str54.replace("e̠", "ɛ̰");
+   let str56 = &str55.replace("ḭ", "ɪ̰");
+   let str57 = &str56.replace("i̱", "ɪ̰");
+   let str58 = &str57.replace("i̠", "ɪ̰");
+   let str59 = &str58.replace("ṵ", "ʊ̰");
+   let str60 = &str59.replace("u̱", "ʊ̰");
+   let str61 = &str60.replace("u̠", "ʊ̰");
+   let str62 = &str61.replace("ṵ̈", "ɯ̰");
+   let str63 = &str62.replace("ü̱", "ɯ̰");
+   let str64 = &str63.replace("ü̠", "ɯ̰");
+   let str65 = &str64.replace("á", "a");
+   let str66 = &str65.replace("é", "ɛ̝");
+   let str67 = &str66.replace("í", "i");
+   let str68 = &str67.replace("ó", "o");
+   let str69 = &str68.replace("ú", "ʊ");
+   let str70 = &str69.replace("ǘ", "ü");
+   let str71 = &str70.replace("à", "a");
+   let str72 = &str71.replace("è", "ɛ̝");
+   let str73 = &str72.replace("ì", "i");
+   let str74 = &str73.replace("ò", "o");
+   let str75 = &str74.replace("ù", "ʊ");
+   let str76 = &str75.replace("ǜ", "ü");
+   let str77 = &str76.replace("w", "ɰ");
+   let str78 = &str77.replace("d͡ʒae", "d͡ʒæi");
+   let str79 = &str78.replace("a", "ɑ̈");
+   let str80 = &str79.replace("e", "ɛ̝");
+   let str81 = &str80.replace("o", "ɔ̝");
+   let str82 = &str81.replace("u", "ʊ");
+   let str83 = &str82.replace("ü", "ɯ̈");
+   let str84 = &str83.replace("ɑ̈ɑ̃", "ɑ̃ː");
+   let str85 = &str84.replace("ɑ̈ɑ̈", "ɑ̈ː");
    let str86 = &str85.replace(". ", " ∥ ");
    let str87 = &str86.replace(".", "");
    let str88 = &str87.replace(",", " ∣");
@@ -3845,15 +4779,15 @@ fn main() {
 
    if input1 == "--ort" && input2 == "--tca" || input1 == "--tca" && input2 == "--ort" {
 
-   let str1 = args.get(3).expect("No string inserted! See: --help");
+   let str1 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + clear));
 // FROM A FILE: TIKUNA ORTHOGRAPHY
    if str1 == "-i" || str1 == "--input" {
-   let inputfile = args.get(4).expect("No file to read! See: --help");      
-   let output = args.get(5).expect("Invalid arguments! Use option: --output See: --help");      
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + clear));
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + clear));
    if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect("No output file specified! See: --help");
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + clear));
 // TIKUNA: BRAZIL 
-   let str1 = fs::read_to_string(inputfile).expect("Something went wrong reading the file!");
+   let str1 = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + clear));
    let str2 = &str1.replace("y", "j");
    let str3 = &str2.replace("Y", "J");
    let str4 = &str3.replace("ch", "tch");
@@ -4000,11 +4934,11 @@ fn main() {
    let str145 = &str144.replace("Ü̱x", "Ü’");
    let str146 = &str145.replace("Ü̱̃x", "Ü̃’");
    let result = &str146.replace("Ǘx", "Ǘ’");
-   let mut file = std::fs::File::create(outputfile).expect("The output file could not be created!");
-   file.write_all("BRAZIL:".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + clear));
+   file.write_all("BRAZIL:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 // TIKUNA: COLOMBIA
    let str2 = &str1.replace("j", "y");
    let str3 = &str2.replace("J", "Y");
@@ -4031,11 +4965,11 @@ fn main() {
    let str24 = &str23.replace("X", "");
    let str25 = &str24.replace("'", "");
    let result = &str25.replace("’", "");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("COLOMBIA:".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("COLOMBIA:".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 // TIKUNA: ILV
    let str2 = &str1.replace("j", "y");
    let str3 = &str2.replace("J", "Y");
@@ -4135,11 +5069,11 @@ fn main() {
    let str97 = &str96.replace("ü̱̃’", "ü̱̃x");
    let str98 = &str97.replace("ǘ’", "ǘx");
    let result = &str98.replace("’", "x");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("PERU (ILV):".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("PERU (ILV):".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 // TIKUNA: FORMABIAP
    let str2 = &str1.replace("j", "y");
    let str3 = &str2.replace("J", "Y");
@@ -4248,17 +5182,18 @@ fn main() {
    let str106 = &str105.replace("ü̱’", "üx");
    let str107 = &str106.replace("ü̱̃’", "ü̃x");
    let result = &str107.replace("’", "x");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("PERU (FORMABIAP):".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all("\n".as_bytes()).expect("write failed");
-   file.write_all(result.as_bytes()).expect("write failed");
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("PERU (FORMABIAP):".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
+   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + clear));
 
    println!("Data written to the file {}", outputfile);
    let exit_code = fake_main();
    exit(exit_code);
    }
    else {
+   print!("{}", red);
    println!("Invalid arguments! Use option: --output See: --help");
    let exit_code = fake_main();
    exit(exit_code);
@@ -4675,8 +5610,9 @@ fn main() {
    exit(exit_code);
    }
 
-// INVALID &ARGS[1] AND/OR &ARGS[2]
+// INVALID ARGUMENT [1] AND/OR [2]
 
+   print!("{}", red);
    println!("Error: Invalid arguments provided! See: --help");
 
 }
