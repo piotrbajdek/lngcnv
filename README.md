@@ -4,7 +4,7 @@
 
 [lngcnv](https://github.com/piotrbajdek/lngcnv) allows **(1)** displaying pronunciation of a phrase in the International Phonetic Alphabet (IPA), **(2)** translating between different (e.g., dialectal) varieties of a language, and **(3)** converting between different (e.g., regional) norms of orthography when a word or some piece of text is provided either **(a)** as an argument directly from the command line or **(b)** in a file, such as a hundreds of pages long book.
 
-Multiple modern and ancient languages are supported, often including several dialects. All linguistic algorithms and the program source code are created entirely from scratch, and distributed under the MIT license. The program is written in Rust for high performance, code correctness, and ease of long-term development.
+Multiple modern and ancient languages are supported, often including several dialects. The program's source code and all linguistic algorithms are created entirely from scratch, and distributed under the MIT license. [lngcnv](https://github.com/piotrbajdek/lngcnv) is written in Rust for high performance, code correctness, and ease of long-term development.
 
 Use Charis SIL, Doulos SIL, or Gentium Plus font for good rendering of characters of the International Phonetic Alphabet.
 
