@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-ALPHA.3 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-ALPHA.4 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MAIN FILE
 
@@ -22,8 +22,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-      println!("Version:  1.6.0-alpha.3");
-      println!("Date:     July 17, 2022");
+      println!("Version:  1.6.0-alpha.4");
+      println!("Date:     August 16, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
       println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -34,7 +34,7 @@ fn main() {
 // CHANGES
 
       if argument == "-c" || argument == "--changes" {
-      println!("{}", cyan.to_owned() + "--.--.---- v1.6.0 – Added --ipa --spa; Enhanced --ipa --tca; Enhanced source code" + reset);
+      println!("{}", cyan.to_owned() + "--.--.---- v1.6.0 – Added --ipa --spa; Enhanced --ipa --tca; Improved --ipa --eng; Enhanced source code" + reset);
       println!("15.05.2022 v1.5.1 – Improved source code");
       println!("14.05.2022 v1.5.0 – Enhanced --ipa --tca; Enhanced source code");
       println!("09.05.2022 v1.4.1 – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
@@ -56,12 +56,12 @@ fn main() {
       println!("          {}", cyan.to_owned() + "--lct" + reset + "  Translate [STRING/ FILE] between dialects or lang. varieties");
       println!("          {}", cyan.to_owned() + "--ort" + reset + "  Convert [STRING/ FILE] between regional norms of orthography");
       println!("");
-      println!("OPTION 2: {}", cyan.to_owned() + "--eng" + reset + "  English | available for: " + cyan + "--ipa" + reset + "," + cyan + "        --ort");
-      println!("          --lat{}", reset.to_owned() + "  Latin   | available for: " + cyan + "--ipa" + reset + "," + cyan + "        --ort");
-      println!("          --pol{}", reset.to_owned() + "  Polish  | available for: " + cyan + "--ipa");
-      println!("          --que{}", reset.to_owned() + "  Quechua | available for: " + cyan + "--ipa" + reset + ", " + cyan + "--lct" + reset + ", " + cyan + "--ort");
-      println!("          --spa{}", reset.to_owned() + "  Spanish | available for: " + cyan + "--ipa");
-      println!("          --tca{}", reset.to_owned() + "  Tikuna  | available for: " + cyan + "--ipa" + reset + ", " + cyan + "       --ort" + reset);
+      println!("OPTION 2: {}", cyan.to_owned() + "--eng" + reset + "  English " + grey + "|" + reset + " available for: " + cyan + "--ipa" + reset + "," + cyan + "        --ort");
+      println!("          --lat{}", reset.to_owned() + "  Latin   " + grey + "|" + reset + " available for: " + cyan + "--ipa" + reset + "," + cyan + "        --ort");
+      println!("          --pol{}", reset.to_owned() + "  Polish  " + grey + "|" + reset + " available for: " + cyan + "--ipa");
+      println!("          --que{}", reset.to_owned() + "  Quechua " + grey + "|" + reset + " available for: " + cyan + "--ipa" + reset + ", " + cyan + "--lct" + reset + ", " + cyan + "--ort");
+      println!("          --spa{}", reset.to_owned() + "  Spanish " + grey + "|" + reset + " available for: " + cyan + "--ipa");
+      println!("          --tca{}", reset.to_owned() + "  Tikuna  " + grey + "|" + reset + " available for: " + cyan + "--ipa" + reset + ", " + cyan + "       --ort" + reset);
       println!("");
       println!("Examples:{}", yellow.to_owned() + r#" lngcnv --ipa --lat "Vēnī, vīdī, vīcī.""#);
       println!("          lngcnv --lat --ipa 'Vēnī, vīdī, vīcī.'");
@@ -73,7 +73,7 @@ fn main() {
       println!("          variant of pronunciation if two or more are available (see {}", cyan.to_owned() + "-l" + reset + "):");
       println!("");
       println!("          {}", cyan.to_owned() + "--spa" + reset + ": " + grey + "--spa.bo-santa_cruz" + reset + ", " + grey + "--spa.co-bogota" + reset + ", " + grey + "--spa.co-leticia" + reset + ",");
-      println!("                 {}", cyan.to_owned() + "--spa.co-medellin" + reset + ", " + grey + "--spa.co-santa_marta" + reset + ", " + grey + "--spa.es-cadiz" + reset + ",");
+      println!("                 {}", cyan.to_owned() + "--spa.co-medellin" + reset + ", " + grey + "--spa.co-santa_marta" + reset + ", " + cyan + "--spa.es-cadiz" + reset + ",");
       println!("                 {}", cyan.to_owned() + "--spa.es-madrid" + reset + ", " + grey + "--spa.mx-ciudad_de_mexico" + cyan);
       println!("          --tca{}", reset.to_owned() + ": " + cyan + "--tca.br-umariacu" + reset + ", " + cyan + "--tca.br-vila_betania" + reset + ", " + cyan + "--tca.co-nazareth" + reset + ",");
       println!("                 {}", cyan.to_owned() + "--tca.co-rio_cotuhe" + reset + ", " + cyan + "--tca.pe-cushillococha" + reset);
@@ -84,8 +84,8 @@ fn main() {
       print!("{}", yellow);
       println!("          lngcnv --ipa --spa.co-bogota 'Una frase en español'{}", reset.to_owned() + "    [Bogotá, CO]");
       println!("");
-      println!("OPTION 3:{}", cyan.to_owned() + " -i" + reset + ", " + cyan + "--input" + reset + "      Choose a file to be opened for analysis");
-      println!("OPTION 4:{}", cyan.to_owned() +  " -o" + reset + ", " + cyan + "--output" + reset + "     Choose a name for the file to be created");
+      println!("OPTION 3:{}", cyan.to_owned() + " -i" + reset + ", " + cyan + "--input" + reset + "      Choose a file to open for conversion");
+      println!("OPTION 4:{}", cyan.to_owned() +  " -o" + reset + ", " + cyan + "--output" + reset + "     Choose a name for the file to create");
       println!("");
       println!("Examples:{}", yellow.to_owned() + " lngcnv --ipa --lat --input latin_book.txt --output output_file.txt");
       println!("          lngcnv --lat --ipa --input latin_book.txt --output output_file.txt");
@@ -103,7 +103,7 @@ fn main() {
 
       if argument == "-l" || argument == "--languages" {
       print!("{}", yellow);
-      println!("English:{}", reset.to_owned() + "  The " + cyan + "--ipa" + reset + " mode of operation displays the pronunciation of Australian English " + red + "[experimental, still in alpha stage]" + reset + ". In the " + cyan + "--ort" + reset + " mode, the text is transcribed into American English.");
+      println!("English:{}", reset.to_owned() + "  The " + cyan + "--ipa" + reset + " mode of operation displays the pronunciation of Australian English (Sydney, NSW) " + red + "[experimental, still in alpha stage]" + reset + ". In the " + cyan + "--ort" + reset + " mode, the text is transcribed into American English.");
       println!("");
       print!("{}", yellow);
       println!("Latin:{}", reset.to_owned() + "    The modern spelling of Latin and the ancient convention can be used indifferently in the " + cyan + "--ipa" + reset + " mode. To mark the duration of vowels, type either apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
@@ -141,8 +141,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.3" + reset);
-      println!("July 17, 2022");
+      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.4" + reset);
+      println!("August 16, 2022");
       return;
       }
 
@@ -171,7 +171,7 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::ipaaueng(&original_text, usefile, outputfile);
+   lngcnv::engausydney(&original_text, usefile, outputfile);
 
    println!("Data written to the file {}", outputfile);
    return;
@@ -182,7 +182,7 @@ fn main() {
    let original_text = str0;
    let usefile = "terminal";
    let outputfile = "0";
-   lngcnv::ipaaueng(&original_text, usefile, outputfile);
+   lngcnv::engausydney(&original_text, usefile, outputfile);
    println!("");
    return;
    }
@@ -440,9 +440,9 @@ fn main() {
    lngcnv::spacoleticia(&original_text, usefile, outputfile);
    lngcnv::spacomedellin(&original_text, usefile, outputfile);
    lngcnv::spacosantamarta(&original_text, usefile, outputfile);
-   lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
    lngcnv::spaescadiz(&original_text, usefile, outputfile);
    lngcnv::spaesmadrid(&original_text, usefile, outputfile);
+   lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
 
    println!("Data written to the file {}", outputfile);
    return;
@@ -458,9 +458,9 @@ fn main() {
    lngcnv::spacoleticia(&original_text, usefile, outputfile);
    lngcnv::spacomedellin(&original_text, usefile, outputfile);
    lngcnv::spacosantamarta(&original_text, usefile, outputfile);
-   lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
    lngcnv::spaescadiz(&original_text, usefile, outputfile);
    lngcnv::spaesmadrid(&original_text, usefile, outputfile);
+   lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
    println!("");
    return;
    }
