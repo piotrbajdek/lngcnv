@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-ALPHA.4 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-ALPHA.5 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MAIN FILE
 
@@ -22,8 +22,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-      println!("Version:  1.6.0-alpha.4");
-      println!("Date:     August 16, 2022");
+      println!("Version:  1.6.0-alpha.5");
+      println!("Date:     August 18, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
       println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -34,7 +34,7 @@ fn main() {
 // CHANGES
 
       if argument == "-c" || argument == "--changes" {
-      println!("{}", cyan.to_owned() + "--.--.---- v1.6.0 – Added --ipa --spa; Enhanced --ipa --tca; Improved --ipa --eng; Enhanced source code" + reset);
+      println!("{}", cyan.to_owned() + "--.--.---- v1.6.0 – Added --ipa --spa; Enhanced --ipa --tca; Improved --ipa --eng, --ipa --pol; Enhanced source code" + reset);
       println!("15.05.2022 v1.5.1 – Improved source code");
       println!("14.05.2022 v1.5.0 – Enhanced --ipa --tca; Enhanced source code");
       println!("09.05.2022 v1.4.1 – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
@@ -109,7 +109,7 @@ fn main() {
       println!("Latin:{}", reset.to_owned() + "    The modern spelling of Latin and the ancient convention can be used indifferently in the " + cyan + "--ipa" + reset + " mode. To mark the duration of vowels, type either apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
       println!("");
       print!("{}", yellow);
-      println!("Polish:{}", reset.to_owned() + "   Częstochowa (south-central Poland) is characterised by a fairly 'neutral-sounding' accent (" + cyan + "--ipa" + reset + ").");
+      println!("Polish:{}", reset.to_owned() + "   Częstochowa (Małopolska Region, south-central Poland) is characterised by a fairly 'neutral' accent (" + cyan + "--ipa" + reset + ").");
       println!("");
       print!("{}", yellow);
       println!("Quechua:{}", reset.to_owned() + "  In the " + cyan + "--ipa" + reset + " mode, Ayacucho Quechua is implemented and the input must be spelled accordingly. The " + cyan + "--lct" + reset + " mode of operation translates into Ayacucho Quechua from other varieties of Southen Quechua. Manual adjustments are necessary despite dialectal features are mostly converted by the algorithm. The " + cyan + "--ort" + reset + " mode allows transcribing between the trivocalic and the pentavocalic orthographies and works fine with any language of the Quechuan Family.");
@@ -141,8 +141,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.4" + reset);
-      println!("August 16, 2022");
+      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.5" + reset);
+      println!("August 18, 2022");
       return;
       }
 
