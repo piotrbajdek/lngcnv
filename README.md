@@ -2,11 +2,15 @@
 
 'lngcnv' may stand for _'language converter'_, _'linguistic converter'_, _'lenguaje convertido'_, and the like.
 
-[lngcnv](https://github.com/piotrbajdek/lngcnv) allows **(1)** displaying pronunciation of a phrase in the International Phonetic Alphabet (IPA), **(2)** translating between different (e.g., dialectal) varieties of a language, and **(3)** converting between different (e.g., regional) norms of orthography when a word or some piece of text is provided either **(a)** as an argument directly from the command line or **(b)** in a file, such as a hundreds of pages long book.
+[lngcnv](https://github.com/piotrbajdek/lngcnv) **(1)** displays the exact phonetic (not just phonemic) pronunciation of a phrase in the International Phonetic Alphabet (IPA), **(2)** translates between different (e.g., dialectal) varieties of a language, and **(3)** converts between different (e.g., regional) norms of orthography.
 
-Multiple modern and ancient languages are supported, often including several dialects. The program's source code and all linguistic algorithms are created entirely from scratch, and distributed under the MIT license. [lngcnv](https://github.com/piotrbajdek/lngcnv) is written in Rust for high performance, code correctness, and ease of long-term development.
+A word or some piece of text can be provided either **(a)** as an argument directly from the command line or **(b)** in a file, such as a hundreds of pages long book.
 
-Use Charis SIL, Doulos SIL, or Gentium Plus font for good rendering of characters of the International Phonetic Alphabet.
+Six modern and ancient languages are currently supported, often including several dialects.
+
+The program's source code and all linguistic algorithms are created entirely from scratch, and distributed under the MIT license. [lngcnv](https://github.com/piotrbajdek/lngcnv) is written in Rust for high performance, code correctness, and ease of long-term development.
+
+Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https://software.sil.org/doulos/download/), or [Gentium Plus](https://software.sil.org/gentium/download/) font for good rendering of characters of the International Phonetic Alphabet (see [1](https://www.internationalphoneticassociation.org/IPAcharts/inter_chart_2018/IPA_2018.html), [2](https://ipahelp.languagetechnology.org/), [3](https://en.wikipedia.org/wiki/IPA_vowel_chart_with_audio), [4](https://en.wikipedia.org/wiki/IPA_pulmonic_consonant_chart_with_audio)).
 
 # SUPPORTED LANGUAGES
 
@@ -22,9 +26,13 @@ Use Charis SIL, Doulos SIL, or Gentium Plus font for good rendering of character
 
 – Transcribe into the ancient orthographic convention (before the 2nd c. AD)
 
-**3. Polish:** pronunciation
+**3. Polish:** three variants of pronunciation
 
-– Pronunciation of the Polish Language (Częstochowa, Małopolska Region)
+– Pronunciation from Częstochowa, Małopolska Region
+
+– Pronunciation from Toruń, Wielkopolska Region
+
+– Pronunciation from Warszawa, Mazowsze Region [not yet implemented])
 
 **4. Quechua:** pronunciation & dialect translation & orthography
 
@@ -74,7 +82,7 @@ Use Charis SIL, Doulos SIL, or Gentium Plus font for good rendering of character
 
 **1.** Install from crates.io by the use of cargo:
 
-_cargo install lngcnv \--version 1.6.0-alpha.5_
+_cargo install lngcnv \--version 1.6.0-alpha.6_
 
 By default, the file will be downloaded to `.cargo/bin/`, a hidden folder in your home directory.
 
@@ -86,7 +94,7 @@ By default, the file will be downloaded to `.cargo/bin/`, a hidden folder in you
 
 **1.** Download the binary 'lngcnv' for Linux x86_64 from GitHub:
 
-https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-alpha.5
+https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-alpha.6
 
 **2.** Make the file executable:
 
@@ -104,7 +112,7 @@ _sudo cp lngcnv /var/usrlocal/bin/_
 
 Download and unpack the lngcnv source from GitHub. Then, build and install the program:
 
-https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-alpha.5
+https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-alpha.6
 
 _cargo build \--release && sudo cp target/release/lngcnv /usr/bin/_
 

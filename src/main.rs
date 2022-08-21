@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-ALPHA.5 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-ALPHA.6 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MAIN FILE
 
@@ -22,8 +22,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-      println!("Version:  1.6.0-alpha.5");
-      println!("Date:     August 18, 2022");
+      println!("Version:  1.6.0-alpha.6");
+      println!("Date:     August 22, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
       println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -34,7 +34,7 @@ fn main() {
 // CHANGES
 
       if argument == "-c" || argument == "--changes" {
-      println!("{}", cyan.to_owned() + "--.--.---- v1.6.0 – Added --ipa --spa; Enhanced --ipa --tca; Improved --ipa --eng, --ipa --pol; Enhanced source code" + reset);
+      println!("{}", cyan.to_owned() + "--.--.---- v1.6.0 – Added --ipa --spa; Enhanced --ipa --pol, --ipa --tca; Improved --ipa --eng; Enhanced source code" + reset);
       println!("15.05.2022 v1.5.1 – Improved source code");
       println!("14.05.2022 v1.5.0 – Enhanced --ipa --tca; Enhanced source code");
       println!("09.05.2022 v1.4.1 – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
@@ -72,7 +72,8 @@ fn main() {
       println!("          In the {}", cyan.to_owned() + "--ipa" + reset + " mode, the output can also be constrained to a selected");
       println!("          variant of pronunciation if two or more are available (see {}", cyan.to_owned() + "-l" + reset + "):");
       println!("");
-      println!("          {}", cyan.to_owned() + "--spa" + reset + ": " + grey + "--spa.bo-santa_cruz" + reset + ", " + grey + "--spa.co-bogota" + reset + ", " + grey + "--spa.co-leticia" + reset + ",");
+      println!("          {}", cyan.to_owned() + "--pol" + reset + ": " + cyan + "--pol.pl-czestochowa" + reset + ", " + cyan + "--pol.pl-torun" + reset + ", " + grey + "--pol.pl-warszawa" + cyan);
+      println!("          --spa{}", reset.to_owned() + ": " + grey + "--spa.bo-santa_cruz" + reset + ", " + grey + "--spa.co-bogota" + reset + ", " + grey + "--spa.co-leticia" + reset + ",");
       println!("                 {}", cyan.to_owned() + "--spa.co-medellin" + reset + ", " + grey + "--spa.co-santa_marta" + reset + ", " + cyan + "--spa.es-cadiz" + reset + ",");
       println!("                 {}", cyan.to_owned() + "--spa.es-madrid" + reset + ", " + grey + "--spa.mx-ciudad_de_mexico" + cyan);
       println!("          --tca{}", reset.to_owned() + ": " + cyan + "--tca.br-umariacu" + reset + ", " + cyan + "--tca.br-vila_betania" + reset + ", " + cyan + "--tca.co-nazareth" + reset + ",");
@@ -94,7 +95,7 @@ fn main() {
       println!("          {}", cyan.to_owned() + "-c" + reset + ", " + cyan + "--changes" + reset + "    Show simplified change notes");
       println!("          {}", cyan.to_owned() + "-h" + reset + ", " + cyan + "--help" + reset + "       Show this help");
       println!("          {}", cyan.to_owned() + "-l" + reset + ", " + cyan + "--languages" + reset + "  Show additional info");
-      println!("          {}", cyan.to_owned() + "-L" + reset + ", " + cyan + "--license" + reset + "    Show licesing information");
+      println!("          {}", cyan.to_owned() + "-L" + reset + ", " + cyan + "--license" + reset + "    Show licensing information");
       println!("          {}", cyan.to_owned() + "-v" + reset + ", " + cyan + "--version" + reset + "    Show the program version");
       return;
       }
@@ -109,10 +110,10 @@ fn main() {
       println!("Latin:{}", reset.to_owned() + "    The modern spelling of Latin and the ancient convention can be used indifferently in the " + cyan + "--ipa" + reset + " mode. To mark the duration of vowels, type either apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
       println!("");
       print!("{}", yellow);
-      println!("Polish:{}", reset.to_owned() + "   Częstochowa (Małopolska Region, south-central Poland) is characterised by a fairly 'neutral' accent (" + cyan + "--ipa" + reset + ").");
+      println!("Polish:{}", reset.to_owned() + "   Three variants of pronunciation are available (" + cyan + "--ipa" + reset + "): Częstochowa (Małopolska Region), Toruń (Wielkopolska Region), and Warszawa (Mazowsze Region) " + red + "[not yet implemented]" + reset);
       println!("");
       print!("{}", yellow);
-      println!("Quechua:{}", reset.to_owned() + "  In the " + cyan + "--ipa" + reset + " mode, Ayacucho Quechua is implemented and the input must be spelled accordingly. The " + cyan + "--lct" + reset + " mode of operation translates into Ayacucho Quechua from other varieties of Southen Quechua. Manual adjustments are necessary despite dialectal features are mostly converted by the algorithm. The " + cyan + "--ort" + reset + " mode allows transcribing between the trivocalic and the pentavocalic orthographies and works fine with any language of the Quechuan Family.");
+      println!("Quechua:{}", reset.to_owned() + "  In the " + cyan + "--ipa" + reset + " mode, Ayacucho Quechua is implemented and the input must be spelled accordingly. The " + cyan + "--lct" + reset + " mode of operation translates into Ayacucho Quechua from other varieties of Southen Quechua. Dialectal features are mostly converted by the algorithm but manual adjustments are necessary. The " + cyan + "--ort" + reset + " mode allows transcribing between the trivocalic and the pentavocalic orthographies and works fine with any language of the Quechuan Family.");
       println!("");
       print!("{}", yellow);
       println!("Spanish:{}", reset.to_owned() + "  Eight variants of pronunciation are available (" + cyan + "--ipa" + reset + "), including one from Bolivia (Santa Cruz de la Sierra), four from Colombia (Bogotá; Leticia; Medellín; Santa Marta), one from Mexico (Ciudad de México), and two from Spain (Cádiz; Madrid).");
@@ -141,8 +142,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.5" + reset);
-      println!("August 18, 2022");
+      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.6" + reset);
+      println!("August 22, 2022");
       return;
       }
 
@@ -299,7 +300,12 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::ipapol(&original_text, usefile, outputfile);
+   lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+
+   let usefile = "old";
+
+   lngcnv::polpltorun(&original_text, usefile, outputfile);
+   lngcnv::polplwarszawa(&original_text, usefile, outputfile);
 
    println!("Data written to the file {}", outputfile);
    return;
@@ -310,7 +316,105 @@ fn main() {
    let original_text = str0;
    let usefile = "terminal";
    let outputfile = "0";
-   lngcnv::ipapol(&original_text, usefile, outputfile);
+   lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+   lngcnv::polpltorun(&original_text, usefile, outputfile);
+   lngcnv::polplwarszawa(&original_text, usefile, outputfile);
+   println!("");
+   return;
+   }
+
+//   ++++++++++   ++++++++++   ++++++++++
+
+// POLISH: IPA --pol.pl-czestochowa
+
+   if input1 == "--ipa" && input2 == "--pol.pl-czestochowa" || input1 == "--pol.pl-czestochowa" && input2 == "--ipa" {
+
+   let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+// FROM A FILE: CZĘSTOCHOWA
+   if str0 == "-i" || str0 == "--input" {
+   let usefile = "new";
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));      
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));      
+   if output == "-o" || output == "--output" {
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+   let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+   lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+
+   println!("Data written to the file {}", outputfile);
+   return;
+   }
+   }
+// FROM THE COMMAND LINE: CZĘSTOCHOWA
+
+   let original_text = str0;
+   let usefile = "terminal";
+   let outputfile = "0";
+   lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+   println!("");
+   return;
+   }
+
+//   ++++++++++   ++++++++++   ++++++++++
+
+// POLISH: IPA --pol.pl-torun
+
+   if input1 == "--ipa" && input2 == "--pol.pl-torun" || input1 == "--pol.pl-torun" && input2 == "--ipa" {
+
+   let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+// FROM A FILE: TORUŃ
+   if str0 == "-i" || str0 == "--input" {
+   let usefile = "new";
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));      
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));      
+   if output == "-o" || output == "--output" {
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+   let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+   lngcnv::polpltorun(&original_text, usefile, outputfile);
+
+   println!("Data written to the file {}", outputfile);
+   return;
+   }
+   }
+// FROM THE COMMAND LINE: TORUŃ
+
+   let original_text = str0;
+   let usefile = "terminal";
+   let outputfile = "0";
+   lngcnv::polpltorun(&original_text, usefile, outputfile);
+   println!("");
+   return;
+   }
+
+//   ++++++++++   ++++++++++   ++++++++++
+
+// POLISH: IPA --pol.pl-warszawa
+
+   if input1 == "--ipa" && input2 == "--pol.pl-warszawa" || input1 == "--pol.pl-warszawa" && input2 == "--ipa" {
+
+   let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+// FROM A FILE: WARSZAWA
+   if str0 == "-i" || str0 == "--input" {
+   let usefile = "new";
+   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));      
+   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));      
+   if output == "-o" || output == "--output" {
+   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+   let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+   lngcnv::polplwarszawa(&original_text, usefile, outputfile);
+
+   println!("Data written to the file {}", outputfile);
+   return;
+   }
+   }
+// FROM THE COMMAND LINE: WARSZAWA
+
+   let original_text = str0;
+   let usefile = "terminal";
+   let outputfile = "0";
+   lngcnv::polplwarszawa(&original_text, usefile, outputfile);
    println!("");
    return;
    }
