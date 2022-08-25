@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-ALPHA.6 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-ALPHA.7 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MAIN FILE
 
@@ -22,8 +22,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-      println!("Version:  1.6.0-alpha.6");
-      println!("Date:     August 22, 2022");
+      println!("Version:  1.6.0-alpha.7");
+      println!("Date:     August 26, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
       println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -72,7 +72,7 @@ fn main() {
       println!("          In the {}", cyan.to_owned() + "--ipa" + reset + " mode, the output can also be constrained to a selected");
       println!("          variant of pronunciation if two or more are available (see {}", cyan.to_owned() + "-l" + reset + "):");
       println!("");
-      println!("          {}", cyan.to_owned() + "--pol" + reset + ": " + cyan + "--pol.pl-czestochowa" + reset + ", " + cyan + "--pol.pl-torun" + reset + ", " + grey + "--pol.pl-warszawa" + cyan);
+      println!("          {}", cyan.to_owned() + "--pol" + reset + ": " + cyan + "--pol.pl-czestochowa" + reset + ", " + cyan + "--pol.pl-torun" + reset + ", " + cyan + "--pol.pl-warszawa");
       println!("          --spa{}", reset.to_owned() + ": " + grey + "--spa.bo-santa_cruz" + reset + ", " + grey + "--spa.co-bogota" + reset + ", " + grey + "--spa.co-leticia" + reset + ",");
       println!("                 {}", cyan.to_owned() + "--spa.co-medellin" + reset + ", " + grey + "--spa.co-santa_marta" + reset + ", " + cyan + "--spa.es-cadiz" + reset + ",");
       println!("                 {}", cyan.to_owned() + "--spa.es-madrid" + reset + ", " + grey + "--spa.mx-ciudad_de_mexico" + cyan);
@@ -110,7 +110,7 @@ fn main() {
       println!("Latin:{}", reset.to_owned() + "    The modern spelling of Latin and the ancient convention can be used indifferently in the " + cyan + "--ipa" + reset + " mode. To mark the duration of vowels, type either apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
       println!("");
       print!("{}", yellow);
-      println!("Polish:{}", reset.to_owned() + "   Three variants of pronunciation are available (" + cyan + "--ipa" + reset + "): Częstochowa (Małopolska Region), Toruń (Wielkopolska Region), and Warszawa (Mazowsze Region) " + red + "[not yet implemented]" + reset);
+      println!("Polish:{}", reset.to_owned() + "   Three variants of pronunciation are available (" + cyan + "--ipa" + reset + "): Częstochowa (Małopolska Region), Toruń (Wielkopolska Region), and Warszawa (Mazowsze Region)");
       println!("");
       print!("{}", yellow);
       println!("Quechua:{}", reset.to_owned() + "  In the " + cyan + "--ipa" + reset + " mode, Ayacucho Quechua is implemented and the input must be spelled accordingly. The " + cyan + "--lct" + reset + " mode of operation translates into Ayacucho Quechua from other varieties of Southen Quechua. Dialectal features are mostly converted by the algorithm but manual adjustments are necessary. The " + cyan + "--ort" + reset + " mode allows transcribing between the trivocalic and the pentavocalic orthographies and works fine with any language of the Quechuan Family.");
@@ -142,8 +142,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.6" + reset);
-      println!("August 22, 2022");
+      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.7" + reset);
+      println!("August 26, 2022");
       return;
       }
 
