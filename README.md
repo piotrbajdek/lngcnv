@@ -8,7 +8,7 @@ A word or some piece of text can be provided either **(a)** as an argument direc
 
 Six modern and ancient languages are currently supported, often including several dialects.
 
-The program's source code and all linguistic algorithms are created entirely from scratch, and distributed under the MIT license. [lngcnv](https://github.com/piotrbajdek/lngcnv) is written in Rust for high performance, code correctness, and ease of long-term development.
+The program's source code and all linguistic algorithms are created entirely from scratch, and distributed under the [MIT](https://github.com/piotrbajdek/lngcnv/blob/main/LICENSE) license. [lngcnv](https://github.com/piotrbajdek/lngcnv) is written in Rust for high performance, code correctness, and ease of long-term development.
 
 Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https://software.sil.org/doulos/download/), or [Gentium Plus](https://software.sil.org/gentium/download/) font for good rendering of characters of the International Phonetic Alphabet (see [1](https://www.internationalphoneticassociation.org/IPAcharts/inter_chart_2018/IPA_2018.html), [2](https://ipahelp.languagetechnology.org/), [3](https://en.wikipedia.org/wiki/IPA_vowel_chart_with_audio), [4](https://en.wikipedia.org/wiki/IPA_pulmonic_consonant_chart_with_audio)).
 
@@ -82,7 +82,7 @@ Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https:
 
 **1.** Install from crates.io by the use of cargo:
 
-_cargo install lngcnv \--version 1.6.0-alpha.7_
+_cargo install lngcnv \--version 1.6.0-alpha.8_
 
 By default, the file will be downloaded to `.cargo/bin/`, a hidden folder in your home directory.
 
@@ -94,13 +94,13 @@ By default, the file will be downloaded to `.cargo/bin/`, a hidden folder in you
 
 **1.** Download the binary 'lngcnv' for Linux x86_64 from GitHub:
 
-https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-alpha.7
+https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-alpha.8
 
 **2.** Make the file executable:
 
 _sudo chmod +x ./lngcnv_
 
-**3a.** Install lngcnv via copying the binary to `/usr/bin/` on most Linux distros:
+**3a.** On most Linux distros, install lngcnv via copying the binary to `/usr/bin/`:
 
 _sudo cp lngcnv /usr/bin/_
 
@@ -112,7 +112,7 @@ _sudo cp lngcnv /var/usrlocal/bin/_
 
 Download and unpack the lngcnv source from GitHub. Then, build and install the program:
 
-https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-alpha.7
+https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-alpha.8
 
 _cargo build \--release && sudo cp target/release/lngcnv /usr/bin/_
 
