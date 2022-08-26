@@ -8,7 +8,7 @@ A word or some piece of text can be provided either **(a)** as an argument direc
 
 Six modern and ancient languages are currently supported, often including several dialects.
 
-The program's source code and all linguistic algorithms are created entirely from scratch, and distributed under the [MIT](https://github.com/piotrbajdek/lngcnv/blob/main/LICENSE) license. [lngcnv](https://github.com/piotrbajdek/lngcnv) is written in Rust for high performance, code correctness, and ease of long-term development.
+The program's source code and all linguistic algorithms are created entirely from scratch, and distributed under the [MIT License](https://github.com/piotrbajdek/lngcnv/blob/main/LICENSE). [lngcnv](https://github.com/piotrbajdek/lngcnv) is written in Rust for high performance, code correctness, and ease of long-term development.
 
 Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https://software.sil.org/doulos/download/), or [Gentium Plus](https://software.sil.org/gentium/download/) font for good rendering of characters of the International Phonetic Alphabet (see [1](https://www.internationalphoneticassociation.org/IPAcharts/inter_chart_2018/IPA_2018.html), [2](https://ipahelp.languagetechnology.org/), [3](https://en.wikipedia.org/wiki/IPA_vowel_chart_with_audio), [4](https://en.wikipedia.org/wiki/IPA_pulmonic_consonant_chart_with_audio)).
 
