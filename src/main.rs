@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-ALPHA.8 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-ALPHA.9 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MAIN FILE
 
@@ -22,8 +22,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-      println!("Version:  1.6.0-alpha.8");
-      println!("Date:     August 27, 2022");
+      println!("Version:  1.6.0-alpha.9");
+      println!("Date:     August 31, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
       println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -104,7 +104,7 @@ fn main() {
 
       if argument == "-l" || argument == "--languages" {
       print!("{}", yellow);
-      println!("English:{}", reset.to_owned() + "  The " + cyan + "--ipa" + reset + " mode of operation displays the pronunciation of Australian English (Sydney, NSW) " + red + "[experimental, still in alpha stage]" + reset + ". In the " + cyan + "--ort" + reset + " mode, the text is transcribed into American English.");
+      println!("English:{}", reset.to_owned() + "  The " + cyan + "--ipa" + reset + " mode of operation displays the pronunciation of Australian English (Canberra, ACT) " + red + "[experimental, still in alpha stage]" + reset + ". In the " + cyan + "--ort" + reset + " mode, the text is transcribed into American English.");
       println!("");
       print!("{}", yellow);
       println!("Latin:{}", reset.to_owned() + "    The modern spelling of Latin and the ancient convention can be used indifferently in the " + cyan + "--ipa" + reset + " mode. To mark the duration of vowels, type either apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
@@ -142,8 +142,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.8" + reset);
-      println!("August 27, 2022");
+      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.9" + reset);
+      println!("August 31, 2022");
       return;
       }
 
@@ -172,7 +172,7 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::engausydney(&original_text, usefile, outputfile);
+   lngcnv::engaucanberra(&original_text, usefile, outputfile);
 
    println!("Data written to the file {}", outputfile);
    return;
@@ -183,7 +183,7 @@ fn main() {
    let original_text = str0;
    let usefile = "terminal";
    let outputfile = "0";
-   lngcnv::engausydney(&original_text, usefile, outputfile);
+   lngcnv::engaucanberra(&original_text, usefile, outputfile);
    println!("");
    return;
    }
