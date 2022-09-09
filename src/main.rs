@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-ALPHA.10 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-ALPHA.11 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MAIN FILE
 
@@ -22,8 +22,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-      println!("Version:  1.6.0-alpha.10");
-      println!("Date:     September 4, 2022");
+      println!("Version:  1.6.0-alpha.11");
+      println!("Date:     September 9, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
       println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -75,7 +75,7 @@ fn main() {
       println!("          {}", cyan.to_owned() + "--pol" + reset + ": " + cyan + "--pol.pl-czestochowa" + reset + ", " + cyan + "--pol.pl-torun" + reset + ", " + cyan + "--pol.pl-warszawa");
       println!("          --spa{}", reset.to_owned() + ": " + grey + "--spa.bo-santa_cruz" + reset + ", " + grey + "--spa.co-bogota" + reset + ", " + grey + "--spa.co-leticia" + reset + ",");
       println!("                 {}", cyan.to_owned() + "--spa.co-medellin" + reset + ", " + grey + "--spa.co-santa_marta" + reset + ", " + cyan + "--spa.es-cadiz" + reset + ",");
-      println!("                 {}", cyan.to_owned() + "--spa.es-madrid" + reset + ", " + grey + "--spa.mx-ciudad_de_mexico" + cyan);
+      println!("                 {}", cyan.to_owned() + "--spa.es-madrid" + reset + ", " + cyan + "--spa.mx-ciudad_de_mexico");
       println!("          --tca{}", reset.to_owned() + ": " + cyan + "--tca.br-umariacu" + reset + ", " + cyan + "--tca.br-vila_betania" + reset + ", " + cyan + "--tca.co-nazareth" + reset + ",");
       println!("                 {}", cyan.to_owned() + "--tca.co-rio_cotuhe" + reset + ", " + cyan + "--tca.pe-cushillococha" + reset);
       println!("{}", grey);
@@ -142,8 +142,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.10" + reset);
-      println!("September 4, 2022");
+      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.11" + reset);
+      println!("September 9, 2022");
       return;
       }
 
