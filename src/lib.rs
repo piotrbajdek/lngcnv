@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-ALPHA.11 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-BETA.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // LIBRARY
 
@@ -720,7 +720,7 @@ let str206a = &str205b.replace("itely", "ʔl̥ᵊiː");
    let str660 = &str659.replace("ɶ̜is", "ɶ̜iz̥");
    let str661 = &str660.replace("x", "ks");
    let str662 = &str661.replace("ss", "s");
-   let str663 = &str662.replace("s", "s̺");
+   let str663 = &str662.replace("s", "s̻");
    let str664 = &str663.replace("i ", "ɑ̝e ");
    let str665 = &str664.replace("ph", "f");
    let str666 = &str665.replace("ff", "f");
@@ -762,7 +762,7 @@ let str206a = &str205b.replace("itely", "ʔl̥ᵊiː");
    let str690 = &str689b.replace("umn", "ᵊm");
    let str691 = &str690.replace("ymn", "im");
    let str692 = &str691.replace("nn", "n");
-   let str693 = &str692.replace("s̺nt", "zᵊnt̚");
+   let str693 = &str692.replace("s̻nt", "zᵊnt̚");
    let str694 = &str693.replace("nt ", "nt̚  ");
    let str695 = &str694.replace("nt.", "nt̚ .");
    let str696 = &str695.replace("nt,", "nt̚ ,");
@@ -1455,8 +1455,10 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str) {
    let str185 = &str184.replace("y", "ɘ̟");
    let str186 = &str185.replace("ɱi", "mʲi");
    let str187 = &str186.replace("ʲʲ", "ʲ");
-   let str188 = &str187.replace("^", "");
-   let str1pnc = &str188.replace(",", " ∣"); // space
+   let str188 = &str187.replace("z", "z̪");
+   let str189 = &str188.replace("d͡z̪", "d͡z");
+   let str190 = &str189.replace("^", "");
+   let str1pnc = &str190.replace(",", " ∣"); // space
    let str2pnc = &str1pnc.replace(";", " ∥");
    let str3pnc = &str2pnc.replace(":", " ∣");
    let str4pnc = &str3pnc.replace(". ", " ∥ ");
@@ -1580,7 +1582,7 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str) {
    let str71 = &str70.replace("się", "çę");
    let str72 = &str71.replace("siu", "çu");
    let str73 = &str72.replace("si", "çi");
-   let str74 = &str73.replace("s", "ɬ");
+   let str74 = &str73.replace("s", "ɬ̻");
    let str75 = &str74.replace("mc", "m̥c");
    let str76 = &str75.replace("nc", "n̥c");
    let str77 = &str76.replace("ci ", "c͡çi ");
@@ -1684,8 +1686,8 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str) {
    let str175 = &str174.replace("y", "ɘ̟");
    let str176 = &str175.replace("ɱi", "mʲi");
    let str177 = &str176.replace("ʲʲ", "ʲ");
-   let str178 = &str177.replace("z", "l͡ʒ");
-   let str179 = &str178.replace("d͡l͡ʒ", "d͡z");
+   let str178 = &str177.replace("z", "z̻");
+   let str179 = &str178.replace("d͡z̻", "d͡z");
    let str180 = &str179.replace("^", "");
    let str1pnc = &str180.replace(",", " ∣"); // space
    let str2pnc = &str1pnc.replace(";", " ∥");
@@ -1828,7 +1830,7 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str) {
    let str88 = &str87.replace("się", "çę");
    let str89 = &str88.replace("siu", "çu");
    let str90 = &str89.replace("si", "çi");
-   let str91 = &str90.replace("s", "ɬ");
+   let str91 = &str90.replace("s", "ɬ̻");
    let str92 = &str91.replace("mc", "m̥c");
    let str93 = &str92.replace("n", "n̪");
    let str94 = &str93.replace("ci ", "c͡çi ");
@@ -1915,8 +1917,8 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str) {
    let str175 = &str174.replace("ɱi", "mʲi");
    let str176 = &str175.replace("ʲʲ", "ʲ");
    let str177 = &str176.replace("i", "ɪ");
-   let str178 = &str177.replace("z", "l͡ʒ");
-   let str179 = &str178.replace("d͡l͡ʒ", "d͡z");
+   let str178 = &str177.replace("z", "z̻");
+   let str179 = &str178.replace("d͡z̻", "d͡z");
    let str180 = &str179.replace("^", "");
    let str1pnc = &str180.replace(",", " ∣"); // space
    let str2pnc = &str1pnc.replace(";", " ∥");
@@ -2398,53 +2400,6 @@ pub fn ortquepen(original_text: &str, usefile: &str, outputfile: &str) {
 
 //   ++++++++++   ++++++++++   ++++++++++
 
-// SANTA CRUZ DE LA SIERRA: IPA
-
-pub fn spabosantacruz(original_text: &str, usefile: &str, outputfile: &str) {
-
-   let reset = "\x1b[0m";
-   let red = "\x1b[31m";
-   let yellow = "\x1b[93m";
-
-   let str1dot = original_text.to_owned() + "."; // mark word ending
-   let str2dot = ".".to_owned() + &str1dot;
-   let str3low = &str2dot.to_lowercase();
-   let str1sgn = str3low.replace(";", ",");
-   let str2sgn = str1sgn.replace(":", ",");
-   let str3sgn = str2sgn.replace("!", ".");
-   let str4sgn = str3sgn.replace("?", ".");
-   let str1acc = &str4sgn.replace("", "");
-   let str1 = str1acc.replace ("", "");
-   let result = &str1.replace("", "");
-
-   if usefile == "new" {
-   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));
-   file.write_all("SANTA CRUZ DE LA SIERRA, BO: [NOT YET IMPLEMENTED]".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));   
-   }
-   if usefile == "old" {
-   let mut file = OpenOptions::new().append(true).open(outputfile).expect(&(red.to_owned() + "cannot open file" + reset));
-   file.write("SANTA CRUZ DE LA SIERRA, BO: [NOT YET IMPLEMENTED]".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   }
-   if usefile == "terminal" {
-   println!("");
-   println!("Santa Cruz de la Sierra, BO:{}", red.to_owned() + " [not yet implemented]" + reset);
-   println!("");
-   print!("{}", yellow);
-   println!("{}", result);
-   print!("{}", reset);
-   }
-}
-
-//   ++++++++++   ++++++++++   ++++++++++
-
 // BOGOTÁ: IPA
 
 pub fn spacobogota(original_text: &str, usefile: &str, outputfile: &str) {
@@ -2454,19 +2409,474 @@ pub fn spacobogota(original_text: &str, usefile: &str, outputfile: &str) {
    let yellow = "\x1b[93m";
 
    let str1dot = original_text.to_owned() + "."; // mark word ending
-   let str2dot = ".".to_owned() + &str1dot;
+   let str2dot = ".".to_owned() + &str1dot; // word beginning
    let str3low = &str2dot.to_lowercase();
-   let str1sgn = str3low.replace(";", ",");
+   let str1sgn = str3low.replace(";", "."); // simplification
    let str2sgn = str1sgn.replace(":", ",");
    let str3sgn = str2sgn.replace("!", ".");
    let str4sgn = str3sgn.replace("?", ".");
-   let str1acc = &str4sgn.replace("", "");
-   let str1 = str1acc.replace ("", "");
-   let result = &str1.replace("", "");
+   let str5sgn = str4sgn.replace("¡", "."); // word beginning
+   let str6sgn = str5sgn.replace("¿", "."); // word beginning
+   let str7sgn = str6sgn.replace(")", ",");
+   let str8sgn = &str7sgn.replace("(", "∣ .");
+   let str1acc = &str8sgn.replace("ar ", "ár "); // word stress
+   let str2acc = &str1acc.replace("ar.", "ár.");
+   let str3acc = &str2acc.replace("ar,", "ár,");
+   let str4acc = &str3acc.replace("arme ", "árme ");
+   let str5acc = &str4acc.replace("arme.", "árme.");
+   let str6acc = &str5acc.replace("arme,", "árme,");
+   let str7acc = &str6acc.replace("arte ", "árte ");
+   let str8acc = &str7acc.replace("arte.", "árte.");
+   let str9acc = &str8acc.replace("arte,", "árte,");
+   let str10acc = &str9acc.replace("arse ", "árse ");
+   let str11acc = &str10acc.replace("arse.", "árse.");
+   let str12acc = &str11acc.replace("arse,", "árse,");
+   let str13acc = &str12acc.replace("iendo", "iéndo");
+   let str14acc = &str13acc.replace("ando ", "ándo ");
+   let str15acc = &str14acc.replace("ando.", "ándo.");
+   let str16acc = &str15acc.replace("ando,", "ándo,");
+   let str17acc = &str16acc.replace("aba ", "ába ");
+   let str18acc = &str17acc.replace("aba.", "ába.");
+   let str19acc = &str18acc.replace("aba,", "ába,");
+   let str20acc = &str19acc.replace("aban ", "ában ");
+   let str21acc = &str20acc.replace("aban.", "ában.");
+   let str22acc = &str21acc.replace("aban,", "ában,");
+   let str23acc = &str22acc.replace("abas ", "ábas ");
+   let str24acc = &str23acc.replace("abas.", "ábas.");
+   let str25acc = &str24acc.replace("abas,", "ábas,");
+   let str26acc = &str25acc.replace("acha ", "ácha ");
+   let str27acc = &str26acc.replace("acha.", "ácha.");
+   let str28acc = &str27acc.replace("acha,", "ácha,");
+   let str29acc = &str28acc.replace("acho", "ácho");
+   let str30acc = &str29acc.replace("ada ", "áda ");
+   let str31acc = &str30acc.replace("ada.", "áda.");
+   let str32acc = &str31acc.replace("ada,", "áda,");
+   let str33acc = &str32acc.replace("adas", "ádas");
+   let str34acc = &str33acc.replace("ado ", "ádo ");
+   let str35acc = &str34acc.replace("ado.", "ádo.");
+   let str36acc = &str35acc.replace("ado,", "ádo,");
+   let str37acc = &str36acc.replace("ados", "ádos");
+   let str38acc = &str37acc.replace("ante ", "ánte ");
+   let str39acc = &str38acc.replace("ante.", "ánte.");
+   let str40acc = &str39acc.replace("ante,", "ánte,");
+   let str41acc = &str40acc.replace("antes", "ántes");
+   let str42acc = &str41acc.replace("ente ", "énte ");
+   let str43acc = &str42acc.replace("ente.", "énte.");
+   let str44acc = &str43acc.replace("ente,", "énte,");
+   let str45acc = &str44acc.replace("entes", "éntes");
+   let str46acc = &str45acc.replace("aste ", "áste ");
+   let str47acc = &str46acc.replace("aste.", "áste.");
+   let str48acc = &str47acc.replace("aste,", "áste,");
+   let str49acc = &str48acc.replace("ad ", "ád ");
+   let str50acc = &str49acc.replace("ad.", "ád.");
+   let str51acc = &str50acc.replace("ad,", "ád,");
+   let str52acc = &str51acc.replace("al ", "ál ");
+   let str53acc = &str52acc.replace("al.", "ál.");
+   let str54acc = &str53acc.replace("al,", "ál,");
+   let str55acc = &str54acc.replace("ambre", "ámbre");
+   let str56acc = &str55acc.replace("ano ", "áno ");
+   let str57acc = &str56acc.replace("ano.", "áno.");
+   let str58acc = &str57acc.replace("ano,", "áno,");
+   let str59acc = &str58acc.replace("anos ", "ános ");
+   let str60acc = &str59acc.replace("anos.", "ános.");
+   let str61acc = &str60acc.replace("anos,", "ános,");
+   let str62acc = &str61acc.replace("ano", "áno");
+   let str63acc = &str62acc.replace("éáno", "éano");
+   let str64acc = &str63acc.replace("átáno", "átano");
+   let str65acc = &str64acc.replace("ara ", "ára ");
+   let str66acc = &str65acc.replace("ara.", "ára.");
+   let str67acc = &str66acc.replace("ara,", "ára,");
+   let str68acc = &str67acc.replace("aras ", "áras ");
+   let str69acc = &str68acc.replace("aras.", "áras.");
+   let str70acc = &str69acc.replace("aras,", "áras,");
+   let str71acc = &str70acc.replace("aria", "ária");
+   let str72acc = &str71acc.replace("ario", "ário");
+   let str73acc = &str72acc.replace("aron ", "áron ");
+   let str74acc = &str73acc.replace("aron.", "áron.");
+   let str75acc = &str74acc.replace("aron,", "áron,");
+   let str76acc = &str75acc.replace("ato ", "áto ");
+   let str77acc = &str76acc.replace("ato.", "áto.");
+   let str78acc = &str77acc.replace("ato,", "áto,");
+   let str79acc = &str78acc.replace("atos ", "átos ");
+   let str80acc = &str79acc.replace("atos.", "átos.");
+   let str81acc = &str80acc.replace("atos,", "átos,");
+   let str82acc = &str81acc.replace("enso ", "énso ");
+   let str83acc = &str82acc.replace("enso.", "énso.");
+   let str84acc = &str83acc.replace("enso,", "énso,");
+   let str85acc = &str84acc.replace("ensos", "énsos");
+   let str86acc = &str85acc.replace("ento ", "énto ");
+   let str87acc = &str86acc.replace("ento.", "énto.");
+   let str88acc = &str87acc.replace("ento,", "énto,");
+   let str89acc = &str88acc.replace("entos ", "éntos ");
+   let str90acc = &str89acc.replace("entos.", "éntos.");
+   let str91acc = &str90acc.replace("entos,", "éntos,");
+   let str92acc = &str91acc.replace("er ", "ér ");
+   let str93acc = &str92acc.replace("er.", "ér.");
+   let str94acc = &str93acc.replace("er,", "ér,");
+   let str95acc = &str94acc.replace("étér", "éter");
+   let str96acc = &str95acc.replace("erme ", "érme ");
+   let str97acc = &str96acc.replace("erme.", "érme.");
+   let str98acc = &str97acc.replace("erme,", "érme,");
+   let str99acc = &str98acc.replace("erte ", "érte ");
+   let str100acc = &str99acc.replace("erte.", "érte.");
+   let str101acc = &str100acc.replace("erte,", "érte,");
+   let str102acc = &str101acc.replace("erse ", "érse ");
+   let str103acc = &str102acc.replace("erse.", "érse.");
+   let str104acc = &str103acc.replace("erse,", "érse,");
+   let str105acc = &str104acc.replace("ero ", "éro ");
+   let str106acc = &str105acc.replace("ero.", "éro.");
+   let str107acc = &str106acc.replace("ero,", "éro,");
+   let str108acc = &str107acc.replace("eros ", "éros ");
+   let str109acc = &str108acc.replace("eros.", "éros.");
+   let str110acc = &str109acc.replace("eros,", "éros,");
+   let str111acc = &str110acc.replace("eron", "éron");
+   let str112acc = &str111acc.replace("esca ", "ésca ");
+   let str113acc = &str112acc.replace("esca.", "ésca.");
+   let str114acc = &str113acc.replace("esca,", "ésca,");
+   let str115acc = &str114acc.replace("esco ", "ésco ");
+   let str116acc = &str115acc.replace("esco.", "ésco.");
+   let str117acc = &str116acc.replace("esco,", "ésco,");
+   let str118acc = &str117acc.replace("esco,", "ésco,");
+   let str119acc = &str118acc.replace("ella", "élla");
+   let str120acc = &str119acc.replace("ello", "éllo");
+   let str121acc = &str120acc.replace("odo ", "ódo ");
+   let str122acc = &str121acc.replace("odo.", "ódo.");
+   let str123acc = &str122acc.replace("odo,", "ódo,");
+   let str124acc = &str123acc.replace("odos ", "ódos ");
+   let str125acc = &str124acc.replace("odos.", "ódos.");
+   let str126acc = &str125acc.replace("odos,", "ódos,");
+   let str127acc = &str126acc.replace("ómódo", "ómodo");
+   let str128acc = &str127acc.replace("omo ", "ómo ");
+   let str129acc = &str128acc.replace("omo.", "ómo.");
+   let str130acc = &str129acc.replace("omo,", "ómo,");
+   let str131acc = &str130acc.replace("omos ", "ómos ");
+   let str132acc = &str131acc.replace("omos.", "ómos.");
+   let str133acc = &str132acc.replace("omos,", "ómos,");
+   let str134acc = &str133acc.replace("ones ", "ónes ");
+   let str135acc = &str134acc.replace("ones.", "ónes.");
+   let str136acc = &str135acc.replace("ones,", "ónes,");
+   let str137acc = &str136acc.replace("or ", "ór ");
+   let str138acc = &str137acc.replace("or.", "ór.");   
+   let str139acc = &str138acc.replace("or,", "ór,");   
+   let str140acc = &str139acc.replace("ores", "óres");
+   let str141acc = &str140acc.replace("oso", "óso");
+   let str142acc = &str141acc.replace("osos", "ósos");
+   let str143acc = &str142acc.replace("ósot", "osót");
+   let str144acc = &str143acc.replace("osa ", "ósa ");
+   let str145acc = &str144acc.replace("osa.", "ósa.");
+   let str146acc = &str145acc.replace("osa,", "ósa,");
+   let str147acc = &str146acc.replace("osas", "ósas");
+   let str148acc = &str147acc.replace("otro", "ótro");
+   let str149acc = &str148acc.replace("uela", "uéla");
+   let str150acc = &str149acc.replace("uelo", "uéla");
+   let str151acc = &str150acc.replace("eña ", "éña ");   
+   let str152acc = &str151acc.replace("eña.", "éña.");
+   let str153acc = &str152acc.replace("eña,", "éña,");
+   let str154acc = &str153acc.replace("eñas ", "éñas ");
+   let str155acc = &str154acc.replace("eñas.", "éñas.");
+   let str156acc = &str155acc.replace("eñas,", "éñas,");
+   let str157acc = &str156acc.replace("eño ", "éño ");
+   let str158acc = &str157acc.replace("eño.", "éño.");
+   let str159acc = &str158acc.replace("eño,", "éño,");
+   let str160acc = &str159acc.replace("eños ", "éños ");
+   let str161acc = &str160acc.replace("eños.", "éños.");
+   let str162acc = &str161acc.replace("eños,", "éños,");
+   let str163acc = &str162acc.replace("ozc", "ózc");
+   let str1wrd = str163acc.replace ("méxic", "méjic"); // words
+   let str1 = str1wrd.replace ("ch", "t͡ʃ"); // main
+   let str2 = &str1.replace("ce", "se");
+   let str3 = &str2.replace("cé", "sé");
+   let str4 = &str3.replace("ci", "si");
+   let str5 = &str4.replace("cí", "sí");
+   let str6 = &str5.replace("c", "k");
+   let str7 = &str6.replace("que", "ke");
+   let str8 = &str7.replace("qué", "ké");
+   let str9 = &str8.replace("qui", "ki");
+   let str10 = &str9.replace("q", "k");
+   let str11 = &str10.replace("ké", "kɛ");
+   let str12 = &str11.replace("ke", "kɛ");
+   let str13 = &str12.replace("kó", "kɔ");
+   let str14 = &str13.replace("ko", "kɔ");
+   let str15 = &str14.replace("x", "ks");
+   let str16 = &str15.replace("h", "");
+   let str17 = &str16.replace("j", "h");
+   let str18 = &str17.replace("ge", "he");
+   let str19 = &str18.replace("gé", "hé");
+   let str20 = &str19.replace("gi", "hi");
+   let str21 = &str20.replace("r", "ɾ");
+   let str22 = &str21.replace("subɾ", "subr");
+   let str23 = &str22.replace("abɾ", "abr");
+   let str24 = &str23.replace("nɾ", "nr");
+   let str25 = &str24.replace("lɾ", "lr");
+   let str26 = &str25.replace("sɾ", "sr");
+   let str27 = &str26.replace(" ɾ", " r");
+   let str28 = &str27.replace(".ɾ", ".r");
+   let str29 = &str28.replace("ɾɾ", "r");
+   let str30 = &str29.replace("oɾ", "oɹ");
+   let str31 = &str30.replace("ór", "óɹ");
+   let str32 = &str31.replace("y ", "i ");
+   let str33 = &str32.replace("y.", "i.");
+   let str34 = &str33.replace("y,", "i,");
+   let str35 = &str34.replace("y", "ɟ͡ʝ");
+   let str36 = &str35.replace("ll", "ɟ͡ʝ");
+   let str37 = &str36.replace("lt͡ʃ", "lʲt͡ʃ");
+   let str38 = &str37.replace("lt", "l̪t");
+   let str39 = &str38.replace("b", "β");
+   let str40 = &str39.replace(" β", " b");
+   let str41 = &str40.replace(".β", ".b");
+   let str42 = &str41.replace("mβ", "mb");
+   let str43 = &str42.replace("lβ", "lb");
+   let str44 = &str43.replace("v", "β̞");
+   let str45 = &str44.replace("fg", "vg");
+   let str46 = &str45.replace("fn", "vn");
+   let str47 = &str46.replace("gue", "ge");
+   let str48 = &str47.replace("gué", "gé");
+   let str49 = &str48.replace("gui", "gi");
+   let str50 = &str49.replace("guí", "gí");
+   let str51 = &str50.replace("g", "ɣ");
+   let str52 = &str51.replace("lɣ", "lɡ");
+   let str53 = &str52.replace("nɣ", "nɡ");
+   let str54 = &str53.replace("ád ", "á ");
+   let str55 = &str54.replace("ád.", "á.");
+   let str56 = &str55.replace("ád,", "á,");
+   let str57 = &str56.replace("id ", "i ");
+   let str58 = &str57.replace("id.", "i.");
+   let str59 = &str58.replace("id,", "i,");
+   let str60 = &str59.replace("d", "ð̞");
+   let str61 = &str60.replace(" ð̞", " ð");
+   let str62 = &str61.replace(".ð̞", ".ð");
+   let str63 = &str62.replace("nð̞", "nð");
+   let str64 = &str63.replace("lð̞", "ld");
+   let str65 = &str64.replace("áð̞a", "áʔa");
+   let str66 = &str65.replace("áð̞o", "áʔo");
+   let str67 = &str66.replace("óð̞a", "óʔa");
+   let str68 = &str67.replace("óð̞o", "óʔo");
+   let str69 = &str68.replace("z", "s");
+   let str70 = &str69.replace("s", "ɬ");
+   let str71 = &str70.replace("ɬ ", "ɬ̬ ");
+   let str72 = &str71.replace("ɬ.", "ɬ̬.");
+   let str73 = &str72.replace("ɬ,", "ɬ̬,");
+   let str74 = &str73.replace("eɬ̬ ", "el͡ʒ ");
+   let str75 = &str74.replace("eɬ̬.", "el͡ʒ.");
+   let str76 = &str75.replace("eɬ̬,", "el͡ʒ,");
+   let str77 = &str76.replace("ɬɣ", "ɬ̬ɣ");
+   let str78 = &str77.replace("ɬk", "ɬ̬k");
+   let str79 = &str78.replace("ɬð̞", "ɬ̬ð̞");
+   let str80 = &str79.replace("aɬa", "aɬ̬a");
+   let str81 = &str80.replace("aɬo", "aɬ̬o");
+   let str82 = &str81.replace("aɬe", "aɬ̬e");
+   let str83 = &str82.replace("aɬi", "aɬ̬i");
+   let str84 = &str83.replace("aɬu", "aɬ̬u");
+   let str85 = &str84.replace("aɬá", "aɬ̬á");
+   let str86 = &str85.replace("aɬó", "aɬ̬ó");
+   let str87 = &str86.replace("aɬé", "aɬ̬é");
+   let str88 = &str87.replace("aɬí", "aɬ̬í");
+   let str89 = &str88.replace("aɬú", "aɬ̬ú");
+   let str90 = &str89.replace("áɬa", "áɬ̬a");
+   let str91 = &str90.replace("áɬo", "áɬ̬o");
+   let str92 = &str91.replace("áɬe", "áɬ̬e");
+   let str93 = &str92.replace("áɬi", "áɬ̬i");
+   let str94 = &str93.replace("áɬu", "áɬ̬u");
+   let str95 = &str94.replace("oɬa", "oɬ̬a");
+   let str96 = &str95.replace("oɬo", "oɬ̬o");
+   let str97 = &str96.replace("oɬe", "oɬ̬e");
+   let str98 = &str97.replace("oɬi", "oɬ̬i");
+   let str99 = &str98.replace("oɬu", "oɬ̬u");
+   let str100 = &str99.replace("oɬá", "oɬ̬á");
+   let str101 = &str100.replace("oɬó", "oɬ̬ó");
+   let str102 = &str101.replace("oɬé", "oɬ̬é");
+   let str103 = &str102.replace("oɬí", "oɬ̬í");
+   let str104 = &str103.replace("oɬú", "oɬ̬ú");
+   let str105 = &str104.replace("óɬa", "óɬ̬a");
+   let str106 = &str105.replace("óɬo", "óɬ̬o");
+   let str107 = &str106.replace("óɬe", "óɬ̬e");
+   let str108 = &str107.replace("óɬi", "óɬ̬i");
+   let str109 = &str108.replace("óɬu", "óɬ̬u");
+   let str110 = &str109.replace("eɬa", "eɬ̬a");
+   let str111 = &str110.replace("eɬo", "eɬ̬o");
+   let str112 = &str111.replace("eɬe", "eɬ̬e");
+   let str113 = &str112.replace("eɬi", "eɬ̬i");
+   let str114 = &str113.replace("eɬu", "eɬ̬u");
+   let str115 = &str114.replace("eɬá", "eɬ̬á");
+   let str116 = &str115.replace("eɬó", "eɬ̬ó");
+   let str117 = &str116.replace("eɬé", "eɬ̬é");
+   let str118 = &str117.replace("eɬí", "eɬ̬í");
+   let str119 = &str118.replace("eɬú", "eɬ̬ú");
+   let str120 = &str119.replace("éɬa", "éɬ̬a");
+   let str121 = &str120.replace("éɬo", "éɬ̬o");
+   let str122 = &str121.replace("éɬe", "éɬ̬e");
+   let str123 = &str122.replace("éɬi", "éɬ̬i");
+   let str124 = &str123.replace("éɬu", "éɬ̬u");
+   let str125 = &str124.replace("iɬa", "iɬ̬a");
+   let str126 = &str125.replace("iɬo", "iɬ̬o");
+   let str127 = &str126.replace("iɬe", "iɬ̬e");
+   let str128 = &str127.replace("iɬi", "iɬ̬i");
+   let str129 = &str128.replace("iɬu", "iɬ̬u");
+   let str130 = &str129.replace("iɬá", "iɬ̬á");
+   let str131 = &str130.replace("iɬó", "iɬ̬ó");
+   let str132 = &str131.replace("iɬé", "iɬ̬é");
+   let str133 = &str132.replace("iɬí", "iɬ̬í");
+   let str134 = &str133.replace("iɬú", "iɬ̬ú");
+   let str135 = &str134.replace("íɬa", "íɬ̬a");
+   let str136 = &str135.replace("íɬo", "íɬ̬o");
+   let str137 = &str136.replace("íɬe", "íɬ̬e");
+   let str138 = &str137.replace("íɬi", "íɬ̬i");
+   let str139 = &str138.replace("íɬu", "íɬ̬u");
+   let str140 = &str139.replace("uɬa", "uɬ̬a");
+   let str141 = &str140.replace("uɬo", "uɬ̬o");
+   let str142 = &str141.replace("uɬe", "uɬ̬e");
+   let str143 = &str142.replace("uɬi", "uɬ̬i");
+   let str144 = &str143.replace("uɬu", "uɬ̬u");
+   let str145 = &str144.replace("uɬá", "uɬ̬á");
+   let str146 = &str145.replace("uɬó", "uɬ̬ó");
+   let str147 = &str146.replace("uɬé", "uɬ̬é");
+   let str148 = &str147.replace("uɬí", "uɬ̬í");
+   let str149 = &str148.replace("uɬú", "uɬ̬ú");
+   let str150 = &str149.replace("úɬa", "úɬ̬a");
+   let str151 = &str150.replace("úɬo", "úɬ̬o");
+   let str152 = &str151.replace("úɬe", "úɬ̬e");
+   let str153 = &str152.replace("úɬi", "úɬ̬i");
+   let str154 = &str153.replace("úɬu", "úɬ̬u");
+   let str155 = &str154.replace("kɬɬe", "kɬe");
+   let str156 = &str155.replace("kɬɬi", "kɬi");
+   let str157 = &str156.replace("ɬ", "ɬ̻");
+   let str158 = &str157.replace("ɬ̻̬", "ɬ̬");
+   let str159 = &str158.replace("mn", "nn");
+   let str160 = &str159.replace("nt͡ʃ", "nʲt͡ʃ");
+   let str161 = &str160.replace("t", "t̪");
+   let str162 = &str161.replace("nt̪", "n̪t̪");
+   let str163 = &str162.replace("nð", "n̪ð");
+   let str164 = &str163.replace("nk", "ŋk");
+   let str165 = &str164.replace("nɡ", "ŋɡ");
+   let str166 = &str165.replace("nm", "m̚m");
+   let str167 = &str166.replace("n m", "m m");
+   let str168 = &str167.replace("nβ", "mβ");
+   let str169 = &str168.replace("n β", "m β");
+   let str170 = &str169.replace("n b", "m b");
+   let str171 = &str170.replace("np", "mp");
+   let str172 = &str171.replace("n p", "m p");
+   let str173 = &str172.replace("nf", "ɱf");
+   let str174 = &str173.replace("n f", "ɱ f");
+   let str175 = &str174.replace("ñ", "ɲ");
+   let str176 = &str175.replace("ia", "ja");
+   let str177 = &str176.replace("ie", "je");
+   let str178 = &str177.replace("io", "jo");
+   let str179 = &str178.replace("iu", "ju");
+   let str180 = &str179.replace("iá", "já");
+   let str181 = &str180.replace("ié", "jé");
+   let str182 = &str181.replace("ió", "jó");
+   let str183 = &str182.replace("iú", "jú");
+   let str184 = &str183.replace("ea", "ia");
+   let str185 = &str184.replace("eá", "iá");
+   let str186 = &str185.replace("ká", "kɑ");
+   let str187 = &str186.replace("ka", "kɑ");
+   let str188 = &str187.replace("á", "ɐ̞");
+   let str189 = &str188.replace("a", "ɐ");
+   let str190 = &str189.replace("ó", "ɔ̝");
+   let str191 = &str190.replace("o ", "ʊ ");
+   let str192 = &str191.replace("o.", "ʊ.");
+   let str193 = &str192.replace("o,", "ʊ,");
+   let str194 = &str193.replace("os̬ ", "ʊs̬ ");
+   let str195 = &str194.replace("os̬.", "ʊs̬.");
+   let str196 = &str195.replace("os̬,", "ʊs̬,");
+   let str197 = &str196.replace("o", "o̞");
+   let str198 = &str197.replace("lʊ ", "lo̞ ");
+   let str199 = &str198.replace("lʊ.", "lo̞.");
+   let str200 = &str199.replace("lʊ,", "lo̞,");
+   let str201 = &str200.replace("lʊɬ̬ ", "lo̞ɬ̬ ");
+   let str202 = &str201.replace("lʊɬ̬.", "lo̞ɬ̬.");
+   let str203 = &str202.replace("lʊɬ̬,", "lo̞ɬ̬,");
+   let str204 = &str203.replace("ɾʊ ", "ɾo̞ ");
+   let str205 = &str204.replace("ɾʊ.", "ɾo̞.");
+   let str206 = &str205.replace("ɾʊ,", "ɾo̞,");
+   let str207 = &str206.replace("ɾʊɬ̬ ", "ɾo̞ɬ̬ ");
+   let str208 = &str207.replace("ɾʊɬ̬.", "ɾo̞ɬ̬.");
+   let str209 = &str208.replace("ɾʊɬ̬,", "ɾo̞ɬ̬,");
+   let str210 = &str209.replace("mʊ ", "mo̞ ");
+   let str211 = &str210.replace("mʊ.", "mo̞.");
+   let str212 = &str211.replace("mʊ,", "mo̞,");
+   let str213 = &str212.replace("mʊɬ̬ ", "mo̞ɬ̬ ");
+   let str214 = &str213.replace("mʊɬ̬.", "mo̞ɬ̬.");
+   let str215 = &str214.replace("mʊɬ̬,", "mo̞ɬ̬,");
+   let str216 = &str215.replace("nʊ ", "no̞ ");
+   let str217 = &str216.replace("nʊ.", "no̞.");
+   let str218 = &str217.replace("nʊ,", "no̞,");
+   let str219 = &str218.replace("nʊɬ̬ ", "no̞ɬ̬ ");
+   let str220 = &str219.replace("nʊɬ̬.", "no̞ɬ̬.");
+   let str221 = &str220.replace("nʊɬ̬,", "no̞ɬ̬,");
+   let str222 = &str221.replace("ɲʊ ", "ɲo̞ ");
+   let str223 = &str222.replace("ɲʊ.", "ɲo̞.");
+   let str224 = &str223.replace("ɲʊ,", "ɲo̞,");
+   let str225 = &str224.replace("ɲʊɬ̬ ", "ɲo̞ɬ̬ ");
+   let str226 = &str225.replace("ɲʊɬ̬.", "ɲo̞ɬ̬.");
+   let str227 = &str226.replace("ɲʊɬ̬,", "ɲo̞ɬ̬,");
+   let str228 = &str227.replace("é", "ɛ̝");
+   let str229 = &str228.replace("e", "e̞");
+   let str230 = &str229.replace("í", "i");
+   let str231 = &str230.replace("i", "i̞");
+   let str232 = &str231.replace("ú", "u");
+   let str233 = &str232.replace("u", "u̞");
+   let str1nas = &str233.replace("mu̞", "mũ̞"); // nasalizations
+   let str2nas = &str1nas.replace("ɔm̚m", "ɔ̃m̚m");
+   let str3nas = &str2nas.replace("e̞m̚m", "ẽ̞m̚m");
+   let str4nas = &str3nas.replace("i̞m̚m", "ĩ̞m̚m");
+   let str5nas = &str4nas.replace("u̞m̚m", "ũ̞m̚m");
+   let str6nas = &str5nas.replace("ɐnn", "ɐ̃nn");
+   let str7nas = &str6nas.replace("o̞nn", "õ̞nn");
+   let str8nas = &str7nas.replace("e̞nn", "ẽ̞nn");
+   let str9nas = &str8nas.replace("i̞nn", "ĩ̞nn");
+   let str10nas = &str9nas.replace("u̞nn", "ũ̞nn");
+   let str11nas = &str10nas.replace("ɐ̞ɱ", "ɐ̞̃ɱ");
+   let str12nas = &str11nas.replace("o̞ɱ", "õ̞ɱ");
+   let str13nas = &str12nas.replace("e̞ɱ", "ẽɱ");
+   let str14nas = &str13nas.replace("ɐɱ", "ɐ̃ɱ");
+   let str15nas = &str14nas.replace("ɑɱ", "ɑ̃ɱ");
+   let str16nas = &str15nas.replace("ɔ̝ɱ", "ɔ̝̃ɱ");
+   let str17nas = &str16nas.replace("ɔɱ", "ɔ̃ɱ");
+   let str18nas = &str17nas.replace("ɛ̝ɱ", "ɛ̝̃ɱ");
+   let str19nas = &str18nas.replace("i̞ɱ", "ĩ̞ɱ");
+   let str20nas = &str19nas.replace("u̞ɱ", "ũ̞ɱ");
+   let str21nas = &str20nas.replace("ɐ̞ŋ", "ɐ̞̃ŋ");
+   let str22nas = &str21nas.replace("o̞ŋ", "õ̞ŋ");
+   let str23nas = &str22nas.replace("e̞ŋ", "ẽ̞ŋ");
+   let str24nas = &str23nas.replace("ɐŋ", "ɐ̃ŋ");
+   let str25nas = &str24nas.replace("ɑŋ", "ɑ̃ŋ");
+   let str26nas = &str25nas.replace("ɔ̝ŋ", "ɔ̝̃ŋ");
+   let str27nas = &str26nas.replace("ɔŋ", "ɔ̃ŋ");
+   let str28nas = &str27nas.replace("ɛ̝ŋ", "ɛ̝̃ŋ");
+   let str29nas = &str28nas.replace("i̞ŋ", "ĩ̞ŋ");
+   let str30nas = &str29nas.replace("u̞ŋ", "ũ̞ŋ");
+   let str31nas = &str30nas.replace("ɐ̞n̪", "ɐ̞̃n̪");
+   let str32nas = &str31nas.replace("ɑn̪", "ɑ̃n̪");
+   let str33nas = &str32nas.replace("o̞n̪", "õ̞n̪");
+   let str34nas = &str33nas.replace("e̞n̪", "ẽ̞n̪");
+   let str35nas = &str34nas.replace("ɐn̪", "ɐ̃n̪");
+   let str36nas = &str35nas.replace("ɔ̝n̪", "ɔ̝̃n̪");
+   let str37nas = &str36nas.replace("ɔn̪", "ɔ̃n̪");
+   let str38nas = &str37nas.replace("ɛ̝n̪", "ɛ̝̃n̪");
+   let str39nas = &str38nas.replace("i̞n̪", "ĩ̞n̪");
+   let str40nas = &str39nas.replace("u̞n̪", "ũ̞n̪");
+   let str41nas = &str40nas.replace("ɐnʲ", "ɐ̃nʲ");
+   let str42nas = &str41nas.replace("ɐ̞nʲ", "ɐ̞̃nʲ");
+   let str43nas = &str42nas.replace("ɑnʲ", "ɑ̃nʲ");
+   let str44nas = &str43nas.replace("o̞nʲ", "õ̞nʲ");
+   let str45nas = &str44nas.replace("ɔ̝nʲ", "ɔ̝̃nʲ");
+   let str46nas = &str45nas.replace("ɔnʲ", "ɔ̃nʲ");
+   let str47nas = &str46nas.replace("e̞nʲ", "ẽ̞nʲ");
+   let str48nas = &str47nas.replace("ɛ̝nʲ", "ɛ̝̃nʲ");
+   let str49nas = &str48nas.replace("i̞nʲ", "ĩ̞nʲ");
+   let str50nas = &str49nas.replace("u̞nʲ", "ũ̞nʲ");
+   let str1pnc = &str50nas.replace(",", " ∣"); // space
+   let str2pnc = &str1pnc.replace(". ", " ∥ ");
+   let str3pnc = &str2pnc.replace(".", "");
+   let str4pnc = &str3pnc.replace(" - ", " ∣ ");
+   let str5pnc = &str4pnc.replace(" – ", " ∣ ");
+   let str6pnc = &str5pnc.replace("--", " ∣ ");
+   let result = &str6pnc.replace("∣ ∥", "∥");
 
    if usefile == "new" {
    let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));
-   file.write_all("BOGOTÁ, CO: [NOT YET IMPLEMENTED]".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
+   file.write_all("BOGOTÁ, CO:".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
    file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
    file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
    file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
@@ -2474,7 +2884,7 @@ pub fn spacobogota(original_text: &str, usefile: &str, outputfile: &str) {
    }
    if usefile == "old" {
    let mut file = OpenOptions::new().append(true).open(outputfile).expect(&(red.to_owned() + "cannot open file" + reset));
-   file.write("BOGOTÁ, CO: [NOT YET IMPLEMENTED]".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
+   file.write("BOGOTÁ, CO:".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
    file.write("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
    file.write("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
    file.write(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
@@ -2482,54 +2892,7 @@ pub fn spacobogota(original_text: &str, usefile: &str, outputfile: &str) {
    }
    if usefile == "terminal" {
    println!("");
-   println!("Bogotá, CO:{}", red.to_owned() + " [not yet implemented]" + reset);
-   println!("");
-   print!("{}", yellow);
-   println!("{}", result);
-   print!("{}", reset);
-   }
-}
-
-//   ++++++++++   ++++++++++   ++++++++++
-
-// LETICIA: IPA
-
-pub fn spacoleticia(original_text: &str, usefile: &str, outputfile: &str) {
-
-   let reset = "\x1b[0m";
-   let red = "\x1b[31m";
-   let yellow = "\x1b[93m";
-
-   let str1dot = original_text.to_owned() + "."; // mark word ending
-   let str2dot = ".".to_owned() + &str1dot;
-   let str3low = &str2dot.to_lowercase();
-   let str1sgn = str3low.replace(";", ",");
-   let str2sgn = str1sgn.replace(":", ",");
-   let str3sgn = str2sgn.replace("!", ".");
-   let str4sgn = str3sgn.replace("?", ".");
-   let str1acc = &str4sgn.replace("", "");
-   let str1 = str1acc.replace ("", "");
-   let result = &str1.replace("", "");
-
-   if usefile == "new" {
-   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));
-   file.write_all("LETICIA, CO: [NOT YET IMPLEMENTED]".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));   
-   }
-   if usefile == "old" {
-   let mut file = OpenOptions::new().append(true).open(outputfile).expect(&(red.to_owned() + "cannot open file" + reset));
-   file.write("LETICIA, CO: [NOT YET IMPLEMENTED]".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   }
-   if usefile == "terminal" {
-   println!("");
-   println!("Leticia, CO:{}", red.to_owned() + " [not yet implemented]" + reset);
+   println!("Bogotá, CO:");
    println!("");
    print!("{}", yellow);
    println!("{}", result);
@@ -2979,7 +3342,7 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
    let str8nas = &str7nas.replace("inn", "ĩnn");
    let str9nas = &str8nas.replace("unn", "ũnn");
    let str10nas = &str9nas.replace("ɐ̞ɱ", "ɐ̞̃ɱ");
-   let str11nas = &str10nas.replace("oɱ", "õ̞ɱ");
+   let str11nas = &str10nas.replace("oɱ", "õɱ");
    let str12nas = &str11nas.replace("eɱ", "ẽɱ");
    let str13nas = &str12nas.replace("ɐɱ", "ɐ̃ɱ");
    let str14nas = &str13nas.replace("ɑɱ", "ɑ̃ɱ");
@@ -3045,53 +3408,6 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
    if usefile == "terminal" {
    println!("");
    println!("Medellín, CO:");
-   println!("");
-   print!("{}", yellow);
-   println!("{}", result);
-   print!("{}", reset);
-   }
-}
-
-//   ++++++++++   ++++++++++   ++++++++++
-
-// SANTA MARTA: IPA
-
-pub fn spacosantamarta(original_text: &str, usefile: &str, outputfile: &str) {
-
-   let reset = "\x1b[0m";
-   let red = "\x1b[31m";
-   let yellow = "\x1b[93m";
-
-   let str1dot = original_text.to_owned() + "."; // mark word ending
-   let str2dot = ".".to_owned() + &str1dot;
-   let str3low = &str2dot.to_lowercase();
-   let str1sgn = str3low.replace(";", ",");
-   let str2sgn = str1sgn.replace(":", ",");
-   let str3sgn = str2sgn.replace("!", ".");
-   let str4sgn = str3sgn.replace("?", ".");
-   let str1acc = &str4sgn.replace("", "");
-   let str1 = str1acc.replace ("", "");
-   let result = &str1.replace("", "");
-
-   if usefile == "new" {
-   let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));
-   file.write_all("SANTA MARTA, CO: [NOT YET IMPLEMENTED]".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));   
-   }
-   if usefile == "old" {
-   let mut file = OpenOptions::new().append(true).open(outputfile).expect(&(red.to_owned() + "cannot open file" + reset));
-   file.write("SANTA MARTA, CO: [NOT YET IMPLEMENTED]".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
-   }
-   if usefile == "terminal" {
-   println!("");
-   println!("Santa Marta, CO:{}", red.to_owned() + " [not yet implemented]" + reset);
    println!("");
    print!("{}", yellow);
    println!("{}", result);
@@ -4117,35 +4433,35 @@ pub fn spamxciudaddemexico(original_text: &str, usefile: &str, outputfile: &str)
    let str33 = &str32.replace("y,", "i,");
    let str34 = &str33.replace("y", "ʝ");
    let str35 = &str34.replace("ll", "ʝ");
-   let str36 = &str35.replace("ld", "l̪d");
-   let str37 = &str36.replace("lt͡ʃ", "lʲt͡ʃ");
-   let str38 = &str37.replace("lk", "ʟk");
-   let str39 = &str38.replace("lg", "ʟg");
-   let str40 = &str39.replace("lx", "ʟx");
-   let str41 = &str40.replace("b", "β̞");
-   let str42 = &str41.replace(" β̞", " β");
-   let str43 = &str42.replace(".β̞", ".β");
-   let str44 = &str43.replace("mβ̞", "mβ");
-   let str45 = &str44.replace("v", "β̞");
-   let str46 = &str45.replace("fg", "vg");
-   let str47 = &str46.replace("fn", "vn");
-   let str48 = &str47.replace("gue", "ge");
-   let str49 = &str48.replace("gué", "gé");
-   let str50 = &str49.replace("gui", "gi");
-   let str51 = &str50.replace("guí", "gí");
-   let str52 = &str51.replace("g", "ɣ̞");
-   let str53 = &str52.replace("nɣ̞", "nɣ");
-   let str54 = &str53.replace("ád ", "á ");
-   let str55 = &str54.replace("ád.", "á.");
-   let str56 = &str55.replace("ád,", "á,");
-   let str57 = &str56.replace("id ", "i ");
-   let str58 = &str57.replace("id.", "i.");
-   let str59 = &str58.replace("id,", "i,");
-   let str60 = &str59.replace("d", "ð̞");
-   let str61 = &str60.replace(" ð̞", " ð");
-   let str62 = &str61.replace(".ð̞", ".ð");
-   let str63 = &str62.replace("nð̞", "nð");
-   let str64 = &str63.replace("lð̞", "lð");
+   let str36 = &str35.replace("lt͡ʃ", "lʲt͡ʃ");
+   let str37 = &str36.replace("lk", "ʟk");
+   let str38 = &str37.replace("lg", "ʟg");
+   let str39 = &str38.replace("lx", "ʟx");
+   let str40 = &str39.replace("b", "β̞");
+   let str41 = &str40.replace(" β̞", " β");
+   let str42 = &str41.replace(".β̞", ".β");
+   let str43 = &str42.replace("mβ̞", "mβ");
+   let str44 = &str43.replace("v", "β̞");
+   let str45 = &str44.replace("fg", "vg");
+   let str46 = &str45.replace("fn", "vn");
+   let str47 = &str46.replace("gue", "ge");
+   let str48 = &str47.replace("gué", "gé");
+   let str49 = &str48.replace("gui", "gi");
+   let str50 = &str49.replace("guí", "gí");
+   let str51 = &str50.replace("g", "ɣ̞");
+   let str52 = &str51.replace("nɣ̞", "nɣ");
+   let str53 = &str52.replace("ád ", "á ");
+   let str54 = &str53.replace("ád.", "á.");
+   let str55 = &str54.replace("ád,", "á,");
+   let str56 = &str55.replace("id ", "i ");
+   let str57 = &str56.replace("id.", "i.");
+   let str58 = &str57.replace("id,", "i,");
+   let str59 = &str58.replace("d", "ð̞");
+   let str60 = &str59.replace(" ð̞", " ð");
+   let str61 = &str60.replace(".ð̞", ".ð");
+   let str62 = &str61.replace("nð̞", "nð");
+   let str63 = &str62.replace("lð̞", "lð");
+   let str64 = &str63.replace("l", "l̠");
    let str65 = &str64.replace("z", "ɬ");
    let str66 = &str65.replace("s", "ɬ");
    let str67 = &str66.replace("ɬ ", "ɬ̬ ");
@@ -4157,41 +4473,43 @@ pub fn spamxciudaddemexico(original_text: &str, usefile: &str, outputfile: &str)
    let str73 = &str72.replace("ɬv", "ɬ̬v");
    let str74 = &str73.replace("kɬɬe", "kɬe");
    let str75 = &str74.replace("kɬɬi", "kɬi");
-   let str76 = &str75.replace("mn", "nn");
-   let str77 = &str76.replace("nt͡ʃ", "nʲt͡ʃ");
-   let str78 = &str77.replace("nk", "ŋk");
-   let str79 = &str78.replace("nɣ", "ŋɣ");
-   let str80 = &str79.replace("nx", "ŋx");
-   let str81 = &str80.replace("nχ", "ɴχ");
-   let str82 = &str81.replace("nm", "m̚m");
-   let str83 = &str82.replace("n m", "m m");
-   let str84 = &str83.replace("nβ", "mβ");
-   let str85 = &str84.replace("n β", "m β");
-   let str86 = &str85.replace("np", "mp");
-   let str87 = &str86.replace("n p", "m p");
-   let str88 = &str87.replace("nf", "ɱf");
-   let str89 = &str88.replace("n f", "ɱ f");
-   let str90 = &str89.replace("ñ", "ɲ");
-   let str91 = &str90.replace("h", "");
-   let str92 = &str91.replace("ia", "ʲa");
-   let str93 = &str92.replace("ie", "ʲe");
-   let str94 = &str93.replace("io", "ʲo");
-   let str95 = &str94.replace("iu", "ʲu");
-   let str96 = &str95.replace("iá", "ʲá");
-   let str97 = &str96.replace("ié", "ʲé");
-   let str98 = &str97.replace("ió", "ʲó");
-   let str99 = &str98.replace("iú", "ʲú");
-   let str100 = &str99.replace("á", "ʌ̞");
-   let str101 = &str100.replace("a", "ʌ");
-   let str102 = &str101.replace("ó", "ɔ̈");
-   let str103 = &str102.replace("o", "ɔ̝̈");
-   let str104 = &str103.replace("é", "ɛ̈");
-   let str105 = &str104.replace("e", "ɛ̝̈");
-   let str106 = &str105.replace("í", "i");
-   let str107 = &str106.replace("i", "ɪ");
-   let str108 = &str107.replace("ú", "u");
-   let str109 = &str108.replace("u", "ʊ");
-   let str1nas = &str109.replace("ɔ̈n", "ɔ̃n"); // nasalizations
+   let str76 = &str75.replace("ɬ", "ɬ̻");
+   let str77 = &str76.replace("ɬ̻̬", "ɬ̬");
+   let str78 = &str77.replace("mn", "nn");
+   let str79 = &str78.replace("nt͡ʃ", "nʲt͡ʃ");
+   let str80 = &str79.replace("nk", "ŋk");
+   let str81 = &str80.replace("nɣ", "ŋɣ");
+   let str82 = &str81.replace("nx", "ŋx");
+   let str83 = &str82.replace("nχ", "ɴχ");
+   let str84 = &str83.replace("nm", "m̚m");
+   let str85 = &str84.replace("n m", "m m");
+   let str86 = &str85.replace("nβ", "mβ");
+   let str87 = &str86.replace("n β", "m β");
+   let str88 = &str87.replace("np", "mp");
+   let str89 = &str88.replace("n p", "m p");
+   let str90 = &str89.replace("nf", "ɱf");
+   let str91 = &str90.replace("n f", "ɱ f");
+   let str92 = &str91.replace("ñ", "ɲ");
+   let str93 = &str92.replace("h", "");
+   let str94 = &str93.replace("ia", "ʲa");
+   let str95 = &str94.replace("ie", "ʲe");
+   let str96 = &str95.replace("io", "ʲo");
+   let str97 = &str96.replace("iu", "ʲu");
+   let str98 = &str97.replace("iá", "ʲá");
+   let str99 = &str98.replace("ié", "ʲé");
+   let str100 = &str99.replace("ió", "ʲó");
+   let str101 = &str100.replace("iú", "ʲú");
+   let str102 = &str101.replace("á", "ʌ̞");
+   let str103 = &str102.replace("a", "ʌ");
+   let str104 = &str103.replace("ó", "ɔ̈");
+   let str105 = &str104.replace("o", "ɔ̝̈");
+   let str106 = &str105.replace("é", "ɛ̈");
+   let str107 = &str106.replace("e", "ɛ̝̈");
+   let str108 = &str107.replace("í", "i");
+   let str109 = &str108.replace("i", "ɪ");
+   let str110 = &str109.replace("ú", "u");
+   let str111 = &str110.replace("u", "ʊ");
+   let str1nas = &str111.replace("ɔ̈n", "ɔ̃n"); // nasalizations
    let str2nas = &str1nas.replace("ɔm ", "ɔ̃m ");
    let str3nas = &str2nas.replace("mʊ", "mʊ̃");
    let str4nas = &str3nas.replace("ɔ̝̈m̚m", "ɔ̝̃m̚m");

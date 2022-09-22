@@ -1,9 +1,11 @@
-// LNGCNV VERSION 1.6.0-ALPHA.11 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-BETA.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MAIN FILE
 
 use std::env;
 use std::fs;
+use std::io;
+use std::path::Path;
 
 fn main() {
 
@@ -22,8 +24,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-      println!("Version:  1.6.0-alpha.11");
-      println!("Date:     September 9, 2022");
+      println!("Version:  1.6.0-beta.1");
+      println!("Date:     September 22, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
       println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -73,14 +75,13 @@ fn main() {
       println!("          variant of pronunciation if two or more are available (see {}", cyan.to_owned() + "-l" + reset + "):");
       println!("");
       println!("          {}", cyan.to_owned() + "--pol" + reset + ": " + cyan + "--pol.pl-czestochowa" + reset + ", " + cyan + "--pol.pl-torun" + reset + ", " + cyan + "--pol.pl-warszawa");
-      println!("          --spa{}", reset.to_owned() + ": " + grey + "--spa.bo-santa_cruz" + reset + ", " + grey + "--spa.co-bogota" + reset + ", " + grey + "--spa.co-leticia" + reset + ",");
-      println!("                 {}", cyan.to_owned() + "--spa.co-medellin" + reset + ", " + grey + "--spa.co-santa_marta" + reset + ", " + cyan + "--spa.es-cadiz" + reset + ",");
-      println!("                 {}", cyan.to_owned() + "--spa.es-madrid" + reset + ", " + cyan + "--spa.mx-ciudad_de_mexico");
+      println!("");
+      println!("          --spa{}", reset.to_owned() + ": " + cyan + "--spa.co-bogota" + reset + ", " + cyan + "--spa.co-medellin" + reset + ", " + cyan + "--spa.es-cadiz" + reset + ",");
+      println!("                 {}", cyan.to_owned() + "--spa.es-madrid"  + reset + ", " + cyan + "--spa.mx-ciudad_de_mexico");
+      println!("");
       println!("          --tca{}", reset.to_owned() + ": " + cyan + "--tca.br-umariacu" + reset + ", " + cyan + "--tca.br-vila_betania" + reset + ", " + cyan + "--tca.co-nazareth" + reset + ",");
       println!("                 {}", cyan.to_owned() + "--tca.co-rio_cotuhe" + reset + ", " + cyan + "--tca.pe-cushillococha" + reset);
-      println!("{}", grey);
-      println!("                 In grey features not yet implemented during the alpha phase!");
-      println!("{}", reset);
+      println!("");
       println!("Examples:{}", yellow.to_owned() + " lngcnv --ipa --spa 'Una frase en español'" + reset + "    [display all variants]");
       print!("{}", yellow);
       println!("          lngcnv --ipa --spa.co-bogota 'Una frase en español'{}", reset.to_owned() + "    [Bogotá, CO]");
@@ -116,7 +117,7 @@ fn main() {
       println!("Quechua:{}", reset.to_owned() + "  In the " + cyan + "--ipa" + reset + " mode, Ayacucho Quechua is implemented and the input must be spelled accordingly. The " + cyan + "--lct" + reset + " mode of operation translates into Ayacucho Quechua from other varieties of Southen Quechua. Dialectal features are mostly converted by the algorithm but manual adjustments are necessary. The " + cyan + "--ort" + reset + " mode allows transcribing between the trivocalic and the pentavocalic orthographies and works fine with any language of the Quechuan Family.");
       println!("");
       print!("{}", yellow);
-      println!("Spanish:{}", reset.to_owned() + "  Eight variants of pronunciation are available (" + cyan + "--ipa" + reset + "), including one from Bolivia (Santa Cruz de la Sierra), four from Colombia (Bogotá; Leticia; Medellín; Santa Marta), one from Mexico (Ciudad de México), and two from Spain (Cádiz; Madrid).");
+      println!("Spanish:{}", reset.to_owned() + "  Five variants of pronunciation are available (" + cyan + "--ipa" + reset + "), including two from Colombia (Bogotá; Medellín), one from Mexico (Ciudad de México), and two from Spain (Cádiz; Madrid).");
       println!("");
       print!("{}", yellow);
       println!("Tikuna:{}", reset.to_owned() + "   Five variants of pronunciation (Río Cotuhé, CO; Cushillococha, PE; Nazareth, CO; Umariaçu, BR; Vila Betânia, BR) (" + cyan + "--ipa" + reset + ") and four distinct orthographies (Brazil; Colombia; Peru–ILV; Peru–FORMABIAP) (" + cyan + "--ort" + reset + ") are supported. There is no support for tones at this stage of program development. Even so, in the " + cyan + "--ipa" + reset + " mode tonal annotations can be displayed in subscript if inserted manually as numbers beginning from 1 (the lowest) to 6 (the highest tone).");
@@ -142,8 +143,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: {}", yellow.to_owned() + "1.6.0-alpha.11" + reset);
-      println!("September 9, 2022");
+      println!("Version: {}", yellow.to_owned() + "1.6.0-beta.1" + reset);
+      println!("September 22, 2022");
       return;
       }
 
@@ -172,10 +173,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::engaucanberra(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: ENGLISH IPA
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::engaucanberra(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::engaucanberra(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: ENGLISH IPA
+   else {
+      lngcnv::engaucanberra(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: ENGLISH IPA
@@ -204,10 +235,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::ortuseng(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: ENGLISH ORTHOGRAPHY
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::ortuseng(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::ortuseng(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: ENGLISH ORTHOGRAPHY
+   else {
+      lngcnv::ortuseng(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: ENGLISH ORTHOGRAPHY
@@ -236,10 +297,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::ipalat(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: LATIN IPA
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::ipalat(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::ipalat(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: LATIN IPA
+   else {
+      lngcnv::ipalat(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: LATIN IPA
@@ -268,10 +359,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::ortlat(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: LATIN ORTHOGRAPHY
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::ortlat(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::ortlat(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: LATIN ORTHOGRAPHY
+   else {
+      lngcnv::ortlat(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: LATIN ORTHOGRAPHY
@@ -300,15 +421,48 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   let usefile = "old";
+// FILE ALREADY EXISTS: POLISH IPA
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+         let usefile = "old";
+         lngcnv::polpltorun(&original_text, usefile, outputfile);
+         lngcnv::polplwarszawa(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
 
-   lngcnv::polpltorun(&original_text, usefile, outputfile);
-   lngcnv::polplwarszawa(&original_text, usefile, outputfile);
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+         lngcnv::polpltorun(&original_text, usefile, outputfile);
+         lngcnv::polplwarszawa(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
 
-   println!("Data written to the file {}", outputfile);
-   return;
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: POLISH IPA
+   else {
+      lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+      let usefile = "old";
+      lngcnv::polpltorun(&original_text, usefile, outputfile);
+      lngcnv::polplwarszawa(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: POLISH IPA
@@ -339,10 +493,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: CZĘSTOCHOWA
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: CZĘSTOCHOWA
+   else {
+      lngcnv::polplczestochowa(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: CZĘSTOCHOWA
@@ -371,10 +555,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::polpltorun(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: TORUŃ
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::polpltorun(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::polpltorun(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: TORUŃ
+   else {
+      lngcnv::polpltorun(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: TORUŃ
@@ -403,10 +617,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::polplwarszawa(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: WARSZAWA
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::polplwarszawa(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::polplwarszawa(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: WARSZAWA
+   else {
+      lngcnv::polplwarszawa(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: WARSZAWA
@@ -435,10 +679,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::ipaque(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: AYACUCHO QUECHUA IPA
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::ipaque(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::ipaque(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: AYACUCHO QUECHUA IPA
+   else {
+      lngcnv::ipaque(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: AYACUCHO QUECHUA IPA
@@ -467,10 +741,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::quelct(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: AYACUCHO QUECHUA DIALECT
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::quelct(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::quelct(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: AYACUCHO QUECHUA DIALECT
+   else {
+      lngcnv::quelct(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: AYACUCHO QUECHUA DIALECT
@@ -499,14 +803,45 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::ortquetri(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   let usefile = "old";
+// FILE ALREADY EXISTS: QUECHUA ORTHOGRAPHY
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::ortquetri(&original_text, usefile, outputfile);
+         let usefile = "old";
+         lngcnv::ortquepen(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
 
-   lngcnv::ortquepen(&original_text, usefile, outputfile);
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::ortquetri(&original_text, usefile, outputfile);
+         lngcnv::ortquepen(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
 
-   println!("Data written to the file {}", outputfile);
-   return;
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: QUECHUA ORTHOGRAPHY
+   else {
+      lngcnv::ortquetri(&original_text, usefile, outputfile);
+      let usefile = "old";
+      lngcnv::ortquepen(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: QUECHUA ORTHOGRAPHY
@@ -536,20 +871,54 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::spabosantacruz(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   let usefile = "old";
+// FILE ALREADY EXISTS: SPANISH IPA
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::spacobogota(&original_text, usefile, outputfile);
+         let usefile = "old";
+         lngcnv::spacomedellin(&original_text, usefile, outputfile);
+         lngcnv::spaescadiz(&original_text, usefile, outputfile);
+         lngcnv::spaesmadrid(&original_text, usefile, outputfile);
+         lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
 
-   lngcnv::spacobogota(&original_text, usefile, outputfile);
-   lngcnv::spacoleticia(&original_text, usefile, outputfile);
-   lngcnv::spacomedellin(&original_text, usefile, outputfile);
-   lngcnv::spacosantamarta(&original_text, usefile, outputfile);
-   lngcnv::spaescadiz(&original_text, usefile, outputfile);
-   lngcnv::spaesmadrid(&original_text, usefile, outputfile);
-   lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::spacobogota(&original_text, usefile, outputfile);
+         lngcnv::spacomedellin(&original_text, usefile, outputfile);
+         lngcnv::spaescadiz(&original_text, usefile, outputfile);
+         lngcnv::spaesmadrid(&original_text, usefile, outputfile);
+         lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
 
-   println!("Data written to the file {}", outputfile);
-   return;
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: SPANISH IPA
+   else {
+      lngcnv::spacobogota(&original_text, usefile, outputfile);
+      let usefile = "old";
+      lngcnv::spacomedellin(&original_text, usefile, outputfile);
+      lngcnv::spaescadiz(&original_text, usefile, outputfile);
+      lngcnv::spaesmadrid(&original_text, usefile, outputfile);
+      lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: SPANISH IPA
@@ -557,46 +926,11 @@ fn main() {
    let original_text = str0;
    let usefile = "terminal";
    let outputfile = "0";
-   lngcnv::spabosantacruz(&original_text, usefile, outputfile);
    lngcnv::spacobogota(&original_text, usefile, outputfile);
-   lngcnv::spacoleticia(&original_text, usefile, outputfile);
    lngcnv::spacomedellin(&original_text, usefile, outputfile);
-   lngcnv::spacosantamarta(&original_text, usefile, outputfile);
    lngcnv::spaescadiz(&original_text, usefile, outputfile);
    lngcnv::spaesmadrid(&original_text, usefile, outputfile);
    lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
-   println!("");
-   return;
-   }
-
-//   ++++++++++   ++++++++++   ++++++++++
-
-// SPANISH: IPA --spa.bo-santa_cruz
-
-   if input1 == "--ipa" && input2 == "--spa.bo-santa_cruz" || input1 == "--spa.bo-santa_cruz" && input2 == "--ipa" {
-
-   let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
-// FROM A FILE:  SANTA CRUZ DE LA SIERRA
-   if str0 == "-i" || str0 == "--input" {
-   let usefile = "new";
-   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));      
-   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));      
-   if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
-   let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
-
-   lngcnv::spabosantacruz(&original_text, usefile, outputfile);
-
-   println!("Data written to the file {}", outputfile);
-   return;
-   }
-   }
-// FROM THE COMMAND LINE: SANTA CRUZ DE LA SIERRA
-
-   let original_text = str0;
-   let usefile = "terminal";
-   let outputfile = "0";
-   lngcnv::spabosantacruz(&original_text, usefile, outputfile);
    println!("");
    return;
    }
@@ -617,10 +951,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::spacobogota(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: BOGOTÁ
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::spacobogota(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::spacobogota(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: BOGOTÁ
+   else {
+      lngcnv::spacobogota(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: BOGOTÁ
@@ -629,38 +993,6 @@ fn main() {
    let usefile = "terminal";
    let outputfile = "0";
    lngcnv::spacobogota(&original_text, usefile, outputfile);
-   println!("");
-   return;
-   }
-
-//   ++++++++++   ++++++++++   ++++++++++
-
-// SPANISH: IPA --spa.co-leticia
-
-   if input1 == "--ipa" && input2 == "--spa.co-leticia" || input1 == "--spa.co-leticia" && input2 == "--ipa" {
-
-   let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
-// FROM A FILE: LETICIA
-   if str0 == "-i" || str0 == "--input" {
-   let usefile = "new";
-   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));      
-   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));      
-   if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
-   let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
-
-   lngcnv::spacoleticia(&original_text, usefile, outputfile);
-
-   println!("Data written to the file {}", outputfile);
-   return;
-   }
-   }
-// FROM THE COMMAND LINE: LETICIA
-
-   let original_text = str0;
-   let usefile = "terminal";
-   let outputfile = "0";
-   lngcnv::spacoleticia(&original_text, usefile, outputfile);
    println!("");
    return;
    }
@@ -681,10 +1013,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::spacomedellin(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: MEDELLÍN
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::spacomedellin(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::spacomedellin(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: MEDELLÍN
+   else {
+      lngcnv::spacomedellin(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: MEDELLÍN
@@ -692,38 +1054,6 @@ fn main() {
    let usefile = "terminal";
    let outputfile = "0";
    lngcnv::spacomedellin(&original_text, usefile, outputfile);
-   println!("");
-   return;
-   }
-
-//   ++++++++++   ++++++++++   ++++++++++
-
-// SPANISH: IPA --spa.co-santa_marta
-
-   if input1 == "--ipa" && input2 == "--spa.co-santa_marta" || input1 == "--spa.co-santa_marta" && input2 == "--ipa" {
-
-   let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
-// FROM A FILE: SANTA MARTA
-   if str0 == "-i" || str0 == "--input" {
-   let usefile = "new";
-   let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));      
-   let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));      
-   if output == "-o" || output == "--output" {
-   let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
-   let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
-
-   lngcnv::spacosantamarta(&original_text, usefile, outputfile);
-
-   println!("Data written to the file {}", outputfile);
-   return;
-   }
-   }
-// FROM THE COMMAND LINE: SANTA MARTA
-
-   let original_text = str0;
-   let usefile = "terminal";
-   let outputfile = "0";
-   lngcnv::spacosantamarta(&original_text, usefile, outputfile);
    println!("");
    return;
    }
@@ -744,10 +1074,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::spaescadiz(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: CÁDIZ
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::spaescadiz(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::spaescadiz(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: CÁDIZ
+   else {
+      lngcnv::spaescadiz(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: CÁDIZ
@@ -776,10 +1136,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::spaesmadrid(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: MADRID
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::spaesmadrid(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::spaesmadrid(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: MADRID
+   else {
+      lngcnv::spaesmadrid(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: MADRID
@@ -799,7 +1189,7 @@ fn main() {
    if input1 == "--ipa" && input2 == "--spa.mx-ciudad_de_mexico" || input1 == "--spa.mx-ciudad_de_mexico" && input2 == "--ipa" {
 
    let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
-// FROM A FILE: CIUDAD DE MÉXICO:
+// FROM A FILE: CIUDAD DE MÉXICO
    if str0 == "-i" || str0 == "--input" {
    let usefile = "new";
    let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));      
@@ -808,13 +1198,43 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: CIUDAD DE MÉXICO
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: CIUDAD DE MÉXICO
+   else {
+      lngcnv::spamxciudaddemexico(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
-// FROM THE COMMAND LINE: CIUDAD DE MÉXICO:
+// FROM THE COMMAND LINE: CIUDAD DE MÉXICO
 
    let original_text = str0;
    let usefile = "terminal";
@@ -840,17 +1260,54 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::tcacoriocotuhe(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   let usefile = "old";
+// FILE ALREADY EXISTS: TIKUNA IPA
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::tcacoriocotuhe(&original_text, usefile, outputfile);
+         let usefile = "old";
+         lngcnv::tcapecushillococha(&original_text, usefile, outputfile);
+         lngcnv::tcaconazareth(&original_text, usefile, outputfile);
+         lngcnv::tcabrumariacu(&original_text, usefile, outputfile);
+         lngcnv::tcabrvilabetania(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
 
-   lngcnv::tcapecushillococha(&original_text, usefile, outputfile);
-   lngcnv::tcaconazareth(&original_text, usefile, outputfile);
-   lngcnv::tcabrumariacu(&original_text, usefile, outputfile);
-   lngcnv::tcabrvilabetania(&original_text, usefile, outputfile);
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::tcacoriocotuhe(&original_text, usefile, outputfile);
+         lngcnv::tcapecushillococha(&original_text, usefile, outputfile);
+         lngcnv::tcaconazareth(&original_text, usefile, outputfile);
+         lngcnv::tcabrumariacu(&original_text, usefile, outputfile);
+         lngcnv::tcabrvilabetania(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
 
-   println!("Data written to the file {}", outputfile);
-   return;
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: TIKUNA IPA
+   else {
+      lngcnv::tcacoriocotuhe(&original_text, usefile, outputfile);
+      let usefile = "old";
+      lngcnv::tcapecushillococha(&original_text, usefile, outputfile);
+      lngcnv::tcaconazareth(&original_text, usefile, outputfile);
+      lngcnv::tcabrumariacu(&original_text, usefile, outputfile);
+      lngcnv::tcabrvilabetania(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: TIKUNA IPA
@@ -883,10 +1340,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::tcabrumariacu(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: UMARIAÇU
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::tcabrumariacu(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::tcabrumariacu(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: UMARIAÇU
+   else {
+      lngcnv::tcabrumariacu(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: UMARIAÇU
@@ -915,10 +1402,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::tcabrvilabetania(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: VILA BETÂNIA
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::tcabrvilabetania(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::tcabrvilabetania(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: VILA BETÂNIA
+   else {
+      lngcnv::tcabrvilabetania(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: VILA BETÂNIA
@@ -947,10 +1464,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::tcaconazareth(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: NAZARETH
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::tcaconazareth(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::tcaconazareth(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: NAZARETH
+   else {
+      lngcnv::tcaconazareth(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: NAZARETH
@@ -979,10 +1526,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::tcacoriocotuhe(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: RIO COTUHÉ
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::tcacoriocotuhe(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::tcacoriocotuhe(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: RIO COTUHÉ
+   else {
+      lngcnv::tcacoriocotuhe(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: RIO COTUHÉ
@@ -1011,10 +1588,40 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::tcapecushillococha(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   println!("Data written to the file {}", outputfile);
-   return;
+// FILE ALREADY EXISTS: CUSHILLOCOCHA
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::tcapecushillococha(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
+
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::tcapecushillococha(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
+
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: CUSHILLOCOCHA
+   else {
+      lngcnv::tcapecushillococha(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: CUSHILLOCOCHA
@@ -1043,16 +1650,51 @@ fn main() {
    let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
    let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
 
-   lngcnv::orttcabr(&original_text, usefile, outputfile);
+   let outputcheck: bool = Path::new(outputfile).is_file();
 
-   let usefile = "old";
+// FILE ALREADY EXISTS: TIKUNA ORTHOGRAPHY
+   if outputcheck == true{
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      let mut answer = String::new();
+      io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      let option: &str = &answer.trim();
+      
+      if option == "o" {
+         lngcnv::orttcabr(&original_text, usefile, outputfile);
+         let usefile = "old";
+         lngcnv::orttcaco(&original_text, usefile, outputfile);
+         lngcnv::orttcapeilv(&original_text, usefile, outputfile);
+         lngcnv::orttcapeformabiap(&original_text, usefile, outputfile);
+         println!("File {}", outputfile.to_owned() + " overwritten");
+         return;
+      }
 
-   lngcnv::orttcaco(&original_text, usefile, outputfile);
-   lngcnv::orttcapeilv(&original_text, usefile, outputfile);
-   lngcnv::orttcapeformabiap(&original_text, usefile, outputfile);
+      if option == "a" {
+         let usefile = "old";
+         lngcnv::orttcabr(&original_text, usefile, outputfile);
+         lngcnv::orttcaco(&original_text, usefile, outputfile);
+         lngcnv::orttcapeilv(&original_text, usefile, outputfile);
+         lngcnv::orttcapeformabiap(&original_text, usefile, outputfile);
+         println!("Data appended to the file {}", outputfile);
+         return;
+      }
 
-   println!("Data written to the file {}", outputfile);
-   return;
+      else {
+         println!("Operation aborted");
+         return;
+      }
+   }
+
+// FILE DOES NOT EXIST: TIKUNA ORTHOGRAPHY
+   else {
+      lngcnv::orttcabr(&original_text, usefile, outputfile);
+      let usefile = "old";
+      lngcnv::orttcaco(&original_text, usefile, outputfile);
+      lngcnv::orttcapeilv(&original_text, usefile, outputfile);
+      lngcnv::orttcapeformabiap(&original_text, usefile, outputfile);
+      println!("Data written to the file {}", outputfile);
+      return;
+      }
    }
    }
 // FROM THE COMMAND LINE: TIKUNA ORTHOGRAPHY
