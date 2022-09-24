@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-BETA.1 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-BETA.2 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MAIN FILE
 
@@ -24,8 +24,8 @@ fn main() {
 
       if argument == "-a" || argument == "--about" {
       println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-      println!("Version:  1.6.0-beta.1");
-      println!("Date:     September 22, 2022");
+      println!("Version:  1.6.0-beta.2");
+      println!("Date:     September 24, 2022");
       println!("Author:   Piotr Bajdek (Poland)");
       println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
       println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -143,8 +143,8 @@ fn main() {
 // VERSION
 
       if argument == "-v" || argument == "--version" {
-      println!("Version: {}", yellow.to_owned() + "1.6.0-beta.1" + reset);
-      println!("September 22, 2022");
+      println!("Version: {}", yellow.to_owned() + "1.6.0-beta.2" + reset);
+      println!("September 24, 2022");
       return;
       }
 
@@ -177,9 +177,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: ENGLISH IPA
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -239,9 +240,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: ENGLISH ORTHOGRAPHY
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -301,9 +303,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: LATIN IPA
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -363,9 +366,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: LATIN ORTHOGRAPHY
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -425,9 +429,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: POLISH IPA
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -497,9 +502,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: CZĘSTOCHOWA
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -559,9 +565,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: TORUŃ
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -621,9 +628,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: WARSZAWA
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -683,9 +691,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: AYACUCHO QUECHUA IPA
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -745,9 +754,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: AYACUCHO QUECHUA DIALECT
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -807,9 +817,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: QUECHUA ORTHOGRAPHY
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -875,9 +886,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: SPANISH IPA
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -955,9 +967,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: BOGOTÁ
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1017,9 +1030,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: MEDELLÍN
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1078,9 +1092,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: CÁDIZ
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1140,9 +1155,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: MADRID
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1202,9 +1218,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: CIUDAD DE MÉXICO
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1264,9 +1281,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: TIKUNA IPA
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1344,9 +1362,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: UMARIAÇU
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1406,9 +1425,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: VILA BETÂNIA
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1468,9 +1488,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: NAZARETH
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1530,9 +1551,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: RIO COTUHÉ
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1592,9 +1614,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: CUSHILLOCOCHA
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {
@@ -1654,9 +1677,10 @@ fn main() {
 
 // FILE ALREADY EXISTS: TIKUNA ORTHOGRAPHY
    if outputcheck == true{
-      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")");
+      println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
       let mut answer = String::new();
       io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+      print!("{}", reset);
       let option: &str = &answer.trim();
       
       if option == "o" {

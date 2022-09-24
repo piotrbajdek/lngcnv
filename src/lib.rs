@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-BETA.1 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-BETA.2 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // LIBRARY
 
@@ -3298,18 +3298,18 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
    let str211 = &str210.replace("ɾʊs̬ ", "ɾos̬ ");
    let str212 = &str211.replace("ɾʊs̬.", "ɾos̬.");
    let str213 = &str212.replace("ɾʊs̬,", "ɾos̬,");
-   let str214 = &str213.replace("ɡʊ ", "ɡo̞ ");
-   let str215 = &str214.replace("ɡʊ.", "ɡo̞.");
-   let str216 = &str215.replace("ɡʊ,", "ɡo̞,");
-   let str217 = &str216.replace("ɡʊs̬ ", "ɡo̞s̬ ");
-   let str218 = &str217.replace("ɡʊs̬.", "ɡo̞s̬.");
-   let str219 = &str218.replace("ɡʊs̬,", "ɡo̞s̬,");
-   let str220 = &str219.replace("ɣʊ ", "ɣo̞ ");
-   let str221 = &str220.replace("ɣʊ.", "ɣo̞.");
-   let str222 = &str221.replace("ɣʊ,", "ɣo̞,");
-   let str223 = &str222.replace("ɣʊs̬ ", "ɣo̞s̬ ");
-   let str224 = &str223.replace("ɣʊs̬.", "ɣo̞s̬.");
-   let str225 = &str224.replace("ɣʊs̬,", "ɣo̞s̬,");
+   let str214 = &str213.replace("ɡʊ ", "ɡə̠ ");
+   let str215 = &str214.replace("ɡʊ.", "ɡə̠.");
+   let str216 = &str215.replace("ɡʊ,", "ɡə̠,");
+   let str217 = &str216.replace("ɡʊs̬ ", "ɡə̠s̬ ");
+   let str218 = &str217.replace("ɡʊs̬.", "ɡə̠s̬.");
+   let str219 = &str218.replace("ɡʊs̬,", "ɡə̠s̬,");
+   let str220 = &str219.replace("ɣʊ ", "ɣə̠ ");
+   let str221 = &str220.replace("ɣʊ.", "ɣə̠.");
+   let str222 = &str221.replace("ɣʊ,", "ɣə̠,");
+   let str223 = &str222.replace("ɣʊs̬ ", "ɣə̠s̬ ");
+   let str224 = &str223.replace("ɣʊs̬.", "ɣə̠s̬.");
+   let str225 = &str224.replace("ɣʊs̬,", "ɣə̠s̬,");
    let str226 = &str225.replace("mʊ ", "mo̞ ");
    let str227 = &str226.replace("mʊ.", "mo̞.");
    let str228 = &str227.replace("mʊ,", "mo̞,");
@@ -3330,17 +3330,19 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
    let str243 = &str242.replace("ɲʊs̬,", "ɲo̞s̬,");
    let str244 = &str243.replace("é", "e̞");
    let str245 = &str244.replace("í", "i");
-   let str246 = &str245.replace("ú", "u");
-   let str247 = &str246.replace("ɟ͡ʝʊ", "ɟ͡ʝö");
-   let str1nas = &str247.replace("ɔ̝m̚m", "ɔ̝̃m̚m"); // nasalizations
+   let str246 = &str245.replace("i", "i̞");
+   let str247 = &str246.replace("ú", "u");
+   let str248 = &str247.replace("u", "u̞");
+   let str249 = &str248.replace("ɟ͡ʝʊ", "ɟ͡ʝö");
+   let str1nas = &str249.replace("ɔ̝m̚m", "ɔ̝̃m̚m"); // nasalizations
    let str2nas = &str1nas.replace("em̚m", "ẽm̚m");
-   let str3nas = &str2nas.replace("im̚m", "ĩm̚m");
-   let str4nas = &str3nas.replace("um̚m", "ũm̚m");
+   let str3nas = &str2nas.replace("i̞m̚m", "ĩ̞m̚m");
+   let str4nas = &str3nas.replace("u̞m̚m", "ũ̞m̚m");
    let str5nas = &str4nas.replace("ɐnn", "ɐ̃nn");
    let str6nas = &str5nas.replace("onn", "õnn");
    let str7nas = &str6nas.replace("enn", "ẽnn");
-   let str8nas = &str7nas.replace("inn", "ĩnn");
-   let str9nas = &str8nas.replace("unn", "ũnn");
+   let str8nas = &str7nas.replace("i̞nn", "ĩ̞nn");
+   let str9nas = &str8nas.replace("u̞nn", "ũ̞nn");
    let str10nas = &str9nas.replace("ɐ̞ɱ", "ɐ̞̃ɱ");
    let str11nas = &str10nas.replace("oɱ", "õɱ");
    let str12nas = &str11nas.replace("eɱ", "ẽɱ");
@@ -3349,8 +3351,8 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
    let str15nas = &str14nas.replace("o̞ɱ", "õ̞ɱ");
    let str16nas = &str15nas.replace("ɔ̝ɱ", "ɔ̝̃ɱ");
    let str17nas = &str16nas.replace("e̞ɱ", "ẽ̞ɱ");
-   let str18nas = &str17nas.replace("iɱ", "ĩɱ");
-   let str19nas = &str18nas.replace("uɱ", "ũɱ");
+   let str18nas = &str17nas.replace("i̞ɱ", "ĩ̞ɱ");
+   let str19nas = &str18nas.replace("u̞ɱ", "ũ̞ɱ");
    let str20nas = &str19nas.replace("ɐ̞ŋ", "ɐ̞̃ŋ");
    let str21nas = &str20nas.replace("oŋ", "õŋ");
    let str22nas = &str21nas.replace("eŋ", "ẽŋ");
@@ -3359,8 +3361,8 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
    let str25nas = &str24nas.replace("o̞ŋ", "õ̞ŋ");
    let str26nas = &str25nas.replace("ɔ̝ŋ", "ɔ̝̃ŋ");
    let str27nas = &str26nas.replace("e̞ŋ", "ẽ̞ŋ");
-   let str28nas = &str27nas.replace("iŋ", "ĩŋ");
-   let str29nas = &str28nas.replace("uŋ", "ũŋ");
+   let str28nas = &str27nas.replace("i̞ŋ", "ĩ̞ŋ");
+   let str29nas = &str28nas.replace("u̞ŋ", "ũ̞ŋ");
    let str30nas = &str29nas.replace("ɐ̞n̪", "ɐ̞̃n̪");
    let str31nas = &str30nas.replace("ɑn̪", "ɑ̃n̪");
    let str32nas = &str31nas.replace("on̪", "õn̪");
@@ -3369,8 +3371,8 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
    let str35nas = &str34nas.replace("o̞n̪", "õ̞n̪");
    let str36nas = &str35nas.replace("ɔ̝n̪", "ɔ̝̃n̪");
    let str37nas = &str36nas.replace("e̞n̪", "ẽ̞n̪");
-   let str38nas = &str37nas.replace("in̪", "ĩn̪");
-   let str39nas = &str38nas.replace("un̪", "ũn̪");
+   let str38nas = &str37nas.replace("i̞n̪", "ĩ̞n̪");
+   let str39nas = &str38nas.replace("u̞n̪", "ũ̞n̪");
    let str40nas = &str39nas.replace("ɐnʲ", "ɐ̃nʲ");
    let str41nas = &str40nas.replace("ɐ̞nʲ", "ɐ̞̃nʲ");
    let str42nas = &str41nas.replace("ɑnʲ", "ɑ̃nʲ");
@@ -3379,8 +3381,8 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
    let str45nas = &str44nas.replace("ɔ̝nʲ", "ɔ̝̃nʲ");
    let str46nas = &str45nas.replace("enʲ", "ẽnʲ");
    let str47nas = &str46nas.replace("e̞nʲ", "ẽ̞nʲ");
-   let str48nas = &str47nas.replace("inʲ", "ĩnʲ");
-   let str49nas = &str48nas.replace("unʲ", "ũnʲ");
+   let str48nas = &str47nas.replace("i̞nʲ", "ĩ̞nʲ");
+   let str49nas = &str48nas.replace("u̞nʲ", "ũ̞nʲ");
    let str1pnc = &str49nas.replace(",", " ∣"); // space
    let str2pnc = &str1pnc.replace(". ", " ∥ ");
    let str3pnc = &str2pnc.replace(".", "");
