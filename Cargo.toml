@@ -1,6 +1,6 @@
 [package]
 name = "lngcnv"
-version = "1.6.0-beta.2"
+version = "1.6.0-beta.3"
 authors = ["Piotr Bajdek <piotr.bajdek@proton.me>"]
 edition = "2021"
 description = "command line linguistic tools: display pronunciation, translate between dialects, convert between orthographies; support for multiple modern and ancient languages: English, Latin, Polish, Quechua, Spanish, Tikuna"
@@ -9,3 +9,7 @@ repository = "https://github.com/piotrbajdek/lngcnv"
 license = "MIT"
 keywords = ["linguistics", "phonetics", "pronunciation", "speech", "spelling"]
 categories = ["command-line-utilities", "text-processing", "algorithms"]
+
+[profile.release]
+codegen-units = 1
+strip = true
