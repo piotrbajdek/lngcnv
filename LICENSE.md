@@ -1,4 +1,4 @@
-MIT License
+# MIT License
 
 Copyright © 2022 Piotr Bajdek
 
