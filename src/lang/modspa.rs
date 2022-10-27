@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-BETA.6 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-BETA.7 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODSPA
 
@@ -294,6 +294,7 @@ pub fn spacobogota(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("gué", "gé")
         .replace("gui", "gi")
         .replace("guí", "gí")
+        .replace("ü", "u")
         .replace("g", "ɣ")
         .replace("lɣ", "lɡ")
         .replace("nɣ", "nɡ")
@@ -630,6 +631,7 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("gué", "gé")
         .replace("gui", "gi")
         .replace("guí", "gí")
+        .replace("ü", "u")
         .replace("g", "ɣ")
         .replace("lɣ", "lɡ")
         .replace("nɣ", "nɡ")
@@ -977,6 +979,7 @@ pub fn spaescadiz(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("gué", "gé")
         .replace("gui", "gi")
         .replace("guí", "gí")
+        .replace("ü", "u")
         .replace("g", "ɣ̞")
         .replace("lɣ̞", "lɣ")
         .replace("nɣ̞", "nɣ")
@@ -1213,6 +1216,7 @@ pub fn spaesmadrid(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("gué", "gé")
         .replace("gui", "gi")
         .replace("guí", "gí")
+        .replace("ü", "u")
         .replace("g", "ɣ̞")
         .replace("nɣ̞", "nɣ")
         .replace("ád ", "á ")
@@ -1433,6 +1437,7 @@ pub fn spamxciudaddemexico(original_text: &str, usefile: &str, outputfile: &str)
         .replace("gué", "gé")
         .replace("gui", "gi")
         .replace("guí", "gí")
+        .replace("ü", "u")
         .replace("g", "ɣ̞")
         .replace("nɣ̞", "nɣ")
         .replace("ád ", "á ")

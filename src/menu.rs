@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-BETA.6 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-BETA.7 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -16,7 +16,6 @@ use std::process::exit;
 
 pub fn documentation() {
     let reset = "\x1b[0m";
-    let red = "\x1b[31m";
     let blue_underlined = "\x1b[34;4m";
     let cyan = "\x1b[36m";
     let yellow = "\x1b[93m";
@@ -29,8 +28,8 @@ pub fn documentation() {
 
         if argument == "-a" || argument == "--about" {
             println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-            println!("Version:  1.6.0-beta.6");
-            println!("Date:     October 14, 2022");
+            println!("Version:  1.6.0-beta.7");
+            println!("Date:     October 27, 2022");
             println!("Author:   Piotr Bajdek (Poland)");
             println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
             println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -41,7 +40,7 @@ pub fn documentation() {
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", cyan.to_owned() + "--.--.---- v1.6.0 – Added --ipa --spa; Enhanced --ipa --pol, --ipa --tca; Improved --ipa --eng; Enhanced source code" + reset);
+            println!("{}", cyan.to_owned() + "--.--.---- v1.6.0 – Added --ipa --spa; Enhanced --ipa --pol, --ipa --tca, --ort --eng; Improved --ipa --eng; Enhanced source code" + reset);
             println!("15.05.2022 v1.5.1 – Improved source code");
             println!("14.05.2022 v1.5.0 – Enhanced --ipa --tca; Enhanced source code");
             println!("09.05.2022 v1.4.1 – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
@@ -110,7 +109,7 @@ pub fn documentation() {
 
         if argument == "-l" || argument == "--languages" {
             print!("{}", yellow);
-            println!("English:{}", reset.to_owned() + "  The " + cyan + "--ipa" + reset + " mode of operation displays the pronunciation of Australian English (Canberra, ACT) " + red + "[still in alpha stage]" + reset + ". In the " + cyan + "--ort" + reset + " mode, the text is transcribed into American English.");
+            println!("English:{}", reset.to_owned() + "  The " + cyan + "--ipa" + reset + " mode of operation displays the pronunciation of Australian English (Canberra, ACT). In the " + cyan + "--ort" + reset + " mode, the text is transcribed into American English.");
             println!();
             print!("{}", yellow);
             println!("Latin:{}", reset.to_owned() + "    The modern spelling of Latin and the ancient convention can be used indifferently in the " + cyan + "--ipa" + reset + " mode. To mark the duration of vowels, type either apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
@@ -148,8 +147,8 @@ pub fn documentation() {
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("Version: {}", yellow.to_owned() + "1.6.0-beta.6" + reset);
-            println!("October 14, 2022");
+            println!("Version: {}", yellow.to_owned() + "1.6.0-beta.7" + reset);
+            println!("October 27, 2022");
             exit(0);
         }
     }
