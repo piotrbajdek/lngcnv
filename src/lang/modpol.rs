@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-BETA.7 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-BETA.8 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODPOL
 
@@ -14,25 +14,71 @@
 use std::fs::OpenOptions;
 use std::io::Write;
 
+// SIMPLIFY INTERPUNCTION
+
+fn polpncbeg(polabb: &str) -> String {
+    let pncbeg = &polabb.replace(';', ".").replace(':', ",").replace('!', ".").replace('?', ".").replace(')', ",").replace('(', "∣ .");
+    pncbeg.to_string()
+}
+
 // REMOVE INTERPUNCTION
 
-fn polpnc(strmod: &str) -> String {
-    let result = &strmod
-        .replace(',', " ∣")
-        .replace(';', " ∥")
-        .replace(':', " ∣")
-        .replace(". ", " ∥ ")
-        .replace('.', "")
-        .replace("! ", " ∥ ")
-        .replace('!', "")
-        .replace("? ", " ∥ ")
-        .replace('?', "")
-        .replace('(', "∣ ")
-        .replace(')', " ∣")
-        .replace(" - ", " ∣ ")
-        .replace(" – ", " ∣ ")
-        .replace("--", " ∣ ");
+fn polpncend(strmod: &str) -> String {
+    let result = &strmod.replace(',', " ∣").replace(". ", " ∥ ").replace('.', "").replace(" - ", " ∣ ").replace(" – ", " ∣ ").replace("--", " ∣ ").replace("∣ ∥", "∥");
     result.to_string()
+}
+
+// ABBREVIATIONS
+
+fn polabbrev(lowercase: &str) -> String {
+    let polabb = &lowercase
+        .replace(" cm ", " centymetrów ")
+        .replace(" dr.", " doktora")
+        .replace(" dr ", " doktor ")
+        .replace(" dyr.", " dyrektor")
+        .replace(" gen.", " generał")
+        .replace(" gł.", " głównie")
+        .replace(" godz.", " godzinie")
+        .replace(" gr ", " groszy ")
+        .replace(" gr.", " groszy.")
+        .replace(" hab.", " habilitowany")
+        .replace(" i in.", " i inne.")
+        .replace(" inż.", " inżynier")
+        .replace(" im.", " imienia")
+        .replace(" itd.", " i tak dalej.")
+        .replace(" itp.", " i tym podobne.")
+        .replace(" jw.", " jak wyżej")
+        .replace(" k.", " koło")
+        .replace(" kg", " kilogramów")
+        .replace(" med.", " medycyny")
+        .replace("m.in.", "między innymi")
+        .replace("mgr.", "magistra")
+        .replace("mgr ", "magister ")
+        .replace(" mld ", " miliardów ")
+        .replace(" mln ", " milionów ")
+        .replace(" n.", " nad")
+        .replace("np.", "na przykład")
+        .replace("n.p.m.", "nad poziomem morza")
+        .replace("p.n.e.", "przed naszą erą")
+        .replace("n.e.", "naszej ery")
+        .replace("prof.", "profesor")
+        .replace("str.", "stronie")
+        .replace("tj.", "to jest")
+        .replace(" tys.", " tysięcy")
+        .replace("tzn.", "to znaczy")
+        .replace("tzw.", "tak zwany")
+        .replace("wg ", "według ")
+        .replace(" ww.", " wyżej wymieniony")
+        .replace(" zł ", " złotych ")
+        .replace(" zł.", " złotych.");
+    polabb.to_string()
+}
+
+// FOREIGN WORDS
+
+fn polpalesp(pncbeg: &str) -> String {
+    let palesp = &pncbeg.replace("chopin", "szopen").replace("covid", "kowid").replace("lockdown", "lokdałn").replace("weekend", "łikend");
+    palesp.to_string()
 }
 
 // CZĘSTOCHOWA: IPA
@@ -44,7 +90,11 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str) {
 
     let dot = original_text.to_owned() + "."; // mark word ending
     let lowercase = dot.to_lowercase();
-    let strmod = &lowercase
+    let polabb = polabbrev(&lowercase);
+    let pncbeg = polpncbeg(&polabb);
+    let palesp = polpalesp(&pncbeg);
+
+    let strmod = &palesp
         .replace("dż", "ɖ͡ʐ")
         .replace("dź", "d͡ʑ")
         .replace("dz", "^d͡z^")
@@ -234,7 +284,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("d͡z̪", "d͡z")
         .replace('^', "");
 
-    let result = polpnc(strmod);
+    let result = polpncend(strmod);
 
     if usefile == "new" {
         let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));
@@ -273,7 +323,11 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str) {
 
     let dot = original_text.to_owned() + "."; // mark word ending
     let lowercase = dot.to_lowercase();
-    let strmod = &lowercase
+    let polabb = polabbrev(&lowercase);
+    let pncbeg = polpncbeg(&polabb);
+    let palesp = polpalesp(&pncbeg);
+
+    let strmod = &palesp
         .replace("dż", "ɖ͡ʐ")
         .replace("dź", "d͡ʑ")
         .replace("dz", "^d͡z^")
@@ -453,7 +507,7 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("d͡z̻", "d͡z")
         .replace('^', "");
 
-    let result = polpnc(strmod);
+    let result = polpncend(strmod);
 
     if usefile == "new" {
         let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));
@@ -492,7 +546,11 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str) {
 
     let dot = original_text.to_owned() + "."; // mark word ending
     let lowercase = dot.to_lowercase();
-    let strmod = &lowercase
+    let polabb = polabbrev(&lowercase);
+    let pncbeg = polpncbeg(&polabb);
+    let palesp = polpalesp(&pncbeg);
+
+    let strmod = &palesp
         .replace("ąc", "ɒŋc")
         .replace("ąć", "ɒɲć")
         .replace("ąb", "ɒɱb")
@@ -672,7 +730,7 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("d͡z̻", "d͡z")
         .replace('^', "");
 
-    let result = polpnc(strmod);
+    let result = polpncend(strmod);
 
     if usefile == "new" {
         let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));

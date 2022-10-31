@@ -78,7 +78,7 @@ Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https:
 
 **1.** Install from crates.io by the use of cargo:
 
-_cargo install lngcnv \--version 1.6.0-beta.7_
+_cargo install lngcnv \--version 1.6.0-beta.8_
 
 By default, the file will be downloaded to `.cargo/bin/`, a hidden folder in your home directory.
 
@@ -90,7 +90,7 @@ By default, the file will be downloaded to `.cargo/bin/`, a hidden folder in you
 
 **1.** Download the binary 'lngcnv' for Linux x86_64 from GitHub:
 
-https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-beta.7
+https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-beta.8
 
 **2.** Make the file executable:
 
@@ -108,7 +108,7 @@ _sudo cp lngcnv /var/usrlocal/bin/_
 
 Download and unpack the lngcnv source from GitHub. Then, build and install the program:
 
-https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-beta.7
+https://github.com/piotrbajdek/lngcnv/releases/tag/v1.6.0-beta.8
 
 _cargo build \--release && sudo cp target/release/lngcnv /usr/bin/_
 
