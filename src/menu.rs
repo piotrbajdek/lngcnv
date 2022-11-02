@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-BETA.8 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-BETA.9 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -28,8 +28,8 @@ pub fn documentation() {
 
         if argument == "-a" || argument == "--about" {
             println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-            println!("Version:  1.6.0-beta.8");
-            println!("Date:     October 31, 2022");
+            println!("Version:  1.6.0-beta.9");
+            println!("Date:     November 2, 2022");
             println!("Author:   Piotr Bajdek (Poland)");
             println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
             println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -147,8 +147,8 @@ pub fn documentation() {
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("Version: {}", yellow.to_owned() + "1.6.0-beta.8" + reset);
-            println!("October 31, 2022");
+            println!("Version: {}", yellow.to_owned() + "1.6.0-beta.9" + reset);
+            println!("November 2, 2022");
             exit(0);
         }
     }
