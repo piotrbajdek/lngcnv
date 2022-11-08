@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-BETA.10 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-BETA.11 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODQUE
 
@@ -6,7 +6,7 @@
 
 #![deny(clippy::no_effect_replace)]
 #![warn(clippy::nursery, clippy::pedantic)]
-#![allow(clippy::single_char_pattern, clippy::too_many_lines, clippy::unicode_not_nfc)]
+#![allow(clippy::too_many_lines, clippy::unicode_not_nfc)]
 #![allow(clippy::string_lit_as_bytes)] // must be as_bytes() because non-ASCII characters are included
 
 // IMPORTS
@@ -29,9 +29,8 @@ pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("th", "t")
         .replace("ph", "p")
         .replace("qh", "q")
-        .replace("j", "q")
-        .replace("'", "")
-        .replace('’', "")
+        .replace('j', "q")
+        .replace(['\'', '’'], "")
         .replace("qu", "qo")
         .replace("uq", "oq")
         .replace("qi", "qe")
@@ -42,47 +41,49 @@ pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("mich", "mɪ̝ch")
         .replace("cha", "chä")
         .replace("ch", "ʧ")
-        .replace("g", "ɡ")
+        .replace('g', "ɡ")
         .replace("ka", "kæ̞")
         .replace("da", "dæ")
-        .replace("d", "d̥")
+        .replace('d', "d̥")
         .replace("lla", "llæ")
         .replace("ll", "ʎ")
-        .replace("ñ", "ɲ")
+        .replace('ñ', "ɲ")
         .replace("pa", "pä")
-        .replace("f", "f̟")
-        .replace("q", "χ")
-        .replace("r", "ɾ")
+        .replace('f', "f̟")
+        .replace('q', "χ")
+        .replace('r', "ɾ")
         .replace("ɾχ", "ɾ̥χ")
         .replace("sa", "s̻ä")
-        .replace("s", "s̻")
+        .replace('s', "s̻")
         .replace("ci", "s̻i")
         .replace("ce", "s̻e")
-        .replace("z", "s̻")
-        .replace("t", "t̪")
+        .replace('z', "s̻")
+        .replace('t', "t̪")
         .replace("wa", "wæ")
         .replace("ya", "yæ")
-        .replace("y", "j")
-        .replace("o", "ʊ̞")
-        .replace("e", "ɪ̞")
-        .replace("u", "u̞")
-        .replace("i", "i̞")
+        .replace('y', "j")
+        .replace('o', "ʊ̞")
+        .replace('e', "ɪ̞")
+        .replace('u', "u̞")
+        .replace('i', "i̞")
+        .replace(").", ".")
+        .replace("),", ",")
         .replace(',', " ∣")
         .replace(';', " ∥")
         .replace(':', " ∣")
         .replace(". ", " ∥ ")
         .replace('.', "")
         .replace("! ", " ∥ ")
-        .replace('!', "")
-        .replace('¡', "")
+        .replace(['!', '¡'], "")
         .replace("? ", " ∥ ")
-        .replace('?', "")
-        .replace('¿', "")
+        .replace(['?', '¿'], "")
         .replace('(', "∣ ")
         .replace(')', " ∣")
         .replace(" - ", " ∣ ")
         .replace(" – ", " ∣ ")
-        .replace("--", " ∣ ");
+        .replace("--", " ∣ ")
+        .replace("∣ ∣", "∣")
+        .replace("∣ ∥", "∥");
 
     if usefile == "new" {
         let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));
@@ -121,16 +122,15 @@ pub fn quelct(original_text: &str, usefile: &str, outputfile: &str) {
 
     let space = original_text.to_owned() + " "; // mark word ending
     let result = &space
-        .replace("o", "e")
-        .replace("e", "i")
+        .replace('o', "u")
+        .replace('e', "i")
         .replace("chh", "ch")
         .replace("kh", "k")
         .replace("th", "t")
         .replace("ph", "p")
         .replace("qh", "q")
-        .replace("j", "q")
-        .replace("'", "")
-        .replace('’', "")
+        .replace('j', "q")
+        .replace(['\'', '’'], "")
         .replace("san", "chkan")
         .replace("shan", "chkan")
         .replace("shyan", "chkan")
@@ -338,7 +338,7 @@ pub fn ortquetri(original_text: &str, usefile: &str, outputfile: &str) {
     let red = "\x1b[31m";
     let yellow = "\x1b[93m";
 
-    let result = original_text.replace("o", "u").replace("O", "U").replace("e", "i").replace("E", "I");
+    let result = original_text.replace('o', "u").replace('O', "U").replace('e', "i").replace('E', "I");
 
     if usefile == "new" {
         let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));

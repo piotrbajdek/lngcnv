@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-BETA.10 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0-BETA.11 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODENG
 
@@ -6,7 +6,7 @@
 
 #![deny(clippy::no_effect_replace)]
 #![warn(clippy::nursery, clippy::pedantic)]
-#![allow(clippy::single_char_pattern, clippy::too_many_lines, clippy::unicode_not_nfc)]
+#![allow(clippy::too_many_lines, clippy::unicode_not_nfc)]
 #![allow(clippy::string_lit_as_bytes)] // must be as_bytes() because non-ASCII characters are included
 
 // IMPORTS
@@ -17,14 +17,14 @@ use std::io::Write;
 // SIMPLIFY INTERPUNCTION
 
 fn engpncbeg(lowercase: &str) -> String {
-    let pncbeg = &lowercase.replace(';', ".").replace(':', ",").replace('!', ".").replace('?', ".").replace("--", " – ").replace("),", ",").replace(").", ".").replace(')', ",").replace('(', "∣ .");
+    let pncbeg = &lowercase.replace([';', '!', '?'], ".").replace(").", ".").replace("),", ",").replace([')', ':'], ",").replace("--", " – ").replace('(', "∣ .");
     pncbeg.to_string()
 }
 
 // REMOVE INTERPUNCTION
 
 fn engpncend(strmod: &str) -> String {
-    let result = &strmod.replace(',', " ∣").replace(". ", " ∥ ").replace('.', "").replace(" - ", " ∣ ").replace(" – ", " ∣ ").replace("∣ ∥", "∥");
+    let result = &strmod.replace(',', " ∣").replace(". ", " ∥ ").replace('.', "").replace(" - ", " ∣ ").replace(" – ", " ∣ ").replace("∣ ∣", "∣").replace("∣ ∥", "∥");
     result.to_string()
 }
 
@@ -47,8 +47,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("i’ll", "ɑ̝ël")
         .replace("i'm", "ɑ̝ëm")
         .replace("i’m", "ɑ̝ëm")
-        .replace("'", "")
-        .replace('’', "")
+        .replace(['\'', '’'], "")
         .replace("etc.", "etˈsæ̠t͡ʃɹə.")
         .replace("eah", "æ̠ə")
         .replace("answ", "ɐ̠ːns")
@@ -631,7 +630,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("ch", "k")
         .replace("cc", "k")
         .replace("ck", "k")
-        .replace("c", "k")
+        .replace('c', "k")
         .replace("kɶ̜", "kʰɶ̜")
         .replace("kl", "kl̥")
         .replace("gr", "ɡɹ̥")
@@ -642,7 +641,6 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("ud", "ɐ̠d")
         .replace("ʊ̟k", "ʊ̟kʰ")
         .replace("ɶ̜k", "ɶ̜kʰ")
-        .replace("r", "ɹ")
         .replace("ck", "k")
         .replace("dɹ", "d͡ʒɹ̥")
         .replace("dst", "d.st")
@@ -656,9 +654,9 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("ys,", "yz̥,")
         .replace("ŋs", "ŋs̬")
         .replace("æ̠ës", "æ̠ëz̥")
-        .replace("x", "ks")
+        .replace('x', "ks")
         .replace("ss", "s")
-        .replace("s", "s̻")
+        .replace('s', "s̻")
         .replace("s̻̬", "s̬")
         .replace("i ", "ɑ̝ë ")
         .replace("ph", "f")
@@ -692,16 +690,16 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("nt ", "nt̚  ")
         .replace("nt.", "nt̚ .")
         .replace("nt,", "nt̚ ,")
-        .replace("j", "d͡ʒ")
+        .replace('j', "d͡ʒ")
         .replace("d͡ʒ|", "j")
         .replace("oy", "o̝ɪ")
         .replace("at an", "aɹ an")
-        .replace("y", "j")
-        .replace("a", "ə")
+        .replace('y', "j")
+        .replace('a', "ə")
         .replace("ə̹i", "ɑ̝ë")
-        .replace("e", "e̽")
+        .replace('e', "e̽")
         .replace("e̽̈", "ë")
-        .replace("i", "i̞")
+        .replace('i', "i̞")
         .replace("i̞ː", "iː")
         .replace("ĩ̞", "ɪ̃")
         .replace("ət", "ət̪")
@@ -710,7 +708,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("e̽t", "ət̚")
         .replace("tt", "ð")
         .replace("rr", "ɹ")
-        .replace("r", "ɹ")
+        .replace('r', "ɹ")
         .replace("ɹɹ", "ɹ")
         .replace("ll", "l")
         .replace("l ", "ɫ ")
@@ -731,7 +729,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str) {
         .replace("i̞ i̞", "i̞")
         .replace("n m", "m m")
         .replace("n n", " n")
-        .replace("g", "ɡ")
+        .replace('g', "ɡ")
         .replace('^', "");
 
     let result = engpncend(strmod);
