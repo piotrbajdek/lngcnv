@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0-BETA.11 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.0 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -28,8 +28,8 @@ pub fn documentation() {
 
         if argument == "-a" || argument == "--about" {
             println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-            println!("Version:  1.6.0-beta.11");
-            println!("Date:     November 8, 2022");
+            println!("Version:  1.6.0");
+            println!("Date:     November 12, 2022");
             println!("Author:   Piotr Bajdek (Poland)");
             println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
             println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -40,7 +40,7 @@ pub fn documentation() {
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", cyan.to_owned() + "--.--.---- v1.6.0 – Added --ipa --spa; Enhanced --ipa --pol, --ipa --tca, --ort --eng; Improved --ipa --eng; Enhanced source code" + reset);
+            println!("{}", cyan.to_owned() + "12.11.2022 v1.6.0 – Added --ipa --spa; Enhanced --ipa --pol, --ipa --tca, --ort --eng; Improved --ipa --eng; Rewritten source code" + reset);
             println!("15.05.2022 v1.5.1 – Improved source code");
             println!("14.05.2022 v1.5.0 – Enhanced --ipa --tca; Enhanced source code");
             println!("09.05.2022 v1.4.1 – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
@@ -109,7 +109,7 @@ pub fn documentation() {
 
         if argument == "-l" || argument == "--languages" {
             print!("{}", yellow);
-            println!("English:{}", reset.to_owned() + "  The " + cyan + "--ipa" + reset + " mode of operation displays the pronunciation of Australian English (Canberra, ACT). In the " + cyan + "--ort" + reset + " mode, the text is transcribed into American English.");
+            println!("English:{}", reset.to_owned() + "  The " + cyan + "--ipa" + reset + " mode of operation displays the pronunciation of Australian English (Canberra, ACT). Although the phonetic transcription of English is mostly correct, it is imperfect at this stage of program development. In the " + cyan + "--ort" + reset + " mode, the text is transcribed into American English.");
             println!();
             print!("{}", yellow);
             println!("Latin:{}", reset.to_owned() + "    The modern spelling of Latin and the ancient convention can be used indifferently in the " + cyan + "--ipa" + reset + " mode. To mark the duration of vowels, type either apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
@@ -147,8 +147,8 @@ pub fn documentation() {
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("Version: {}", yellow.to_owned() + "1.6.0-beta.11" + reset);
-            println!("November 8, 2022");
+            println!("Version: {}", yellow.to_owned() + "1.6.0" + reset);
+            println!("November 12, 2022");
             exit(0);
         }
     }
