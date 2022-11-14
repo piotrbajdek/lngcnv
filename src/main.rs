@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MAIN FILE
 
@@ -14,6 +14,13 @@ pub mod menu;
 // MAIN
 
 fn main() {
-    menu::documentation();
-    lang::list();
+    let reset = "\x1b[0m";
+    let blue_underlined = "\x1b[34;4m";
+    let red = "\x1b[31m";
+    let cyan = "\x1b[36m";
+    let yellow = "\x1b[93m";
+    let grey = "\x1b[38;5;240m";
+
+    menu::documentation(reset, blue_underlined, cyan, yellow, grey);
+    lang::list(reset, red, cyan, yellow);
 }

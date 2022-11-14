@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -14,13 +14,7 @@ use std::process::exit;
 
 // DOCUMENTATION
 
-pub fn documentation() {
-    let reset = "\x1b[0m";
-    let blue_underlined = "\x1b[34;4m";
-    let cyan = "\x1b[36m";
-    let yellow = "\x1b[93m";
-    let grey = "\x1b[38;5;240m";
-
+pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &str, grey: &str) {
     // ARGUMENTS ANYWHERE WITHIN THE STRING
 
     for argument in env::args() {
@@ -28,8 +22,8 @@ pub fn documentation() {
 
         if argument == "-a" || argument == "--about" {
             println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-            println!("Version:  1.6.0");
-            println!("Date:     November 12, 2022");
+            println!("Version:  1.6.1");
+            println!("Date:     November 14, 2022");
             println!("Author:   Piotr Bajdek (Poland)");
             println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
             println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -40,7 +34,8 @@ pub fn documentation() {
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", cyan.to_owned() + "12.11.2022 v1.6.0 – Added --ipa --spa; Enhanced --ipa --pol, --ipa --tca, --ort --eng; Improved --ipa --eng; Rewritten source code" + reset);
+            println!("{}", cyan.to_owned() + "14.11.2022 v1.6.1 – Enhanced source code" + reset);
+            println!("12.11.2022 v1.6.0 – Added --ipa --spa; Enhanced --ipa --pol, --ipa --tca, --ort --eng; Improved --ipa --eng; Rewritten source code");
             println!("15.05.2022 v1.5.1 – Improved source code");
             println!("14.05.2022 v1.5.0 – Enhanced --ipa --tca; Enhanced source code");
             println!("09.05.2022 v1.4.1 – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
@@ -147,8 +142,8 @@ pub fn documentation() {
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("Version: {}", yellow.to_owned() + "1.6.0" + reset);
-            println!("November 12, 2022");
+            println!("Version: {}", yellow.to_owned() + "1.6.1" + reset);
+            println!("November 14, 2022");
             exit(0);
         }
     }

@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODLAT
 
@@ -16,11 +16,7 @@ use std::io::Write;
 
 // LATIN: IPA
 
-pub fn ipalat(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn ipalat(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dot = original_text.to_owned() + "."; // mark word ending
     let lowercase = &dot.to_lowercase();
     let result = &lowercase
@@ -162,7 +158,7 @@ pub fn ipalat(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Classical Latin:");
+        println!("{}", cyan.to_owned() + "Classical Latin" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -174,11 +170,7 @@ pub fn ipalat(original_text: &str, usefile: &str, outputfile: &str) {
 
 // LATIN: ORTHOGRAPHY
 
-pub fn ortlat(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn ortlat(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let result = original_text
         .replace('a', "A")
         .replace('á', "Á")
@@ -260,7 +252,7 @@ pub fn ortlat(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Classical Latin:");
+        println!("{}", cyan.to_owned() + "Classical Latin" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);

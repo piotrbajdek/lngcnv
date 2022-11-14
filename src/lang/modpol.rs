@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODPOL
 
@@ -83,11 +83,7 @@ fn polpalesp(pncbeg: &str) -> String {
 
 // CZĘSTOCHOWA: IPA
 
-pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dot = original_text.to_owned() + "."; // mark word ending
     let lowercase = dot.to_lowercase();
     let abbrev = polabbrev(&lowercase);
@@ -269,7 +265,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Częstochowa, Małopolska Region:");
+        println!("{}", cyan.to_owned() + "Częstochowa" + reset + ", " + cyan + "Małopolska Region" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -281,11 +277,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str) {
 
 // TORUŃ: IPA
 
-pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dot = original_text.to_owned() + "."; // mark word ending
     let lowercase = dot.to_lowercase();
     let abbrev = polabbrev(&lowercase);
@@ -444,7 +436,7 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Toruń, Wielkopolska Region:");
+        println!("{}", cyan.to_owned() + "Toruń" + reset + ", " + cyan + "Wielkopolska Region" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -456,11 +448,7 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str) {
 
 // WARSZAWA: IPA
 
-pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dot = original_text.to_owned() + "."; // mark word ending
     let lowercase = dot.to_lowercase();
     let abbrev = polabbrev(&lowercase);
@@ -629,7 +617,7 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Warszawa, Mazowsze Region:");
+        println!("{}", cyan.to_owned() + "Warszawa" + reset + ", " + cyan + "Mazowsze Region" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);

@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODENG
 
@@ -30,11 +30,7 @@ fn engpncend(strmod: &str) -> String {
 
 // ENGLISH: IPA
 
-pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dotend = original_text.to_owned() + "."; // mark word ending
     let dotbeg = ".".to_owned() + &dotend; // word beginning
     let lowercase = &dotbeg.to_lowercase();
@@ -815,7 +811,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Canberra, ACT, AU:");
+        println!("{}", cyan.to_owned() + "Canberra" + reset + ", " + cyan + "ACT" + reset + ", " + cyan + "AU" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -827,11 +823,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str) {
 
 // ENGLISH: ORTHOGRAPHY
 
-pub fn ortuseng(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn ortuseng(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let space = original_text.to_owned() + " "; // mark word ending
     let result = &space
         .replace("celling", "celing")
@@ -979,7 +971,7 @@ pub fn ortuseng(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("American English:");
+        println!("{}", cyan.to_owned() + "American English" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);

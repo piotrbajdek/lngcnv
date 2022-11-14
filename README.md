@@ -74,7 +74,7 @@ Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https:
 
 [lngcnv](https://github.com/piotrbajdek/lngcnv) should run smoothly on **Windows** and **macOS**, and can be installed by the use of [cargo](https://www.rust-lang.org/tools/install). Yet, it is being developed and primarily tested on **Fedora Linux**.
 
-lngcnv v1.6.0:
+lngcnv v1.6.1:
 
 – Was successfully tested on Arch Linux, Fedora Linux 37, Rocky Linux 9, openSUSE Tumbleweed, Ubuntu 22.04 and Ubuntu 22.10.
 
@@ -94,7 +94,7 @@ By default, the file will be downloaded to `.cargo/bin/`, a hidden folder in you
 
 ## METHOD 2 – LINUX UNIVERSAL BINARIES
 
-**1.** Download the distro-independent [binary](https://github.com/piotrbajdek/lngcnv/releases/download/v1.6.0/lngcnv) of lngcnv from GitHub.
+**1.** Download the distro-independent [binary](https://github.com/piotrbajdek/lngcnv/releases/download/v1.6.1/lngcnv) of lngcnv from GitHub.
 
 **2.** Make the file executable:
 
@@ -110,23 +110,23 @@ _sudo cp lngcnv /var/usrlocal/bin/_
 
 ## METHOD 3 – DISTRO-SPECIFIC PACKAGES
 
-Distro-specific packages are also available for download for [.rpm](https://github.com/piotrbajdek/lngcnv/releases/download/v1.6.0/lngcnv-1.6.0-1.x86_64.rpm)- and [.deb](https://github.com/piotrbajdek/lngcnv/releases/download/v1.6.0/lngcnv_1.6.0_amd64.deb)-based Linux distros. Installation instructions:
+Distro-specific packages are also available for download for [.rpm](https://github.com/piotrbajdek/lngcnv/releases/download/v1.6.1/lngcnv-1.6.1-1.x86_64.rpm)- and [.deb](https://github.com/piotrbajdek/lngcnv/releases/download/v1.6.1/lngcnv_1.6.1_amd64.deb)-based Linux distros. Installation instructions:
 
 Fedora Linux / RHEL / openSUSE:
 
-_sudo rpm -i lngcnv-1.6.0-1.x86_64.rpm_
+_sudo rpm -i lngcnv-1.6.1-1.x86_64.rpm_
 
 Fedora Silverblue / Kinoite:
 
-_rpm-ostree install lngcnv-1.6.0-1.x86_64.rpm_
+_rpm-ostree install lngcnv-1.6.1-1.x86_64.rpm_
 
 Ubuntu:
 
-_sudo dpkg -i lngcnv_1.6.0_amd64.deb_
+_sudo dpkg -i lngcnv_1.6.1_amd64.deb_
 
 ## METHOD 4 – MANUAL COMPILATION
 
-Download and unpack the lngcnv [source](https://github.com/piotrbajdek/lngcnv/archive/refs/tags/v1.6.0.zip) from GitHub. Then, build and install the program:
+Download and unpack the lngcnv [source](https://github.com/piotrbajdek/lngcnv/archive/refs/tags/v1.6.1.zip) from GitHub. Then, build and install the program:
 
 _cargo build \--release && sudo cp target/release/lngcnv /usr/bin/_
 

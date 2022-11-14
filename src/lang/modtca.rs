@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODTCA
 
@@ -48,11 +48,7 @@ fn tcapnc(strmod: &str) -> String {
 
 // UMARIAÇU: IPA
 
-pub fn tcabrumariacu(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn tcabrumariacu(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let lowercase = original_text.to_lowercase();
     let strsym = tcasym(&lowercase);
 
@@ -147,7 +143,7 @@ pub fn tcabrumariacu(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Umariaçu, BR:");
+        println!("{}", cyan.to_owned() + "Umariaçu" + reset + ", " + cyan + "BR" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -159,11 +155,7 @@ pub fn tcabrumariacu(original_text: &str, usefile: &str, outputfile: &str) {
 
 // VILA BETÂNIA: IPA
 
-pub fn tcabrvilabetania(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn tcabrvilabetania(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let lowercase = original_text.to_lowercase();
     let strsym = tcasym(&lowercase);
 
@@ -258,7 +250,7 @@ pub fn tcabrvilabetania(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Vila Betânia, BR:");
+        println!("{}", cyan.to_owned() + "Vila Betânia" + reset + ", " + cyan + "BR" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -270,11 +262,7 @@ pub fn tcabrvilabetania(original_text: &str, usefile: &str, outputfile: &str) {
 
 // NAZARETH: IPA
 
-pub fn tcaconazareth(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn tcaconazareth(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let lowercase = original_text.to_lowercase();
     let strsym = tcasym(&lowercase);
 
@@ -360,7 +348,7 @@ pub fn tcaconazareth(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Nazareth, CO:");
+        println!("{}", cyan.to_owned() + "Nazareth" + reset + ", " + cyan + "CO" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -372,11 +360,7 @@ pub fn tcaconazareth(original_text: &str, usefile: &str, outputfile: &str) {
 
 // RIO COTUHÉ: IPA
 
-pub fn tcacoriocotuhe(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn tcacoriocotuhe(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let lowercase = original_text.to_lowercase();
     let strsym = tcasym(&lowercase);
 
@@ -473,7 +457,7 @@ pub fn tcacoriocotuhe(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Río Cotuhé, CO:");
+        println!("{}", cyan.to_owned() + "Río Cotuhé" + reset + ", " + cyan + "CO" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -485,11 +469,7 @@ pub fn tcacoriocotuhe(original_text: &str, usefile: &str, outputfile: &str) {
 
 // CUSHILLOCOCHA: IPA
 
-pub fn tcapecushillococha(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn tcapecushillococha(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let lowercase = original_text.to_lowercase();
     let strsym = tcasym(&lowercase);
 
@@ -584,7 +564,7 @@ pub fn tcapecushillococha(original_text: &str, usefile: &str, outputfile: &str) 
     }
     if usefile == "terminal" {
         println!();
-        println!("Cushillococha, PE:");
+        println!("{}", cyan.to_owned() + "Cushillococha" + reset + ", " + cyan + "PE" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -596,11 +576,7 @@ pub fn tcapecushillococha(original_text: &str, usefile: &str, outputfile: &str) 
 
 // TIKUNA ORTHOGRAPHY: BRAZIL
 
-pub fn orttcabr(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn orttcabr(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let result = original_text
         .replace('y', "j")
         .replace('Y', "J")
@@ -767,7 +743,7 @@ pub fn orttcabr(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Brazil:");
+        println!("{}", cyan.to_owned() + "Brazil" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -779,11 +755,7 @@ pub fn orttcabr(original_text: &str, usefile: &str, outputfile: &str) {
 
 // TIKUNA ORTHOGRAPHY: COLOMBIA
 
-pub fn orttcaco(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn orttcaco(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let result = original_text
         .replace('j', "y")
         .replace('J', "Y")
@@ -826,7 +798,7 @@ pub fn orttcaco(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Colombia:");
+        println!("{}", cyan.to_owned() + "Colombia" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -838,11 +810,7 @@ pub fn orttcaco(original_text: &str, usefile: &str, outputfile: &str) {
 
 // TIKUNA ORTHOGRAPHY: PERU ILV
 
-pub fn orttcapeilv(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn orttcapeilv(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let result = original_text
         .replace('j', "y")
         .replace('J', "Y")
@@ -961,7 +929,7 @@ pub fn orttcapeilv(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Peru (ILV):");
+        println!("{}", cyan.to_owned() + "Peru" + reset + " (" + cyan + "ILV" + reset + "):");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -973,11 +941,7 @@ pub fn orttcapeilv(original_text: &str, usefile: &str, outputfile: &str) {
 
 // TIKUNA ORTHOGRAPHY: PERU FORMABIAP
 
-pub fn orttcapeformabiap(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn orttcapeformabiap(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let result = original_text
         .replace('j', "y")
         .replace('J', "Y")
@@ -1105,7 +1069,7 @@ pub fn orttcapeformabiap(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Peru (FORMABIAP):");
+        println!("{}", cyan.to_owned() + "Peru" + reset + " (" + cyan + "FORMABIAP" + reset + "):");
         println!();
         print!("{}", yellow);
         println!("{}", result);

@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODQUE
 
@@ -16,11 +16,7 @@ use std::io::Write;
 
 // AYACUCHO QUECHUA: IPA
 
-pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let lowercase = original_text.to_lowercase();
     let result = &lowercase
         .replace("sh", "ch")
@@ -103,7 +99,7 @@ pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Ayacucho Quechua (Wanta):");
+        println!("{}", cyan.to_owned() + "Ayacucho Quechua" + reset + " (" + cyan + "Wanta" + reset + "):");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -115,11 +111,7 @@ pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str) {
 
 // AYACUCHO QUECHUA: DIALECT
 
-pub fn quelct(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn quelct(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let space = original_text.to_owned() + " "; // mark word ending
     let result = &space
         .replace('o', "u")
@@ -321,7 +313,7 @@ pub fn quelct(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Ayacucho Quechua:");
+        println!("{}", cyan.to_owned() + "Ayacucho Quechua" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -333,11 +325,7 @@ pub fn quelct(original_text: &str, usefile: &str, outputfile: &str) {
 
 // QUECHUA: TRIVOCALIC ORTHOGRAPHY
 
-pub fn ortquetri(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn ortquetri(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let result = original_text.replace('o', "u").replace('O', "U").replace('e', "i").replace('E', "I");
 
     if usefile == "new" {
@@ -358,7 +346,7 @@ pub fn ortquetri(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Trivocalic:");
+        println!("{}", cyan.to_owned() + "Trivocalic" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -370,11 +358,7 @@ pub fn ortquetri(original_text: &str, usefile: &str, outputfile: &str) {
 
 // QUECHUA: PENTAVOCALIC ORTHOGRAPHY
 
-pub fn ortquepen(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn ortquepen(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let result = original_text
         .replace("qu", "qo")
         .replace("Qu", "Qo")
@@ -437,7 +421,7 @@ pub fn ortquepen(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Pentavocalic:");
+        println!("{}", cyan.to_owned() + "Pentavocalic" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);

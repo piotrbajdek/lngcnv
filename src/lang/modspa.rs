@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODSPA
 
@@ -345,11 +345,7 @@ fn spaaccent(pncbeg: &str) -> String {
 
 // BOGOTÁ: IPA
 
-pub fn spacobogota(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn spacobogota(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dotend = original_text.to_owned() + "."; // mark word ending
     let dotbeg = ".".to_owned() + &dotend; // word beginning
     let lowercase = &dotbeg.to_lowercase();
@@ -668,7 +664,7 @@ pub fn spacobogota(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Bogotá, CO:");
+        println!("{}", cyan.to_owned() + "Bogotá" + reset + ", " + cyan + "CO" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -680,11 +676,7 @@ pub fn spacobogota(original_text: &str, usefile: &str, outputfile: &str) {
 
 // MEDELLÍN: IPA
 
-pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dotend = original_text.to_owned() + "."; // mark word ending
     let dotbeg = ".".to_owned() + &dotend; // word beginning
     let lowercase = &dotbeg.to_lowercase();
@@ -1018,7 +1010,7 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Medellín, CO:");
+        println!("{}", cyan.to_owned() + "Medellín" + reset + ", " + cyan + "CO" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -1030,11 +1022,7 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str) {
 
 // CÁDIZ: IPA
 
-pub fn spaescadiz(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn spaescadiz(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dotend = original_text.to_owned() + "."; // mark word ending
     let dotbeg = ".".to_owned() + &dotend; // word beginning
     let lowercase = &dotbeg.to_lowercase();
@@ -1252,7 +1240,7 @@ pub fn spaescadiz(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Cádiz, ES:");
+        println!("{}", cyan.to_owned() + "Cádiz" + reset + ", " + cyan + "ES" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -1264,11 +1252,7 @@ pub fn spaescadiz(original_text: &str, usefile: &str, outputfile: &str) {
 
 // MADRID: IPA
 
-pub fn spaesmadrid(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn spaesmadrid(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dotend = original_text.to_owned() + "."; // mark word ending
     let dotbeg = ".".to_owned() + &dotend; // word beginning
     let lowercase = &dotbeg.to_lowercase();
@@ -1476,7 +1460,7 @@ pub fn spaesmadrid(original_text: &str, usefile: &str, outputfile: &str) {
     }
     if usefile == "terminal" {
         println!();
-        println!("Madrid, ES:");
+        println!("{}", cyan.to_owned() + "Madrid" + reset + ", " + cyan + "ES" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);
@@ -1488,11 +1472,7 @@ pub fn spaesmadrid(original_text: &str, usefile: &str, outputfile: &str) {
 
 // CIUDAD DE MÉXICO: IPA
 
-pub fn spamxciudaddemexico(original_text: &str, usefile: &str, outputfile: &str) {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let yellow = "\x1b[93m";
-
+pub fn spamxciudaddemexico(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dotend = original_text.to_owned() + "."; // mark word ending
     let dotbeg = ".".to_owned() + &dotend; // word beginning
     let lowercase = &dotbeg.to_lowercase();
@@ -1678,7 +1658,7 @@ pub fn spamxciudaddemexico(original_text: &str, usefile: &str, outputfile: &str)
     }
     if usefile == "terminal" {
         println!();
-        println!("Ciudad de México, MX:");
+        println!("{}", cyan.to_owned() + "Ciudad de México" + reset + ", " + cyan + "MX" + reset + ":");
         println!();
         print!("{}", yellow);
         println!("{}", result);

@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE LANG
 
@@ -24,14 +24,15 @@ pub mod modtca;
 
 // LANGLIST
 
-pub fn list() {
-    let reset = "\x1b[0m";
-    let red = "\x1b[31m";
-    let cyan = "\x1b[36m";
-
+pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
     // COLLECT ARGUMENTS FOR CONVERSIONS
 
     let args: Vec<String> = env::args().collect();
+
+    let arg_num = args.len();
+    if arg_num == 1 {
+        panic!("{}", &(red.to_owned() + "Missing arguments! See: --help" + reset))
+    }
 
     let input1 = args.get(1).expect(&(red.to_owned() + "Invalid or missing arguments! See: --help" + reset));
     let input2 = args.get(2).expect(&(red.to_owned() + "Invalid or missing arguments! See: --help" + reset));
@@ -46,7 +47,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -62,11 +63,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modeng::engaucanberra(&original_text, usefile, outputfile);
+                        modeng::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modeng::engaucanberra(&original_text, usefile, outputfile);
+                        modeng::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -76,17 +77,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: ENGLISH IPA
 
-                modeng::engaucanberra(&original_text, usefile, outputfile);
+                modeng::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: ENGLISH IPA
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modeng::engaucanberra(&original_text, usefile, outputfile);
+        modeng::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -101,7 +103,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -117,11 +119,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modeng::ortuseng(&original_text, usefile, outputfile);
+                        modeng::ortuseng(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modeng::ortuseng(&original_text, usefile, outputfile);
+                        modeng::ortuseng(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -131,17 +133,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: ENGLISH ORTHOGRAPHY
 
-                modeng::ortuseng(&original_text, usefile, outputfile);
+                modeng::ortuseng(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: ENGLISH ORTHOGRAPHY
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modeng::ortuseng(&original_text, usefile, outputfile);
+        modeng::ortuseng(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -156,7 +159,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -172,11 +175,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modlat::ipalat(&original_text, usefile, outputfile);
+                        modlat::ipalat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modlat::ipalat(&original_text, usefile, outputfile);
+                        modlat::ipalat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -186,17 +189,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: LATIN IPA
 
-                modlat::ipalat(&original_text, usefile, outputfile);
+                modlat::ipalat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: LATIN IPA
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modlat::ipalat(&original_text, usefile, outputfile);
+        modlat::ipalat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -211,7 +215,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -227,11 +231,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modlat::ortlat(&original_text, usefile, outputfile);
+                        modlat::ortlat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modlat::ortlat(&original_text, usefile, outputfile);
+                        modlat::ortlat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -241,17 +245,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: LATIN ORTHOGRAPHY
 
-                modlat::ortlat(&original_text, usefile, outputfile);
+                modlat::ortlat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: LATIN ORTHOGRAPHY
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modlat::ortlat(&original_text, usefile, outputfile);
+        modlat::ortlat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -266,7 +271,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -282,16 +287,16 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modpol::polplczestochowa(&original_text, usefile, outputfile);
+                        modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         let usefile = "old";
-                        modpol::polpltorun(&original_text, usefile, outputfile);
-                        modpol::polplwarszawa(&original_text, usefile, outputfile);
+                        modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modpol::polplczestochowa(&original_text, usefile, outputfile);
-                        modpol::polpltorun(&original_text, usefile, outputfile);
-                        modpol::polplwarszawa(&original_text, usefile, outputfile);
+                        modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -301,22 +306,23 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: POLISH IPA
 
-                modpol::polplczestochowa(&original_text, usefile, outputfile);
+                modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 let usefile = "old";
-                modpol::polpltorun(&original_text, usefile, outputfile);
-                modpol::polplwarszawa(&original_text, usefile, outputfile);
+                modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: POLISH IPA
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modpol::polplczestochowa(&original_text, usefile, outputfile);
-        modpol::polpltorun(&original_text, usefile, outputfile);
-        modpol::polplwarszawa(&original_text, usefile, outputfile);
+        modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -331,7 +337,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -347,11 +353,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modpol::polplczestochowa(&original_text, usefile, outputfile);
+                        modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modpol::polplczestochowa(&original_text, usefile, outputfile);
+                        modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -361,17 +367,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: CZĘSTOCHOWA
 
-                modpol::polplczestochowa(&original_text, usefile, outputfile);
+                modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: CZĘSTOCHOWA
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modpol::polplczestochowa(&original_text, usefile, outputfile);
+        modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -386,7 +393,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -402,11 +409,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modpol::polpltorun(&original_text, usefile, outputfile);
+                        modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modpol::polpltorun(&original_text, usefile, outputfile);
+                        modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -416,17 +423,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: TORUŃ
 
-                modpol::polpltorun(&original_text, usefile, outputfile);
+                modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: TORUŃ
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modpol::polpltorun(&original_text, usefile, outputfile);
+        modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -441,7 +449,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -457,11 +465,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modpol::polplwarszawa(&original_text, usefile, outputfile);
+                        modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modpol::polplwarszawa(&original_text, usefile, outputfile);
+                        modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -471,17 +479,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: WARSZAWA
 
-                modpol::polplwarszawa(&original_text, usefile, outputfile);
+                modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: WARSZAWA
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modpol::polplwarszawa(&original_text, usefile, outputfile);
+        modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -496,7 +505,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -512,11 +521,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modque::ipaque(&original_text, usefile, outputfile);
+                        modque::ipaque(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modque::ipaque(&original_text, usefile, outputfile);
+                        modque::ipaque(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -526,17 +535,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: AYACUCHO QUECHUA IPA
 
-                modque::ipaque(&original_text, usefile, outputfile);
+                modque::ipaque(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: AYACUCHO QUECHUA IPA
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modque::ipaque(&original_text, usefile, outputfile);
+        modque::ipaque(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -551,7 +561,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -567,11 +577,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modque::quelct(&original_text, usefile, outputfile);
+                        modque::quelct(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modque::quelct(&original_text, usefile, outputfile);
+                        modque::quelct(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -581,17 +591,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: AYACUCHO QUECHUA DIALECT
 
-                modque::quelct(&original_text, usefile, outputfile);
+                modque::quelct(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: AYACUCHO QUECHUA DIALECT
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modque::quelct(&original_text, usefile, outputfile);
+        modque::quelct(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -606,7 +617,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -622,14 +633,14 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modque::ortquetri(&original_text, usefile, outputfile);
+                        modque::ortquetri(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         let usefile = "old";
-                        modque::ortquepen(&original_text, usefile, outputfile);
+                        modque::ortquepen(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modque::ortquetri(&original_text, usefile, outputfile);
-                        modque::ortquepen(&original_text, usefile, outputfile);
+                        modque::ortquetri(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modque::ortquepen(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -639,20 +650,21 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: QUECHUA ORTHOGRAPHY
 
-                modque::ortquetri(&original_text, usefile, outputfile);
+                modque::ortquetri(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 let usefile = "old";
-                modque::ortquepen(&original_text, usefile, outputfile);
+                modque::ortquepen(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: QUECHUA ORTHOGRAPHY
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modque::ortquetri(&original_text, usefile, outputfile);
-        modque::ortquepen(&original_text, usefile, outputfile);
+        modque::ortquetri(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modque::ortquepen(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -667,7 +679,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -683,20 +695,20 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modspa::spacobogota(&original_text, usefile, outputfile);
+                        modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         let usefile = "old";
-                        modspa::spacomedellin(&original_text, usefile, outputfile);
-                        modspa::spaescadiz(&original_text, usefile, outputfile);
-                        modspa::spaesmadrid(&original_text, usefile, outputfile);
-                        modspa::spamxciudaddemexico(&original_text, usefile, outputfile);
+                        modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modspa::spacobogota(&original_text, usefile, outputfile);
-                        modspa::spacomedellin(&original_text, usefile, outputfile);
-                        modspa::spaescadiz(&original_text, usefile, outputfile);
-                        modspa::spaesmadrid(&original_text, usefile, outputfile);
-                        modspa::spamxciudaddemexico(&original_text, usefile, outputfile);
+                        modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -706,26 +718,27 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: SPANISH IPA
 
-                modspa::spacobogota(&original_text, usefile, outputfile);
+                modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 let usefile = "old";
-                modspa::spacomedellin(&original_text, usefile, outputfile);
-                modspa::spaescadiz(&original_text, usefile, outputfile);
-                modspa::spaesmadrid(&original_text, usefile, outputfile);
-                modspa::spamxciudaddemexico(&original_text, usefile, outputfile);
+                modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: SPANISH IPA
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modspa::spacobogota(&original_text, usefile, outputfile);
-        modspa::spacomedellin(&original_text, usefile, outputfile);
-        modspa::spaescadiz(&original_text, usefile, outputfile);
-        modspa::spaesmadrid(&original_text, usefile, outputfile);
-        modspa::spamxciudaddemexico(&original_text, usefile, outputfile);
+        modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -740,7 +753,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -756,11 +769,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modspa::spacobogota(&original_text, usefile, outputfile);
+                        modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modspa::spacobogota(&original_text, usefile, outputfile);
+                        modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -770,17 +783,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: BOGOTÁ
 
-                modspa::spacobogota(&original_text, usefile, outputfile);
+                modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: BOGOTÁ
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modspa::spacobogota(&original_text, usefile, outputfile);
+        modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -795,7 +809,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -811,11 +825,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modspa::spacomedellin(&original_text, usefile, outputfile);
+                        modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modspa::spacomedellin(&original_text, usefile, outputfile);
+                        modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -825,16 +839,17 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: MEDELLÍN
 
-                modspa::spacomedellin(&original_text, usefile, outputfile);
+                modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: MEDELLÍN
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modspa::spacomedellin(&original_text, usefile, outputfile);
+        modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -849,7 +864,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -865,11 +880,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modspa::spaescadiz(&original_text, usefile, outputfile);
+                        modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modspa::spaescadiz(&original_text, usefile, outputfile);
+                        modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -879,17 +894,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: CÁDIZ
 
-                modspa::spaescadiz(&original_text, usefile, outputfile);
+                modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: CÁDIZ
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modspa::spaescadiz(&original_text, usefile, outputfile);
+        modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -904,7 +920,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -920,11 +936,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modspa::spaesmadrid(&original_text, usefile, outputfile);
+                        modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modspa::spaesmadrid(&original_text, usefile, outputfile);
+                        modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -934,17 +950,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: MADRID
 
-                modspa::spaesmadrid(&original_text, usefile, outputfile);
+                modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: MADRID
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modspa::spaesmadrid(&original_text, usefile, outputfile);
+        modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -959,7 +976,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -975,11 +992,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modspa::spamxciudaddemexico(&original_text, usefile, outputfile);
+                        modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modspa::spamxciudaddemexico(&original_text, usefile, outputfile);
+                        modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -989,17 +1006,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: CIUDAD DE MÉXICO
 
-                modspa::spamxciudaddemexico(&original_text, usefile, outputfile);
+                modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: CIUDAD DE MÉXICO
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modspa::spamxciudaddemexico(&original_text, usefile, outputfile);
+        modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1014,7 +1032,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -1030,20 +1048,20 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modtca::tcacoriocotuhe(&original_text, usefile, outputfile);
+                        modtca::tcacoriocotuhe(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         let usefile = "old";
-                        modtca::tcapecushillococha(&original_text, usefile, outputfile);
-                        modtca::tcaconazareth(&original_text, usefile, outputfile);
-                        modtca::tcabrumariacu(&original_text, usefile, outputfile);
-                        modtca::tcabrvilabetania(&original_text, usefile, outputfile);
+                        modtca::tcapecushillococha(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modtca::tcacoriocotuhe(&original_text, usefile, outputfile);
-                        modtca::tcapecushillococha(&original_text, usefile, outputfile);
-                        modtca::tcaconazareth(&original_text, usefile, outputfile);
-                        modtca::tcabrumariacu(&original_text, usefile, outputfile);
-                        modtca::tcabrvilabetania(&original_text, usefile, outputfile);
+                        modtca::tcacoriocotuhe(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::tcapecushillococha(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -1053,26 +1071,27 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: TIKUNA IPA
 
-                modtca::tcacoriocotuhe(&original_text, usefile, outputfile);
+                modtca::tcacoriocotuhe(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 let usefile = "old";
-                modtca::tcapecushillococha(&original_text, usefile, outputfile);
-                modtca::tcaconazareth(&original_text, usefile, outputfile);
-                modtca::tcabrumariacu(&original_text, usefile, outputfile);
-                modtca::tcabrvilabetania(&original_text, usefile, outputfile);
+                modtca::tcapecushillococha(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: TIKUNA IPA
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modtca::tcacoriocotuhe(&original_text, usefile, outputfile);
-        modtca::tcapecushillococha(&original_text, usefile, outputfile);
-        modtca::tcaconazareth(&original_text, usefile, outputfile);
-        modtca::tcabrumariacu(&original_text, usefile, outputfile);
-        modtca::tcabrvilabetania(&original_text, usefile, outputfile);
+        modtca::tcacoriocotuhe(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modtca::tcapecushillococha(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1087,7 +1106,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -1103,11 +1122,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modtca::tcabrumariacu(&original_text, usefile, outputfile);
+                        modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modtca::tcabrumariacu(&original_text, usefile, outputfile);
+                        modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -1117,17 +1136,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: UMARIAÇU
 
-                modtca::tcabrumariacu(&original_text, usefile, outputfile);
+                modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: UMARIAÇU
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modtca::tcabrumariacu(&original_text, usefile, outputfile);
+        modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1142,7 +1162,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -1158,11 +1178,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modtca::tcabrvilabetania(&original_text, usefile, outputfile);
+                        modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modtca::tcabrvilabetania(&original_text, usefile, outputfile);
+                        modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -1172,17 +1192,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: VILA BETÂNIA
 
-                modtca::tcabrvilabetania(&original_text, usefile, outputfile);
+                modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: VILA BETÂNIA
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modtca::tcabrvilabetania(&original_text, usefile, outputfile);
+        modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1197,7 +1218,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -1213,11 +1234,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modtca::tcaconazareth(&original_text, usefile, outputfile);
+                        modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modtca::tcaconazareth(&original_text, usefile, outputfile);
+                        modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -1227,17 +1248,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: NAZARETH
 
-                modtca::tcaconazareth(&original_text, usefile, outputfile);
+                modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: NAZARETH
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modtca::tcaconazareth(&original_text, usefile, outputfile);
+        modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1252,7 +1274,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -1268,11 +1290,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modtca::tcacoriocotuhe(&original_text, usefile, outputfile);
+                        modtca::tcacoriocotuhe(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modtca::tcacoriocotuhe(&original_text, usefile, outputfile);
+                        modtca::tcacoriocotuhe(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -1282,17 +1304,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: RIO COTUHÉ
 
-                modtca::tcacoriocotuhe(&original_text, usefile, outputfile);
+                modtca::tcacoriocotuhe(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: RIO COTUHÉ
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modtca::tcacoriocotuhe(&original_text, usefile, outputfile);
+        modtca::tcacoriocotuhe(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1307,7 +1330,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -1323,11 +1346,11 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modtca::tcapecushillococha(&original_text, usefile, outputfile);
+                        modtca::tcapecushillococha(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modtca::tcapecushillococha(&original_text, usefile, outputfile);
+                        modtca::tcapecushillococha(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -1337,17 +1360,18 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: CUSHILLOCOCHA
 
-                modtca::tcapecushillococha(&original_text, usefile, outputfile);
+                modtca::tcapecushillococha(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: CUSHILLOCOCHA
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modtca::tcapecushillococha(&original_text, usefile, outputfile);
+        modtca::tcapecushillococha(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1362,7 +1386,7 @@ pub fn list() {
         if str0 == "-i" || str0 == "--input" {
             let usefile = "new";
             let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
-            let output = args.get(5).expect(&(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset));
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
             if output == "-o" || output == "--output" {
                 let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
                 let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
@@ -1378,18 +1402,18 @@ pub fn list() {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modtca::orttcabr(&original_text, usefile, outputfile);
+                        modtca::orttcabr(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         let usefile = "old";
-                        modtca::orttcaco(&original_text, usefile, outputfile);
-                        modtca::orttcapeilv(&original_text, usefile, outputfile);
-                        modtca::orttcapeformabiap(&original_text, usefile, outputfile);
+                        modtca::orttcaco(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::orttcapeilv(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::orttcapeformabiap(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modtca::orttcabr(&original_text, usefile, outputfile);
-                        modtca::orttcaco(&original_text, usefile, outputfile);
-                        modtca::orttcapeilv(&original_text, usefile, outputfile);
-                        modtca::orttcapeformabiap(&original_text, usefile, outputfile);
+                        modtca::orttcabr(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::orttcaco(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::orttcapeilv(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modtca::orttcapeformabiap(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {}", outputfile);
                     } else {
                         println!("Operation aborted");
@@ -1399,24 +1423,25 @@ pub fn list() {
 
                 // FILE DOES NOT EXIST: TIKUNA ORTHOGRAPHY
 
-                modtca::orttcabr(&original_text, usefile, outputfile);
+                modtca::orttcabr(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 let usefile = "old";
-                modtca::orttcaco(&original_text, usefile, outputfile);
-                modtca::orttcapeilv(&original_text, usefile, outputfile);
-                modtca::orttcapeformabiap(&original_text, usefile, outputfile);
+                modtca::orttcaco(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modtca::orttcapeilv(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modtca::orttcapeformabiap(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {}", outputfile);
+                return;
             }
-            return;
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
         }
         // FROM THE COMMAND LINE: TIKUNA ORTHOGRAPHY
 
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modtca::orttcabr(&original_text, usefile, outputfile);
-        modtca::orttcaco(&original_text, usefile, outputfile);
-        modtca::orttcapeilv(&original_text, usefile, outputfile);
-        modtca::orttcapeformabiap(&original_text, usefile, outputfile);
+        modtca::orttcabr(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modtca::orttcaco(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modtca::orttcapeilv(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modtca::orttcapeformabiap(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
