@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODLAT
 
@@ -7,7 +7,7 @@
 #![deny(clippy::no_effect_replace)]
 #![warn(clippy::nursery, clippy::pedantic)]
 #![allow(clippy::too_many_lines, clippy::unicode_not_nfc)]
-#![allow(clippy::string_lit_as_bytes)] // must be as_bytes() because non-ASCII characters are included
+#![allow(clippy::string_lit_as_bytes)]
 
 // IMPORTS
 
@@ -17,7 +17,7 @@ use std::io::Write;
 // LATIN: IPA
 
 pub fn ipalat(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
-    let dot = original_text.to_owned() + "."; // mark word ending
+    let dot = original_text.to_owned() + ".";
     let lowercase = &dot.to_lowercase();
     let result = &lowercase
         .replace('ꟾ', "ī")

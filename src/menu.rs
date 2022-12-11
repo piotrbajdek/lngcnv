@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -22,8 +22,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-a" || argument == "--about" {
             println!("Program:  {}", yellow.to_owned() + "lngcnv" + reset);
-            println!("Version:  1.6.1");
-            println!("Date:     November 14, 2022");
+            println!("Version:  1.7.0");
+            println!("Date:     December 11, 2022");
             println!("Author:   Piotr Bajdek (Poland)");
             println!("Contact:  {}", blue_underlined.to_owned() + "piotr.bajdek@proton.me" + reset);
             println!("Source:   {}", blue_underlined.to_owned() + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -34,7 +34,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", cyan.to_owned() + "14.11.2022 v1.6.1 – Enhanced source code" + reset);
+            println!("{}", cyan.to_owned() + "11.12.2022 v1.7.0 – Added --repl; Enhanced --ipa --spa; Improved --ipa --eng, --ipa --pol" + reset);
+            println!("14.11.2022 v1.6.1 – Enhanced source code");
             println!("12.11.2022 v1.6.0 – Added --ipa --spa; Enhanced --ipa --pol, --ipa --tca, --ort --eng; Improved --ipa --eng; Rewritten source code");
             println!("15.05.2022 v1.5.1 – Improved source code");
             println!("14.05.2022 v1.5.0 – Enhanced --ipa --tca; Enhanced source code");
@@ -50,8 +51,11 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // HELP
 
         if argument == "-h" || argument == "--help" {
-            println!("Usage:{}", yellow.to_owned() + "    lngcnv [OPTION 1/2] [OPTION 2/1] [STRING]");
-            println!("          lngcnv [OPTION 1/2] [OPTION 2/1] [OPTION 3] [FILE] [OPTION 4] [FILE]");
+            println!("{}", grey.to_owned() + "1. PROGRAM SYNTAX AND LANGUAGE OPTIONS" + reset);
+            println!();
+            println!("Usage:{}", yellow.to_owned() + "    lngcnv [OPTION 1/2] [OPTION 2/1] [STRING]" + reset + " [simple terminal queries]" + yellow);
+            println!("          lngcnv [OPTION 1/2] [OPTION 2/1] [OPTION 3]{}", reset.to_owned() + "           [REPL " + cyan + "--repl" + reset + "]" + yellow);
+            println!("          lngcnv [OPTION 1/2] [OPTION 2/1] [OPTION 3] [FILE] [OPTN. 4] [FILE]");
             println!("{}", reset);
             println!("OPTION 1: {}", cyan.to_owned() + "--ipa" + reset + "  Transcribe [STRING/ FILE] into the Intern. Phonetic Alphabet");
             println!("          {}", cyan.to_owned() + "--lct" + reset + "  Translate [STRING/ FILE] between dialects or lang. varieties");
@@ -64,19 +68,15 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
             println!("          --spa{}", reset.to_owned() + "  Spanish " + grey + "|" + reset + " available for: " + cyan + "--ipa");
             println!("          --tca{}", reset.to_owned() + "  Tikuna  " + grey + "|" + reset + " available for: " + cyan + "--ipa" + reset + ", " + cyan + "       --ort" + reset);
             println!();
-            println!("Examples:{}", yellow.to_owned() + r#" lngcnv --ipa --lat "Vēnī, vīdī, vīcī.""#);
-            println!("          lngcnv --lat --ipa 'Vēnī, vīdī, vīcī.'");
-            println!("{}", reset);
-            println!("          For multi-word queries always use single or double quotation marks!");
-            println!("          For word strings including apostrophes, use double quotation.");
-            println!();
             println!("          In the {}", cyan.to_owned() + "--ipa" + reset + " mode, the output can also be constrained to a selected");
             println!("          variant of pronunciation if two or more are available (see {}", cyan.to_owned() + "-l" + reset + "):");
             println!();
             println!("          {}", cyan.to_owned() + "--pol" + reset + ": " + cyan + "--pol.pl-czestochowa" + reset + ", " + cyan + "--pol.pl-torun" + reset + ", " + cyan + "--pol.pl-warszawa");
             println!();
-            println!("          --spa{}", reset.to_owned() + ": " + cyan + "--spa.co-bogota" + reset + ", " + cyan + "--spa.co-medellin" + reset + ", " + cyan + "--spa.es-cadiz" + reset + ",");
-            println!("                 {}", cyan.to_owned() + "--spa.es-madrid" + reset + ", " + cyan + "--spa.mx-ciudad_de_mexico");
+            println!("          --spa{}", reset.to_owned() + ": " + cyan + "--spa.co-bogota" + reset + ", " + cyan + "--spa.co-leticia" + reset + ", " + cyan + "--spa.co-medellin" + reset + ",");
+            println!("                 {}", cyan.to_owned() + "--spa.co-pasto" + reset + ", " + cyan + "--spa.co-quibdo" + reset + ", " + cyan + "--spa.co-santa_marta" + reset + ",");
+            println!("                 {}", cyan.to_owned() + "--spa.es-bilbao" + reset + ", " + cyan + "--spa.es-cadiz" + reset + ", " + cyan + "--spa.es-madrid" + reset + ",");
+            println!("                 {}", cyan.to_owned() + "--spa.mx-ciudad_de_mexico");
             println!();
             println!("          --tca{}", reset.to_owned() + ": " + cyan + "--tca.br-umariacu" + reset + ", " + cyan + "--tca.br-vila_betania" + reset + ", " + cyan + "--tca.co-nazareth" + reset + ",");
             println!("                 {}", cyan.to_owned() + "--tca.co-rio_cotuhe" + reset + ", " + cyan + "--tca.pe-cushillococha" + reset);
@@ -85,12 +85,31 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
             print!("{}", yellow);
             println!("          lngcnv --ipa --spa.co-bogota 'Una frase en español'{}", reset.to_owned() + "    [Bogotá, CO]");
             println!();
-            println!("OPTION 3:{}", cyan.to_owned() + " -i" + reset + ", " + cyan + "--input" + reset + "      Choose a file to open for conversion");
-            println!("OPTION 4:{}", cyan.to_owned() + " -o" + reset + ", " + cyan + "--output" + reset + "     Choose a name for the file to create");
+            println!("{}", grey.to_owned() + "2. SIMPLE TERMINAL QUERIES" + reset);
             println!();
-            println!("Examples:{}", yellow.to_owned() + " lngcnv --ipa --lat --input latin_book.txt --output output_file.txt");
-            println!("          lngcnv --lat --ipa --input latin_book.txt --output output_file.txt");
+            println!("Examples:{}", yellow.to_owned() + r#" lngcnv --ipa --lat "Vēnī, vīdī, vīcī.""#);
+            println!("          lngcnv --lat --ipa 'Vēnī, vīdī, vīcī.'");
             println!("{}", reset);
+            println!("          For multi-word queries always use single or double quotation marks!");
+            println!("          For word strings including apostrophes, use double quotation.");
+            println!();
+            println!("{}", grey.to_owned() + "3. THE INTERACTIVE SHELL" + reset);
+            println!();
+            println!("OPTION 3:{}", cyan.to_owned() + " -r" + reset + ", " + cyan + "--repl" + reset + "       Interactive shell mode (REPL)    [type " + cyan + "-q" + reset + " to quit]");
+            println!();
+            println!("Example:{}", yellow.to_owned() + "  lngcnv --ipa --pol.pl-czestochowa --repl" + reset + "        [type in the shell]");
+            println!("                                  [do not enclose queries in quotation marks]");
+            println!();
+            println!("{}", grey.to_owned() + "4. OPERATIONS ON FILES" + reset);
+            println!();
+            println!("OPTION 3:{}", cyan.to_owned() + " -i" + reset + ", " + cyan + "--input" + reset + "      Choose a file to open for conversion");
+            println!("OPTION 4:{}", cyan.to_owned() + " -o" + reset + ", " + cyan + "--output" + reset + "     Choose a name for the file to create    [optional]");
+            println!();
+            println!("Examples:{}", yellow.to_owned() + " lngcnv --ipa --pol --input polish_book.txt --output output_file.txt");
+            println!("          lngcnv --ipa --pol --input polish_book{}", reset.to_owned() + " [a default output file name]");
+            println!();
+            println!("{}", grey.to_owned() + "5. PROGRAM DOCUMENTATION" + reset);
+            println!();
             println!("See also: {}", cyan.to_owned() + "-a" + reset + ", " + cyan + "--about" + reset + "      Show contact and program info");
             println!("          {}", cyan.to_owned() + "-c" + reset + ", " + cyan + "--changes" + reset + "    Show simplified change notes");
             println!("          {}", cyan.to_owned() + "-h" + reset + ", " + cyan + "--help" + reset + "       Show this help");
@@ -104,7 +123,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-l" || argument == "--languages" {
             print!("{}", yellow);
-            println!("English:{}", reset.to_owned() + "  The " + cyan + "--ipa" + reset + " mode of operation displays the pronunciation of Australian English (Canberra, ACT). Although the phonetic transcription of English is mostly correct, it is imperfect at this stage of program development. In the " + cyan + "--ort" + reset + " mode, the text is transcribed into American English.");
+            println!("English:{}", reset.to_owned() + "  The " + cyan + "--ipa" + reset + " mode of operation displays the pronunciation of Australian English (Canberra, ACT). In the " + cyan + "--ort" + reset + " mode, the text is transcribed into American English.");
             println!();
             print!("{}", yellow);
             println!("Latin:{}", reset.to_owned() + "    The modern spelling of Latin and the ancient convention can be used indifferently in the " + cyan + "--ipa" + reset + " mode. To mark the duration of vowels, type either apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed into the ancient convention (before the 2nd c. AD).");
@@ -116,7 +135,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
             println!("Quechua:{}", reset.to_owned() + "  In the " + cyan + "--ipa" + reset + " mode, Ayacucho Quechua is implemented and the input must be spelled accordingly. The " + cyan + "--lct" + reset + " mode of operation translates into Ayacucho Quechua from other varieties of Southen Quechua. Dialectal features are mostly converted by the algorithm but manual adjustments are necessary. The " + cyan + "--ort" + reset + " mode allows transcribing between the trivocalic and the pentavocalic orthographies and works fine with any language of the Quechuan Family.");
             println!();
             print!("{}", yellow);
-            println!("Spanish:{}", reset.to_owned() + "  Five variants of pronunciation are available (" + cyan + "--ipa" + reset + "), including two from Colombia (Bogotá; Medellín), one from Mexico (Ciudad de México), and two from Spain (Cádiz; Madrid).");
+            println!("Spanish:{}", reset.to_owned() + "  Ten variants of pronunciation are available (" + cyan + "--ipa" + reset + "), including six from Colombia (Bogotá; Leticia; Medellín; Pasto; Quibdó; Santa Marta), one from Mexico (Ciudad de México), and three from Spain (Bilbao; Cádiz; Madrid).");
             println!();
             print!("{}", yellow);
             println!("Tikuna:{}", reset.to_owned() + "   Five variants of pronunciation (Río Cotuhé, CO; Cushillococha, PE; Nazareth, CO; Umariaçu, BR; Vila Betânia, BR) (" + cyan + "--ipa" + reset + ") and four distinct orthographies (Brazil; Colombia; Peru–ILV; Peru–FORMABIAP) (" + cyan + "--ort" + reset + ") are supported. There is no support for tones at this stage of program development. Even so, in the " + cyan + "--ipa" + reset + " mode tonal annotations can be displayed in subscript if inserted manually as numbers beginning from 1 (the lowest) to 6 (the highest tone).");
@@ -142,8 +161,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("Version: {}", yellow.to_owned() + "1.6.1" + reset);
-            println!("November 14, 2022");
+            println!("Version: {}", yellow.to_owned() + "1.7.0" + reset);
+            println!("December 11, 2022");
             exit(0);
         }
     }

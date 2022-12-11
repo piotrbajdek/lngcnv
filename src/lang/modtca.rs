@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODTCA
 
@@ -7,7 +7,7 @@
 #![deny(clippy::no_effect_replace)]
 #![warn(clippy::nursery, clippy::pedantic)]
 #![allow(clippy::similar_names, clippy::too_many_lines, clippy::unicode_not_nfc)]
-#![allow(clippy::string_lit_as_bytes)] // must be as_bytes() because non-ASCII characters are included
+#![allow(clippy::string_lit_as_bytes)]
 
 // IMPORTS
 

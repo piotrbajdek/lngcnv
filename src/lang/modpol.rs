@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODPOL
 
@@ -7,7 +7,7 @@
 #![deny(clippy::no_effect_replace)]
 #![warn(clippy::nursery, clippy::pedantic)]
 #![allow(clippy::similar_names, clippy::too_many_lines, clippy::unicode_not_nfc)]
-#![allow(clippy::string_lit_as_bytes)] // must be as_bytes() because non-ASCII characters are included
+#![allow(clippy::string_lit_as_bytes)]
 
 // IMPORTS
 
@@ -17,14 +17,24 @@ use std::io::Write;
 // SIMPLIFY INTERPUNCTION
 
 fn polpncbeg(abbrev: &str) -> String {
-    let pncbeg = &abbrev.replace([';', '!', '?'], ".").replace(").", ".").replace("),", ",").replace([')', ':'], ",").replace("--", " – ").replace('(', "∣ .");
+    let pncbeg = &abbrev.replace([';', '!', '?'], ".").replace(").", ".").replace("),", ",").replace([')', ':'], ",").replace("--", " – ").replace('(', "∣ .").replace(' ', "# #").replace('.', "#.#").replace(',', "#,#");
     pncbeg.to_string()
 }
 
 // REMOVE INTERPUNCTION
 
 fn polpncend(strmod: &str) -> String {
-    let result = &strmod.replace(',', " ∣").replace(". ", " ∥ ").replace('.', "").replace(" - ", " ∣ ").replace(" – ", " ∣ ").replace("∣ ∣", "∣").replace("∣ ∥", "∥");
+    let result = &strmod
+        .replace("# #", " ")
+        .replace("#.#", ".")
+        .replace("#,#", ",")
+        .replace(',', " ∣")
+        .replace(". ", " ∥ ")
+        .replace('.', "")
+        .replace(" - ", " ∣ ")
+        .replace(" – ", " ∣ ")
+        .replace("∣ ∣", "∣")
+        .replace("∣ ∥", "∥");
     result.to_string()
 }
 
@@ -35,8 +45,11 @@ fn polabbrev(lowercase: &str) -> String {
         .replace(" cm ", " centymetrów ")
         .replace(" dr.", " doktora")
         .replace(" dr ", " doktor ")
+        .replace(".dr ", ".doktor ")
         .replace(" dyr.", " dyrektor")
+        .replace(".dyr.", ".dyrektor")
         .replace(" gen.", " generał")
+        .replace(".gen.", ".generał")
         .replace(" gł.", " głównie")
         .replace(" godz.", " godzinie")
         .replace(" gr ", " groszy ")
@@ -44,6 +57,7 @@ fn polabbrev(lowercase: &str) -> String {
         .replace(" hab.", " habilitowany")
         .replace(" i in.", " i inne.")
         .replace(" inż.", " inżynier")
+        .replace(".inż.", ".inżynier")
         .replace(" im.", " imienia")
         .replace(" itd.", " i tak dalej.")
         .replace(" itp.", " i tym podobne.")
@@ -81,11 +95,14 @@ fn polpalesp(pncbeg: &str) -> String {
     palesp.to_string()
 }
 
+//   ++++++++++   ++++++++++   ++++++++++
+
 // CZĘSTOCHOWA: IPA
 
 pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
-    let dot = original_text.to_owned() + "."; // mark word ending
-    let lowercase = dot.to_lowercase();
+    let dotend = original_text.to_owned() + ".";
+    let dotbeg = ".".to_owned() + &dotend;
+    let lowercase = &dotbeg.to_lowercase();
     let abbrev = polabbrev(&lowercase);
     let pncbeg = polpncbeg(&abbrev);
     let palesp = polpalesp(&pncbeg);
@@ -94,9 +111,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace("dż", "ɖ͡ʐ")
         .replace("dź", "d͡ʑ")
         .replace("dz", "^d͡z^")
-        .replace("od ", "od̥ ")
-        .replace("od.", "od̥.")
-        .replace("od,", "od̥,")
+        .replace("od#", "od̥#")
         .replace("odt", "od̥t")
         .replace("odp", "od̥p")
         .replace("ód", "ód̥")
@@ -114,7 +129,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace("rt̪", "ɾ̥ṯ")
         .replace("t̪m", "ṯm̥")
         .replace("izm", "iz̥m̥")
-        .replace(" z ", " z̥ ")
+        .replace("#z#", "#z̥#")
         .replace("ans", "an̥s")
         .replace("sz", "ʃ")
         .replace("śln", "śl̥n")
@@ -122,9 +137,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace("śń", "śɲ̥")
         .replace('ń', "ɲ")
         .replace("ni", "ɲi")
-        .replace("ɲi ", "ɲʲi ")
-        .replace("ɲi.", "ɲʲi.")
-        .replace("ɲi,", "ɲʲi,")
+        .replace("ɲi#", "ɲʲi#")
         .replace("ɲia", "ɲʲa")
         .replace("ɲią", "ɲʲą")
         .replace("ɲio", "ɲʲo")
@@ -137,9 +150,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace('h', "x")
         .replace("zx", "z̥x")
         .replace('ś', "ɕ")
-        .replace("si ", "ɕi ")
-        .replace("si,", "ɕi.")
-        .replace("si,", "ɕi,")
+        .replace("si#", "ɕi#")
         .replace("sia", "ɕa")
         .replace("sią", "ɕą")
         .replace("sio", "ɕo")
@@ -150,9 +161,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace('s', "s̻")
         .replace("mc", "m̥c")
         .replace("nc", "n̥c")
-        .replace("ci ", "t͡ɕi ")
-        .replace("ci.", "t͡ɕi.")
-        .replace("ci,", "t͡ɕi,")
+        .replace("ci#", "t͡ɕi#")
         .replace("cia", "t͡ɕa")
         .replace("cią", "t͡ɕą")
         .replace("cio", "t͡ɕo")
@@ -166,9 +175,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace("rz", "ʒ")
         .replace('r', "ɾ")
         .replace('ż', "ʒ")
-        .replace("zi ", "ʑi ")
-        .replace("zi.", "ʑi.")
-        .replace("zi,", "ʑi,")
+        .replace("zi#", "ʑi#")
         .replace("zia", "ʑa")
         .replace("zią", "ʑą")
         .replace("zio", "ʑo")
@@ -189,12 +196,8 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace('w', "v")
         .replace("bł", "b̥w̥")
         .replace('ł', "w")
-        .replace("m ", "ɱ ")
-        .replace("m.", "ɱ.")
-        .replace("m,", "ɱ,")
-        .replace("n ", "ŋ ")
-        .replace("n.", "ŋ.")
-        .replace("n,", "ŋ,")
+        .replace("m#", "ɱ#")
+        .replace("n#", "ŋ#")
         .replace("ju", "jü")
         .replace("aʈ͡ʂ", "ɐʈ͡ʂ")
         .replace("ʈ͡ʂa", "ʈ͡ʂɐ")
@@ -278,8 +281,9 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
 // TORUŃ: IPA
 
 pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
-    let dot = original_text.to_owned() + "."; // mark word ending
-    let lowercase = dot.to_lowercase();
+    let dotend = original_text.to_owned() + ".";
+    let dotbeg = ".".to_owned() + &dotend;
+    let lowercase = &dotbeg.to_lowercase();
     let abbrev = polabbrev(&lowercase);
     let pncbeg = polpncbeg(&abbrev);
     let palesp = polpalesp(&pncbeg);
@@ -288,9 +292,7 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace("dż", "ɖ͡ʐ")
         .replace("dź", "d͡ʑ")
         .replace("dz", "^d͡z^")
-        .replace("od ", "ot ")
-        .replace("od.", "ot.")
-        .replace("od,", "ot,")
+        .replace("od#", "ot#")
         .replace("odt", "ott")
         .replace("odp", "otp")
         .replace("ód", "ód̥")
@@ -308,7 +310,7 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace("wsk", "sk")
         .replace("st̪k", "sk")
         .replace("izm", "il͡ʒ̥m̥")
-        .replace(" z ", " l͡ʒ̥ ")
+        .replace("#z#", "#l͡ʒ̥#")
         .replace("ans", "an̥s")
         .replace("sz", "ʂ")
         .replace("śln", "śl̥n")
@@ -316,9 +318,7 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace("śń", "śɲ̥")
         .replace('ń', "ɲ")
         .replace("ni", "ɲi")
-        .replace("ɲi ", "ɲʲi ")
-        .replace("ɲi.", "ɲʲi.")
-        .replace("ɲi,", "ɲʲi,")
+        .replace("ɲi#", "ɲʲi#")
         .replace("ɲia", "ɲʲa")
         .replace("ɲią", "ɲʲą")
         .replace("ɲio", "ɲʲo")
@@ -331,9 +331,7 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace('h', "x")
         .replace("zx", "sx")
         .replace('ś', "ç")
-        .replace("si ", "çi ")
-        .replace("si,", "çi.")
-        .replace("si,", "çi,")
+        .replace("si#", "çi#")
         .replace("sia", "ça")
         .replace("sią", "çą")
         .replace("sio", "ço")
@@ -344,9 +342,7 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace('s', "ɬ̻")
         .replace("mc", "m̥c")
         .replace("nc", "n̥c")
-        .replace("ci ", "c͡çi ")
-        .replace("ci.", "c͡çi.")
-        .replace("ci,", "c͡çi,")
+        .replace("ci#", "c͡çi#")
         .replace("cia", "c͡ça")
         .replace("cią", "c͡çą")
         .replace("cio", "c͡ço")
@@ -359,13 +355,9 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace('ć', "c͡ç")
         .replace("xrz", "xʂ")
         .replace("rz", "ʐ")
-        .replace("ż ", "ʂ ")
-        .replace("ż.", "ʂ.")
-        .replace("ż,", "ʂ,")
+        .replace("ż#", "ʂ#")
         .replace('ż', "ʐ")
-        .replace("zi ", "ʑi ")
-        .replace("zi.", "ʑi.")
-        .replace("zi,", "ʑi,")
+        .replace("zi#", "ʑi#")
         .replace("zia", "ʑa")
         .replace("zią", "ʑą")
         .replace("zio", "ʑo")
@@ -388,24 +380,16 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace("ɡłu", "ɡw̥u")
         .replace("ɡłó", "ɡw̥u")
         .replace('ł', "w")
-        .replace("m ", "ɱ ")
-        .replace("m.", "ɱ.")
-        .replace("m,", "ɱ,")
-        .replace("n ", "ŋ ")
-        .replace("n.", "ŋ.")
-        .replace("n,", "ŋ,")
+        .replace("m#", "ɱ#")
+        .replace("n#", "ŋ#")
         .replace('a', "ɐ")
         .replace('e', "ɛ")
-        .replace("ę ", "ɛ ")
-        .replace("ę.", "ɛ.")
-        .replace("ę,", "ɛ,")
+        .replace("ę#", "ɛ#")
         .replace("ęb", "ɛɱb")
         .replace("ęp", "ɛɱp")
         .replace('ę', "ɛŋ")
         .replace('o', "ɔ")
-        .replace("ą ", "ɔɱ ")
-        .replace("ą.", "ɔɱ.")
-        .replace("ą,", "ɔɱ,")
+        .replace("ą#", "ɔɱ#")
         .replace('ą', "ɔŋ")
         .replace('ó', "u")
         .replace('u', "u̞")
@@ -449,8 +433,9 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
 // WARSZAWA: IPA
 
 pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
-    let dot = original_text.to_owned() + "."; // mark word ending
-    let lowercase = dot.to_lowercase();
+    let dotend = original_text.to_owned() + ".";
+    let dotbeg = ".".to_owned() + &dotend;
+    let lowercase = &dotbeg.to_lowercase();
     let abbrev = polabbrev(&lowercase);
     let pncbeg = polpncbeg(&abbrev);
     let palesp = polpalesp(&pncbeg);
@@ -479,9 +464,7 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("dż", "ɖ͡ʐ")
         .replace("dź", "d͡ʑ")
         .replace("dz", "^d͡z^")
-        .replace("od ", "od̥ ")
-        .replace("od.", "od̥.")
-        .replace("od,", "od̥,")
+        .replace("od#", "od̥#")
         .replace("odt", "od̥t")
         .replace("odp", "od̥p")
         .replace("ód", "ód̥")
@@ -496,7 +479,7 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("prz", "pʂ")
         .replace("st̪k", "st̥k")
         .replace("izm", "il͡ʒ̥m̥")
-        .replace(" z ", " l͡ʒ̥ ")
+        .replace("#z#", "#l͡ʒ̥#")
         .replace("ans", "an̥s")
         .replace("sz", "ʂ")
         .replace("śln", "śl̥n")
@@ -504,9 +487,7 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("śń", "śɲ̥")
         .replace('ń', "ɲ")
         .replace("ni", "ɲi")
-        .replace("ɲi ", "ɲʲi ")
-        .replace("ɲi.", "ɲʲi.")
-        .replace("ɲi,", "ɲʲi,")
+        .replace("ɲi#", "ɲʲi#")
         .replace("ɲia", "ɲʲa")
         .replace("ɲią", "ɲʲą")
         .replace("ɲio", "ɲʲo")
@@ -519,9 +500,7 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace('h', "x")
         .replace("zx", "l͡ʒ̥x")
         .replace('ś', "ç")
-        .replace("si ", "çi ")
-        .replace("si,", "çi.")
-        .replace("si,", "çi,")
+        .replace("si#", "çi#")
         .replace("sia", "ça")
         .replace("sią", "çą")
         .replace("sio", "ço")
@@ -532,9 +511,7 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace('s', "ɬ̻")
         .replace("mc", "m̥c")
         .replace('n', "n̪")
-        .replace("ci ", "c͡çi ")
-        .replace("ci.", "c͡çi.")
-        .replace("ci,", "c͡çi,")
+        .replace("ci#", "c͡çi#")
         .replace("cia", "c͡ça")
         .replace("cią", "c͡çą")
         .replace("cio", "c͡ço")
@@ -548,13 +525,9 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("xrz", "xʂ")
         .replace("rz", "ʐ")
         .replace('r', "ɾ")
-        .replace("ż ", "ʂ ")
-        .replace("ż.", "ʂ.")
-        .replace("ż,", "ʂ,")
+        .replace("ż#", "ʂ#")
         .replace('ż', "ʐ")
-        .replace("zi ", "ʑi ")
-        .replace("zi.", "ʑi.")
-        .replace("zi,", "ʑi,")
+        .replace("zi#", "ʑi#")
         .replace("zia", "ʑa")
         .replace("zią", "ʑą")
         .replace("zio", "ʑo")
@@ -576,14 +549,10 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("ɡłó", "ɡw̥u")
         .replace('ł', "w")
         .replace('l', "ɫ")
-        .replace("m ", "ɱ ")
-        .replace("m.", "ɱ.")
-        .replace("m,", "ɱ,")
+        .replace("m#", "ɱ#")
         .replace('a', "æ̞")
         .replace('e', "ɶ")
-        .replace("ę ", "ɶ ")
-        .replace("ę.", "ɶ.")
-        .replace("ę,", "ɶ,")
+        .replace("ę#", "ɶ#")
         .replace('ę', "ɶw̥")
         .replace('o', "ɒ")
         .replace('ą', "ɒw̥")

@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.6.1 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
 
 // MODULE MODQUE
 
@@ -7,7 +7,7 @@
 #![deny(clippy::no_effect_replace)]
 #![warn(clippy::nursery, clippy::pedantic)]
 #![allow(clippy::too_many_lines, clippy::unicode_not_nfc)]
-#![allow(clippy::string_lit_as_bytes)] // must be as_bytes() because non-ASCII characters are included
+#![allow(clippy::string_lit_as_bytes)]
 
 // IMPORTS
 
@@ -112,7 +112,7 @@ pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str, reset: &str,
 // AYACUCHO QUECHUA: DIALECT
 
 pub fn quelct(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
-    let space = original_text.to_owned() + " "; // mark word ending
+    let space = original_text.to_owned() + " ";
     let result = &space
         .replace('o', "u")
         .replace('e', "i")
