@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.0 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE LANG
 
@@ -84,7 +84,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -93,7 +93,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modeng::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -102,7 +102,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: ENGLISH IPA
 
                 modeng::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -119,7 +119,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -128,7 +128,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modeng::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -137,7 +137,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: ENGLISH IPA
 
                 modeng::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -199,7 +199,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -208,7 +208,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modeng::ortuseng(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -217,7 +217,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: ENGLISH ORTHOGRAPHY
 
                 modeng::ortuseng(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -234,7 +234,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -243,7 +243,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modeng::ortuseng(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -252,7 +252,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: ENGLISH ORTHOGRAPHY
 
                 modeng::ortuseng(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -314,7 +314,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -323,7 +323,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modlat::ipalat(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -332,7 +332,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: LATIN IPA
 
                 modlat::ipalat(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -349,7 +349,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -358,7 +358,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modlat::ipalat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -367,7 +367,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: LATIN IPA
 
                 modlat::ipalat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -429,7 +429,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -438,7 +438,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modlat::ortlat(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -447,7 +447,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: LATIN ORTHOGRAPHY
 
                 modlat::ortlat(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -464,7 +464,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -473,7 +473,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modlat::ortlat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -482,7 +482,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: LATIN ORTHOGRAPHY
 
                 modlat::ortlat(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -546,7 +546,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -560,7 +560,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modpol::polplczestochowa(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modpol::polpltorun(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modpol::polplwarszawa(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -572,7 +572,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 let usefile = "old";
                 modpol::polpltorun(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modpol::polplwarszawa(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -589,7 +589,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -603,7 +603,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -615,7 +615,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 let usefile = "old";
                 modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -679,7 +679,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -688,7 +688,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modpol::polplczestochowa(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -697,7 +697,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: CZĘSTOCHOWA
 
                 modpol::polplczestochowa(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -714,7 +714,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -723,7 +723,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -732,7 +732,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: CZĘSTOCHOWA
 
                 modpol::polplczestochowa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -794,7 +794,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -803,7 +803,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modpol::polpltorun(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -812,7 +812,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: TORUŃ
 
                 modpol::polpltorun(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -829,7 +829,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -838,7 +838,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -847,7 +847,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: TORUŃ
 
                 modpol::polpltorun(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -909,7 +909,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -918,7 +918,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modpol::polplwarszawa(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -927,7 +927,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: WARSZAWA
 
                 modpol::polplwarszawa(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -944,7 +944,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -953,7 +953,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -962,7 +962,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: WARSZAWA
 
                 modpol::polplwarszawa(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -1024,7 +1024,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1033,7 +1033,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modque::ipaque(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1042,7 +1042,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: AYACUCHO QUECHUA IPA
 
                 modque::ipaque(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -1059,7 +1059,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1068,7 +1068,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modque::ipaque(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1077,7 +1077,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: AYACUCHO QUECHUA IPA
 
                 modque::ipaque(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -1139,7 +1139,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1148,7 +1148,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modque::quelct(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1157,7 +1157,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: AYACUCHO QUECHUA DIALECT
 
                 modque::quelct(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -1174,7 +1174,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1183,7 +1183,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modque::quelct(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1192,7 +1192,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: AYACUCHO QUECHUA DIALECT
 
                 modque::quelct(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -1255,7 +1255,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1264,7 +1264,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modque::ortquetri(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1273,7 +1273,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: QUECHUA ORTHOGRAPHY
 
                 modque::ortquetri(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -1290,7 +1290,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1302,7 +1302,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         let usefile = "old";
                         modque::ortquetri(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modque::ortquepen(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1313,7 +1313,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modque::ortquetri(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 let usefile = "old";
                 modque::ortquepen(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -1352,9 +1352,13 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 }
                 let usefile = "terminal";
                 let outputfile = "0";
+                modspa::spacoarauca(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spacobucaramanga(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spacocali(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacoleticia(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spaconeiva(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -1362,6 +1366,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spauymontevideo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!();
             }
         }
@@ -1385,14 +1390,18 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modspa::spacobogota(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modspa::spacoarauca(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         let usefile = "old";
+                        modspa::spacobogota(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modspa::spacobucaramanga(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modspa::spacocali(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacoleticia(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacomedellin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modspa::spaconeiva(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacopasto(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacoquibdo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacosantamarta(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
@@ -1400,12 +1409,17 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modspa::spaescadiz(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spaesmadrid(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spamxciudaddemexico(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modspa::spauymontevideo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
+                        modspa::spacoarauca(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacobogota(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modspa::spacobucaramanga(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modspa::spacocali(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacoleticia(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacomedellin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modspa::spaconeiva(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacopasto(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacoquibdo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacosantamarta(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
@@ -1413,7 +1427,8 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modspa::spaescadiz(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spaesmadrid(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spamxciudaddemexico(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        modspa::spauymontevideo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1421,10 +1436,14 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 }
                 // FILE DOES NOT EXIST: SPANISH IPA
 
-                modspa::spacobogota(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                modspa::spacoarauca(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 let usefile = "old";
+                modspa::spacobogota(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                modspa::spacobucaramanga(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                modspa::spacocali(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spacoleticia(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spacomedellin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                modspa::spaconeiva(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spacopasto(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spacoquibdo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spacosantamarta(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
@@ -1432,7 +1451,8 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modspa::spaescadiz(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spaesmadrid(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spamxciudaddemexico(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                modspa::spauymontevideo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -1449,14 +1469,18 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spacoarauca(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         let usefile = "old";
+                        modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spacobucaramanga(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spacocali(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacoleticia(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spaconeiva(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -1464,12 +1488,17 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spauymontevideo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
+                        modspa::spacoarauca(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spacobucaramanga(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spacocali(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacoleticia(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spaconeiva(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -1477,7 +1506,8 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        modspa::spauymontevideo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1485,10 +1515,14 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 }
                 // FILE DOES NOT EXIST: SPANISH IPA
 
-                modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spacoarauca(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 let usefile = "old";
+                modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spacobucaramanga(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spacocali(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacoleticia(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spaconeiva(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -1496,7 +1530,8 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                modspa::spauymontevideo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -1506,9 +1541,13 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
+        modspa::spacoarauca(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modspa::spacobucaramanga(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modspa::spacocali(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spacoleticia(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modspa::spaconeiva(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -1516,6 +1555,122 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
         modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modspa::spauymontevideo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        println!();
+        return;
+    }
+
+    //   ++++++++++   ++++++++++   ++++++++++
+
+    // SPANISH: IPA --spa.co-arauca
+
+    if input1 == "--ipa" && input2 == "--spa.co-arauca" || input1 == "--spa.co-arauca" && input2 == "--ipa" {
+        let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+
+        // REPL MODE
+        if str0 == "-r" || str0 == "--repl" {
+            println!();
+            println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
+            println!();
+            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!();
+            loop {
+                let mut input_repl = String::new();
+                io::stdin().read_line(&mut input_repl).expect("Unable to read entered data");
+                let original_text: &str = input_repl.trim();
+                if original_text == "-q" {
+                    return;
+                }
+                let usefile = "terminal";
+                let outputfile = "0";
+                modspa::spacoarauca(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!();
+            }
+        }
+
+        // FROM A FILE: ARAUCA
+        if str0 == "-i" || str0 == "--input" {
+            let usefile = "new";
+            let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
+
+            // DEFAULT OUTPUT FILE
+            if arg_cnt == 5 {
+                let inputfile_arg = inputfile.as_str();
+                let inputfile_str: &str = inputfile_arg.trim();
+                let outputfile = inputfile_str.to_owned() + "--ipa--spa.co-arauca";
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(&outputfile).is_file();
+
+                // FILE ALREADY EXISTS: ARAUCA
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spacoarauca(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spacoarauca(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: ARAUCA
+
+                modspa::spacoarauca(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+
+            // USER-DEFINED OUTPUT FILE
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
+            if output == "-o" || output == "--output" {
+                let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(outputfile).is_file();
+
+                // FILE ALREADY EXISTS: ARAUCA
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spacoarauca(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile.clone() + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spacoarauca(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: ARAUCA
+
+                modspa::spacoarauca(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
+        }
+        // FROM THE COMMAND LINE: ARAUCA
+
+        let original_text = str0;
+        let usefile = "terminal";
+        let outputfile = "0";
+        modspa::spacoarauca(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1567,7 +1722,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1576,7 +1731,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacobogota(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1585,7 +1740,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: BOGOTÁ
 
                 modspa::spacobogota(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -1602,7 +1757,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1611,7 +1766,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1620,7 +1775,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: BOGOTÁ
 
                 modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -1631,6 +1786,236 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
         let usefile = "terminal";
         let outputfile = "0";
         modspa::spacobogota(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        println!();
+        return;
+    }
+
+    //   ++++++++++   ++++++++++   ++++++++++
+
+    // SPANISH: IPA --spa.co-bucaramanga
+
+    if input1 == "--ipa" && input2 == "--spa.co-bucaramanga" || input1 == "--spa.co-bucaramanga" && input2 == "--ipa" {
+        let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+
+        // REPL MODE
+        if str0 == "-r" || str0 == "--repl" {
+            println!();
+            println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
+            println!();
+            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!();
+            loop {
+                let mut input_repl = String::new();
+                io::stdin().read_line(&mut input_repl).expect("Unable to read entered data");
+                let original_text: &str = input_repl.trim();
+                if original_text == "-q" {
+                    return;
+                }
+                let usefile = "terminal";
+                let outputfile = "0";
+                modspa::spacobucaramanga(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!();
+            }
+        }
+
+        // FROM A FILE: BUCARAMANGA
+        if str0 == "-i" || str0 == "--input" {
+            let usefile = "new";
+            let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
+
+            // DEFAULT OUTPUT FILE
+            if arg_cnt == 5 {
+                let inputfile_arg = inputfile.as_str();
+                let inputfile_str: &str = inputfile_arg.trim();
+                let outputfile = inputfile_str.to_owned() + "--ipa--spa.co-bucaramanga";
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(&outputfile).is_file();
+
+                // FILE ALREADY EXISTS: BUCARAMANGA
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spacobucaramanga(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spacobucaramanga(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: BUCARAMANGA
+
+                modspa::spacobucaramanga(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+
+            // USER-DEFINED OUTPUT FILE
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
+            if output == "-o" || output == "--output" {
+                let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(outputfile).is_file();
+
+                // FILE ALREADY EXISTS: BUCARAMANGA
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spacobucaramanga(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile.clone() + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spacobucaramanga(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: BUCARAMANGA
+
+                modspa::spacobucaramanga(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
+        }
+        // FROM THE COMMAND LINE: BUCARAMANGA
+
+        let original_text = str0;
+        let usefile = "terminal";
+        let outputfile = "0";
+        modspa::spacobucaramanga(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        println!();
+        return;
+    }
+
+    //   ++++++++++   ++++++++++   ++++++++++
+
+    // SPANISH: IPA --spa.co-cali
+
+    if input1 == "--ipa" && input2 == "--spa.co-cali" || input1 == "--spa.co-cali" && input2 == "--ipa" {
+        let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+
+        // REPL MODE
+        if str0 == "-r" || str0 == "--repl" {
+            println!();
+            println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
+            println!();
+            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!();
+            loop {
+                let mut input_repl = String::new();
+                io::stdin().read_line(&mut input_repl).expect("Unable to read entered data");
+                let original_text: &str = input_repl.trim();
+                if original_text == "-q" {
+                    return;
+                }
+                let usefile = "terminal";
+                let outputfile = "0";
+                modspa::spacocali(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!();
+            }
+        }
+
+        // FROM A FILE: CALI
+        if str0 == "-i" || str0 == "--input" {
+            let usefile = "new";
+            let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
+
+            // DEFAULT OUTPUT FILE
+            if arg_cnt == 5 {
+                let inputfile_arg = inputfile.as_str();
+                let inputfile_str: &str = inputfile_arg.trim();
+                let outputfile = inputfile_str.to_owned() + "--ipa--spa.co-cali";
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(&outputfile).is_file();
+
+                // FILE ALREADY EXISTS: CALI
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spacocali(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spacocali(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: CALI
+
+                modspa::spacocali(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+
+            // USER-DEFINED OUTPUT FILE
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
+            if output == "-o" || output == "--output" {
+                let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(outputfile).is_file();
+
+                // FILE ALREADY EXISTS: CALI
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spacocali(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile.clone() + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spacocali(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: CALI
+
+                modspa::spacocali(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
+        }
+        // FROM THE COMMAND LINE: CALI
+
+        let original_text = str0;
+        let usefile = "terminal";
+        let outputfile = "0";
+        modspa::spacocali(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1682,7 +2067,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1691,7 +2076,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacoleticia(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1700,7 +2085,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: LETICIA
 
                 modspa::spacoleticia(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -1717,7 +2102,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1726,7 +2111,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacoleticia(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1735,7 +2120,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: LETICIA
 
                 modspa::spacoleticia(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -1797,7 +2182,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1806,7 +2191,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacomedellin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1815,7 +2200,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: MEDELLÍN
 
                 modspa::spacomedellin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -1832,7 +2217,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1841,7 +2226,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1850,7 +2235,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: MEDELLÍN
 
                 modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -1860,6 +2245,121 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
         let usefile = "terminal";
         let outputfile = "0";
         modspa::spacomedellin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        println!();
+        return;
+    }
+
+    //   ++++++++++   ++++++++++   ++++++++++
+
+    // SPANISH: IPA --spa.co-neiva
+
+    if input1 == "--ipa" && input2 == "--spa.co-neiva" || input1 == "--spa.co-neiva" && input2 == "--ipa" {
+        let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+
+        // REPL MODE
+        if str0 == "-r" || str0 == "--repl" {
+            println!();
+            println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
+            println!();
+            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!();
+            loop {
+                let mut input_repl = String::new();
+                io::stdin().read_line(&mut input_repl).expect("Unable to read entered data");
+                let original_text: &str = input_repl.trim();
+                if original_text == "-q" {
+                    return;
+                }
+                let usefile = "terminal";
+                let outputfile = "0";
+                modspa::spaconeiva(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!();
+            }
+        }
+
+        // FROM A FILE: NEIVA
+        if str0 == "-i" || str0 == "--input" {
+            let usefile = "new";
+            let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
+
+            // DEFAULT OUTPUT FILE
+            if arg_cnt == 5 {
+                let inputfile_arg = inputfile.as_str();
+                let inputfile_str: &str = inputfile_arg.trim();
+                let outputfile = inputfile_str.to_owned() + "--ipa--spa.co-neiva";
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(&outputfile).is_file();
+
+                // FILE ALREADY EXISTS: NEIVA
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spaconeiva(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spaconeiva(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: NEIVA
+
+                modspa::spaconeiva(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+
+            // USER-DEFINED OUTPUT FILE
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
+            if output == "-o" || output == "--output" {
+                let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(outputfile).is_file();
+
+                // FILE ALREADY EXISTS: NEIVA
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spaconeiva(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile.clone() + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spaconeiva(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: NEIVA
+
+                modspa::spaconeiva(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
+        }
+        // FROM THE COMMAND LINE: NEIVA
+
+        let original_text = str0;
+        let usefile = "terminal";
+        let outputfile = "0";
+        modspa::spaconeiva(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1911,7 +2411,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1920,7 +2420,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacopasto(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1929,7 +2429,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: PASTO
 
                 modspa::spacopasto(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -1946,7 +2446,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -1955,7 +2455,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -1964,7 +2464,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: PASTO
 
                 modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -2026,7 +2526,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2035,7 +2535,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacoquibdo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2044,7 +2544,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: QUIBDÓ
 
                 modspa::spacoquibdo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -2061,7 +2561,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2070,7 +2570,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2079,7 +2579,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: QUIBDÓ
 
                 modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -2141,7 +2641,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2150,7 +2650,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacosantamarta(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2159,7 +2659,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: SANTA MARTA
 
                 modspa::spacosantamarta(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -2176,7 +2676,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2185,7 +2685,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2194,7 +2694,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: SANTA MARTA
 
                 modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -2256,7 +2756,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2265,7 +2765,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spaesbilbao(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2274,7 +2774,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: BILBAO
 
                 modspa::spaesbilbao(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -2291,7 +2791,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2300,7 +2800,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spaesbilbao(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2309,7 +2809,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: BILBAO
 
                 modspa::spaesbilbao(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -2371,7 +2871,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2380,7 +2880,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spaescadiz(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2389,7 +2889,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: CÁDIZ
 
                 modspa::spaescadiz(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -2406,7 +2906,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2415,7 +2915,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2424,7 +2924,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: CÁDIZ
 
                 modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -2486,7 +2986,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2495,7 +2995,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spaesmadrid(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2504,7 +3004,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: MADRID
 
                 modspa::spaesmadrid(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -2521,7 +3021,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2530,7 +3030,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2539,7 +3039,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: MADRID
 
                 modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -2601,7 +3101,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2610,7 +3110,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spamxciudaddemexico(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2619,7 +3119,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: CIUDAD DE MÉXICO
 
                 modspa::spamxciudaddemexico(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -2636,7 +3136,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2645,7 +3145,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2654,7 +3154,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: CIUDAD DE MÉXICO
 
                 modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -2665,6 +3165,121 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
         let usefile = "terminal";
         let outputfile = "0";
         modspa::spamxciudaddemexico(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        println!();
+        return;
+    }
+
+    //   ++++++++++   ++++++++++   ++++++++++
+
+    // SPANISH: IPA --spa.uy-montevideo
+
+    if input1 == "--ipa" && input2 == "--spa.uy-montevideo" || input1 == "--spa.uy-montevideo" && input2 == "--ipa" {
+        let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+
+        // REPL MODE
+        if str0 == "-r" || str0 == "--repl" {
+            println!();
+            println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
+            println!();
+            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!();
+            loop {
+                let mut input_repl = String::new();
+                io::stdin().read_line(&mut input_repl).expect("Unable to read entered data");
+                let original_text: &str = input_repl.trim();
+                if original_text == "-q" {
+                    return;
+                }
+                let usefile = "terminal";
+                let outputfile = "0";
+                modspa::spauymontevideo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!();
+            }
+        }
+
+        // FROM A FILE: MONTEVIDEO
+        if str0 == "-i" || str0 == "--input" {
+            let usefile = "new";
+            let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
+
+            // DEFAULT OUTPUT FILE
+            if arg_cnt == 5 {
+                let inputfile_arg = inputfile.as_str();
+                let inputfile_str: &str = inputfile_arg.trim();
+                let outputfile = inputfile_str.to_owned() + "--ipa--spa.uy-montevideo";
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(&outputfile).is_file();
+
+                // FILE ALREADY EXISTS: MONTEVIDEO
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spauymontevideo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spauymontevideo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: MONTEVIDEO
+
+                modspa::spauymontevideo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+
+            // USER-DEFINED OUTPUT FILE
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
+            if output == "-o" || output == "--output" {
+                let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(outputfile).is_file();
+
+                // FILE ALREADY EXISTS: MONTEVIDEO
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spauymontevideo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile.clone() + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spauymontevideo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: MONTEVIDEO
+
+                modspa::spauymontevideo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
+        }
+        // FROM THE COMMAND LINE: MONTEVIDEO
+
+        let original_text = str0;
+        let usefile = "terminal";
+        let outputfile = "0";
+        modspa::spauymontevideo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -2720,7 +3335,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2738,7 +3353,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modtca::tcaconazareth(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modtca::tcabrumariacu(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modtca::tcabrvilabetania(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2752,7 +3367,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modtca::tcaconazareth(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modtca::tcabrumariacu(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modtca::tcabrvilabetania(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -2769,7 +3384,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2787,7 +3402,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2801,7 +3416,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -2867,7 +3482,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2876,7 +3491,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modtca::tcabrumariacu(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2885,7 +3500,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: UMARIAÇU
 
                 modtca::tcabrumariacu(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -2902,7 +3517,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2911,7 +3526,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -2920,7 +3535,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: UMARIAÇU
 
                 modtca::tcabrumariacu(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -2982,7 +3597,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -2991,7 +3606,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modtca::tcabrvilabetania(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -3000,7 +3615,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: VILA BETÂNIA
 
                 modtca::tcabrvilabetania(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -3017,7 +3632,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -3026,7 +3641,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -3035,7 +3650,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: VILA BETÂNIA
 
                 modtca::tcabrvilabetania(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -3097,7 +3712,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -3106,7 +3721,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modtca::tcaconazareth(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -3115,7 +3730,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: NAZARETH
 
                 modtca::tcaconazareth(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -3132,7 +3747,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -3141,7 +3756,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -3150,7 +3765,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: NAZARETH
 
                 modtca::tcaconazareth(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -3212,7 +3827,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -3221,7 +3836,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modtca::tcacoriocotuhe(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -3230,7 +3845,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: RIO COTUHÉ
 
                 modtca::tcacoriocotuhe(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -3247,7 +3862,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -3256,7 +3871,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modtca::tcacoriocotuhe(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -3265,7 +3880,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: RIO COTUHÉ
 
                 modtca::tcacoriocotuhe(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -3327,7 +3942,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -3336,7 +3951,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modtca::tcapecushillococha(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -3345,7 +3960,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: CUSHILLOCOCHA
 
                 modtca::tcapecushillococha(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -3362,7 +3977,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -3371,7 +3986,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     } else if option == "a" {
                         let usefile = "old";
                         modtca::tcapecushillococha(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -3380,7 +3995,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 // FILE DOES NOT EXIST: CUSHILLOCOCHA
 
                 modtca::tcapecushillococha(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
@@ -3445,7 +4060,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -3461,7 +4076,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modtca::orttcaco(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modtca::orttcapeilv(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modtca::orttcapeformabiap(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -3474,7 +4089,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modtca::orttcaco(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modtca::orttcapeilv(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modtca::orttcapeformabiap(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
 
@@ -3491,7 +4106,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
                     let mut answer = String::new();
                     io::stdin().read_line(&mut answer).expect("Unable to read entered data");
-                    print!("{}", reset);
+                    print!("{reset}");
                     let option: &str = answer.trim();
 
                     if option == "o" {
@@ -3507,7 +4122,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modtca::orttcaco(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modtca::orttcapeilv(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modtca::orttcapeformabiap(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                        println!("Data appended to the file {}", outputfile);
+                        println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
                     }
@@ -3520,7 +4135,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modtca::orttcaco(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modtca::orttcapeilv(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modtca::orttcapeformabiap(&original_text, usefile, outputfile, reset, red, cyan, yellow);
-                println!("Data written to the file {}", outputfile);
+                println!("Data written to the file {outputfile}");
                 return;
             }
             panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))

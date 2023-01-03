@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.0 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODENG
 
@@ -767,9 +767,9 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         println!();
         println!("{}", cyan.to_owned() + "Canberra" + reset + ", " + cyan + "ACT" + reset + ", " + cyan + "AU" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -927,8 +927,8 @@ pub fn ortuseng(original_text: &str, usefile: &str, outputfile: &str, reset: &st
         println!();
         println!("{}", cyan.to_owned() + "American English" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }

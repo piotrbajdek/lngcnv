@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.0 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODLAT
 
@@ -160,9 +160,9 @@ pub fn ipalat(original_text: &str, usefile: &str, outputfile: &str, reset: &str,
         println!();
         println!("{}", cyan.to_owned() + "Classical Latin" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -254,8 +254,8 @@ pub fn ortlat(original_text: &str, usefile: &str, outputfile: &str, reset: &str,
         println!();
         println!("{}", cyan.to_owned() + "Classical Latin" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }

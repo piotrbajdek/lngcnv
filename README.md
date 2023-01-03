@@ -12,6 +12,8 @@ The program's source code and all its linguistic algorithms have been created en
 
 Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https://software.sil.org/doulos/download/), or [Gentium Plus](https://software.sil.org/gentium/download/) font for good rendering of characters of the International Phonetic Alphabet (see [1](https://www.internationalphoneticassociation.org/IPAcharts/inter_chart_2018/IPA_2018.html), [2](https://ipahelp.languagetechnology.org/), [3](https://en.wikipedia.org/wiki/IPA_vowel_chart_with_audio), [4](https://en.wikipedia.org/wiki/IPA_pulmonic_consonant_chart_with_audio)).
 
+[keywords: foreign languages, language learning app, natural language processing] 
+
 # SUPPORTED LANGUAGES
 
 **1. ENGLISH:** pronunciation & orthography
@@ -42,13 +44,15 @@ Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https:
 
 – Transcribe between the trivocalic and the pentavocalic orthographies
 
-**5. SPANISH:** ten variants of pronunciation
+**5. SPANISH:** fifteen variants of pronunciation
 
-– Pronunciation of Colombian Spanish (Bogotá; Leticia; Medellín; Pasto; Quibdó; Santa Marta)
+– Pronunciation of Colombian Spanish (Arauca; Bogotá; Bucaramanga; Cali; Leticia; Medellín; Neiva; Pasto; Quibdó; Santa Marta)
 
 – Pronunciation of Mexican Spanish (Ciudad de México)
 
 – Pronunciation of Spanish of Spain (Bilbao; Cádiz; Madrid)
+
+– Pronunciation of Uruguayan Spanish (Montevideo)
 
 **6. TIKUNA/ TICUNA:** pronunciation & orthography
 
@@ -72,9 +76,9 @@ Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https:
 
 [lngcnv](https://github.com/piotrbajdek/lngcnv) should run smoothly on **Windows** and **macOS**, and can be installed by the use of [cargo](https://www.rust-lang.org/tools/install). Yet, it is being developed and primarily tested on **Fedora Linux**.
 
-lngcnv v1.7.0:
+lngcnv v1.8.0:
 
-– Was successfully tested on Arch Linux, Fedora Linux 37, openSUSE Tumbleweed, Ubuntu 22.04 and Ubuntu 22.10.
+– Was successfully tested on Fedora Linux 37, openSUSE Tumbleweed, and Ubuntu 22.10.
 
 – Failed to run on Mageia 8 due to an old glibc version (required ≥2.34).
 
@@ -94,7 +98,7 @@ By default, the file will be downloaded to `.cargo/bin/`, a hidden folder in you
 
 ## METHOD 2 – LINUX UNIVERSAL BINARIES
 
-**1.** Download the distro-independent [binary](https://github.com/piotrbajdek/lngcnv/releases/download/v1.7.0/lngcnv) of lngcnv from GitHub.
+**1.** Download the distro-independent [binary](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.0/lngcnv) of lngcnv from GitHub.
 
 **2.** Make the file executable:
 
@@ -112,22 +116,22 @@ _sudo cp lngcnv /var/usrlocal/bin/_
 
 **[recommended for most users]**
 
-Distro-specific packages are also available for download for [.rpm](https://github.com/piotrbajdek/lngcnv/releases/download/v1.7.0/lngcnv-1.7.0-1.x86_64.rpm)- and [.deb](https://github.com/piotrbajdek/lngcnv/releases/download/v1.7.0/lngcnv_1.7.0_amd64.deb)-based Linux distros. Installation instructions:
+Distro-specific packages are also available for download for [.rpm](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.0/lngcnv-1.8.0-1.x86_64.rpm)- and [.deb](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.0/lngcnv_1.8.0_amd64.deb)-based Linux distros. Installation instructions:
 
 Fedora Linux / RHEL / openSUSE:
 
-_sudo rpm -i lngcnv-1.7.0-1.x86_64.rpm_
+_sudo rpm -i lngcnv-1.8.0-1.x86_64.rpm_
 
 Fedora Silverblue / Kinoite:
 
-_rpm-ostree install lngcnv-1.7.0-1.x86_64.rpm_
+_rpm-ostree install lngcnv-1.8.0-1.x86_64.rpm_
 
 Ubuntu:
 
-_sudo dpkg -i lngcnv_1.7.0_amd64.deb_
+_sudo dpkg -i lngcnv_1.8.0_amd64.deb_
 
 ## METHOD 4 – MANUAL COMPILATION
 
-Download and unpack the lngcnv [source](https://github.com/piotrbajdek/lngcnv/archive/refs/tags/v1.7.0.zip) from GitHub. Then, build and install the program:
+Download and unpack the lngcnv [source](https://github.com/piotrbajdek/lngcnv/archive/refs/tags/v1.8.0.zip) from GitHub. Then, build and install the program:
 
 _cargo build \--release && sudo cp target/release/lngcnv /usr/bin/_

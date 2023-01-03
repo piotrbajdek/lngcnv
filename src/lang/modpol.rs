@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.0 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODPOL
 
@@ -270,9 +270,9 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         println!();
         println!("{}", cyan.to_owned() + "Częstochowa" + reset + ", " + cyan + "Małopolska Region" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -422,9 +422,9 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         println!();
         println!("{}", cyan.to_owned() + "Toruń" + reset + ", " + cyan + "Wielkopolska Region" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -588,8 +588,8 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset
         println!();
         println!("{}", cyan.to_owned() + "Warszawa" + reset + ", " + cyan + "Mazowsze Region" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }

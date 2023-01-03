@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.0 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODTCA
 
@@ -145,9 +145,9 @@ pub fn tcabrumariacu(original_text: &str, usefile: &str, outputfile: &str, reset
         println!();
         println!("{}", cyan.to_owned() + "Umariaçu" + reset + ", " + cyan + "BR" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -252,9 +252,9 @@ pub fn tcabrvilabetania(original_text: &str, usefile: &str, outputfile: &str, re
         println!();
         println!("{}", cyan.to_owned() + "Vila Betânia" + reset + ", " + cyan + "BR" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -350,9 +350,9 @@ pub fn tcaconazareth(original_text: &str, usefile: &str, outputfile: &str, reset
         println!();
         println!("{}", cyan.to_owned() + "Nazareth" + reset + ", " + cyan + "CO" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -459,9 +459,9 @@ pub fn tcacoriocotuhe(original_text: &str, usefile: &str, outputfile: &str, rese
         println!();
         println!("{}", cyan.to_owned() + "Río Cotuhé" + reset + ", " + cyan + "CO" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -566,9 +566,9 @@ pub fn tcapecushillococha(original_text: &str, usefile: &str, outputfile: &str, 
         println!();
         println!("{}", cyan.to_owned() + "Cushillococha" + reset + ", " + cyan + "PE" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -745,9 +745,9 @@ pub fn orttcabr(original_text: &str, usefile: &str, outputfile: &str, reset: &st
         println!();
         println!("{}", cyan.to_owned() + "Brazil" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -800,9 +800,9 @@ pub fn orttcaco(original_text: &str, usefile: &str, outputfile: &str, reset: &st
         println!();
         println!("{}", cyan.to_owned() + "Colombia" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -931,9 +931,9 @@ pub fn orttcapeilv(original_text: &str, usefile: &str, outputfile: &str, reset: 
         println!();
         println!("{}", cyan.to_owned() + "Peru" + reset + " (" + cyan + "ILV" + reset + "):");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -1071,8 +1071,8 @@ pub fn orttcapeformabiap(original_text: &str, usefile: &str, outputfile: &str, r
         println!();
         println!("{}", cyan.to_owned() + "Peru" + reset + " (" + cyan + "FORMABIAP" + reset + "):");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }

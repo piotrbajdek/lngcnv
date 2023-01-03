@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.7.0 / MIT LICENSE © 2022 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.0 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODQUE
 
@@ -101,9 +101,9 @@ pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str, reset: &str,
         println!();
         println!("{}", cyan.to_owned() + "Ayacucho Quechua" + reset + " (" + cyan + "Wanta" + reset + "):");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -315,9 +315,9 @@ pub fn quelct(original_text: &str, usefile: &str, outputfile: &str, reset: &str,
         println!();
         println!("{}", cyan.to_owned() + "Ayacucho Quechua" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -348,9 +348,9 @@ pub fn ortquetri(original_text: &str, usefile: &str, outputfile: &str, reset: &s
         println!();
         println!("{}", cyan.to_owned() + "Trivocalic" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
 
@@ -423,8 +423,8 @@ pub fn ortquepen(original_text: &str, usefile: &str, outputfile: &str, reset: &s
         println!();
         println!("{}", cyan.to_owned() + "Pentavocalic" + reset + ":");
         println!();
-        print!("{}", yellow);
-        println!("{}", result);
-        print!("{}", reset);
+        print!("{yellow}");
+        println!("{result}");
+        print!("{reset}");
     }
 }
