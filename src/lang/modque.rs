@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.8.2 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.3 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODQUE
 
@@ -14,11 +14,51 @@
 use std::fs::OpenOptions;
 use std::io::Write;
 
+// SIMPLIFY INTERPUNCTION
+
+fn quepncbeg(lowercase: &str) -> String {
+    let pncbeg = &lowercase
+        .replace([';', '!', '?', '¡', '¿'], ".")
+        .replace(").", ".")
+        .replace("),", ",")
+        .replace(" «", ", ")
+        .replace(".«", "")
+        .replace("».", ".")
+        .replace([')', ':', '»'], ",")
+        .replace("--", " – ")
+        .replace('(', "∣ .")
+        .replace(' ', "# #")
+        .replace('.', "#.#")
+        .replace(',', "#,#");
+    pncbeg.to_string()
+}
+
+// REMOVE INTERPUNCTION
+
+fn quepncend(strmod: &str) -> String {
+    let result = &strmod
+        .replace("# #", " ")
+        .replace("#.#", ".")
+        .replace("#,#", ",")
+        .replace(',', " ∣")
+        .replace(". ", " ∥ ")
+        .replace('.', "")
+        .replace(" - ", " ∣ ")
+        .replace(" – ", " ∣ ")
+        .replace("∣ ∣", "∣")
+        .replace("∣ ∥", "∥");
+    result.to_string()
+}
+
 // AYACUCHO QUECHUA: IPA
 
 pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
-    let lowercase = original_text.to_lowercase();
-    let result = &lowercase
+    let dotend = original_text.to_owned() + ".";
+    let dotbeg = ".".to_owned() + &dotend;
+    let lowercase = &dotbeg.to_lowercase();
+    let pncbeg = quepncbeg(lowercase);
+
+    let strmod = &pncbeg
         .replace("sh", "ch")
         .replace("chh", "ch")
         .replace("kh", "k")
@@ -31,12 +71,14 @@ pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str, reset: &str,
         .replace("uq", "oq")
         .replace("qi", "qe")
         .replace("iq", "eq")
-        .replace("an", "aŋ")
+        .replace('á', "a")
+        .replace('í', "i")
+        .replace("nk", "ŋk")
+        .replace("an#", "aŋ#")
         .replace("ma", "mæ")
-        .replace("mis", "mɪ̝s̻")
-        .replace("mich", "mɪ̝ch")
+        .replace("mis", "mɪ̹s")
+        .replace("mich", "mɪ̹ch")
         .replace("cha", "chä")
-        .replace("ch", "ʧ")
         .replace('g', "ɡ")
         .replace("ka", "kæ̞")
         .replace("da", "dæ")
@@ -49,41 +91,26 @@ pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str, reset: &str,
         .replace('q', "χ")
         .replace('r', "ɾ")
         .replace("ɾχ", "ɾ̥χ")
-        .replace("sa", "s̻ä")
+        .replace("χa", "χæ̈")
+        .replace("sa", "sä")
         .replace('s', "s̻")
         .replace("ci", "s̻i")
         .replace("ce", "s̻e")
         .replace('z', "s̻")
-        .replace('t', "t̪")
+        .replace("ch", "t̠͡ʃ")
         .replace("wa", "wæ")
         .replace("ya", "yæ")
         .replace('y', "j")
-        .replace('o', "ʊ̞")
-        .replace('e', "ɪ̞")
+        .replace('o', "ɵ̠")
+        .replace('e', "ɘ̟")
         .replace('u', "u̞")
-        .replace('i', "i̞")
-        .replace(").", ".")
-        .replace("),", ",")
-        .replace(',', " ∣")
-        .replace(';', " ∥")
-        .replace(':', " ∣")
-        .replace(". ", " ∥ ")
-        .replace('.', "")
-        .replace("! ", " ∥ ")
-        .replace(['!', '¡'], "")
-        .replace("? ", " ∥ ")
-        .replace(['?', '¿'], "")
-        .replace('(', "∣ ")
-        .replace(')', " ∣")
-        .replace(" - ", " ∣ ")
-        .replace(" – ", " ∣ ")
-        .replace("--", " ∣ ")
-        .replace("∣ ∣", "∣")
-        .replace("∣ ∥", "∥");
+        .replace('i', "i̞");
+
+    let result = quepncend(strmod);
 
     if usefile == "new" {
         let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));
-        file.write_all("AYACUCHO QUECHUA (WANTA):".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
+        file.write_all("AYACUCHO QUECHUA (WANTA, PE):".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
@@ -91,7 +118,7 @@ pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str, reset: &str,
     }
     if usefile == "old" {
         let mut file = OpenOptions::new().append(true).open(outputfile).expect(&(red.to_owned() + "cannot open file" + reset));
-        file.write_all("AYACUCHO QUECHUA (WANTA):".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
+        file.write_all("AYACUCHO QUECHUA (WANTA, PE):".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
@@ -99,7 +126,7 @@ pub fn ipaque(original_text: &str, usefile: &str, outputfile: &str, reset: &str,
     }
     if usefile == "terminal" {
         println!();
-        println!("{}", cyan.to_owned() + "Ayacucho Quechua" + reset + " (" + cyan + "Wanta" + reset + "):");
+        println!("{}", cyan.to_owned() + "Ayacucho Quechua" + reset + " (" + cyan + "Wanta" + reset + ", " + cyan + "PE" + reset + "):");
         println!();
         print!("{yellow}");
         println!("{result}");
