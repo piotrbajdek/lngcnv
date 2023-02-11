@@ -1,0 +1,77 @@
+name: lngcnv
+version: '1.8.4'
+summary: linguistics - English, Latin, Polish, Quechua, Spanish, Tikuna
+description: |
+  INTRODUCING LNGCNV
+
+  The acronym 'lngcnv' may signify e.g., a 'language converter', a 'linguistic converter', or a 'lenguaje convertido' (Spanish for 'converted language').
+
+  lngcnv is capable of presenting the precise pronunciation of a phrase using the International Phonetic Alphabet (IPA). It can also translate between various dialects of a language and convert between different orthographic norms.
+
+  The program can accept input in the form of a word or text either directly through the command line or by being included in a file, such as a lengthy book. There is also a REPL (read-eval-print loop) mode available for interactive use.
+
+  Six modern and ancient languages, including a range of dialects, are currently supported.
+
+  The program's source code and linguistic algorithms were created entirely from scratch and are distributed under the MIT License. lngcnv is written in Rust for high performance, code correctness, and ease of long-term development.
+
+  Use Charis SIL, Doulos SIL, or Gentium Plus font to ensure proper rendering of characters in the International Phonetic Alphabet.
+
+  keywords - foreign languages, language learning app, natural language processing
+
+  SUPPORTED LANGUAGES
+
+  1. ENGLISH - pronunciation & orthography
+
+  – Pronunciation of Australian English (Canberra, ACT)
+
+  – Transcribe using the spelling of American English
+
+  2. LATIN - pronunciation & orthography
+
+  – Reconstructed pronunciation of Classical Latin
+
+  – Transcribe using the ancient orthographic convention (pre-2nd century AD)
+
+  3. POLISH - three variants of pronunciation
+
+  – Pronunciation from Częstochowa, Małopolska Region
+
+  – Pronunciation from Toruń, Wielkopolska Region
+
+  – Pronunciation from Warszawa, Mazowsze Region
+
+  4. QUECHUA - pronunciation & dialect translation & orthography
+
+  – Pronunciation of Chanka/ Ayacucho Quechua (Wanta, PE)
+
+  – Translate from other Southern Quechua varieties into Ayacucho Quechua
+
+  – Transcribe between the trivocalic and pentavocalic orthographies
+
+  5. SPANISH - fifteen variants of pronunciation
+
+  – Pronunciation of Colombian Spanish (Arauca; Bogotá; Bucaramanga; Cali; Leticia; Medellín; Neiva; Pasto; Quibdó; Santa Marta)
+
+  – Pronunciation of Mexican Spanish (Ciudad de México)
+
+  – Pronunciation of Spanish of Spain (Bilbao; Cádiz; Madrid)
+
+  – Pronunciation of Uruguayan Spanish (Montevideo)
+
+  6. TIKUNA/ TICUNA - pronunciation & orthography
+
+  – Five variants of pronunciation (Río Cotuhé, CO; Cushillococha, PE; Nazareth, CO; Umariaçu, BR; Vila Betânia, BR)
+
+  – Four distinct orthographies (Brazil; Colombia; Peru–ILV; Peru–FORMABIAP)
+
+confinement: devmode
+base: core18
+
+parts:
+  lngcnv:
+    plugin: rust
+    source: https://github.com/piotrbajdek/lngcnv.git
+
+apps:
+  lngcnv:
+    command: bin/lngcnv
