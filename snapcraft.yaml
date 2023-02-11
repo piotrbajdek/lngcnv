@@ -78,4 +78,4 @@ apps:
     command: bin/lngcnv
     
   plugs:
-    - home
+  - home
