@@ -2,7 +2,7 @@ name: lngcnv
 version: '1.8.4'
 summary: linguistics - English, Latin, Polish, Quechua, Spanish, Tikuna
 description: |
-  INTRODUCING LNGCNV
+  **INTRODUCING LNGCNV**
 
   The acronym 'lngcnv' may signify e.g., a 'language converter', a 'linguistic converter', or a 'lenguaje convertido' (Spanish for 'converted language').
 
@@ -18,15 +18,15 @@ description: |
 
   keywords - foreign languages, language learning app, natural language processing
 
-  SUPPORTED LANGUAGES
+  **SUPPORTED LANGUAGES**
 
-  1. ENGLISH - pronunciation & orthography
+  1. ENGLISH - pronunciation and orthography
 
   – Pronunciation of Australian English (Canberra, ACT)
 
   – Transcribe using the spelling of American English
 
-  2. LATIN - pronunciation & orthography
+  2. LATIN - pronunciation and orthography
 
   – Reconstructed pronunciation of Classical Latin
 
@@ -40,7 +40,7 @@ description: |
 
   – Pronunciation from Warszawa, Mazowsze Region
 
-  4. QUECHUA - pronunciation & dialect translation & orthography
+  4. QUECHUA - pronunciation, dialect translation and orthography
 
   – Pronunciation of Chanka/ Ayacucho Quechua (Wanta, PE)
 
@@ -58,7 +58,7 @@ description: |
 
   – Pronunciation of Uruguayan Spanish (Montevideo)
 
-  6. TIKUNA/ TICUNA - pronunciation & orthography
+  6. TIKUNA/ TICUNA - pronunciation and orthography
 
   – Five variants of pronunciation (Río Cotuhé, CO; Cushillococha, PE; Nazareth, CO; Umariaçu, BR; Vila Betânia, BR)
 
