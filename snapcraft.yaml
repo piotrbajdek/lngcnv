@@ -67,8 +67,6 @@ description: |
 base: core18
 grade: stable
 confinement: strict
-license: 'MIT'
-source-code: https://github.com/piotrbajdek/lngcnv
 
 parts:
   lngcnv:
@@ -78,3 +76,6 @@ parts:
 apps:
   lngcnv:
     command: bin/lngcnv
+
+plugs.home.read
+plugs.home.write
