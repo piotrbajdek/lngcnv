@@ -64,8 +64,10 @@ description: |
 
   – Four distinct orthographies (Brazil; Colombia; Peru–ILV; Peru–FORMABIAP)
 
+grade: stable
 confinement: devmode
-base: core18
+source-code: https://github.com/piotrbajdek/lngcnv
+license: MIT
 
 parts:
   lngcnv:
