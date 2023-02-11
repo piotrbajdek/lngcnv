@@ -66,7 +66,7 @@ description: |
 
 base: core18
 grade: stable
-confinement: classic
+confinement: strict
 license: MIT
 
 parts:
@@ -77,3 +77,5 @@ parts:
 apps:
   lngcnv:
     command: bin/lngcnv
+  plugs:
+  - home
