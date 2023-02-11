@@ -67,7 +67,8 @@ description: |
 base: core18
 grade: stable
 confinement: strict
-license: MIT
+license: 'MIT'
+source-code: https://github.com/piotrbajdek/lngcnv
 
 parts:
   lngcnv:
