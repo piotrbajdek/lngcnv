@@ -77,5 +77,5 @@ apps:
   lngcnv:
     command: bin/lngcnv
 
-plugs.home.read
-plugs.home.write
+plugs:
+  - home
