@@ -2,7 +2,7 @@ name: lngcnv
 version: '1.8.4'
 summary: linguistics - English, Latin, Polish, Quechua, Spanish, Tikuna
 description: |
-  **INTRODUCING LNGCNV**
+  INTRODUCING LNGCNV
 
   The acronym 'lngcnv' may signify e.g., a 'language converter', a 'linguistic converter', or a 'lenguaje convertido' (Spanish for 'converted language').
 
@@ -18,7 +18,7 @@ description: |
 
   keywords - foreign languages, language learning app, natural language processing
 
-  **SUPPORTED LANGUAGES**
+  SUPPORTED LANGUAGES
 
   1. ENGLISH - pronunciation and orthography
 
