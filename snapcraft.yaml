@@ -76,5 +76,6 @@ parts:
 apps:
   lngcnv:
     command: bin/lngcnv
+    
   plugs:
-  - home
+    - home
