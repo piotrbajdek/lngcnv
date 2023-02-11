@@ -1,6 +1,6 @@
 name: lngcnv
 version: '1.8.4'
-summary: linguistics - English, Latin, Polish, Quechua, Spanish, Tikuna
+summary: Linguistics - English, Latin, Polish, Quechua, Spanish, Tikuna
 description: |
   INTRODUCING LNGCNV
 
@@ -76,6 +76,5 @@ parts:
 apps:
   lngcnv:
     command: bin/lngcnv
-
-plugs:
+  plugs:
   - home
