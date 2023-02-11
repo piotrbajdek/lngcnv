@@ -64,6 +64,7 @@ description: |
 
   – Four distinct orthographies (Brazil; Colombia; Peru–ILV; Peru–FORMABIAP)
 
+base: core22
 grade: stable
 confinement: devmode
 license: MIT
