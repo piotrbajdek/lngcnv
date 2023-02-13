@@ -1,6 +1,8 @@
 # INTRODUCING LNGCNV
 
-The acronym 'lngcnv' may signify e.g., a _'language converter'_, a _'linguistic converter'_, or a _'lenguaje convertido'_ (Spanish for _'converted language'_).
+![lngcnv-logo](https://github.com/piotrbajdek/lngcnv/blob/main/docs/images/lngcnv-logo.png?raw=true)
+
+The acronym 'lngcnv' may signify e.g., a 'language converter', a 'linguistic converter', or a 'lenguaje convertido' (Spanish for 'converted language').
 
 [lngcnv](https://github.com/piotrbajdek/lngcnv) is capable of presenting the precise pronunciation of a phrase using the International Phonetic Alphabet (IPA). It can also translate between various dialects of a language and convert between different orthographic norms.
 
@@ -74,25 +76,29 @@ Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https:
 
 # INSTALLATION ON LINUX
 
-[lngcnv](https://github.com/piotrbajdek/lngcnv) is designed to be compatible with **Windows** and **macOS**, and can be easily installed using [cargo](https://www.rust-lang.org/tools/install). However, the primary development and testing environment for lngcnv is **Fedora Linux**.
-
 The current version of lngcnv (v1.8.4) has been verified to work properly on Fedora Linux 37 and Ubuntu 22.10.
 
 ## METHOD 1 – USING CARGO
 
 **[Recommended for programmers]**
 
-**1.** To install lngcnv from [crates.io](https://crates.io/crates/lngcnv), use the following cargo command:
+**1.** To install lngcnv from [crates.io](https://crates.io/crates/lngcnv), use the following [cargo](https://www.rust-lang.org/tools/install) command:
 
 _cargo install lngcnv_
 
 The executable will be saved in the hidden `.cargo/bin/` directory within your home directory.
 
-**2a.** For easy access, you may want to copy the lngcnv file to the `/usr/bin/` directory. This can be done by following the instructions in Method 2 (3a, 3b).
+**2a.** For easy access, you may want to copy the lngcnv file to either the `/usr/bin/` or the `~/.local/bin/` directory. This can be done by following the instructions in Method 3 (3a, 3b, 3c).
 
 **2b.** As an alternative, you can add the `~/.cargo/bin/` directory to your system's PATH variable, which can be configured using [rustup](https://www.rust-lang.org/tools/install).
 
-## METHOD 2 – UNIVERSAL LINUX BINARIES
+## METHOD 2 – SNAP INSTALLATION
+
+The software can be obtained through the [Snap Store](https://snapcraft.io/lngcnv) and installed with just one command:
+
+_sudo snap install lngcnv_
+
+## METHOD 3 – UNIVERSAL LINUX BINARIES
 
 **1.** To install lngcnv, first download the distro-independent [binary](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.4/lngcnv) from GitHub.
 
@@ -108,7 +114,11 @@ _sudo cp lngcnv /usr/bin/_
 
 _sudo cp lngcnv /var/usrlocal/bin/_
 
-## METHOD 3 – DISTRO-SPECIFIC PACKAGES
+**3c.** As an alternative, consider installing locally in the `~/.local/bin/` directory:
+
+_cp lngcnv $HOME/.local/bin/_
+
+## METHOD 4 – DISTRO-SPECIFIC PACKAGES
 
 **[Recommended for most users]**
 
@@ -126,7 +136,7 @@ Ubuntu:
 
 _sudo dpkg -i lngcnv_1.8.4_amd64.deb_
 
-## METHOD 4 – MANUAL COMPILATION
+## METHOD 5 – MANUAL COMPILATION
 
 First, download and unpack the lngcnv [source code](https://github.com/piotrbajdek/lngcnv/archive/refs/tags/v1.8.4.zip) from GitHub. Next, to build and install the program, use the command:
 
