@@ -1,5 +1,7 @@
 # INTRODUCING LNGCNV
 
+![lngcnv-logo](https://github.com/piotrbajdek/lngcnv/blob/main/docs/images/lngcnv-logo.png?raw=true)
+
 The acronym 'lngcnv' may signify e.g., a 'language converter', a 'linguistic converter', or a 'lenguaje convertido' (Spanish for 'converted language').
 
 [lngcnv](https://github.com/piotrbajdek/lngcnv) is capable of presenting the precise pronunciation of a phrase using the International Phonetic Alphabet (IPA). It can also translate between various dialects of a language and convert between different orthographic norms.
