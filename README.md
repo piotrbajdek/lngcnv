@@ -18,13 +18,13 @@ Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https:
 
 # SUPPORTED LANGUAGES
 
-**1. ENGLISH:** pronunciation & orthography
+**1. ENGLISH:** pronunciation and orthography
 
 – Pronunciation of Australian English (Canberra, ACT)
 
 – Transcribe using the spelling of American English
 
-**2. LATIN:** pronunciation & orthography
+**2. LATIN:** pronunciation and orthography
 
 – Reconstructed pronunciation of Classical Latin
 
@@ -38,7 +38,7 @@ Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https:
 
 – Pronunciation from Warszawa, Mazowsze Region
 
-**4. QUECHUA:** pronunciation & dialect translation & orthography
+**4. QUECHUA:** pronunciation, dialect translation and orthography
 
 – Pronunciation of Chanka/ Ayacucho Quechua (Wanta, PE)
 
@@ -56,7 +56,7 @@ Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https:
 
 – Pronunciation of Uruguayan Spanish (Montevideo)
 
-**6. TIKUNA/ TICUNA:** pronunciation & orthography
+**6. TIKUNA/ TICUNA:** pronunciation and orthography
 
 – Five variants of pronunciation (Río Cotuhé, CO; Cushillococha, PE; Nazareth, CO; Umariaçu, BR; Vila Betânia, BR)
 
@@ -76,7 +76,7 @@ Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https:
 
 # INSTALLATION ON LINUX
 
-The current version of lngcnv (v1.8.4) has been verified to work properly on Fedora Linux 37 and Ubuntu 22.10.
+The current version of lngcnv (v1.8.5) has been verified to work properly on Fedora Linux 37 and Ubuntu 22.10.
 
 ## METHOD 1 – USING CARGO
 
@@ -100,7 +100,7 @@ _sudo snap install lngcnv_
 
 ## METHOD 3 – UNIVERSAL LINUX BINARIES
 
-**1.** To install lngcnv, first download the distro-independent [binary](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.4/lngcnv) from GitHub.
+**1.** To install lngcnv, first download the distro-independent [binary](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.5/lngcnv) from GitHub.
 
 **2.** Then, make the file executable by running the command:
 
@@ -122,22 +122,22 @@ _cp lngcnv $HOME/.local/bin/_
 
 **[Recommended for most users]**
 
-Distro-specific packages for [.rpm](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.4/lngcnv-1.8.4-1.x86_64.rpm) and [.deb](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.4/lngcnv_1.8.4_amd64.deb)-based Linux distributions are also available for download. To install lngcnv on different Linux distributions, follow these instructions:
+Distro-specific packages for [.rpm](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.5/lngcnv-1.8.5-1.x86_64.rpm) and [.deb](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.5/lngcnv_1.8.5_amd64.deb)-based Linux distributions are also available for download. To install lngcnv on different Linux distributions, follow these instructions:
 
 Fedora Linux / RHEL / openSUSE:
 
-_sudo rpm -i lngcnv-1.8.4-1.x86_64.rpm_
+_sudo rpm -i lngcnv-1.8.5-1.x86_64.rpm_
 
 Fedora Silverblue / Kinoite:
 
-_rpm-ostree install lngcnv-1.8.4-1.x86_64.rpm_
+_rpm-ostree install lngcnv-1.8.5-1.x86_64.rpm_
 
 Ubuntu:
 
-_sudo dpkg -i lngcnv_1.8.4_amd64.deb_
+_sudo dpkg -i lngcnv_1.8.5_amd64.deb_
 
 ## METHOD 5 – MANUAL COMPILATION
 
-First, download and unpack the lngcnv [source code](https://github.com/piotrbajdek/lngcnv/archive/refs/tags/v1.8.4.zip) from GitHub. Next, to build and install the program, use the command:
+First, download and unpack the lngcnv [source code](https://github.com/piotrbajdek/lngcnv/archive/refs/tags/v1.8.5.zip) from GitHub. Next, to build and install the program, use the command:
 
 _cargo build \--release && sudo cp target/release/lngcnv /usr/bin/_

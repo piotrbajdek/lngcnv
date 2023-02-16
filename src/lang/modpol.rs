@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.8.4 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.5 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODPOL
 
@@ -76,6 +76,7 @@ fn polabbrev(lowercase: &str) -> String {
         .replace("p.n.e.", "przed naszą erą")
         .replace("n.e.", "naszej ery")
         .replace("prof.", "profesor")
+        .replace("p.s. ", "peʔes, ")
         .replace("str.", "stronie")
         .replace("tj.", "to jest")
         .replace(" tys.", " tysięcy")
@@ -119,6 +120,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace("bc", "b̥c")
         .replace("bs", "b̥s")
         .replace("dc", "d̥c")
+        .replace("wsk", "v̥sk")
         .replace("wt", "v̥t")
         .replace("dt", "d̥t")
         .replace("dk", "d̥k")
@@ -177,6 +179,7 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace("rz", "ʒ")
         .replace('r', "ɾ")
         .replace('ż', "ʒ")
+        .replace("ʒ#", "ʒ̥#")
         .replace("zi#", "ʑi#")
         .replace("zia", "ʑa")
         .replace("zią", "ʑą")
@@ -486,6 +489,7 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("bc", "b̥c")
         .replace("bs", "b̥s")
         .replace("dc", "d̥c")
+        .replace("wsk", "v̥sk")
         .replace("wt", "v̥t")
         .replace("dt", "d̥t")
         .replace("dk", "d̥k")
