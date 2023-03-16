@@ -12,7 +12,7 @@ Six modern and ancient languages, including a range of dialects, are currently s
 
 The program's source code and linguistic algorithms were created entirely from scratch and are distributed under the [MIT License](https://github.com/piotrbajdek/lngcnv/blob/main/LICENSE.md). [lngcnv](https://github.com/piotrbajdek/lngcnv) is written in Rust for high performance, code correctness, and ease of long-term development.
 
-Use [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https://software.sil.org/doulos/download/), or [Gentium Plus](https://software.sil.org/gentium/download/) font to ensure proper rendering of characters in the International Phonetic Alphabet (see [1](https://www.internationalphoneticassociation.org/IPAcharts/inter_chart_2018/IPA_2018.html), [2](https://ipahelp.languagetechnology.org/), [3](https://en.wikipedia.org/wiki/IPA_vowel_chart_with_audio), [4](https://en.wikipedia.org/wiki/IPA_pulmonic_consonant_chart_with_audio)).
+To display the International Phonetic Alphabet (IPA) characters accurately, it is recommended to use one of the following fonts: [Charis SIL](https://software.sil.org/charis/download/), [Doulos SIL](https://software.sil.org/doulos/download/), or [Gentium Plus](https://software.sil.org/gentium/download/). When showing IPA characters in the terminal, it is best to use the Unicode font [Noto Sans Mono](https://fonts.google.com/noto/specimen/Noto+Sans+Mono).
 
 [keywords: foreign languages, language learning app, natural language processing] 
 
