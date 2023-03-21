@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.8.5 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.6 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -22,8 +22,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-a" || argument == "--about" {
             println!("{}", grey.to_owned() + "Program" + reset + ":  " + yellow + "lngcnv" + reset);
-            println!("{}", grey.to_owned() + "Version" + reset + ":  1.8.5");
-            println!("{}", grey.to_owned() + "Date" + reset + ":     February 16, 2023");
+            println!("{}", grey.to_owned() + "Version" + reset + ":  1.8.6");
+            println!("{}", grey.to_owned() + "Date" + reset + ":     March 21, 2023");
             println!("{}", grey.to_owned() + "Author" + reset + ":   Piotr Bajdek");
             println!("{}", grey.to_owned() + "Contact" + reset + ":  " + blue_underlined + "piotr.bajdek@proton.me" + reset);
             println!("{}", grey.to_owned() + "Source" + reset + ":   " + blue_underlined + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -34,7 +34,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", yellow.to_owned() + "16.02.2023 v1.8.5 – Improved --ipa --eng, --ipa --pol" + reset);
+            println!("{}", yellow.to_owned() + "21.03.2023 v1.8.6 – Improved --ipa --eng, --ipa --spa" + reset);
+            println!("16.02.2023 {}", yellow.to_owned() + "v1.8.5" + reset + " – Improved --ipa --eng, --ipa --pol" + reset);
             println!("02.02.2023 {}", yellow.to_owned() + "v1.8.4" + reset + " – Enhanced layout and documentation");
             println!("18.01.2023 {}", yellow.to_owned() + "v1.8.3" + reset + " – Improved --ipa --pol, --ipa --que, --ipa --spa");
             println!("13.01.2023 {}", yellow.to_owned() + "v1.8.2" + reset + " – Improved --ipa --pol, --ipa --spa");
@@ -57,7 +58,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CITATION
 
         if argument == "-C" || argument == "--citation" {
-            println!("Bajdek, P., 2023. lngcnv (version 1.8.5). [computer software] https://github.com/piotrbajdek/lngcnv");
+            println!("Bajdek, P., 2023. lngcnv (version 1.8.6). [computer software] https://github.com/piotrbajdek/lngcnv");
             exit(0);
         }
 
@@ -74,8 +75,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
             println!("          {}", cyan.to_owned() + "--lct" + reset + "  Translate [string/ file] between dialects or lang. varieties");
             println!("          {}", cyan.to_owned() + "--ort" + reset + "  Convert [string/ file] between regional norms of orthography");
             println!();
-            println!("{}", yellow.to_owned() + "option 2" + reset + ": " + cyan + "--eng" + reset + "  English " + grey + "|" + reset + " used with: " + cyan + "--ipa" + reset + "," + cyan + "        --ort");
-            println!("          --lat{}", reset.to_owned() + "  Latin   " + grey + "|" + reset + " used with: " + cyan + "--ipa" + reset + "," + cyan + "        --ort");
+            println!("{}", yellow.to_owned() + "option 2" + reset + ": " + cyan + "--eng" + reset + "  English " + grey + "|" + reset + " used with: " + cyan + "--ipa" + reset + ", " + cyan + "       --ort");
+            println!("          --lat{}", reset.to_owned() + "  Latin   " + grey + "|" + reset + " used with: " + cyan + "--ipa" + reset + ", " + cyan + "       --ort");
             println!("          --pol{}", reset.to_owned() + "  Polish  " + grey + "|" + reset + " used with: " + cyan + "--ipa");
             println!("          --que{}", reset.to_owned() + "  Quechua " + grey + "|" + reset + " used with: " + cyan + "--ipa" + reset + ", " + cyan + "--lct" + reset + ", " + cyan + "--ort");
             println!("          --spa{}", reset.to_owned() + "  Spanish " + grey + "|" + reset + " used with: " + cyan + "--ipa");
@@ -121,7 +122,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
             println!("{}", yellow.to_owned() + "option 4" + reset + ": " + cyan + "-o" + reset + ", " + cyan + "--output" + reset + "     Specify the name for the output file    [optional]");
             println!();
             println!("{}", grey.to_owned() + "Examples" + reset + ":" + yellow + " lngcnv --ipa --pol --input polish_book.txt --output output_file.txt");
-            println!("          lngcnv --ipa --pol --input polish_book{}", reset.to_owned() + " [a default output file name]");
+            println!("          lngcnv --ipa --pol --input polish_book{}", reset.to_owned() + "   [default output file name]");
             println!();
             println!("{}", grey.to_owned() + "5" + reset + "." + grey + " PROGRAM DOCUMENTATION" + reset);
             println!();
@@ -177,8 +178,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.8.5" + reset);
-            println!("February 16, 2023");
+            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.8.6" + reset);
+            println!("March 21, 2023");
             exit(0);
         }
     }

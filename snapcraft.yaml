@@ -1,5 +1,5 @@
 name: lngcnv
-version: '1.8.5'
+version: '1.8.6'
 summary: Linguistics - English, Latin, Polish, Quechua, Spanish, Tikuna
 description: |
   INTRODUCING LNGCNV
@@ -14,7 +14,7 @@ description: |
 
   The program's source code and linguistic algorithms were created entirely from scratch and are distributed under the MIT License. lngcnv is written in Rust for high performance, code correctness, and ease of long-term development.
 
-  Use Charis SIL, Doulos SIL, or Gentium Plus font to ensure proper rendering of characters in the International Phonetic Alphabet.
+  To display the International Phonetic Alphabet (IPA) characters accurately, it is recommended to use one of the following fonts - Charis SIL, Doulos SIL, or Gentium Plus. When showing IPA characters in the terminal, it is best to use the Unicode font Noto Sans Mono.
 
   keywords - foreign languages, language learning app, natural language processing
 

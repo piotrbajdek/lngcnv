@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.9.0 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.6 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODENG
 
@@ -857,7 +857,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("#i", "#ᵊiː")
         .replace("n# #m", "m# #m")
         .replace("n# #n", "# #n")
-        .replace("iː̃m", "ĩːm")
+        .replace("iː̃", "ĩː")
         .replace('g', "ɡ")
         .replace('^', "");
 

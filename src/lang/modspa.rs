@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.8.5 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.6 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODSPA
 
@@ -164,6 +164,10 @@ fn spaaccent_a(palesp: &str) -> String {
         .replace("aldas#", "áldas#")
         .replace("abio#", "ábio#")
         .replace("abios#", "ábios#")
+        .replace("ancho#", "áncho#")
+        .replace("anchos#", "ánchos#")
+        .replace("ancha#", "áncha#")
+        .replace("anchas#", "ánchas#")
         .replace("anco#", "ánco#")
         .replace("ancos#", "áncos#")
         .replace("anca#", "ánca#")
@@ -440,10 +444,14 @@ fn spaaccent_e(spaacc_a: &str) -> String {
         .replace("emplos#", "émplos#")
         .replace("een#", "éen#")
         .replace("ees#", "ées#")
+        .replace("edia#", "édia#")
+        .replace("edias#", "édias#")
         .replace("edio#", "édio#")
         .replace("edios#", "édios#")
         .replace("emo#", "émo#")
-        .replace("emos#", "émos#");
+        .replace("emos#", "émos#")
+        .replace("esia#", "ésia#")
+        .replace("esias#", "ésias#");
     spaacc_e.to_string()
 }
 
@@ -478,6 +486,10 @@ fn spaaccent_o(spaacc_e: &str) -> String {
         .replace("ondas#", "óndas#")
         .replace("ondo#", "óndo#")
         .replace("ondos#", "óndos#")
+        .replace("onga#", "ónga#")
+        .replace("ongas#", "óngas#")
+        .replace("ongo#", "óngo#")
+        .replace("ongos#", "óngos#")
         .replace("onces#", "ónces#")
         .replace("ola#", "óla#")
         .replace("olas#", "ólas#")
@@ -2579,6 +2591,8 @@ pub fn spacomedellin(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("ch", "ʈ͡ʂʲ")
         .replace("ce", "se")
         .replace("cé", "sé")
+        .replace("#ci", "#si")
+        .replace("#cí", "#sí")
         .replace("ci", "ʒi")
         .replace("cí", "ʒí")
         .replace('c', "k")
@@ -4529,7 +4543,7 @@ pub fn spaescadiz(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace("uho", "uʔo")
         .replace("úho", "úʔo")
         .replace('h', "h^")
-        .replace("#h^", "#h̥")
+        .replace("#h^", "#h̚")
         .replace("h^", "")
         .replace('j', "x")
         .replace("ge", "xe")
