@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.8.7 / MIT LICENSE © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.8 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
 
 // MODULE LANG
 
@@ -30,9 +30,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
     let args: Vec<String> = env::args().collect();
 
     let arg_cnt = args.len();
-    if arg_cnt == 1 {
-        panic!("{}", &(red.to_owned() + "Missing arguments! See: --help" + reset))
-    }
+    assert!((arg_cnt != 1), "{}", &(red.to_owned() + "Missing arguments! See: --help" + reset));
 
     let input1 = args.get(1).expect(&(red.to_owned() + "Invalid or missing arguments! See: --help" + reset));
     let input2 = args.get(2).expect(&(red.to_owned() + "Invalid or missing arguments! See: --help" + reset));
@@ -49,7 +47,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -164,7 +162,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -279,7 +277,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -394,7 +392,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -509,7 +507,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -644,7 +642,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -759,7 +757,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -874,7 +872,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -989,7 +987,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -1104,7 +1102,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -1219,7 +1217,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -1341,7 +1339,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -1572,7 +1570,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -1687,7 +1685,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -1802,7 +1800,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -1917,7 +1915,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -2032,7 +2030,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -2147,7 +2145,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -2261,7 +2259,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -2376,7 +2374,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -2491,7 +2489,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -2606,7 +2604,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -2721,7 +2719,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -2836,7 +2834,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -2951,7 +2949,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -3066,7 +3064,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -3181,7 +3179,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -3296,7 +3294,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -3447,7 +3445,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -3562,7 +3560,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -3677,7 +3675,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -3792,7 +3790,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -3907,7 +3905,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();
@@ -4022,7 +4020,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
             println!();
             println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
             println!();
-            println!("Insert your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
             println!();
             loop {
                 let mut input_repl = String::new();

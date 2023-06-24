@@ -1,13 +1,13 @@
 [package]
 name = "lngcnv"
-version = "1.8.7"
+version = "1.8.8"
 authors = ["Piotr Bajdek <piotr.bajdek@proton.me>"]
 edition = "2021"
 description = "linguistics: display pronunciation, translate between dialects, convert between orthographies; support for multiple languages: English, Latin, Polish, Quechua, Spanish, Tikuna"
 readme = "README.md"
 repository = "https://github.com/piotrbajdek/lngcnv"
 license = "MIT"
-keywords = ["linguistics", "phonetics", "pronunciation", "speech", "spelling"]
+keywords = ["linguistics", "phonetics", "speech", "spelling", "text-processing"]
 categories = ["command-line-utilities", "text-processing", "algorithms"]
 
 [profile.release]
