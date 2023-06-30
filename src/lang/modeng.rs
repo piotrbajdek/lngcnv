@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.8.8 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.9 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODENG
 
@@ -72,14 +72,19 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("perhaps", "peːhɶ̜ps")
         .replace("video", "vidɞ̜ʉ̞")
         .replace("comm", "kʰɔ̈mm")
+        .replace("modu", "mɔ̈du")
         .replace("#conf", "#kʰɔ̃nf")
         .replace("#con", "#kʰə̃n")
         .replace("con#", "kə̃n#")
+        .replace("dule", "d͡ʒʊ̟le")
+        .replace("dula", "d͡ʒʊ̟la")
         .replace("ionaire", "io̝ːnə")
         .replace("national", "nɶ̜tional")
+        .replace("itation", "ə^tation")
         .replace("pass", "pɶ̜ss")
         .replace("alumi", "ɶ̜lʲʉ̟ːmi")
         .replace("nium", "nʲəm")
+        .replace("eum#", "iˑəm#")
         .replace("subtl", "sɐ̠tl")
         .replace("debt", "det")
         .replace("wednes", "we^nz̥")
@@ -92,6 +97,8 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("musc", "mɐ̠sc")
         .replace("ward", "^wo̝ːd")
         .replace("ok", "ɞ̜ʉ̞k")
+        .replace("ochu", "ɞ̜ʉ̞chu")
+        .replace("chure", "ʃʲə")
         .replace("parallel", "pɶ̜rəle^l")
         .replace("cally", "kl̥ᵊiː")
         .replace("ally#", "ᵊl̥ᵊiː#")
@@ -562,6 +569,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("use", "ʲʉ̟ːz")
         .replace("#uʒ", "#ʲʉ̟ːʒ")
         .replace("#us", "#ʲʉ̟ːs")
+        .replace("#busi", "#bɘsi")
         .replace("usi", "ʲʉ̟ːzi")
         .replace("actu", "ɶ̜kʃʉ̟ː")
         .replace("act", "ɶ̜kt")
@@ -666,6 +674,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("in", "ĩn")
         .replace("im", "ĩm")
         .replace("un", "ɐ̃n")
+        .replace("uŋ", "ɐ̃ŋ")
         .replace("up", "ɐ̠p")
         .replace("ub", "ɐ̠b")
         .replace("ute", "ʲʉ̟ːte")
@@ -759,9 +768,10 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("erl", "əl")
         .replace("em#", "əm#")
         .replace("elɑ̝ëness#", "linəz̥#")
+        .replace("sĩness#", "z̥nəz̥#")
         .replace("ness#", "nəz̥#")
         .replace("ussy", "ʊ̟sy")
-        .replace("usy", "ɘsy")
+        .replace("usy", "ɘz̥y")
         .replace("est#", "əst#")
         .replace("bəst", "b^est")
         .replace("rəst", "r^est")
@@ -772,6 +782,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("ss", "s")
         .replace("ses", "zəz̥")
         .replace("es#", "z̥#")
+        .replace("əs#", "əz̥#")
         .replace("sas", "zəz̥")
         .replace("as#", "ɶ̜z̥#")
         .replace("ks#", "kz̥#")
@@ -965,6 +976,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("iː̃", "ĩː")
         .replace("ʰʰ", "ʰ")
         .replace("o̝ːs̻e̽", "o̝ːs̻")
+        .replace("gg", "g")
         .replace('g', "ɡ")
         .replace('^', "");
 
