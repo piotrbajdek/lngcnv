@@ -1,6 +1,6 @@
 [package]
 name = "lngcnv"
-version = "1.8.8"
+version = "1.8.9"
 authors = ["Piotr Bajdek <piotr.bajdek@proton.me>"]
 edition = "2021"
 description = "linguistics: display pronunciation, translate between dialects, convert between orthographies; support for multiple languages: English, Latin, Polish, Quechua, Spanish, Tikuna"
