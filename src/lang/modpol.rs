@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.8.9 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.10 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODPOL
 
@@ -204,6 +204,8 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace('ł', "w")
         .replace("m#", "ɱ#")
         .replace("n#", "ŋ#")
+        .replace("mf", "ɱf")
+        .replace("mv", "ɱv")
         .replace("ju", "jü")
         .replace("aʈ͡ʂ", "ɐʈ͡ʂ")
         .replace("ʈ͡ʂa", "ʈ͡ʂɐ")
@@ -399,6 +401,8 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace('ł', "w")
         .replace("m#", "ɱ#")
         .replace("n#", "ŋ#")
+        .replace("mf", "ɱf")
+        .replace("mv", "ɱv")
         .replace('a', "ɐ")
         .replace('e', "ɛ")
         .replace("ę#", "ɛ#")
@@ -570,7 +574,11 @@ pub fn polplwarszawa(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("ɡłó", "ɡw̥u")
         .replace('ł', "w")
         .replace('l', "ɫ")
-        .replace("m#", "ɱ#")
+        .replace("#ɫ", "#l")
+        .replace("m# #f", "ɱ# #f")
+        .replace("m# #v", "ɱ# #v")
+        .replace("mf", "ɱf")
+        .replace("mv", "ɱv")
         .replace('a', "æ̞")
         .replace('e', "ɶ")
         .replace("ę#", "ɶ#")

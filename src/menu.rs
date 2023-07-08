@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.8.9 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.10 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -22,8 +22,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-a" || argument == "--about" {
             println!("{}", grey.to_owned() + "Program" + reset + ":  " + yellow + "lngcnv" + reset);
-            println!("{}", grey.to_owned() + "Version" + reset + ":  1.8.9");
-            println!("{}", grey.to_owned() + "Date" + reset + ":     July 2, 2023");
+            println!("{}", grey.to_owned() + "Version" + reset + ":  1.8.10");
+            println!("{}", grey.to_owned() + "Date" + reset + ":     July 8, 2023");
             println!("{}", grey.to_owned() + "Author" + reset + ":   Piotr Bajdek");
             println!("{}", grey.to_owned() + "Contact" + reset + ":  " + blue_underlined + "piotr.bajdek@proton.me" + reset);
             println!("{}", grey.to_owned() + "Source" + reset + ":   " + blue_underlined + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -34,34 +34,35 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", yellow.to_owned() + "02.07.2023 v1.8.9 – Improved --ipa --eng" + reset);
-            println!("24.06.2023 {}", yellow.to_owned() + "v1.8.8" + reset + " – Improved --ipa --eng");
-            println!("24.03.2023 {}", yellow.to_owned() + "v1.8.7" + reset + " – Improved --ipa --eng");
-            println!("21.03.2023 {}", yellow.to_owned() + "v1.8.6" + reset + " – Improved --ipa --eng, --ipa --spa");
-            println!("16.02.2023 {}", yellow.to_owned() + "v1.8.5" + reset + " – Improved --ipa --eng, --ipa --pol");
-            println!("02.02.2023 {}", yellow.to_owned() + "v1.8.4" + reset + " – Enhanced layout and documentation");
-            println!("18.01.2023 {}", yellow.to_owned() + "v1.8.3" + reset + " – Improved --ipa --pol, --ipa --que, --ipa --spa");
-            println!("13.01.2023 {}", yellow.to_owned() + "v1.8.2" + reset + " – Improved --ipa --pol, --ipa --spa");
-            println!("09.01.2023 {}", yellow.to_owned() + "v1.8.1" + reset + " – Improved --ipa --spa");
-            println!("03.01.2023 {}", yellow.to_owned() + "v1.8.0" + reset + " – Enhanced --ipa --spa");
-            println!("11.12.2022 {}", yellow.to_owned() + "v1.7.0" + reset + " – Added --repl; Enhanced --ipa --spa; Improved --ipa --eng, --ipa --pol");
-            println!("14.11.2022 {}", yellow.to_owned() + "v1.6.1" + reset + " – Enhanced source code");
-            println!("12.11.2022 {}", yellow.to_owned() + "v1.6.0" + reset + " – Added --ipa --spa; Enhanced --ipa --pol, --ipa --tca, --ort --eng; Improved --ipa --eng; Rewritten source code");
-            println!("15.05.2022 {}", yellow.to_owned() + "v1.5.1" + reset + " – Improved source code");
-            println!("14.05.2022 {}", yellow.to_owned() + "v1.5.0" + reset + " – Enhanced --ipa --tca; Enhanced source code");
-            println!("09.05.2022 {}", yellow.to_owned() + "v1.4.1" + reset + " – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
-            println!("03.05.2022 {}", yellow.to_owned() + "v1.4.0" + reset + " – Added --ipa --eng; Enhanced --ipa --tca, --ort --eng; Improved --ipa --lat");
-            println!("14.02.2022 {}", yellow.to_owned() + "v1.3.0" + reset + " – Added --lct --que; Added --input --output");
-            println!("11.02.2022 {}", yellow.to_owned() + "v1.2.0" + reset + " – Added --ipa --que");
-            println!("09.02.2022 {}", yellow.to_owned() + "v1.1.0" + reset + " – Added --ipa --pol");
-            println!("07.02.2022 {}", yellow.to_owned() + "v1.0.0" + reset + " – Implemented --ipa --lat, --ipa --tca, --ort --eng, --ort --lat, --ort --que, --ort --tca");
+            println!("{}", yellow.to_owned() + "08.07.2023 v1.8.10 – Improved --ipa --pol" + reset);
+            println!("02.07.2023 {}", yellow.to_owned() + "v1.8.9" + reset + "  – Improved --ipa --eng");
+            println!("24.06.2023 {}", yellow.to_owned() + "v1.8.8" + reset + "  – Improved --ipa --eng");
+            println!("24.03.2023 {}", yellow.to_owned() + "v1.8.7" + reset + "  – Improved --ipa --eng");
+            println!("21.03.2023 {}", yellow.to_owned() + "v1.8.6" + reset + "  – Improved --ipa --eng, --ipa --spa");
+            println!("16.02.2023 {}", yellow.to_owned() + "v1.8.5" + reset + "  – Improved --ipa --eng, --ipa --pol");
+            println!("02.02.2023 {}", yellow.to_owned() + "v1.8.4" + reset + "  – Enhanced layout and documentation");
+            println!("18.01.2023 {}", yellow.to_owned() + "v1.8.3" + reset + "  – Improved --ipa --pol, --ipa --que, --ipa --spa");
+            println!("13.01.2023 {}", yellow.to_owned() + "v1.8.2" + reset + "  – Improved --ipa --pol, --ipa --spa");
+            println!("09.01.2023 {}", yellow.to_owned() + "v1.8.1" + reset + "  – Improved --ipa --spa");
+            println!("03.01.2023 {}", yellow.to_owned() + "v1.8.0" + reset + "  – Enhanced --ipa --spa");
+            println!("11.12.2022 {}", yellow.to_owned() + "v1.7.0" + reset + "  – Added --repl; Enhanced --ipa --spa; Improved --ipa --eng, --ipa --pol");
+            println!("14.11.2022 {}", yellow.to_owned() + "v1.6.1" + reset + "  – Enhanced source code");
+            println!("12.11.2022 {}", yellow.to_owned() + "v1.6.0" + reset + "  – Added --ipa --spa; Enhanced --ipa --pol, --ipa --tca, --ort --eng; Improved --ipa --eng; Rewritten source code");
+            println!("15.05.2022 {}", yellow.to_owned() + "v1.5.1" + reset + "  – Improved source code");
+            println!("14.05.2022 {}", yellow.to_owned() + "v1.5.0" + reset + "  – Enhanced --ipa --tca; Enhanced source code");
+            println!("09.05.2022 {}", yellow.to_owned() + "v1.4.1" + reset + "  – Improved --ipa --eng, --ipa --lat, --lct --que, --ort --eng");
+            println!("03.05.2022 {}", yellow.to_owned() + "v1.4.0" + reset + "  – Added --ipa --eng; Enhanced --ipa --tca, --ort --eng; Improved --ipa --lat");
+            println!("14.02.2022 {}", yellow.to_owned() + "v1.3.0" + reset + "  – Added --lct --que; Added --input --output");
+            println!("11.02.2022 {}", yellow.to_owned() + "v1.2.0" + reset + "  – Added --ipa --que");
+            println!("09.02.2022 {}", yellow.to_owned() + "v1.1.0" + reset + "  – Added --ipa --pol");
+            println!("07.02.2022 {}", yellow.to_owned() + "v1.0.0" + reset + "  – Implemented --ipa --lat, --ipa --tca, --ort --eng, --ort --lat, --ort --que, --ort --tca");
             exit(0);
         }
 
         // CITATION
 
         if argument == "-C" || argument == "--citation" {
-            println!("Bajdek, P., 2023. lngcnv (version 1.8.9). [computer software] https://github.com/piotrbajdek/lngcnv");
+            println!("Bajdek, P., 2023. lngcnv (version 1.8.10). [computer software] https://github.com/piotrbajdek/lngcnv");
             exit(0);
         }
 
@@ -181,8 +182,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.8.9" + reset);
-            println!("July 2, 2023");
+            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.8.10" + reset);
+            println!("July 8, 2023");
             exit(0);
         }
     }
