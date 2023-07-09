@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.8.10 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.11 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
 
 // MODULE MODENG
 
@@ -110,6 +110,9 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("all", "ɔ̈ːl")
         .replace("#ali", "#a^li")
         .replace("#al", "#ɔ̈l")
+        .replace("#atmo", "#ɶ̜tmo")
+        .replace("#atomic", "#a^tɔ̈mic")
+        .replace("#atom", "#ɶ̜tom")
         .replace("#edu", "#ed͡ʒʊ̟")
         .replace("dead", "d^e^d")
         .replace("#dedi", "#d^edi")
@@ -686,6 +689,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("ment#", "mənt#")
         .replace("ements#", "mənts#")
         .replace("ments#", "mənts#")
+        .replace("ener", "ᵊnə")
         .replace("ene", "iːn")
         .replace("en", "en̪")
         .replace("in", "ĩn")
