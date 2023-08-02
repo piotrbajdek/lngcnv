@@ -1,11 +1,11 @@
-// LNGCNV VERSION 1.8.11 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.8.12 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
 
 // MODULE LANG
 
 // CLIPPY LINTS
 
 #![warn(clippy::nursery, clippy::pedantic)]
-#![allow(clippy::needless_borrow)] // &original_text must be borrowed in fn list()
+#![allow(clippy::needless_borrow)]
 #![allow(clippy::cognitive_complexity, clippy::missing_panics_doc, clippy::too_many_lines)]
 
 // IMPORTS
