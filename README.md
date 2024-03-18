@@ -20,6 +20,8 @@ To display the International Phonetic Alphabet (IPA) characters accurately, it i
 
 **1. ENGLISH:** pronunciation and orthography
 
+– Pronunciation of American English (Dallas, TX)
+
 – Pronunciation of Australian English (Canberra, ACT)
 
 – Transcribe using the spelling of American English
@@ -68,7 +70,7 @@ To display the International Phonetic Alphabet (IPA) characters accurately, it i
 
 # INSTALLATION ON LINUX
 
-The current version of lngcnv (v1.8.12) has been verified to work properly on Fedora Linux 38 and Ubuntu 23.04.
+The current version of lngcnv (v1.9.0) has been verified to work properly on Fedora Linux 39.
 
 ## METHOD 1 – USING CARGO
 
@@ -92,7 +94,7 @@ _sudo snap install lngcnv_
 
 ## METHOD 3 – UNIVERSAL LINUX BINARIES
 
-**1.** To install lngcnv, first download the distro-independent [binary](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.12/lngcnv) from GitHub.
+**1.** To install lngcnv, first download the distro-independent [binary](https://github.com/piotrbajdek/lngcnv/releases/download/v1.9.0/lngcnv) from GitHub.
 
 **2.** Then, make the file executable by running the command:
 
@@ -114,22 +116,22 @@ _cp lngcnv $HOME/.local/bin/_
 
 **[Recommended for most users]**
 
-Distro-specific packages for [.rpm](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.12/lngcnv-1.8.12-1.x86_64.rpm) and [.deb](https://github.com/piotrbajdek/lngcnv/releases/download/v1.8.12/lngcnv_1.8.12_amd64.deb)-based Linux distributions are also available for download. To install lngcnv on different Linux distributions, follow these instructions:
+Distro-specific packages for [.rpm](https://github.com/piotrbajdek/lngcnv/releases/download/v1.9.0/lngcnv-1.9.0-1.x86_64.rpm) and [.deb](https://github.com/piotrbajdek/lngcnv/releases/download/v1.9.0/lngcnv_1.9.0_amd64.deb)-based Linux distributions are also available for download. To install lngcnv on different Linux distributions, follow these instructions:
 
 Fedora Linux / RHEL / openSUSE:
 
-_sudo rpm -i lngcnv-1.8.12-1.x86_64.rpm_
+_sudo rpm -i lngcnv-1.9.0-1.x86_64.rpm_
 
 Fedora Silverblue / Kinoite:
 
-_rpm-ostree install lngcnv-1.8.12-1.x86_64.rpm_
+_rpm-ostree install lngcnv-1.9.0-1.x86_64.rpm_
 
 Ubuntu:
 
-_sudo dpkg -i lngcnv_1.8.12_amd64.deb_
+_sudo dpkg -i lngcnv_1.9.0_amd64.deb_
 
 ## METHOD 5 – MANUAL COMPILATION
 
-First, download and unpack the lngcnv [source code](https://github.com/piotrbajdek/lngcnv/archive/refs/tags/v1.8.12.zip) from GitHub. Next, to build and install the program, use the command:
+First, download and unpack the lngcnv [source code](https://github.com/piotrbajdek/lngcnv/archive/refs/tags/v1.9.0.zip) from GitHub. Next, to build and install the program, use the command:
 
 _cargo build \--release && sudo cp target/release/lngcnv /usr/bin/_

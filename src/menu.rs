@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.8.12 / MIT LICENSE / COPYRIGHT © 2022–2023 PIOTR BAJDEK
+// LNGCNV VERSION 1.9.0 / MIT LICENSE / COPYRIGHT © 2022–2024 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -22,19 +22,20 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-a" || argument == "--about" {
             println!("{}", grey.to_owned() + "Program" + reset + ":  " + yellow + "lngcnv" + reset);
-            println!("{}", grey.to_owned() + "Version" + reset + ":  1.8.12");
-            println!("{}", grey.to_owned() + "Date" + reset + ":     August 3, 2023");
+            println!("{}", grey.to_owned() + "Version" + reset + ":  1.9.0");
+            println!("{}", grey.to_owned() + "Date" + reset + ":     March --, 2024");
             println!("{}", grey.to_owned() + "Author" + reset + ":   Piotr Bajdek");
             println!("{}", grey.to_owned() + "Contact" + reset + ":  " + blue_underlined + "piotr.bajdek@proton.me" + reset);
             println!("{}", grey.to_owned() + "Source" + reset + ":   " + blue_underlined + "https://github.com/piotrbajdek/lngcnv" + reset);
-            println!("{}", grey.to_owned() + "License" + reset + ":  MIT License © 2022–2023 Piotr Bajdek");
+            println!("{}", grey.to_owned() + "License" + reset + ":  MIT License © 2022–2024 Piotr Bajdek");
             exit(0);
         }
 
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", yellow.to_owned() + "03.08.2023 v1.8.12 – Improved --ipa --eng, --ipa --spa" + reset);
+            println!("{}", yellow.to_owned() + "--.03.2024 v1.9.0  – Enhanced --ipa --eng" + reset);
+            println!("03.08.2023 {}", yellow.to_owned() + "v1.8.12" + reset + " – Improved --ipa --eng, --ipa --spa");
             println!("10.07.2023 {}", yellow.to_owned() + "v1.8.11" + reset + " – Improved --ipa --eng, --ipa --spa");
             println!("08.07.2023 {}", yellow.to_owned() + "v1.8.10" + reset + " – Improved --ipa --pol");
             println!("02.07.2023 {}", yellow.to_owned() + "v1.8.9" + reset + "  – Improved --ipa --eng");
@@ -64,7 +65,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CITATION
 
         if argument == "-C" || argument == "--citation" {
-            println!("Bajdek, P., 2023. lngcnv (version 1.8.12). [computer software] https://github.com/piotrbajdek/lngcnv");
+            println!("Bajdek, P., 2024. lngcnv (version 1.9.0). [computer software] https://github.com/piotrbajdek/lngcnv");
             exit(0);
         }
 
@@ -91,16 +92,18 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
             println!("          In the {}", cyan.to_owned() + "--ipa" + reset + " mode, the output can also be constrained to a selected");
             println!("          variant of pronunciation if two or more are available (see {}", cyan.to_owned() + "-l" + reset + "):");
             println!();
-            println!("          {}", cyan.to_owned() + "--pol" + reset + ": " + cyan + "--pol.pl-czestochowa" + reset + ", " + cyan + "--pol.pl-torun" + reset + ", " + cyan + "--pol.pl-warszawa");
+            println!("          {}", cyan.to_owned() + "--eng" + reset + ": " + cyan + "--eng.au-canberra" + reset + ", " + cyan + "--eng.us-dallas" + reset + "                  [" + grey + "AU" + reset + ", " + grey + "US" + reset + "]");
             println!();
-            println!("          --spa{}", reset.to_owned() + ": " + cyan + "--spa.co-arauca" + reset + ", " + cyan + "--spa.co-bogota" + reset + ", " + cyan + "--spa.co-bucaramanga" + reset + ", [" + grey + "CO" + reset + "]");
+            println!("          {}", cyan.to_owned() + "--pol" + reset + ": " + cyan + "--pol.pl-czestochowa" + reset + ", " + cyan + "--pol.pl-torun" + reset + ", " + cyan + "--pol.pl-warszawa" + reset + " [" + grey + "PL" + reset + "]");
+            println!();
+            println!("          {}", cyan.to_owned() + "--spa" + reset + ": " + cyan + "--spa.co-arauca" + reset + ", " + cyan + "--spa.co-bogota" + reset + ", " + cyan + "--spa.co-bucaramanga" + reset + ", [" + grey + "CO" + reset + "]");
             println!("                 {}", cyan.to_owned() + "--spa.co-cali" + reset + ", " + cyan + "--spa.co-leticia" + reset + ", " + cyan + "--spa.co-medellin" + reset + ",     [" + grey + "CO" + reset + "]");
             println!("                 {}", cyan.to_owned() + "--spa.co-neiva" + reset + ", " + cyan + "--spa.co-pasto" + reset + ", " + cyan + "--spa.co-quibdo" + reset + ",        [" + grey + "CO" + reset + "]");
             println!("                 {}", cyan.to_owned() + "--spa.co-santa_marta" + reset + ",                                   [" + grey + "CO" + reset + "]");
             println!("                 {}", cyan.to_owned() + "--spa.es-bilbao" + reset + ", " + cyan + "--spa.es-cadiz" + reset + ", " + cyan + "--spa.es-madrid" + reset + ",       [" + grey + "ES" + reset + "]");
-            println!("                 {}", cyan.to_owned() + "--spa.mx-ciudad_de_mexico" + reset + ", " + cyan + "--spa.uy-montevideo" + reset + "      [" + grey + "MX" + reset + ", " + grey + "UY" + reset + "]" + cyan);
+            println!("                 {}", cyan.to_owned() + "--spa.mx-ciudad_de_mexico" + reset + ", " + cyan + "--spa.uy-montevideo" + reset + "      [" + grey + "MX" + reset + ", " + grey + "UY" + reset + "]");
             println!();
-            println!("          --tca{}", reset.to_owned() + ": " + cyan + "--tca.br-umariacu" + reset + ", " + cyan + "--tca.br-vila_betania" + reset + ", " + cyan + "--tca.co-nazareth" + reset + ",");
+            println!("          {}", cyan.to_owned() + "--tca" + reset + ": " + cyan + "--tca.br-umariacu" + reset + ", " + cyan + "--tca.br-vila_betania" + reset + ", " + cyan + "--tca.co-nazareth" + reset + ",");
             println!("                 {}", cyan.to_owned() + "--tca.co-rio_cotuhe" + reset + ", " + cyan + "--tca.pe-cushillococha" + reset);
             println!();
             println!("{}", grey.to_owned() + "Examples" + reset + ":" + yellow + " lngcnv --ipa --spa 'Una frase en español'" + reset + "    [display all variants]");
@@ -120,7 +123,6 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
             println!("{}", yellow.to_owned() + "option 3" + reset + ": " + cyan + "-r" + reset + ", " + cyan + "--repl" + reset + "       Interactive shell mode (REPL)    [type " + cyan + "-q" + reset + " to quit]");
             println!();
             println!("{}", grey.to_owned() + "Example" + reset + ":" + yellow + "  lngcnv --ipa --pol.pl-czestochowa --repl" + reset + "        [type in the shell]");
-            println!("                                 [avoid enclosing queries in quotation marks]");
             println!();
             println!("{}", grey.to_owned() + "4" + reset + "." + grey + " OPERATIONS ON FILES" + reset);
             println!();
@@ -146,7 +148,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-l" || argument == "--languages" {
             print!("{yellow}");
-            println!("English{}", reset.to_owned() + ":  The " + cyan + "--ipa" + reset + " mode presents the pronunciation of Australian English (Canberra, ACT), while the " + cyan + "--ort" + reset + " mode transcribes the text using the spelling of American English.");
+            println!("English{}", reset.to_owned() + ":  The " + cyan + "--ipa" + reset + " mode presents the pronunciation of American English (Dallas, TX) and Australian English (Canberra, ACT), while the " + cyan + "--ort" + reset + " mode transcribes the text using the spelling of American English.");
             println!();
             print!("{yellow}");
             println!("Latin{}", reset.to_owned() + ":    In the " + cyan + "--ipa" + reset + " mode, either modern or ancient spellings of Latin may be used, and the duration of vowels can be indicated with apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed using the ancient spelling convention of Latin (pre-2nd century AD).");
@@ -171,7 +173,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         if argument == "-L" || argument == "--license" {
             println!("{}", yellow.to_owned() + "MIT License" + reset);
             println!();
-            println!("Copyright © 2022–2023 Piotr Bajdek");
+            println!("Copyright © 2022–2024 Piotr Bajdek");
             println!();
             println!("Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:");
             println!();
@@ -184,8 +186,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.8.12" + reset);
-            println!("August 3, 2023");
+            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.9.0" + reset);
+            println!("March --, 2024");
             exit(0);
         }
     }
