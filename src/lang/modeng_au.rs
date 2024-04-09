@@ -227,6 +227,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("ore", "o̝ː")
         .replace("worse", "wɘ̹ːse")
         .replace("orse", "o̝ːse")
+        .replace("orce", "o̝ːce")
         .replace("glory", "glɔ̈ːry")
         .replace("#story", "#stɔ̈ːry")
         .replace("#stori", "#stɔ̈ːri")

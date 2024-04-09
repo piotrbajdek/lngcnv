@@ -23,7 +23,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         if argument == "-a" || argument == "--about" {
             println!("{}", grey.to_owned() + "Program" + reset + ":  " + yellow + "lngcnv" + reset);
             println!("{}", grey.to_owned() + "Version" + reset + ":  1.9.0");
-            println!("{}", grey.to_owned() + "Date" + reset + ":     March --, 2024");
+            println!("{}", grey.to_owned() + "Date" + reset + ":     April --, 2024");
             println!("{}", grey.to_owned() + "Author" + reset + ":   Piotr Bajdek");
             println!("{}", grey.to_owned() + "Contact" + reset + ":  " + blue_underlined + "piotr.bajdek@proton.me" + reset);
             println!("{}", grey.to_owned() + "Source" + reset + ":   " + blue_underlined + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -34,7 +34,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", yellow.to_owned() + "--.03.2024 v1.9.0  – Enhanced --ipa --eng" + reset);
+            println!("{}", yellow.to_owned() + "--.04.2024 v1.9.0  – Enhanced --ipa --eng" + reset);
             println!("03.08.2023 {}", yellow.to_owned() + "v1.8.12" + reset + " – Improved --ipa --eng, --ipa --spa");
             println!("10.07.2023 {}", yellow.to_owned() + "v1.8.11" + reset + " – Improved --ipa --eng, --ipa --spa");
             println!("08.07.2023 {}", yellow.to_owned() + "v1.8.10" + reset + " – Improved --ipa --pol");
@@ -187,7 +187,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-v" || argument == "--version" {
             println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.9.0" + reset);
-            println!("March --, 2024");
+            println!("April --, 2024");
             exit(0);
         }
     }
