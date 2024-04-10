@@ -128,7 +128,7 @@ _rpm-ostree install lngcnv-1.9.0-1.x86_64.rpm_
 
 Ubuntu:
 
-_sudo dpkg -i lngcnv_1.9.0_amd64.deb_
+_sudo dpkg -i lngcnv_1.9.0-1_amd64.deb_
 
 ## METHOD 5 – MANUAL COMPILATION
 
