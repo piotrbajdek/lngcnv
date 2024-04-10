@@ -1,5 +1,5 @@
 name: lngcnv
-version: '1.8.12'
+version: '1.9.0'
 summary: Linguistics - English, Latin, Polish, Quechua, Spanish, Tikuna
 description: |
   INTRODUCING LNGCNV
@@ -21,6 +21,8 @@ description: |
   SUPPORTED LANGUAGES
 
   1. ENGLISH - pronunciation and orthography
+
+  – Pronunciation of American English (Dallas, TX)
 
   – Pronunciation of Australian English (Canberra, ACT)
 
