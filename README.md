@@ -70,7 +70,7 @@ To display the International Phonetic Alphabet (IPA) characters accurately, it i
 
 # INSTALLATION ON LINUX
 
-The current version of lngcnv (v1.9.0) has been verified to work properly on Fedora Linux 39.
+The current version of lngcnv (v1.9.0) has been verified to work properly on Fedora Linux 40.
 
 ## METHOD 1 – USING CARGO
 
@@ -116,7 +116,7 @@ _cp lngcnv $HOME/.local/bin/_
 
 **[Recommended for most users]**
 
-Distro-specific packages for [.rpm](https://github.com/piotrbajdek/lngcnv/releases/download/v1.9.0/lngcnv-1.9.0-1.x86_64.rpm) and [.deb](https://github.com/piotrbajdek/lngcnv/releases/download/v1.9.0/lngcnv_1.9.0_amd64.deb)-based Linux distributions are also available for download. To install lngcnv on different Linux distributions, follow these instructions:
+Distro-specific packages for [.rpm](https://github.com/piotrbajdek/lngcnv/releases/download/v1.9.0/lngcnv-1.9.0-1.x86_64.rpm) and [.deb](https://github.com/piotrbajdek/lngcnv/releases/download/v1.9.0/lngcnv_1.9.0-1_amd64.deb)-based Linux distributions are also available for download. To install lngcnv on different Linux distributions, follow these instructions:
 
 Fedora Linux / RHEL / openSUSE:
 
