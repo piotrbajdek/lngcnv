@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.9.0 / MIT LICENSE / COPYRIGHT © 2022–2024 PIOTR BAJDEK
+// LNGCNV VERSION 1.9.1 / MIT LICENSE / COPYRIGHT © 2022–2024 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -22,8 +22,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-a" || argument == "--about" {
             println!("{}", grey.to_owned() + "Program" + reset + ":  " + yellow + "lngcnv" + reset);
-            println!("{}", grey.to_owned() + "Version" + reset + ":  1.9.0");
-            println!("{}", grey.to_owned() + "Date" + reset + ":     April 10, 2024");
+            println!("{}", grey.to_owned() + "Version" + reset + ":  1.9.1");
+            println!("{}", grey.to_owned() + "Date" + reset + ":     April 26, 2024");
             println!("{}", grey.to_owned() + "Author" + reset + ":   Piotr Bajdek");
             println!("{}", grey.to_owned() + "Contact" + reset + ":  " + blue_underlined + "piotr.bajdek@proton.me" + reset);
             println!("{}", grey.to_owned() + "Source" + reset + ":   " + blue_underlined + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -34,7 +34,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", yellow.to_owned() + "10.04.2024 v1.9.0  – Enhanced --ipa --eng" + reset);
+            println!("{}", yellow.to_owned() + "26.04.2024 v1.9.1  – Improved --ipa --pol" + reset);
+            println!("10.04.2024 {}", yellow.to_owned() + "v1.9.0" + reset + "  – Enhanced --ipa --eng");
             println!("03.08.2023 {}", yellow.to_owned() + "v1.8.12" + reset + " – Improved --ipa --eng, --ipa --spa");
             println!("10.07.2023 {}", yellow.to_owned() + "v1.8.11" + reset + " – Improved --ipa --eng, --ipa --spa");
             println!("08.07.2023 {}", yellow.to_owned() + "v1.8.10" + reset + " – Improved --ipa --pol");
@@ -65,7 +66,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CITATION
 
         if argument == "-C" || argument == "--citation" {
-            println!("Bajdek, P., 2024. lngcnv (version 1.9.0). [computer software] https://github.com/piotrbajdek/lngcnv");
+            println!("Bajdek, P., 2024. lngcnv (version 1.9.1). [computer software] https://github.com/piotrbajdek/lngcnv");
             exit(0);
         }
 
@@ -186,8 +187,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.9.0" + reset);
-            println!("April 10, 2024");
+            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.9.1" + reset);
+            println!("April 26, 2024");
             exit(0);
         }
     }

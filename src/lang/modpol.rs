@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.9.0 / MIT LICENSE / COPYRIGHT © 2022–2024 PIOTR BAJDEK
+// LNGCNV VERSION 1.9.1 / MIT LICENSE / COPYRIGHT © 2022–2024 PIOTR BAJDEK
 
 // MODULE MODPOL
 
@@ -245,7 +245,6 @@ pub fn polplczestochowa(original_text: &str, usefile: &str, outputfile: &str, re
         .replace('o', "ɔ̝")
         .replace('ą', "ɔ̝̃")
         .replace('ó', "u")
-        .replace('u', "u̞")
         .replace("ü̞", "ü")
         .replace("yʈ͡ʂ", "ɘʈ͡ʂ")
         .replace("ʈ͡ʂy", "ʈ͡ʂɘ")
@@ -345,9 +344,9 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace("ɲu", "ɲʲu")
         .replace("cz", "ʈ͡ʂ̞")
         .replace("zn", "l͡ʒ̥n")
-        .replace("ch", "x")
-        .replace('h', "x")
-        .replace("zx", "sx")
+        .replace("ch", "χ")
+        .replace('h', "χ")
+        .replace("zχ", "sχ")
         .replace('ś', "ç")
         .replace("si#", "çi#")
         .replace("sia", "ça")
@@ -371,8 +370,9 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace('c', "t̪͡s̪")
         .replace("t̪͡s̪͡ç", "c͡ç")
         .replace('ć', "c͡ç")
-        .replace("xrz", "xʂ")
+        .replace("χrz", "χʂ")
         .replace("rz", "ʐ")
+        .replace('r', "ɾ̪")
         .replace("ż#", "ʂ#")
         .replace('ż', "ʐ")
         .replace("zi#", "ʑi#")
@@ -417,6 +417,11 @@ pub fn polpltorun(original_text: &str, usefile: &str, outputfile: &str, reset: &
         .replace('y', "ɘ̟")
         .replace("ɱi", "mʲi")
         .replace("ʲʲ", "ʲ")
+        .replace('i', "i̞")
+        .replace("pɾ̪", "p̪ɾ̪")
+        .replace("bɾ̪", "b̪ɾ̪")
+        .replace("tɾ̪", "t̪ɾ̪")
+        .replace("dɾ̪", "d̪ɾ̪")
         .replace('z', "z̻")
         .replace("d͡z̻", "d͡z")
         .replace('^', "");
