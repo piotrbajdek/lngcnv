@@ -1,6 +1,6 @@
 // LNGCNV VERSION 1.10.0 / MIT LICENSE / COPYRIGHT © 2022–2024 PIOTR BAJDEK
 
-// MODULE MODENG_AU
+// MODULE MODENG_NZ
 
 // CLIPPY LINTS
 
@@ -47,9 +47,9 @@ fn engpncend(strmod: &str) -> String {
     result.to_string()
 }
 
-// CANBERRA: IPA
+// AUCKLAND: IPA
 
-pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
+pub fn engnzauckland(original_text: &str, usefile: &str, outputfile: &str, reset: &str, red: &str, cyan: &str, yellow: &str) {
     let dotend = original_text.to_owned() + ".";
     let dotbeg = ".".to_owned() + &dotend;
     let lowercase = &dotbeg.to_lowercase();
@@ -1072,7 +1072,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
 
     if usefile == "new" {
         let mut file = std::fs::File::create(outputfile).expect(&(red.to_owned() + "The output file could not be created!" + reset));
-        file.write_all("CANBERRA, ACT, AU:".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
+        file.write_all("AUCKLAND, NZ-AUK:".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
@@ -1080,7 +1080,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
     }
     if usefile == "old" {
         let mut file = OpenOptions::new().append(true).open(outputfile).expect(&(red.to_owned() + "cannot open file" + reset));
-        file.write_all("CANBERRA, ACT, AU:".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
+        file.write_all("AUCKLAND, NZ-AUK:".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all("\n".as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
         file.write_all(result.as_bytes()).expect(&(red.to_owned() + "write failed" + reset));
@@ -1088,7 +1088,7 @@ pub fn engaucanberra(original_text: &str, usefile: &str, outputfile: &str, reset
     }
     if usefile == "terminal" {
         println!();
-        println!("{}", cyan.to_owned() + "Canberra" + reset + ", " + cyan + "ACT" + reset + ", " + cyan + "AU" + reset + ":");
+        println!("{}", cyan.to_owned() + "Auckland" + reset + ", " + cyan + "NZ-AUK" + reset + ":");
         println!();
         print!("{yellow}");
         println!("{result}");

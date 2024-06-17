@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.9.2 / MIT LICENSE / COPYRIGHT © 2022–2024 PIOTR BAJDEK
+// LNGCNV VERSION 1.10.0 / MIT LICENSE / COPYRIGHT © 2022–2024 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -22,8 +22,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-a" || argument == "--about" {
             println!("{}", grey.to_owned() + "Program" + reset + ":  " + yellow + "lngcnv" + reset);
-            println!("{}", grey.to_owned() + "Version" + reset + ":  1.9.2");
-            println!("{}", grey.to_owned() + "Date" + reset + ":     May 28, 2024");
+            println!("{}", grey.to_owned() + "Version" + reset + ":  1.10.0");
+            println!("{}", grey.to_owned() + "Date" + reset + ":     June 17, 2024");
             println!("{}", grey.to_owned() + "Author" + reset + ":   Piotr Bajdek");
             println!("{}", grey.to_owned() + "Contact" + reset + ":  " + blue_underlined + "piotr.bajdek@proton.me" + reset);
             println!("{}", grey.to_owned() + "Source" + reset + ":   " + blue_underlined + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -34,7 +34,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", yellow.to_owned() + "28.05.2024 v1.9.2  – Improved --ipa --eng" + reset);
+            println!("{}", yellow.to_owned() + "17.06.2024 v1.10.0 – Enhanced --ipa --eng" + reset);
+            println!("28.05.2024 {}", yellow.to_owned() + "v1.9.2" + reset + "  – Improved --ipa --eng");
             println!("26.04.2024 {}", yellow.to_owned() + "v1.9.1" + reset + "  – Improved --ipa --pol");
             println!("10.04.2024 {}", yellow.to_owned() + "v1.9.0" + reset + "  – Enhanced --ipa --eng");
             println!("03.08.2023 {}", yellow.to_owned() + "v1.8.12" + reset + " – Improved --ipa --eng, --ipa --spa");
@@ -67,7 +68,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CITATION
 
         if argument == "-C" || argument == "--citation" {
-            println!("Bajdek, P., 2024. lngcnv (version 1.9.2). [computer software] https://github.com/piotrbajdek/lngcnv");
+            println!("Bajdek, P., 2024. lngcnv (version 1.10.0). [computer software] https://github.com/piotrbajdek/lngcnv");
             exit(0);
         }
 
@@ -94,7 +95,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
             println!("          In the {}", cyan.to_owned() + "--ipa" + reset + " mode, the output can also be constrained to a selected");
             println!("          variant of pronunciation if two or more are available (see {}", cyan.to_owned() + "-l" + reset + "):");
             println!();
-            println!("          {}", cyan.to_owned() + "--eng" + reset + ": " + cyan + "--eng.au-canberra" + reset + ", " + cyan + "--eng.us-dallas" + reset + "                  [" + grey + "AU" + reset + ", " + grey + "US" + reset + "]");
+            println!("          {}", cyan.to_owned() + "--eng" + reset + ": " + cyan + "--eng.au-canberra" + reset + ", " + cyan + "--eng.nz-auckland" + reset + ",               [" + grey + "AU" + reset + ", " + grey + "NZ" + reset + "]");
+            println!("                 {}", cyan.to_owned() + "--eng.us-chicago" + reset + ", " + cyan + "--eng.us-dallas" + reset + "                       [" + grey + "US" + reset + "]");
             println!();
             println!("          {}", cyan.to_owned() + "--pol" + reset + ": " + cyan + "--pol.pl-czestochowa" + reset + ", " + cyan + "--pol.pl-torun" + reset + ", " + cyan + "--pol.pl-warszawa" + reset + " [" + grey + "PL" + reset + "]");
             println!();
@@ -150,7 +152,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-l" || argument == "--languages" {
             print!("{yellow}");
-            println!("English{}", reset.to_owned() + ":  The " + cyan + "--ipa" + reset + " mode presents the pronunciation of American English (Dallas, TX) and Australian English (Canberra, ACT), while the " + cyan + "--ort" + reset + " mode transcribes the text using the spelling of American English.");
+            println!("English{}", reset.to_owned() + ":  The " + cyan + "--ipa" + reset + " mode presents the pronunciation of American English (Chicago, IL; Dallas, TX), Australian English (Canberra, ACT) and New Zealand English (Auckland, NZ-AUK), while the " + cyan + "--ort" + reset + " mode transcribes the text using the spelling of American English.");
             println!();
             print!("{yellow}");
             println!("Latin{}", reset.to_owned() + ":    In the " + cyan + "--ipa" + reset + " mode, either modern or ancient spellings of Latin may be used, and the duration of vowels can be indicated with apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed using the ancient spelling convention of Latin (pre-2nd century AD).");
@@ -188,8 +190,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.9.2" + reset);
-            println!("May 28, 2024");
+            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.10.0" + reset);
+            println!("June 17, 2024");
             exit(0);
         }
     }
