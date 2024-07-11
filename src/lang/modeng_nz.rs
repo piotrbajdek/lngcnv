@@ -1062,7 +1062,7 @@ pub fn engnzauckland(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("n# #m", "m# #m")
         .replace("n# #n", "# #n")
         .replace("iː̃", "ĩː")
-        .replace("i", "ɘ̞")
+        .replace('i', "ɘ̞")
         .replace("ɘ̞̞", "i̞")
         .replace("ĩ", "ɘ̞̃")
         .replace("ʰʰ", "ʰ")
