@@ -1,5 +1,5 @@
 name: lngcnv
-version: '1.9.2'
+version: '1.10.0'
 summary: Linguistics - English, Latin, Polish, Quechua, Spanish, Tikuna
 description: |
   INTRODUCING LNGCNV
@@ -22,9 +22,11 @@ description: |
 
   1. ENGLISH - pronunciation and orthography
 
-  – Pronunciation of American English (Dallas, TX)
+  – Pronunciation of American English (Chicago, IL; Dallas, TX)
 
   – Pronunciation of Australian English (Canberra, ACT)
+
+  – Pronunciation of New Zealand English (Auckland, NZ-AUK)
 
   – Transcribe using the spelling of American English
 
