@@ -9,7 +9,6 @@ repository = "https://github.com/piotrbajdek/lngcnv"
 license = "MIT"
 keywords = ["linguistics", "phonetics", "speech", "spelling", "text-processing"]
 categories = ["command-line-utilities", "text-processing", "algorithms"]
-publish = false
 
 [profile.release]
 strip = true

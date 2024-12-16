@@ -72,7 +72,7 @@ To display the International Phonetic Alphabet (IPA) characters accurately, it i
 
 # INSTALLATION ON LINUX
 
-The current version of lngcnv (v1.10.1) has been verified to work properly on Fedora Linux 40.
+The current version of lngcnv (v1.10.1) has been verified to work properly on Fedora Linux 41.
 
 ## METHOD 1 – USING CARGO
 
