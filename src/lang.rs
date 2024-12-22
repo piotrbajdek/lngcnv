@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.10.1 / MIT LICENSE / COPYRIGHT © 2022–2024 PIOTR BAJDEK
+// LNGCNV VERSION 1.11.0 / MIT LICENSE / COPYRIGHT © 2022–2025 PIOTR BAJDEK
 
 // MODULE LANG
 
@@ -15,7 +15,9 @@ use std::fs;
 use std::io;
 use std::path::Path;
 
-pub mod modeng_au;
+pub mod modeng_au_act;
+pub mod modeng_au_nt;
+pub mod modeng_au_sa;
 pub mod modeng_nz;
 pub mod modeng_ort;
 pub mod modeng_us_il;
@@ -62,7 +64,9 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 }
                 let usefile = "terminal";
                 let outputfile = "0";
-                modeng_au::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modeng_au_sa::engauadelaide(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modeng_au_act::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modeng_au_nt::engaudarwin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modeng_nz::engnzauckland(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modeng_us_il::enguschicago(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modeng_us_tx::engusdallas(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -93,15 +97,19 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modeng_au::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modeng_au_sa::engauadelaide(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         let usefile = "old";
+                        modeng_au_act::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modeng_au_nt::engaudarwin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modeng_nz::engnzauckland(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modeng_us_il::enguschicago(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modeng_us_tx::engusdallas(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modeng_au::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modeng_au_sa::engauadelaide(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modeng_au_act::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modeng_au_nt::engaudarwin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modeng_nz::engnzauckland(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modeng_us_il::enguschicago(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modeng_us_tx::engusdallas(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
@@ -113,8 +121,10 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 }
                 // FILE DOES NOT EXIST: ENGLISH IPA
 
-                modeng_au::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                modeng_au_sa::engauadelaide(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 let usefile = "old";
+                modeng_au_act::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                modeng_au_nt::engaudarwin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modeng_nz::engnzauckland(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modeng_us_il::enguschicago(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modeng_us_tx::engusdallas(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
@@ -139,15 +149,19 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modeng_au::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modeng_au_sa::engauadelaide(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         let usefile = "old";
+                        modeng_au_act::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modeng_au_nt::engaudarwin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modeng_nz::engnzauckland(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modeng_us_il::enguschicago(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modeng_us_tx::engusdallas(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modeng_au::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modeng_au_sa::engauadelaide(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modeng_au_act::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modeng_au_nt::engaudarwin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modeng_nz::engnzauckland(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modeng_us_il::enguschicago(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modeng_us_tx::engusdallas(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -159,8 +173,10 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 }
                 // FILE DOES NOT EXIST: ENGLISH IPA
 
-                modeng_au::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modeng_au_sa::engauadelaide(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 let usefile = "old";
+                modeng_au_act::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modeng_au_nt::engaudarwin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modeng_nz::engnzauckland(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modeng_us_il::enguschicago(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modeng_us_tx::engusdallas(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -174,10 +190,127 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modeng_au::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modeng_au_sa::engauadelaide(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modeng_au_act::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modeng_au_nt::engaudarwin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modeng_nz::engnzauckland(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modeng_us_il::enguschicago(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modeng_us_tx::engusdallas(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        println!();
+        return;
+    }
+
+    //   ++++++++++   ++++++++++   ++++++++++
+
+    // ENGLISH: IPA --eng.au-adelaide
+
+    if input1 == "--ipa" && input2 == "--eng.au-adelaide" || input1 == "--eng.au-adelaide" && input2 == "--ipa" {
+        let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+
+        // REPL MODE
+        if str0 == "-r" || str0 == "--repl" {
+            println!();
+            println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
+            println!();
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!();
+            loop {
+                let mut input_repl = String::new();
+                io::stdin().read_line(&mut input_repl).expect("Unable to read entered data");
+                let original_text: &str = input_repl.trim();
+                if original_text == "-q" {
+                    return;
+                }
+                let usefile = "terminal";
+                let outputfile = "0";
+                modeng_au_sa::engauadelaide(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!();
+            }
+        }
+
+        // FROM A FILE: ADELAIDE
+        if str0 == "-i" || str0 == "--input" {
+            let usefile = "new";
+            let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
+
+            // DEFAULT OUTPUT FILE
+            if arg_cnt == 5 {
+                let inputfile_arg = inputfile.as_str();
+                let inputfile_str: &str = inputfile_arg.trim();
+                let outputfile = inputfile_str.to_owned() + "--ipa--eng.au-adelaide";
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(&outputfile).is_file();
+
+                // FILE ALREADY EXISTS: ADELAIDE
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modeng_au_sa::engauadelaide(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modeng_au_sa::engauadelaide(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: ADELAIDE
+
+                modeng_au_sa::engauadelaide(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+
+            // USER-DEFINED OUTPUT FILE
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
+            if output == "-o" || output == "--output" {
+                let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(outputfile).is_file();
+
+                // FILE ALREADY EXISTS: ADELAIDE
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modeng_au_sa::engauadelaide(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile.clone() + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modeng_au_sa::engauadelaide(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: ADELAIDE
+
+                modeng_au_sa::engauadelaide(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
+        }
+        // FROM THE COMMAND LINE: ADELAIDE
+
+        let original_text = str0;
+        let usefile = "terminal";
+        let outputfile = "0";
+        modeng_au_sa::engauadelaide(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -205,7 +338,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 }
                 let usefile = "terminal";
                 let outputfile = "0";
-                modeng_au::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modeng_au_act::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!();
             }
         }
@@ -233,11 +366,11 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modeng_au::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modeng_au_act::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modeng_au::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modeng_au_act::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
@@ -246,7 +379,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 }
                 // FILE DOES NOT EXIST: CANBERRA
 
-                modeng_au::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                modeng_au_act::engaucanberra(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {outputfile}");
                 return;
             }
@@ -268,11 +401,11 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                     let option: &str = answer.trim();
 
                     if option == "o" {
-                        modeng_au::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modeng_au_act::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("File {}", outputfile.clone() + " overwritten");
                     } else if option == "a" {
                         let usefile = "old";
-                        modeng_au::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modeng_au_act::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         println!("Data appended to the file {outputfile}");
                     } else {
                         println!("Operation aborted");
@@ -281,7 +414,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 }
                 // FILE DOES NOT EXIST: CANBERRA
 
-                modeng_au::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modeng_au_act::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 println!("Data written to the file {outputfile}");
                 return;
             }
@@ -292,7 +425,122 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
         let original_text = str0;
         let usefile = "terminal";
         let outputfile = "0";
-        modeng_au::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modeng_au_act::engaucanberra(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        println!();
+        return;
+    }
+
+    //   ++++++++++   ++++++++++   ++++++++++
+
+    // ENGLISH: IPA --eng.au-darwin
+
+    if input1 == "--ipa" && input2 == "--eng.au-darwin" || input1 == "--eng.au-darwin" && input2 == "--ipa" {
+        let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+
+        // REPL MODE
+        if str0 == "-r" || str0 == "--repl" {
+            println!();
+            println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
+            println!();
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!();
+            loop {
+                let mut input_repl = String::new();
+                io::stdin().read_line(&mut input_repl).expect("Unable to read entered data");
+                let original_text: &str = input_repl.trim();
+                if original_text == "-q" {
+                    return;
+                }
+                let usefile = "terminal";
+                let outputfile = "0";
+                modeng_au_nt::engaudarwin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!();
+            }
+        }
+
+        // FROM A FILE: DARWIN
+        if str0 == "-i" || str0 == "--input" {
+            let usefile = "new";
+            let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
+
+            // DEFAULT OUTPUT FILE
+            if arg_cnt == 5 {
+                let inputfile_arg = inputfile.as_str();
+                let inputfile_str: &str = inputfile_arg.trim();
+                let outputfile = inputfile_str.to_owned() + "--ipa--eng.au-darwin";
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(&outputfile).is_file();
+
+                // FILE ALREADY EXISTS: DARWIN
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modeng_au_nt::engaudarwin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modeng_au_nt::engaudarwin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: DARWIN
+
+                modeng_au_nt::engaudarwin(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+
+            // USER-DEFINED OUTPUT FILE
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
+            if output == "-o" || output == "--output" {
+                let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(outputfile).is_file();
+
+                // FILE ALREADY EXISTS: DARWIN
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modeng_au_nt::engaudarwin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile.clone() + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modeng_au_nt::engaudarwin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: DARWIN
+
+                modeng_au_nt::engaudarwin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
+        }
+        // FROM THE COMMAND LINE: DARWIN
+
+        let original_text = str0;
+        let usefile = "terminal";
+        let outputfile = "0";
+        modeng_au_nt::engaudarwin(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
@@ -1852,6 +2100,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spacrsanjose(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spaesbilbao(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -1895,6 +2144,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modspa::spacopasto(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacoquibdo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacosantamarta(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modspa::spacrsanjose(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spaesbilbao(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spaescadiz(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spaesmadrid(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
@@ -1913,6 +2163,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modspa::spacopasto(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacoquibdo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spacosantamarta(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        modspa::spacrsanjose(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spaesbilbao(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spaescadiz(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                         modspa::spaesmadrid(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
@@ -1937,6 +2188,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modspa::spacopasto(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spacoquibdo(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spacosantamarta(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                modspa::spacrsanjose(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spaesbilbao(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spaescadiz(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
                 modspa::spaesmadrid(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
@@ -1974,6 +2226,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spacrsanjose(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spaesbilbao(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -1992,6 +2245,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                         modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        modspa::spacrsanjose(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spaesbilbao(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                         modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -2016,6 +2270,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
                 modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                modspa::spacrsanjose(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spaesbilbao(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
                 modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -2041,6 +2296,7 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
         modspa::spacopasto(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spacoquibdo(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        modspa::spacrsanjose(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spaesbilbao(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spaescadiz(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         modspa::spaesmadrid(&original_text, usefile, outputfile, reset, red, cyan, yellow);
@@ -3195,6 +3451,121 @@ pub fn list(reset: &str, red: &str, cyan: &str, yellow: &str) {
         let usefile = "terminal";
         let outputfile = "0";
         modspa::spacosantamarta(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+        println!();
+        return;
+    }
+
+    //   ++++++++++   ++++++++++   ++++++++++
+
+    // SPANISH: IPA --spa.cr-san_jose
+
+    if input1 == "--ipa" && input2 == "--spa.cr-san_jose" || input1 == "--spa.cr-san_jose" && input2 == "--ipa" {
+        let str0 = args.get(3).expect(&(red.to_owned() + "No string inserted! See: --help" + reset));
+
+        // REPL MODE
+        if str0 == "-r" || str0 == "--repl" {
+            println!();
+            println!("{}", yellow.to_owned() + "LNGCNV INTERACTIVE SHELL (REPL MODE)" + reset);
+            println!();
+            println!("Enter your query... Type {}", cyan.to_owned() + "-q" + reset + " to quit:");
+            println!();
+            loop {
+                let mut input_repl = String::new();
+                io::stdin().read_line(&mut input_repl).expect("Unable to read entered data");
+                let original_text: &str = input_repl.trim();
+                if original_text == "-q" {
+                    return;
+                }
+                let usefile = "terminal";
+                let outputfile = "0";
+                modspa::spacrsanjose(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!();
+            }
+        }
+
+        // FROM A FILE: SAN JOSÉ
+        if str0 == "-i" || str0 == "--input" {
+            let usefile = "new";
+            let inputfile = args.get(4).expect(&(red.to_owned() + "No file to read! See: --help" + reset));
+
+            // DEFAULT OUTPUT FILE
+            if arg_cnt == 5 {
+                let inputfile_arg = inputfile.as_str();
+                let inputfile_str: &str = inputfile_arg.trim();
+                let outputfile = inputfile_str.to_owned() + "--ipa--spa.cr-san_jose";
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(&outputfile).is_file();
+
+                // FILE ALREADY EXISTS: SAN JOSÉ
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + &outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spacrsanjose(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spacrsanjose(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: SAN JOSÉ
+
+                modspa::spacrsanjose(&original_text, usefile, &outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+
+            // USER-DEFINED OUTPUT FILE
+            let output = args.get(5).expect(&(red.to_owned() + "Missing arguments! Use option: --output See: --help" + reset));
+            if output == "-o" || output == "--output" {
+                let outputfile = args.get(6).expect(&(red.to_owned() + "No output file specified! See: --help" + reset));
+                let original_text = fs::read_to_string(inputfile).expect(&(red.to_owned() + "Something went wrong reading the file!" + reset));
+
+                let fileexists: bool = Path::new(outputfile).is_file();
+
+                // FILE ALREADY EXISTS: SAN JOSÉ
+                if fileexists {
+                    println!("{}", red.to_owned() + "The file " + outputfile + " already exists!" + reset + " Overwrite (" + cyan + "o" + reset + ")/ Append (" + cyan + "a" + reset + ")/ Cancel (" + cyan + "other key" + reset + ")" + cyan);
+                    let mut answer = String::new();
+                    io::stdin().read_line(&mut answer).expect("Unable to read entered data");
+                    print!("{reset}");
+                    let option: &str = answer.trim();
+
+                    if option == "o" {
+                        modspa::spacrsanjose(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("File {}", outputfile.clone() + " overwritten");
+                    } else if option == "a" {
+                        let usefile = "old";
+                        modspa::spacrsanjose(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                        println!("Data appended to the file {outputfile}");
+                    } else {
+                        println!("Operation aborted");
+                    }
+                    return;
+                }
+                // FILE DOES NOT EXIST: SAN JOSÉ
+
+                modspa::spacrsanjose(&original_text, usefile, outputfile, reset, red, cyan, yellow);
+                println!("Data written to the file {outputfile}");
+                return;
+            }
+            panic!("{}", &(red.to_owned() + "Invalid arguments! Use option: --output See: --help" + reset))
+        }
+        // FROM THE COMMAND LINE: SAN JOSÉ
+
+        let original_text = str0;
+        let usefile = "terminal";
+        let outputfile = "0";
+        modspa::spacrsanjose(&original_text, usefile, outputfile, reset, red, cyan, yellow);
         println!();
         return;
     }
