@@ -1,5 +1,5 @@
 name: lngcnv
-version: '1.11.0'
+version: '1.10.2'
 summary: Linguistics - English, Latin, Polish, Quechua, Spanish, Tikuna
 description: |
   INTRODUCING LNGCNV
@@ -24,7 +24,7 @@ description: |
 
   – Pronunciation of American English (Chicago, IL; Dallas, TX)
 
-  – Pronunciation of Australian English (Adelaide, SA; Canberra, ACT; Darwin, NT)
+  – Pronunciation of Australian English (Canberra, ACT)
 
   – Pronunciation of New Zealand English (Auckland, NZ-AUK)
 
@@ -52,11 +52,9 @@ description: |
 
   – Transcribe between the trivocalic and pentavocalic orthographies
 
-  5. SPANISH - sixteen variants of pronunciation
+  5. SPANISH - fifteen variants of pronunciation
 
   – Pronunciation of Colombian Spanish (Arauca; Bogotá; Bucaramanga; Cali; Leticia; Medellín; Neiva; Pasto; Quibdó; Santa Marta)
-
-  – Pronunciation of Costa Rican Spanish (San José)
 
   – Pronunciation of Mexican Spanish (Ciudad de México)
 

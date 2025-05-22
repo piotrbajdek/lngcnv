@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.11.0 / MIT LICENSE / COPYRIGHT © 2022–2025 PIOTR BAJDEK
+// LNGCNV VERSION 1.10.2 / MIT LICENSE / COPYRIGHT © 2022–2025 PIOTR BAJDEK
 
 // MODULE MODENG_US_IL
 
@@ -76,6 +76,7 @@ pub fn enguschicago(original_text: &str, usefile: &str, outputfile: &str, reset:
         .replace("often", "ɔ̈fᵊn")
         .replace("perhaps", "peˑɾhɛ̞ps")
         .replace("video", "vidɔ̽ʊ")
+        .replace("#ame", "#ɵ̜me")
         .replace("comm", "kʰɔ̈mm")
         .replace("modu", "mɔ̈du")
         .replace("#conf", "#kʰɔ̃nf")
@@ -104,6 +105,7 @@ pub fn enguschicago(original_text: &str, usefile: &str, outputfile: &str, reset:
         .replace("iced#", "i^sed#")
         .replace("musc", "mɞ̠sc")
         .replace("ward", "^wɔ̝ˑɾd")
+        .replace("ook", "ɵ̠→ːk")
         .replace("ok", "ɔ̽ʊk")
         .replace("ochu", "ɔ̽ʊchu")
         .replace("chure", "ʃʲɵ̜ɾ")
@@ -325,6 +327,7 @@ pub fn enguschicago(original_text: &str, usefile: &str, outputfile: &str, reset:
         .replace("#own", "#ɔ̽ʊn")
         .replace("own", "ɐʊ̞n")
         .replace("owl", "ɐ̃ʊ̞l")
+        .replace("#dow#", "#dɐʊ̞#")
         .replace("#ɵ̜low", "#ɵ̜lɐʊ̞")
         .replace("#kʰow", "#kʰɐʊ̞")
         .replace("#how", "#hɐʊ̞")
@@ -796,6 +799,7 @@ pub fn enguschicago(original_text: &str, usefile: &str, outputfile: &str, reset:
         .replace("is#", "iz̥#")
         .replace("ẽ̞n̪th", "ẽn̪θ")
         .replace("othes", "ɔ̽ʊðz")
+        .replace("noth", "nɐ̞θ")
         .replace("oth", "ɐ̞ð")
         .replace("ythm", "iðᵊm")
         .replace("yme", "ɐɪme")
@@ -819,6 +823,7 @@ pub fn enguschicago(original_text: &str, usefile: &str, outputfile: &str, reset:
         .replace("rant", "^rɵ̜nt")
         .replace("want", "wɔ̜̈nt")
         .replace("#ant", "#ɛ̞ː^nt")
+        .replace("ican", "ica^n")
         .replace("can", "kʰɛ̞ːn")
         .replace("ken", "kʰẽn")
         .replace("ank", "ɛ̞ːnk")

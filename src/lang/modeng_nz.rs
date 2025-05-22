@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.11.0 / MIT LICENSE / COPYRIGHT © 2022–2025 PIOTR BAJDEK
+// LNGCNV VERSION 1.10.2 / MIT LICENSE / COPYRIGHT © 2022–2025 PIOTR BAJDEK
 
 // MODULE MODENG_NZ
 
@@ -75,6 +75,7 @@ pub fn engnzauckland(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("often", "ɞ̠fᵊn")
         .replace("perhaps", "peːhœ̜ps")
         .replace("video", "vidɞ̠ɵ̠")
+        .replace("#ame", "#ɘ̞me")
         .replace("comm", "kʰɞ̠mm")
         .replace("modu", "mɞ̠du")
         .replace("#conf", "#kʰɔ̃nf")
@@ -103,6 +104,7 @@ pub fn engnzauckland(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("iced#", "i^sed#")
         .replace("musc", "mɐ̟sc")
         .replace("ward", "^wo̝ːd")
+        .replace("ook", "ɵ̠k")
         .replace("ok", "ɞ̠ɵ̠k")
         .replace("ochu", "ɞ̠ɵ̠chu")
         .replace("chure", "ʃʲɘ̞")
@@ -322,6 +324,7 @@ pub fn engnzauckland(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("#own", "#ɞ̠ɵ̠n")
         .replace("own", "æɞ̃n")
         .replace("owl", "æ̃ɵ̠l")
+        .replace("#dow#", "#dæ̈ɵ̠#")
         .replace("#ɘ̞low", "#ɘ̞læ̈ɵ̠")
         .replace("#kʰow", "#kʰæ̈ɵ̠")
         .replace("#how", "#hæ̈ɵ̠")
@@ -795,6 +798,7 @@ pub fn engnzauckland(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("is#", "iz̥#")
         .replace("ẽ̞n̪th", "ẽn̪θ")
         .replace("othes", "ɞ̠ɵ̠ðz")
+        .replace("noth", "nɐ̟θ")
         .replace("oth", "ɐ̟ð")
         .replace("ythm", "iðᵊm")
         .replace("yme", "ɐ̠ə̟me")
@@ -816,6 +820,7 @@ pub fn engnzauckland(original_text: &str, usefile: &str, outputfile: &str, reset
         .replace("rant", "^rɘ̞nt")
         .replace("want", "wɔ̃nt")
         .replace("#ant", "#œ̜̃ː^nt")
+        .replace("ican", "ica^n")
         .replace("can", "kʰœ̜̃ːn")
         .replace("ken", "kʰẽn")
         .replace("ank", "œ̜̃ːnk")

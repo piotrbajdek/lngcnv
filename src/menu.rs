@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.11.0 / MIT LICENSE / COPYRIGHT © 2022–2025 PIOTR BAJDEK
+// LNGCNV VERSION 1.10.2 / MIT LICENSE / COPYRIGHT © 2022–2025 PIOTR BAJDEK
 
 // MODULE MENU
 
@@ -22,8 +22,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-a" || argument == "--about" {
             println!("{}", grey.to_owned() + "Program" + reset + ":  " + yellow + "lngcnv" + reset);
-            println!("{}", grey.to_owned() + "Version" + reset + ":  1.11.0");
-            println!("{}", grey.to_owned() + "Date" + reset + ":     January 01, 2025");
+            println!("{}", grey.to_owned() + "Version" + reset + ":  1.10.2");
+            println!("{}", grey.to_owned() + "Date" + reset + ":     May 22, 2025");
             println!("{}", grey.to_owned() + "Author" + reset + ":   Piotr Bajdek");
             println!("{}", grey.to_owned() + "Contact" + reset + ":  " + blue_underlined + "piotr.bajdek@proton.me" + reset);
             println!("{}", grey.to_owned() + "Source" + reset + ":   " + blue_underlined + "https://github.com/piotrbajdek/lngcnv" + reset);
@@ -34,8 +34,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CHANGES
 
         if argument == "-c" || argument == "--changes" {
-            println!("{}", yellow.to_owned() + "01.01.2025 v1.11.0 – Enhanced --ipa --eng, --ipa --spa" + reset);
-            println!("16.12.2024 {}", yellow.to_owned() + "v1.10.1" + reset + " – Improved --ipa --eng");
+            println!("{}", yellow.to_owned() + "22.05.2025 v1.10.2 – Improved --ipa --eng" + reset);
+            println!("16.12.2024 {}", yellow.to_owned() + "v1.10.1" + reset + " – Improved --ipa --eng" + reset);
             println!("25.07.2024 {}", yellow.to_owned() + "v1.10.0" + reset + " – Enhanced --ipa --eng; Improved --ort --eng");
             println!("28.05.2024 {}", yellow.to_owned() + "v1.9.2" + reset + "  – Improved --ipa --eng");
             println!("26.04.2024 {}", yellow.to_owned() + "v1.9.1" + reset + "  – Improved --ipa --pol");
@@ -70,7 +70,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // CITATION
 
         if argument == "-C" || argument == "--citation" {
-            println!("Bajdek, P., 2025. lngcnv (version 1.11.0). [computer software] https://github.com/piotrbajdek/lngcnv");
+            println!("Bajdek, P., 2025. lngcnv (version 1.10.2). [computer software] https://github.com/piotrbajdek/lngcnv");
             exit(0);
         }
 
@@ -97,17 +97,17 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
             println!("          In the {}", cyan.to_owned() + "--ipa" + reset + " mode, the output can also be constrained to a selected");
             println!("          variant of pronunciation if two or more are available (see {}", cyan.to_owned() + "-l" + reset + "):");
             println!();
-            println!("          {}", cyan.to_owned() + "--eng" + reset + ": " + cyan + "--eng.au-adelaide" + reset + ", " + cyan + "--eng.au-canberra" + reset + ", " + cyan + "--eng.au-darwin" + reset + ",  [" + grey + "AU" + reset + "]");
-            println!("                 {}", cyan.to_owned() + "--eng.nz-auckland" + reset + ", " + cyan + "--eng.us-chicago" + reset + ", " + cyan + "--eng.us-dallas" + reset + " [" + grey + "NZ" + reset + "," + grey + "US" + reset + "]");
+            println!("          {}", cyan.to_owned() + "--eng" + reset + ": " + cyan + "--eng.au-canberra" + reset + ", " + cyan + "--eng.nz-auckland" + reset + ",               [" + grey + "AU" + reset + ", " + grey + "NZ" + reset + "]");
+            println!("                 {}", cyan.to_owned() + "--eng.us-chicago" + reset + ", " + cyan + "--eng.us-dallas" + reset + "                       [" + grey + "US" + reset + "]");
             println!();
             println!("          {}", cyan.to_owned() + "--pol" + reset + ": " + cyan + "--pol.pl-czestochowa" + reset + ", " + cyan + "--pol.pl-torun" + reset + ", " + cyan + "--pol.pl-warszawa" + reset + " [" + grey + "PL" + reset + "]");
             println!();
             println!("          {}", cyan.to_owned() + "--spa" + reset + ": " + cyan + "--spa.co-arauca" + reset + ", " + cyan + "--spa.co-bogota" + reset + ", " + cyan + "--spa.co-bucaramanga" + reset + ", [" + grey + "CO" + reset + "]");
             println!("                 {}", cyan.to_owned() + "--spa.co-cali" + reset + ", " + cyan + "--spa.co-leticia" + reset + ", " + cyan + "--spa.co-medellin" + reset + ",     [" + grey + "CO" + reset + "]");
             println!("                 {}", cyan.to_owned() + "--spa.co-neiva" + reset + ", " + cyan + "--spa.co-pasto" + reset + ", " + cyan + "--spa.co-quibdo" + reset + ",        [" + grey + "CO" + reset + "]");
-            println!("                 {}", cyan.to_owned() + "--spa.co-santa_marta" + reset + ", " + cyan + "--spa.cr-san_jose" + reset + ",             [" + grey + "CO" + reset + "," + grey + "CR" + reset + "]");
+            println!("                 {}", cyan.to_owned() + "--spa.co-santa_marta" + reset + ",                                   [" + grey + "CO" + reset + "]");
             println!("                 {}", cyan.to_owned() + "--spa.es-bilbao" + reset + ", " + cyan + "--spa.es-cadiz" + reset + ", " + cyan + "--spa.es-madrid" + reset + ",       [" + grey + "ES" + reset + "]");
-            println!("                 {}", cyan.to_owned() + "--spa.mx-ciudad_de_mexico" + reset + ", " + cyan + "--spa.uy-montevideo" + reset + "       [" + grey + "MX" + reset + "," + grey + "UY" + reset + "]");
+            println!("                 {}", cyan.to_owned() + "--spa.mx-ciudad_de_mexico" + reset + ", " + cyan + "--spa.uy-montevideo" + reset + "      [" + grey + "MX" + reset + ", " + grey + "UY" + reset + "]");
             println!();
             println!("          {}", cyan.to_owned() + "--tca" + reset + ": " + cyan + "--tca.br-umariacu" + reset + ", " + cyan + "--tca.br-vila_betania" + reset + ", " + cyan + "--tca.co-nazareth" + reset + ",");
             println!("                 {}", cyan.to_owned() + "--tca.co-rio_cotuhe" + reset + ", " + cyan + "--tca.pe-cushillococha" + reset);
@@ -154,7 +154,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
 
         if argument == "-l" || argument == "--languages" {
             print!("{yellow}");
-            println!("English{}", reset.to_owned() + ":  The " + cyan + "--ipa" + reset + " mode presents the pronunciation of American English (Chicago, IL; Dallas, TX), Australian English (Adelaide, SA; Canberra, ACT; Darwin, NT) and New Zealand English (Auckland, NZ-AUK), while the " + cyan + "--ort" + reset + " mode transcribes the text using the spelling of American English.");
+            println!("English{}", reset.to_owned() + ":  The " + cyan + "--ipa" + reset + " mode presents the pronunciation of American English (Chicago, IL; Dallas, TX), Australian English (Canberra, ACT) and New Zealand English (Auckland, NZ-AUK), while the " + cyan + "--ort" + reset + " mode transcribes the text using the spelling of American English.");
             println!();
             print!("{yellow}");
             println!("Latin{}", reset.to_owned() + ":    In the " + cyan + "--ipa" + reset + " mode, either modern or ancient spellings of Latin may be used, and the duration of vowels can be indicated with apices or macrons. In the " + cyan + "--ort" + reset + " mode, the text is transcribed using the ancient spelling convention of Latin (pre-2nd century AD).");
@@ -166,7 +166,7 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
             println!("Quechua{}", reset.to_owned() + ":  The " + cyan + "--ipa" + reset + " mode implements Ayacucho Quechua and requires inputs to be spelled accordingly. The " + cyan + "--lct" + reset + " mode translates from other Southern Quechua varieties into Ayacucho Quechua. Although the algorithm attempts to convert dialectal features, manual adjustments may be required. The " + cyan + "--ort" + reset + " mode facilitates transcription between the trivocalic and pentavocalic orthographies, and can be used with any language within the Quechuan Family.");
             println!();
             print!("{yellow}");
-            println!("Spanish{}", reset.to_owned() + ":  The software provides 16 different pronunciation choices (" + cyan + "--ipa" + reset + "), including 10 from Colombia (Arauca; Bogotá; Bucaramanga; Cali; Leticia; Medellín; Neiva; Pasto; Quibdó; Santa Marta), three from Spain (Bilbao; Cádiz; Madrid), one from Costa Rica (San José), one from Mexico (Ciudad de México), and one from Uruguay (Montevideo).");
+            println!("Spanish{}", reset.to_owned() + ":  The software provides 15 different pronunciation choices (" + cyan + "--ipa" + reset + "), including 10 from Colombia (Arauca; Bogotá; Bucaramanga; Cali; Leticia; Medellín; Neiva; Pasto; Quibdó; Santa Marta), three from Spain (Bilbao; Cádiz; Madrid), one from Mexico (Ciudad de México), and one from Uruguay (Montevideo).");
             println!();
             print!("{yellow}");
             println!("Tikuna{}", reset.to_owned() + ":   Five pronunciation variants (Río Cotuhé, CO; Cushillococha, PE; Nazareth, CO; Umariaçu, BR; Vila Betânia, BR) are available in the " + cyan + "--ipa" + reset + " mode, and four distinct orthographies (Brazil; Colombia; Peru–ILV; Peru–FORMABIAP) in the " + cyan + "--ort" + reset + " mode. Currently, the program does not offer tone support. However, tonal annotations can be displayed in subscript using manual input as numbers ranging from 1 (lowest tone) to 6 (highest tone) in the " + cyan + "--ipa" + reset + " mode.");
@@ -192,8 +192,8 @@ pub fn documentation(reset: &str, blue_underlined: &str, cyan: &str, yellow: &st
         // VERSION
 
         if argument == "-v" || argument == "--version" {
-            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.11.0" + reset);
-            println!("January 01, 2025");
+            println!("{}", grey.to_owned() + "Version" + reset + ": " + yellow + "1.10.2" + reset);
+            println!("May 22, 2025");
             exit(0);
         }
     }

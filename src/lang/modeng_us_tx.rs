@@ -1,4 +1,4 @@
-// LNGCNV VERSION 1.11.0 / MIT LICENSE / COPYRIGHT © 2022–2025 PIOTR BAJDEK
+// LNGCNV VERSION 1.10.2 / MIT LICENSE / COPYRIGHT © 2022–2025 PIOTR BAJDEK
 
 // MODULE MODENG_US_TX
 
@@ -76,6 +76,7 @@ pub fn engusdallas(original_text: &str, usefile: &str, outputfile: &str, reset: 
         .replace("often", "ɔfᵊn")
         .replace("perhaps", "peˑɾ̠hæps")
         .replace("video", "vidɔʊ")
+        .replace("#ame", "#əme")
         .replace("comm", "kʰɔmm")
         .replace("modu", "mɔdu")
         .replace("#conf", "#kʰɔ̃nf")
@@ -104,6 +105,7 @@ pub fn engusdallas(original_text: &str, usefile: &str, outputfile: &str, reset: 
         .replace("iced#", "i^sed#")
         .replace("musc", "mɜ̹sc")
         .replace("ward", "^wɔ̝ˑɾ̠d")
+        .replace("ook", "ɵ̠ːk")
         .replace("ok", "ɔʊk")
         .replace("ochu", "ɔʊchu")
         .replace("chure", "ʃʲəˑɾ̠")
@@ -324,6 +326,7 @@ pub fn engusdallas(original_text: &str, usefile: &str, outputfile: &str, reset: 
         .replace("#own", "#ɔʊn")
         .replace("own", "ɛ̞ɔ̽n")
         .replace("owl", "æ̃ɔ̈l")
+        .replace("#dow#", "#dæɔ̈#")
         .replace("#əlow", "#əlæɔ̈")
         .replace("#kʰow", "#kʰæɔ̈")
         .replace("#how", "#hæɔ̈")
@@ -795,6 +798,7 @@ pub fn engusdallas(original_text: &str, usefile: &str, outputfile: &str, reset: 
         .replace("is#", "iz̥#")
         .replace("ẽ̞n̪th", "ẽn̪θ")
         .replace("othes", "ɔʊðz")
+        .replace("noth", "nɒ̜̽θ")
         .replace("oth", "ɒ̜̽ð")
         .replace("ythm", "iðᵊm")
         .replace("yme", "æ̈ːme")
@@ -817,6 +821,7 @@ pub fn engusdallas(original_text: &str, usefile: &str, outputfile: &str, reset: 
         .replace("rant", "^rənt")
         .replace("want", "wɒ̜̽nt")
         .replace("#ant", "#ɛ̞ː^nt")
+        .replace("ican", "ica^n")
         .replace("can", "kʰɛ̞ːn")
         .replace("ken", "kʰẽn")
         .replace("ank", "ɛ̞ːnk")

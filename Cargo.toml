@@ -1,8 +1,8 @@
 [package]
 name = "lngcnv"
-version = "1.11.0"
+version = "1.10.2"
 authors = ["Piotr Bajdek <piotr.bajdek@proton.me>"]
-edition = "2021"
+edition = "2024"
 description = "linguistics: display pronunciation, translate between dialects, convert between orthographies; support for multiple languages: English, Latin, Polish, Quechua, Spanish, Tikuna"
 readme = "README.md"
 repository = "https://github.com/piotrbajdek/lngcnv"
